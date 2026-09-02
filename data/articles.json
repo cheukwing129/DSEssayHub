@@ -454,5 +454,25 @@
     "th13"
   ],
   "summary": "奶奶離世後，主角因過去未能好好陪伴她而愧疚，透過戴孝、送行及回憶，逐漸放下負擔，學會珍惜與告別。"
+},
+    {
+  "id": 27,
+  "file": "data/articles/article_27.json",
+  "collection": "extended",
+  "sourceType": "文學DSE",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "文學2020",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1860,
+  "themeConceptIds": [
+    "th01",
+    "th07",
+    "th12"
+  ],
+  "summary": "主角因隱瞞大體美容師的職業而長期背負心理壓力，最後得到好友理解，決定公開自己的職業，終於如釋重負。"
 }
 ]
