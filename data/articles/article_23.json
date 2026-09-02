@@ -1,0 +1,65 @@
+{
+  "id": 23,
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2012pp",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 828,
+  "themeConceptIds": [
+    "th01",
+    "th11"
+  ],
+  "contentLabel": "",
+  "paragraphs": [
+    {
+      "text": "「恭喜你，一心！你為香港增添了一面金牌。你心情怎樣？」記者問我。我緊握金牌，腦海浮現七年前那個改變一生的抉擇。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "那天是小六放榜日，媽媽希望我入讀名校，將來成為成功人士；但我也有夢想和自己想走的路。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "放榜後我成功入讀名校，媽媽十分興奮；然而教練告訴我，我被中國體操隊選中接受兩年訓練。兩條不同道路令我忐忑。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我和媽媽乘巴士到中學報名，經過中環，看見白領急步工作。我幻想自己為生活失去興趣，便告訴自己不能放棄夢想。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "到中學後，我鼓起勇氣告訴媽媽：「我要到中國接受訓練！」媽媽起初生氣，最後讓我自己選擇。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "作出抉擇後，我知道自己不希望人生由別人控制，也不甘為生活而生活。我慶幸選擇體操，因為人生有目標才會多姿多彩。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "記者繼續問我感受，我沒有再回答，但臉上的笑容一直沒有放下。",
+      "comment": "",
+      "techniqueTagIds": []
+    }
+  ],
+  "topicAnalysis": {
+    "analysisType": "keyword",
+    "keywordExplanation": "「重大抉擇」指足以影響人生方向、價值取向或重要關係的選擇；文章要寫出抉擇前的兩難、作決定的過程及事後對自己的了解。",
+    "imageryDescription": "",
+    "directionSuggestion": "可從夢想與安穩、家庭期望與自我選擇、責任與個人意願等矛盾取材，突出作出選擇後對自我的認識。",
+    "referenceAnswerPoints": [
+      "清楚交代兩個或以上選項及其利弊。",
+      "抉擇要經過心理掙扎，不能突然決定。",
+      "結尾須說明這次經歷如何讓自己更了解。"
+    ],
+    "openEndedAngles": []
+  }
+}

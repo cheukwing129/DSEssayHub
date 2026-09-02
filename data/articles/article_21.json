@@ -1,0 +1,155 @@
+{
+  "id": 21,
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2013",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1419,
+  "themeConceptIds": [
+    "th02",
+    "th13"
+  ],
+  "contentLabel": "",
+  "paragraphs": [
+    {
+      "text": "「度、度、度……」",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我在回家的路上，在斑馬線中心等候綠燈。突然聽到幾下聲音，原來是一位盲人提着盲人輔助棒走過，還有幾個小學生追着他，在背後作狀取笑。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "看着他們幼稚的行為，我不禁想起以前的自己。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "小學六年級時，我曾在上學途中遇到一位盲眼叔叔，因覺得有趣便在他旁邊用力拍手，最後拋下一句「笨盲仔」便跑走。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "下學期，老師推薦我和同學參加「傷健共融一天團」。起初我沒有興趣，總覺得和傷殘人士玩遊戲很沉悶。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "活動當天，我和幾位傷殘人士一組完成任務，其中一項「黑色世界」要求模仿盲人，請求五位行人扶自己過馬路。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我主動封着雙眼、戴上太陽眼鏡，提着輔助棒走到馬路旁。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "面對一片漆黑，我感到陌生不安，路人腳步聲像一下下鑿在心房。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "突然一陣花香飄來。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "「不好意思，拜託你能扶着我過馬路嗎？」我徐徐吐出一句話。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "然而沒有人回應，只聽到高跟鞋遠去。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我又向幾位大哥哥求助。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "「哥哥，不好意思，可以扶我過對面嗎？」",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "「小朋友，你不懂過馬路嗎？你是盲了，不是跛了喔！哥哥幫不了你了！」他們大笑。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "即使雙眼被蒙着，我也能看透他們的心，是黑色的。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "「不要跌倒喔！呆盲仔！」說罷傳來恥笑聲。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "這句話把我推到黑洞，我想大叫，吶喊看不見的人也應受到尊重。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "最後，我硬着頭皮完成任務。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "活動完結後，老師問我們能否分享感受，我毫不猶豫答應。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "這天讓我明白，身體不健全的人心靈與常人一樣，需要尊重和愛護。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我模仿盲人的生活，才知道被取笑和不接納是多麼心痛，也後悔從前對盲人叔叔不禮貌。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "「己所不欲，勿施於人」正是儒家忠恕之道。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我們不喜歡別人不尊重自己，也不應不尊重別人；行事前應先問自己能否接受。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "這次活動使我獲益良多。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "馬路燈由紅轉綠，我馬上扶着那盲人，協助他回家。",
+      "comment": "",
+      "techniqueTagIds": []
+    }
+  ],
+  "topicAnalysis": {
+    "analysisType": "keyword",
+    "keywordExplanation": "「己所不欲，勿施於人」是換位思考：自己不願承受的事情，也不應加諸別人。",
+    "imageryDescription": "",
+    "directionSuggestion": "透過參加活動或親身體驗，寫出由旁觀、取笑或忽略別人，到懂得尊重和體諒的轉變。",
+    "referenceAnswerPoints": [
+      "必須有活動或經歷帶來醒悟。",
+      "要寫出切身感受，而非只引用格言。",
+      "結尾可由個人反思提升至待人處世原則。"
+    ],
+    "openEndedAngles": []
+  }
+}

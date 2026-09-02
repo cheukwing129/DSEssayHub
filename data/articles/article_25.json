@@ -1,0 +1,70 @@
+{
+  "id": 25,
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2012pp",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1025,
+  "themeConceptIds": [
+    "th07",
+    "th01"
+  ],
+  "contentLabel": "",
+  "paragraphs": [
+    {
+      "text": "從小到大，家人對我的照顧無微不至，很多時候我只要等待，所求便會成真。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "即使我已成為人妻，父母仍把我當小孩；現在我懷有身孕，他們更為我準備許多補品和衣服。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "產前檢查中，醫生發現胎兒染色體多了一條，患唐氏綜合症的機會很大，讓我選擇終止懷孕或生下來。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我醒來後，母親說決定在我手上，無論如何家人都支持。這次我不能再依賴別人。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "這是一個生命，我決定留下他，做他的守護天使，抱着樂觀心態期待他的出生。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "寶寶出生後確診患有唐氏綜合症，但我早已接受，願意用人生保護他，陪他成長。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "這次抉擇令我懂得自己作決定，也明白人生不能等待，每一步都在決定自己的命運。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "窗外一道光線射入，寶寶的哭聲提醒我該準備晚餐。",
+      "comment": "",
+      "techniqueTagIds": []
+    }
+  ],
+  "topicAnalysis": {
+    "analysisType": "keyword",
+    "keywordExplanation": "「重大抉擇」指足以影響人生方向、價值取向或重要關係的選擇；文章要寫出抉擇前的兩難、作決定的過程及事後對自己的了解。",
+    "imageryDescription": "",
+    "directionSuggestion": "可從夢想與安穩、家庭期望與自我選擇、責任與個人意願等矛盾取材，突出作出選擇後對自我的認識。",
+    "referenceAnswerPoints": [
+      "清楚交代兩個或以上選項及其利弊。",
+      "抉擇要經過心理掙扎，不能突然決定。",
+      "結尾須說明這次經歷如何讓自己更了解。"
+    ],
+    "openEndedAngles": []
+  }
+}

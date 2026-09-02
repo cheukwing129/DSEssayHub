@@ -1,0 +1,80 @@
+{
+  "id": 22,
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2013",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1181,
+  "themeConceptIds": [
+    "th02",
+    "th07"
+  ],
+  "contentLabel": "",
+  "paragraphs": [
+    {
+      "text": "我拉着媽媽乾癟的手，心裏有千言萬語想跟她說，但我開不了口。我不敢對上媽媽熾熱的目光，是我太膽小，還是經歷活動後自覺慚愧？",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "「小心過馬路啊！待你回來才吃晚飯！」媽媽一如既往叮囑我，我不敢多回答，害怕她發現我這個大謊話。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "到達巴士站，一心在等我。她拿着單張，上面印着「己所不欲，勿施於人」，說今天要去當義工探訪獨居老人。我卻嘲笑這句老套說話，但仍被她拉到社區中心。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我們探訪一位獨居老婆婆。她樣子慈祥，雖然衣着普通，卻不掩雍容；年過六十仍目光炯炯。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "婆婆說她像我們的女兒，並說自己的女兒像她，連不孝性格也相同。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "她望着牆上照片，沉默良久，自責曾拋下母親，只顧玩樂，後來被子女遺棄，認為是報應。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "媽媽在家被熱湯燙傷，仍說沒事。我看着她手上的皺紋，淚水落下，想起自己一直以補習為藉口欺騙她。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我從沒想過將來成為母親時，會否希望被子女欺騙。正如老婆婆一樣，到時我大概只能自責。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我們常有雙重標準，對別人嚴、對自己寬；做事前應問：「如果是你，你可以接受嗎？」",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我拉着媽媽的手，向她坦白一切，我們共同寫下「己所不欲，勿施於人」作為座右銘。",
+      "comment": "",
+      "techniqueTagIds": []
+    }
+  ],
+  "topicAnalysis": {
+    "analysisType": "keyword",
+    "keywordExplanation": "「己所不欲，勿施於人」是換位思考：自己不願承受的事情，也不應加諸別人。",
+    "imageryDescription": "",
+    "directionSuggestion": "透過參加活動或親身體驗，寫出由旁觀、取笑或忽略別人，到懂得尊重和體諒的轉變。",
+    "referenceAnswerPoints": [
+      "必須有活動或經歷帶來醒悟。",
+      "要寫出切身感受，而非只引用格言。",
+      "結尾可由個人反思提升至待人處世原則。"
+    ],
+    "openEndedAngles": []
+  }
+}

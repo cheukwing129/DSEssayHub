@@ -1,0 +1,65 @@
+{
+  "id": 24,
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2012pp",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1101,
+  "themeConceptIds": [
+    "th01",
+    "th13"
+  ],
+  "contentLabel": "",
+  "paragraphs": [
+    {
+      "text": "店員讚我穿上碎花裙美若天仙，我回望鏡中的自己，因這身打扮更肯定自己的選擇。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "上天給予每個人性別，而我在三位姐姐之後出生，成為家中唯一男丁。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "自小被女性包圍，家人讓我穿女裝、塗口紅、編髮型，我從未懷疑自己的性別。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "升上中學後，我穿回男裝，但男同學的暴力遊戲和不修邊幅令我無法接受；相反我愛整潔、舉止斯文。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "青春期時，女生被我的男生女相吸引，我卻被籃球場上的男球員吸引。他們專注投入的魅力成為我抉擇時的因素。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "工作後我交到男朋友，在二十歲時決定進行變性手術。世俗眼光每天變化，我不應只配合別人的認同而否定自己。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我緊扣男友，一起昂首闊步踏進診所，此刻我從不後悔。",
+      "comment": "",
+      "techniqueTagIds": []
+    }
+  ],
+  "topicAnalysis": {
+    "analysisType": "keyword",
+    "keywordExplanation": "「重大抉擇」指足以影響人生方向、價值取向或重要關係的選擇；文章要寫出抉擇前的兩難、作決定的過程及事後對自己的了解。",
+    "imageryDescription": "",
+    "directionSuggestion": "可從夢想與安穩、家庭期望與自我選擇、責任與個人意願等矛盾取材，突出作出選擇後對自我的認識。",
+    "referenceAnswerPoints": [
+      "清楚交代兩個或以上選項及其利弊。",
+      "抉擇要經過心理掙扎，不能突然決定。",
+      "結尾須說明這次經歷如何讓自己更了解。"
+    ],
+    "openEndedAngles": []
+  }
+}
