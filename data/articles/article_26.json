@@ -1,11 +1,11 @@
 {
   "id": 26,
   "collection": "extended",
-  "sourceType": "文學DSE",
+  "sourceType": "文學2020",
   "genre": "narrative",
   "relatedQuestions": [
     {
-      "year": "2020",
+      "year": "文學2020",
       "questionNumber": "Q1"
     }
   ],
