@@ -3,28 +3,28 @@
     "year": "2021",
     "questionNumber": "Q1",
     "questionFull": "「經過這件事，我才明白到一心是我的知己，是真正了解我的人」，試撰文一篇，記述事件經過，並抒發體會。",
-    "questionType": "題旨",
+    "questionType": "記敘",
     "relatedArticleIds": []
   },
   {
     "year": "2021",
     "questionNumber": "Q2",
     "questionFull": "在生活中，人們有時會隱藏自己的秘密、情感、想法等等。試以「隱藏」為題，就個人思考或體會，寫作文章一篇。",
-    "questionType": "談論類",
+    "questionType": "開放式",
     "relatedArticleIds": []
   },
   {
     "year": "2021",
     "questionNumber": "Q3",
     "questionFull": "有人認為：「富足的物質條件有利孩子成長。」你同意嗎？試撰文一篇，論述你的看法。",
-    "questionType": "談論類",
+    "questionType": "議論",
     "relatedArticleIds": []
   },
   {
     "year": "2020",
     "questionNumber": "Q1",
     "questionFull": "在我認識的人當中，他最能體現「嚴以律己，寬以待人」的美德。試寫作文章一篇，描述這位人物的言行。",
-    "questionType": "題旨",
+    "questionType": "人物描寫",
     "relatedArticleIds": [
       44
     ]
@@ -33,7 +33,7 @@
     "year": "2020",
     "questionNumber": "Q2",
     "questionFull": "在人生路上，面對各種處境，我們都能微笑以對嗎？試以「微笑以對」為題，寫作文章一篇。",
-    "questionType": "談論類",
+    "questionType": "開放式",
     "relatedArticleIds": [
       51,
       52,
@@ -46,7 +46,7 @@
     "year": "2020",
     "questionNumber": "Q3",
     "questionFull": "農曆新年，一心收到親戚送來的禮物，一心說：「每年都送來不合用的東西，不送也罷。」一心的姐姐說：「禮多人不怪。」一心的弟弟說：「千里送鵝毛，禮輕情意重。」各人對送禮都有自己的看法。試以「送禮之我見」為題，寫作文章一篇。",
-    "questionType": "談論類",
+    "questionType": "議論",
     "relatedArticleIds": [
       29,
       30
@@ -56,7 +56,7 @@
     "year": "2019",
     "questionNumber": "Q1",
     "questionFull": "試以「這一句話，我會記上一輩子。」為首句，續寫這篇文章。",
-    "questionType": "續寫",
+    "questionType": "記敘",
     "relatedArticleIds": [
       6,
       7,
@@ -67,7 +67,7 @@
     "year": "2019",
     "questionNumber": "Q2",
     "questionFull": "試就你對詩歌《想想別人》的體會或聯想，以「想想別人」為題，寫作文章一篇。",
-    "questionType": "談論類",
+    "questionType": "開放式",
     "relatedArticleIds": [
       56
     ]
@@ -76,7 +76,7 @@
     "year": "2019",
     "questionNumber": "Q3",
     "questionFull": "俗語說「萬般皆下品，惟有讀書高」，也有人說「讀書無用」。試寫作文章一篇，談談你對「讀書無用」的看法。",
-    "questionType": "談論類",
+    "questionType": "議論",
     "relatedArticleIds": [
       31,
       32,
@@ -87,7 +87,7 @@
     "year": "2018",
     "questionNumber": "Q1",
     "questionFull": "舊地重遊，看到眼前景象，難免興起一番感受。試以「重遊舊地所見有感」為題，寫作文章一篇。",
-    "questionType": "題旨",
+    "questionType": "景物描寫",
     "relatedArticleIds": [
       45,
       46
@@ -97,7 +97,7 @@
     "year": "2018",
     "questionNumber": "Q2",
     "questionFull": "日常生活之中，有各種各樣的禁區。試就個人的想像或思考，以「禁區」為題，寫作文章一篇。",
-    "questionType": "談論類",
+    "questionType": "開放式",
     "relatedArticleIds": [
       57,
       58,
@@ -108,7 +108,7 @@
     "year": "2018",
     "questionNumber": "Q3",
     "questionFull": "試以「談知己」或「談敵人」為題，寫作文章一篇。",
-    "questionType": "談論類",
+    "questionType": "議論",
     "relatedArticleIds": [
       34,
       35,
@@ -119,7 +119,7 @@
     "year": "2017",
     "questionNumber": "Q1",
     "questionFull": "試撰寫文章一篇，並以「自此之後，我終於解開了心結。」為末句收結全文。",
-    "questionType": "續寫",
+    "questionType": "記敘",
     "relatedArticleIds": [
       1,
       2,
@@ -132,14 +132,14 @@
     "year": "2017",
     "questionNumber": "Q2",
     "questionFull": "「足印」雖是平常事物，卻可以引起聯想，或牽動思緒，又或啟發思考。試以「足印」為題，就個人體會寫作文章一篇。",
-    "questionType": "談論類",
+    "questionType": "開放式",
     "relatedArticleIds": []
   },
   {
     "year": "2017",
     "questionNumber": "Q3",
     "questionFull": "有人說憤怒是壞事，有人說憤怒是好事，有人說處理憤怒的情緒需要智慧……試以「談憤怒」為題寫作文章一篇，談談你對憤怒的看法。",
-    "questionType": "談論類",
+    "questionType": "議論",
     "relatedArticleIds": [
       37,
       38
@@ -149,7 +149,7 @@
     "year": "2016",
     "questionNumber": "Q1",
     "questionFull": "試以「熱鬧過後，我卻感到失落。」為首句，續寫這篇文章。",
-    "questionType": "續寫",
+    "questionType": "記敘",
     "relatedArticleIds": [
       9,
       10,
@@ -162,14 +162,14 @@
     "year": "2016",
     "questionNumber": "Q2",
     "questionFull": "有人在活動中找到快樂，有人在大自然之中找到快樂，有人在某個時刻、場景之中找到快樂……，你在什麼之中找到快樂呢？試為「我在＿＿＿＿之中找到快樂」補上一詞，並以此為題，寫作一文章一篇。",
-    "questionType": "談論類",
+    "questionType": "開放式",
     "relatedArticleIds": []
   },
   {
     "year": "2016",
     "questionNumber": "Q3",
     "questionFull": "有人認為「傳統往往是創新的包袱」。試談談你對這句話的看法。",
-    "questionType": "談論類",
+    "questionType": "議論",
     "relatedArticleIds": [
       39
     ]
@@ -178,7 +178,7 @@
     "year": "2015",
     "questionNumber": "Q1",
     "questionFull": "「今天我沒有帶手提電話外出，因而有不一樣的經歷和體會。」試從第二段開始，以「沒有手提電話的一天」為題，續寫這篇日記。",
-    "questionType": "續寫",
+    "questionType": "記敘",
     "relatedArticleIds": [
       14,
       15,
@@ -191,14 +191,14 @@
     "year": "2015",
     "questionNumber": "Q2",
     "questionFull": "任選一題：1）「夢想看似不切實際，其實很有意義。」2）「夢想看似很有意義，其實不切實際。」",
-    "questionType": "談論類",
+    "questionType": "議論",
     "relatedArticleIds": []
   },
   {
     "year": "2015",
     "questionNumber": "Q3",
     "questionFull": "古人說：「獨學而無友，則孤陋而寡聞」。意思是獨自學習，沒有朋友互相切磋解難，人便會淺陋而見識不廣。在現今的學習生活中，你是否同意「獨學而無友，則孤陋而寡聞」？試試談你的看法。",
-    "questionType": "談論類",
+    "questionType": "議論",
     "relatedArticleIds": [
       40
     ]
@@ -207,7 +207,7 @@
     "year": "2014",
     "questionNumber": "Q1",
     "questionFull": "「今天發生了一件事情，當時我曾經想力陳己見，最後選擇了沉默。我認為沉默是必要的。」以上是文章的開首，試以「必要的沉默」為題，續寫這篇文章。",
-    "questionType": "續寫",
+    "questionType": "記敘",
     "relatedArticleIds": [
       19,
       20
@@ -217,7 +217,7 @@
     "year": "2014",
     "questionNumber": "Q2",
     "questionFull": "「不做第一，也不做最後。」試談談你對這種處世態度的看法。",
-    "questionType": "談論類",
+    "questionType": "議論",
     "relatedArticleIds": [
       41
     ]
@@ -236,7 +236,7 @@
     "year": "2013",
     "questionNumber": "Q1",
     "questionFull": "「我曾參與一次活動，當中的經歷令我醒悟過來，明白到『己所不欲，勿施於人』這道理。」根據以上描述，試以你的經歷和體會，寫作一篇文章。",
-    "questionType": "題旨",
+    "questionType": "記敘",
     "relatedArticleIds": [
       21,
       22
@@ -246,21 +246,21 @@
     "year": "2013",
     "questionNumber": "Q2",
     "questionFull": "「孩子不是等待被填滿的瓶子，而是盼望化作燃燒的火焰。」試就個人對這句話的體會，以「成長」為題，寫作一篇文章。",
-    "questionType": "談論類",
+    "questionType": "開放式",
     "relatedArticleIds": []
   },
   {
     "year": "2013",
     "questionNumber": "Q3",
     "questionFull": "「今早媽媽打掃的時候，瞄一瞄玻璃窗外鄰居晾曬的衣服，便批評到：『看，那新鄰居真馬虎！』……」試就這個故事對你的啓發，寫作一篇文章，談談如何消除偏見。",
-    "questionType": "題旨",
+    "questionType": "開放式",
     "relatedArticleIds": []
   },
   {
     "year": "2012",
     "questionNumber": "Q1",
     "questionFull": "「唐老師是我最敬愛的老師，他不喜歡說大道理，從他平日待人接物，我體會到中國文化可貴的一面。」根據以上一段描述，試記述唐老師的言行，抒發你對他的感情。",
-    "questionType": "題旨",
+    "questionType": "人物描寫",
     "relatedArticleIds": [
       47,
       48,
@@ -272,7 +272,7 @@
     "year": "2012",
     "questionNumber": "Q2",
     "questionFull": "「一個寒冷的冬天，幾隻刺蝟擠在一起取暖……牠們終於明白；不要太近，也不要太遠，最好彼此保持一定的距離。」這個故事的道理仍然貫穿在我們的現實生活中，試就此寫一篇文章。",
-    "questionType": "題旨",
+    "questionType": "開放式",
     "relatedArticleIds": []
   },
   {
@@ -286,7 +286,7 @@
     "year": "2012pp",
     "questionNumber": "Q1",
     "questionFull": "試記敍你曾面對的一次重大抉擇，而這次經歷也讓你更瞭解自己。",
-    "questionType": "題旨",
+    "questionType": "記敘",
     "relatedArticleIds": [
       23,
       24,
@@ -297,7 +297,7 @@
     "year": "2012pp",
     "questionNumber": "Q2",
     "questionFull": "香港是一個物質生活十分富庶的地方，可是在多個國際性的調查中，「快樂指數」的排名並不高。有人認為富庶的物質生活反令人難以快樂；也有人認為富庶的物質生活是快樂的基礎。這兩種看法，你比較認同哪一種？試談談你的看法。",
-    "questionType": "談論類",
+    "questionType": "議論",
     "relatedArticleIds": [
       42,
       43
@@ -307,7 +307,14 @@
     "year": "2012pp",
     "questionNumber": "Q3",
     "questionFull": "試根據下圖的寓意寫作一篇文章。——「紛爭源於不自知」",
-    "questionType": "圖畫題",
+    "questionType": "開放式",
+    "relatedArticleIds": []
+  },
+    {
+    "year": "文學2020",
+    "questionNumber": "Q1",
+    "questionFull": "如釋重負",
+    "questionType": "開放式",
     "relatedArticleIds": []
   }
 ]
