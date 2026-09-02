@@ -1,22 +1,248 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>文體分類 | DSE 中文科範文自學平台</title>
-<link rel="stylesheet" href="style.css">
-<style>
-.genre-page{padding:calc(var(--header-height) + 48px) 0 64px}.genre-head{margin-bottom:28px}.genre-head h1{font-size:2rem;margin-bottom:8px}.genre-head p{color:var(--color-ink-soft)}.structure{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 34px}.step{flex:1;min-width:145px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:14px}.step b{color:var(--color-primary)}.step small{display:block;color:var(--color-ink-soft);margin-top:4px}.arrow{align-self:center;color:var(--color-ink-faint)}.filter{display:flex;gap:10px;align-items:center;margin-bottom:20px}.filter select{padding:8px 12px;border:1px solid var(--color-border);border-radius:999px;background:white;font-family:inherit}.article-card{display:flex!important;flex-direction:column!important;gap:10px!important}.article-card-link{margin-top:auto;color:var(--color-primary);font-size:.85rem}.status{color:var(--color-ink-soft);padding:20px 0}@media(max-width:720px){.structure{flex-direction:column}.arrow{transform:rotate(90deg);text-align:center}.genre-page{padding-top:calc(var(--header-height) + 30px)}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文體分類｜DSE 中文科範文自學平台</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .genre-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
+    .genre-head { margin-bottom: 28px; }
+    .genre-head h1 { font-size: 2rem; margin-bottom: 8px; }
+    .genre-head p { color: var(--color-ink-soft, #5c6b5f); }
+    .structure { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 34px; }
+    .step { flex: 1; min-width: 145px; padding: 14px; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #ddd6c4); border-radius: var(--radius-md, 10px); }
+    .step b { color: var(--color-primary, #1f3a5f); }
+    .step small { display: block; margin-top: 4px; color: var(--color-ink-soft, #5c6b5f); }
+    .arrow { align-self: center; color: var(--color-ink-faint, #8b988e); font-size: 1.2rem; }
+    .filter { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 20px; }
+    .filter select { padding: 8px 12px; border: 1px solid var(--color-border, #ddd6c4); border-radius: 999px; background: #fff; font: inherit; }
+    .article-card { display: flex !important; flex-direction: column !important; gap: 10px !important; }
+    .article-card-link { margin-top: auto; color: var(--color-primary, #1f3a5f); font-size: .85rem; }
+    .status { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); }
+    .error-box { margin-top: 16px; padding: 14px 16px; border-left: 4px solid #a33; border-radius: 4px; color: #712; background: #fff3f3; line-height: 1.65; }
+    @media (max-width: 720px) {
+      .genre-page { padding-top: calc(var(--header-height, 72px) + 30px); }
+      .structure { flex-direction: column; }
+      .arrow { transform: rotate(90deg); text-align: center; }
+    }
+  </style>
 </head>
 <body>
-<header class="site-header"><div class="container nav-inner"><a href="index.html" class="logo"><span class="logo-mark">範文自學</span><span class="logo-sub">DSE 中文寫作</span></a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button><div class="main-nav" id="mainNav"><nav class="nav-links"><a href="index.html#genres">文體分類</a><a href="questions.html">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" onsubmit="return false"><input type="search" placeholder="搜尋關鍵字" aria-label="搜尋"></form></div></div></header>
-<main class="genre-page"><div class="container"><div class="genre-head"><h1 id="title">文體分類</h1><p id="desc">資料載入中……</p></div><div class="structure" id="structure"></div><div class="filter"><label for="theme">依立意向度：</label><select id="theme"><option value="">全部文章</option></select></div><div class="article-grid" id="grid"></div><p class="status" id="status">正在載入範文……</p></div></main><footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
-<script>
-const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式/開放式'};const desc={narrative:'以事件為骨架、抒情為血肉，掌握起承轉合。',argumentative:'由個人到社會、哲理，層層推進論證。',descriptive:'細膩描寫人物與景物，營造鮮明畫面。',topic:'掌握圖畫寓意或限定格式，發展取材角度。'};const flow={narrative:[['起','景物/伏筆'],['承','衝突與覺醒前'],['轉','關鍵人物/覺醒'],['合','立意與人生道理']],argumentative:[['引入','中心論點'],['定義','解釋關鍵詞'],['角度一','個人層面'],['角度二','社會層面'],['駁論','回應反方'],['總結','呼應論點']],descriptive:[['外觀','人物/景物'],['動靜','動態與靜態'],['對比','突顯特點'],['側寫','間接呈現']],topic:[['審題','解讀要求'],['取材','選取材料'],['立意','扣連寓意'],['扣題','完整收結']]};
-const type=new URLSearchParams(location.search).get('type')||'narrative';document.getElementById('title').textContent=labels[type]||'文體分類';document.getElementById('desc').textContent=desc[type]||'';document.getElementById('structure').innerHTML=(flow[type]||[]).map((x,i)=>`<div class="step"><b>${x[0]}</b><small>${x[1]}</small></div>${i<flow[type].length-1?'<span class="arrow">→</span>':''}`).join('');
-const grid=document.getElementById('grid'),status=document.getElementById('status'),filter=document.getElementById('theme');let articles=[],themes={},questions={};const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');function render(list){grid.innerHTML=list.map(a=>{const q=(a.relatedQuestions||[])[0];const title=q?questions[q.year+'_'+q.questionNumber]:'題目待補';return `<a class="article-card" href="article.html?id=${a.id}"><div class="article-card-head"><span class="article-id">篇章 ${String(a.id).padStart(2,'0')}</span><span class="article-genre-tag">${labels[a.genre]||a.genre}</span></div><p class="article-meta">${q?esc(q.year+'年 '+q.questionNumber):'年份／題號待補'}</p><p class="article-question">${esc(title)}</p><div class="article-tags">${(a.themeConceptIds||[]).map(id=>`<span class="tag">${esc(themes[id]||id)}</span>`).join('')}</div><span class="article-card-link">閱讀範文 →</span></a>`}).join('');status.style.display=list.length?'none':'';if(!list.length)status.textContent='此文體目前尚未有範文。'};
-(async()=>{try{const [ar,tr,qr]=await Promise.all([fetch('data/articles.json'),fetch('data/themes.json'),fetch('data/questions.json')]);if(!ar.ok||!tr.ok||!qr.ok)throw Error('資料讀取失敗');articles=(await ar.json()).filter(a=>a.genre===type);(await tr.json()).forEach(t=>themes[t.id]=t.name);(await qr.json()).forEach(q=>questions[q.year+'_'+q.questionNumber]=q.questionFull);const ids=[...new Set(articles.flatMap(a=>a.themeConceptIds||[]))];filter.innerHTML='<option value="">全部文章</option>'+ids.map(id=>`<option value="${id}">${esc(themes[id]||id)}</option>`).join('');render(articles)}catch(e){console.error(e);status.textContent='資料載入失敗，請確認 data 資料夾及網站伺服器設定。'}})();filter.addEventListener('change',()=>render(filter.value?articles.filter(a=>(a.themeConceptIds||[]).includes(filter.value)):articles));
-</script>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">範文自學</span>
+        <span class="logo-sub">DSE 中文寫作</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="main-nav" id="mainNav">
+        <nav class="nav-links" aria-label="主導航">
+          <a href="index.html#genres">文體分類</a>
+          <a href="questions.html">歷屆試題</a>
+          <a href="techniques.html">寫作技巧</a>
+          <a href="notes.html">我的筆記</a>
+        </nav>
+        <form class="nav-search" role="search" onsubmit="return false">
+          <input type="search" placeholder="搜尋關鍵字" aria-label="搜尋">
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <main class="genre-page">
+    <div class="container">
+      <div class="genre-head">
+        <h1 id="title">文體分類</h1>
+        <p id="desc">資料載入中……</p>
+      </div>
+
+      <div class="structure" id="structure" aria-label="寫作框架"></div>
+
+      <div class="filter">
+        <label for="theme">依立意向度：</label>
+        <select id="theme">
+          <option value="">全部文章</option>
+        </select>
+      </div>
+
+      <div class="article-grid" id="grid"></div>
+      <p class="status" id="status">正在載入範文……</p>
+      <div id="errorBox"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div>
+  </footer>
+
+  <script>
+    /* 手機版導航 */
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    if (navToggle && mainNav) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!isOpen));
+        mainNav.classList.toggle('is-open', !isOpen);
+      });
+    }
+
+    const LABELS = {
+      narrative: '記敘抒情文',
+      argumentative: '論說文',
+      descriptive: '描寫文',
+      topic: '話題式／開放式'
+    };
+
+    const DESCRIPTIONS = {
+      narrative: '以事件為骨架、抒情為血肉，掌握起承轉合。',
+      argumentative: '由個人到社會、哲理，層層推進論證。',
+      descriptive: '細膩描寫人物與景物，營造鮮明畫面。',
+      topic: '掌握圖畫寓意或限定格式，發展合適的取材角度。'
+    };
+
+    const FLOWS = {
+      narrative: [['起', '景物／伏筆'], ['承', '衝突與覺醒前'], ['轉', '關鍵人物／覺醒'], ['合', '立意與人生道理']],
+      argumentative: [['引入', '中心論點'], ['定義', '解釋關鍵詞'], ['角度一', '個人層面'], ['角度二', '社會層面'], ['駁論', '回應反方'], ['總結', '呼應論點']],
+      descriptive: [['外觀', '人物／景物'], ['動靜', '動態與靜態'], ['對比', '突顯特點'], ['側寫', '間接呈現']],
+      topic: [['審題', '解讀要求'], ['取材', '選取材料'], ['立意', '扣連寓意'], ['扣題', '完整收結']]
+    };
+
+    const type = new URLSearchParams(window.location.search).get('type') || 'narrative';
+    const title = document.getElementById('title');
+    const desc = document.getElementById('desc');
+    const structure = document.getElementById('structure');
+    const grid = document.getElementById('grid');
+    const status = document.getElementById('status');
+    const themeSelect = document.getElementById('theme');
+    const errorBox = document.getElementById('errorBox');
+
+    title.textContent = LABELS[type] || '文體分類';
+    desc.textContent = DESCRIPTIONS[type] || '請從首頁選擇文體。';
+    structure.innerHTML = (FLOWS[type] || []).map((item, index, array) => {
+      const arrow = index < array.length - 1 ? '<span class="arrow" aria-hidden="true">→</span>' : '';
+      return `<div class="step"><b>${item[0]}</b><small>${item[1]}</small></div>${arrow}`;
+    }).join('');
+
+    let allArticles = [];
+    let themeNameById = {};
+    let questionByKey = {};
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function normaliseToArray(data, fileName) {
+      if (Array.isArray(data)) return data;
+      if (data && typeof data === 'object') return [data];
+      throw new Error(`${fileName} 的格式不是文章陣列或文章物件。`);
+    }
+
+    function getQuestionText(article) {
+      const firstQuestion = Array.isArray(article.relatedQuestions) ? article.relatedQuestions[0] : null;
+      if (!firstQuestion) return '（題目待補）';
+      return questionByKey[`${firstQuestion.year}_${firstQuestion.questionNumber}`] || '（題目待補）';
+    }
+
+    function getQuestionMeta(article) {
+      const related = Array.isArray(article.relatedQuestions) ? article.relatedQuestions : [];
+      if (related.length === 0) return '年份／題號待補';
+      return related.map(q => `${q.year}年 ${q.questionNumber}`).join('・');
+    }
+
+    function renderArticles(list) {
+      if (!list.length) {
+        grid.innerHTML = '';
+        status.textContent = '此文體目前尚未有符合條件的範文。';
+        status.style.display = '';
+        return;
+      }
+
+      grid.innerHTML = list.map(article => {
+        const tags = (article.themeConceptIds || []).map(id => {
+          return `<span class="tag">${escapeHtml(themeNameById[id] || id)}</span>`;
+        }).join('');
+        return `
+          <a class="article-card" href="article.html?id=${encodeURIComponent(article.id)}">
+            <div class="article-card-head">
+              <span class="article-id">篇章 ${String(article.id).padStart(2, '0')}</span>
+              <span class="article-genre-tag">${escapeHtml(LABELS[article.genre] || article.genre)}</span>
+            </div>
+            <p class="article-meta">${escapeHtml(getQuestionMeta(article))}</p>
+            <p class="article-question">${escapeHtml(getQuestionText(article))}</p>
+            <div class="article-tags">${tags}</div>
+            <span class="article-card-link">閱讀範文 →</span>
+          </a>
+        `;
+      }).join('');
+      status.style.display = 'none';
+    }
+
+    function showError(error) {
+      console.error(error);
+      status.textContent = '資料載入失敗。';
+      status.style.display = '';
+      errorBox.innerHTML = `<div class="error-box"><strong>除錯訊息：</strong>${escapeHtml(error.message)}<br>請確認 data/articles.json、data/themes.json 及 data/questions.json 均為有效 JSON 檔案。</div>`;
+    }
+
+    async function loadPage() {
+      try {
+        const [articlesResponse, themesResponse, questionsResponse] = await Promise.all([
+          fetch('data/articles.json', { cache: 'no-store' }),
+          fetch('data/themes.json', { cache: 'no-store' }),
+          fetch('data/questions.json', { cache: 'no-store' })
+        ]);
+
+        if (!articlesResponse.ok) throw new Error(`找不到 data/articles.json（HTTP ${articlesResponse.status}）。`);
+        if (!themesResponse.ok) throw new Error(`找不到 data/themes.json（HTTP ${themesResponse.status}）。`);
+        if (!questionsResponse.ok) throw new Error(`找不到 data/questions.json（HTTP ${questionsResponse.status}）。`);
+
+        const articleData = await articlesResponse.json();
+        const themeData = await themesResponse.json();
+        const questionData = await questionsResponse.json();
+
+        const articlesArray = normaliseToArray(articleData, 'articles.json');
+        const themesArray = Array.isArray(themeData) ? themeData : [];
+        const questionsArray = Array.isArray(questionData) ? questionData : [];
+
+        themesArray.forEach(theme => { themeNameById[theme.id] = theme.name; });
+        questionsArray.forEach(question => { questionByKey[`${question.year}_${question.questionNumber}`] = question.questionFull; });
+
+        allArticles = articlesArray
+          .filter(article => article && article.genre === type)
+          .sort((a, b) => Number(a.id) - Number(b.id));
+
+        const usedThemeIds = [...new Set(allArticles.flatMap(article => Array.isArray(article.themeConceptIds) ? article.themeConceptIds : []))];
+        themeSelect.innerHTML = '<option value="">全部文章</option>' + usedThemeIds.map(id => {
+          return `<option value="${escapeHtml(id)}">${escapeHtml(themeNameById[id] || id)}</option>`;
+        }).join('');
+
+        renderArticles(allArticles);
+      } catch (error) {
+        showError(error);
+      }
+    }
+
+    themeSelect.addEventListener('change', () => {
+      const selectedTheme = themeSelect.value;
+      const filtered = selectedTheme
+        ? allArticles.filter(article => Array.isArray(article.themeConceptIds) && article.themeConceptIds.includes(selectedTheme))
+        : allArticles;
+      renderArticles(filtered);
+    });
+
+    loadPage();
+  </script>
 </body>
 </html>
