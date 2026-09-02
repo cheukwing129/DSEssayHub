@@ -136,4 +136,32 @@
   "wordCount": 1689,
   "themeConceptIds": ["th04", "th08", "th13"]
 }
+  {
+  "id": 14,
+  "file": "data/articles/article_14.json",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2015",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1506,
+  "themeConceptIds": ["th03", "th07"],
+  "contentLabel": ""
+}
+  {
+  "id": 15,
+  "file": "data/articles/article_15.json",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2015",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1187,
+  "themeConceptIds": ["th03", "th07"],
+  "contentLabel": ""
+}
 ]
