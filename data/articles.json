@@ -58,7 +58,7 @@
   {
     "id": 8,
     "file": "data/articles/article_08.json",
-    "genre": "narrative",
+    "genre": "argumentative",
     "relatedQuestions": [{"year": "2019", "questionNumber": "Q1"}],
     "wordCount": 1379,
     "themeConceptIds": ["th01", "th04", "th13"]
