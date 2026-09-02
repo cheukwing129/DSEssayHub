@@ -315,4 +315,123 @@
     "summary": "沒有手機到老人院探訪，主角主動問路、與老人交流，體會人際溝通的可貴。",
     "contentLabel": "中品示例"
   }
+    {
+    "id": 19,
+    "file": "data/articles/article_19.json",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "2014",
+        "questionNumber": "Q1"
+      }
+    ],
+    "wordCount": 1294,
+    "themeConceptIds": [
+      "th04",
+      "th08"
+    ],
+    "summary": "班際舞蹈會議中，主角看見同伴的準備後選擇沉默，以尊重對方的努力。"
+  },
+  {
+    "id": 20,
+    "file": "data/articles/article_20.json",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "2014",
+        "questionNumber": "Q1"
+      }
+    ],
+    "wordCount": 1299,
+    "themeConceptIds": [
+      "th04",
+      "th05"
+    ],
+    "summary": "學生會議中，主角為顧全大局而暫不爭辯，反思沉默的抗議與包容作用。"
+  },
+  {
+    "id": 21,
+    "file": "data/articles/article_21.json",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "2013",
+        "questionNumber": "Q1"
+      }
+    ],
+    "wordCount": 1419,
+    "themeConceptIds": [
+      "th02",
+      "th13"
+    ],
+    "summary": "參加傷健共融活動後，主角親身體驗盲人的處境，明白尊重他人的道理。"
+  },
+  {
+    "id": 22,
+    "file": "data/articles/article_22.json",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "2013",
+        "questionNumber": "Q1"
+      }
+    ],
+    "wordCount": 1181,
+    "themeConceptIds": [
+      "th02",
+      "th07"
+    ],
+    "summary": "探訪獨居老人後，主角聯想到自己欺騙母親的行為，決定實踐己所不欲、勿施於人。"
+  },
+  {
+    "id": 23,
+    "file": "data/articles/article_23.json",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "2012pp",
+        "questionNumber": "Q1"
+      }
+    ],
+    "wordCount": 828,
+    "themeConceptIds": [
+      "th01",
+      "th11"
+    ],
+    "summary": "體操運動員在名校與夢想之間作出選擇，認清自己不願被他人支配的人生方向。"
+  },
+  {
+    "id": 24,
+    "file": "data/articles/article_24.json",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "2012pp",
+        "questionNumber": "Q1"
+      }
+    ],
+    "wordCount": 1101,
+    "themeConceptIds": [
+      "th01",
+      "th13"
+    ],
+    "summary": "從小被當作女孩照顧的主角，在成長及感情經歷後決定接受變性手術，忠於自我。"
+  },
+  {
+    "id": 25,
+    "file": "data/articles/article_25.json",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "2012pp",
+        "questionNumber": "Q1"
+      }
+    ],
+    "wordCount": 1025,
+    "themeConceptIds": [
+      "th07",
+      "th01"
+    ],
+    "summary": "孕婦面對胎兒可能患病的抉擇，決定留下孩子並學會承擔母親的責任。"
+  }
 ]
