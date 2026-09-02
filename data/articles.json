@@ -474,5 +474,23 @@
     "th12"
   ],
   "summary": "主角因隱瞞大體美容師的職業而長期背負心理壓力，最後得到好友理解，決定公開自己的職業，終於如釋重負。"
+},
+  {
+  "id": 28,
+  "file": "data/articles/article_28.json",
+  "collection": "extended",
+  "sourceType": "文學DSE",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "文學2019",
+      "subject": "文學",
+      "questionNumber": "Q2",
+      "title": "再次嘗到的滋味"
+    }
+  ],
+  "wordCount": 1754,
+  "themeConceptIds": ["th01", "th02", "th07"],
+  "summary": "主角因升上高中後忙於學業，逐漸忽略母親的關愛；一次深夜喝下母親準備的熱湯，重新感受到母愛從未消失，並再次嘗到親情的溫暖。"
 }
 ]
