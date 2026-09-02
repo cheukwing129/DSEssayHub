@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文言・白話｜DSE 中文科範文自學平台</title>
+<meta name="description" content="收錄 63 篇 DSE 中文科寫作範文，對應 2012–2021 年歷屆試題，逐段拆解立意與寫作手法。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========== 頂部導航列 ========== -->
+<header class="site-header">
+  <div class="container nav-inner">
+
+    <a href="index.html" class="logo">
+      <span class="logo-mark">文言・白話</span>
+      <span class="logo-sub">DSE 範文自學</span>
+    </a>
+
+    <!-- 手機版選單開關按鈕，預設隱藏，小螢幕時才會顯示（見 style.css） -->
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mainNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- 導航連結 + 搜尋欄，一起放在 #mainNav 裡，方便手機版整組收合 -->
+    <div class="main-nav" id="mainNav">
+      <nav class="nav-links" aria-label="主導航">
+        <a href="genre-list.html">文體分類</a>
+        <a href="questions.html">歷屆試題</a>
+        <a href="techniques.html">寫作技巧</a>
+        <a href="notes.html">我的筆記</a>
+      </nav>
+
+      <!-- 搜尋欄目前只做 UI，之後階段才接上搜尋邏輯 -->
+      <form class="nav-search" role="search" onsubmit="return false;">
+        <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <circle cx="8.5" cy="8.5" r="6" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="13.1" y1="13.1" x2="18" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <input type="search" name="q" placeholder="搜尋篇章、題目或年份…" aria-label="搜尋範文">
+      </form>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- ========== 主視覺區塊 ========== -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <p class="hero-kicker">香港中學文憑試（DSE）中國語文科・寫作卷</p>
+        <h1>讀懂範文的心思，<br>才寫得對題目的方向。</h1>
+        <p class="hero-desc">
+          這裡收錄 63 篇寫作範文，對應 2012 至 2021 年歷屆試題（含 Pilot Paper）。
+          每篇範文都逐段拆解段旨與寫作手法，並附上審題角度的分析，
+          陪你把「讀懂題目」這件事，練成一種穩定的能力。
+        </p>
+        <div class="hero-actions">
+          <a href="genre-list.html" class="btn btn-primary">開始瀏覽範文</a>
+          <a href="questions.html" class="btn btn-ghost">查看歷屆試題</a>
+        </div>
+      </div>
+
+      <!-- 純裝飾用的直排文字，呼應中文直書的閱讀傳統，手機版會隱藏 -->
+      <p class="hero-motif" aria-hidden="true">讀範文　明立意　善審題</p>
+    </div>
+  </section>
+
+  <!-- ========== 寫作地圖：四大文體 ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>寫作地圖</h2>
+        <p class="section-desc">先分清文體，才找得到寫作的門路——四大文體各自的重點與常見手法都不一樣。</p>
+      </div>
+
+      <div class="genre-grid">
+
+        <a class="genre-card genre-narrative" href="genre.html?type=narrative">
+          <span class="genre-glyph" aria-hidden="true">記</span>
+          <h3>記敘抒情文</h3>
+          <p>從一件小事說起，寫出情感的轉折與體悟。</p>
+          <span class="genre-count">篇章 1–28・共 28 篇</span>
+        </a>
+
+        <a class="genre-card genre-argumentative" href="genre.html?type=argumentative">
+          <span class="genre-glyph" aria-hidden="true">論</span>
+          <h3>論說文</h3>
+          <p>立論、駁論、舉證，練習把想法說得站得住腳。</p>
+          <span class="genre-count">篇章 29–44・共 16 篇</span>
+        </a>
+
+        <a class="genre-card genre-descriptive" href="genre.html?type=descriptive">
+          <span class="genre-glyph" aria-hidden="true">描</span>
+          <h3>描寫文</h3>
+          <p>用感官細節把畫面寫活，讓讀者如臨其境。</p>
+          <span class="genre-count">篇章 45–50・共 6 篇</span>
+        </a>
+
+        <a class="genre-card genre-topic" href="genre.html?type=topic">
+          <span class="genre-glyph" aria-hidden="true">話</span>
+          <h3>話題式／開放式</h3>
+          <p>圖畫題、談論類題目，考驗取材角度與立意深度。</p>
+          <span class="genre-count">篇章 51–63・共 13 篇</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 熱門範文（動態載入） ========== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>熱門範文</h2>
+        <p class="section-desc">從各文體中先挑幾篇，感受一下範文拆解後的樣子。</p>
+      </div>
+
+      <!-- 這裡的卡片內容由 main.js 讀取 articles.json 後動態插入 -->
+      <div class="article-grid" id="articleGrid">
+        <p class="status-text" id="articleStatus">範文載入中…</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>文言・白話｜DSE 中文科範文自學平台・內容僅供學習參考</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

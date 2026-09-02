@@ -1,0 +1,662 @@
+/* ==========================================================================
+   DSE 中文科範文自學平台 — 全站樣式
+   色調說明：米白／淡灰底 + 深藍／墨綠主題字，刻意壓低飽和度，
+   目標是長時間閱讀不刺眼。所有顏色與間距集中寫在 :root 變數，
+   之後要微調配色只需要改這裡。
+   ========================================================================== */
+
+:root {
+  /* ---- 色彩 ---- */
+  --color-bg: #f6f4ee;           /* 頁面底色：米白 */
+  --color-bg-alt: #eef0e8;       /* 區塊交錯用的淡灰綠 */
+  --color-surface: #ffffff;      /* 卡片、輸入框等前景色 */
+  --color-border: #ddd6c4;       /* 米白系邊框 */
+  --color-border-soft: #e7e2d3;
+
+  --color-ink: #23322b;          /* 主要文字：深墨綠黑 */
+  --color-ink-soft: #5c6b5f;     /* 次要文字 */
+  --color-ink-faint: #8b988e;    /* 輔助文字（如日期、篇章編號） */
+
+  --color-primary: #1f3a5f;      /* 深藍：主要按鈕、連結 */
+  --color-primary-dark: #16283f;
+  --color-primary-soft: #e7edf3; /* 淡藍底，用於標籤、hover 背景 */
+
+  --color-jade: #2f4a3c;         /* 墨綠：次要強調色 */
+
+  /* 四大文體各自的識別色，全部維持低飽和度 */
+  --color-narrative: #1f3a5f;
+  --color-argumentative: #2f4a3c;
+  --color-descriptive: #6b5a3f;
+  --color-topic: #5c4a66;
+
+  /* ---- 排版 ---- */
+  --font-serif: "Noto Serif TC", "PMingLiU", serif;
+  --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+
+  /* ---- 版面 ---- */
+  --container-width: 1120px;
+  --header-height: 72px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-card: 0 1px 2px rgba(35, 50, 43, 0.06), 0 6px 16px rgba(35, 50, 43, 0.05);
+}
+
+/* ---- 基礎重置 ---- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  color: var(--color-ink);
+  margin: 0;
+  line-height: 1.4;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* 鍵盤操作時顯示明確的 focus 樣式，滑鼠點擊時不顯示，兼顧美觀與可及性 */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   頂部導航列
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background: rgba(246, 244, 238, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 100;
+}
+
+.nav-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.logo-mark {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+}
+
+.logo-sub {
+  font-size: 0.7rem;
+  color: var(--color-ink-faint);
+  margin-top: 2px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  color: var(--color-ink-soft);
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 8px 14px;
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.nav-search .search-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-ink-faint);
+  flex-shrink: 0;
+}
+
+.nav-search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--color-ink);
+  width: 100%;
+}
+
+.nav-search input::placeholder {
+  color: var(--color-ink-faint);
+}
+
+/* 手機版選單開關按鈕，桌面版隱藏 */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-ink);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* 開啟選單時，把三條線變成一個 X */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   主視覺（Hero）
+   ========================================================================== */
+
+.hero {
+  padding: calc(var(--header-height) + 64px) 0 72px;
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+  border-bottom: 1px solid var(--color-border-soft);
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hero-content {
+  max-width: 620px;
+}
+
+.hero-kicker {
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 20px;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--color-ink-soft);
+  max-width: 52ch;
+  margin-bottom: 32px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* 裝飾用直排文字：呼應中文直書傳統，作為主視覺唯一的「亮點」，其餘元素保持低調 */
+.hero-motif {
+  writing-mode: vertical-rl;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  letter-spacing: 0.3em;
+  color: var(--color-primary);
+  opacity: 0.14;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* ==========================================================================
+   按鈕
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: var(--color-primary-dark);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  background: var(--color-primary-soft);
+}
+
+/* ==========================================================================
+   通用區塊樣式
+   ========================================================================== */
+
+.section {
+  padding: 64px 0;
+}
+
+.section-alt {
+  background: var(--color-bg-alt);
+}
+
+.section-head {
+  max-width: 60ch;
+  margin-bottom: 32px;
+}
+
+.section-head h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.section-desc {
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+}
+
+.status-text {
+  color: var(--color-ink-faint);
+  font-size: 0.9rem;
+  padding: 24px 0;
+}
+
+/* ==========================================================================
+   寫作地圖：四大文體卡片
+   ========================================================================== */
+
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.genre-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  overflow: hidden;
+  min-height: 190px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.genre-card:hover,
+.genre-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--color-border-soft);
+}
+
+/* 每張卡片右上角的大字，作為該文體的視覺標記，取代千篇一律的 icon */
+.genre-glyph {
+  position: absolute;
+  top: -18px;
+  right: -6px;
+  font-family: var(--font-serif);
+  font-size: 6.5rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.genre-card h3 {
+  font-size: 1.15rem;
+  position: relative;
+  z-index: 1;
+}
+
+.genre-card p {
+  font-size: 0.88rem;
+  color: var(--color-ink-soft);
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.genre-count {
+  font-size: 0.8rem;
+  color: var(--color-ink-faint);
+  position: relative;
+  z-index: 1;
+  margin-top: 4px;
+}
+
+/* 四個文體各自的識別色，套在字元與卡片上邊框 */
+.genre-narrative { border-top: 3px solid var(--color-narrative); }
+.genre-narrative .genre-glyph { color: var(--color-narrative); }
+
+.genre-argumentative { border-top: 3px solid var(--color-argumentative); }
+.genre-argumentative .genre-glyph { color: var(--color-argumentative); }
+
+.genre-descriptive { border-top: 3px solid var(--color-descriptive); }
+.genre-descriptive .genre-glyph { color: var(--color-descriptive); }
+
+.genre-topic { border-top: 3px solid var(--color-topic); }
+.genre-topic .genre-glyph { color: var(--color-topic); }
+
+/* ==========================================================================
+   熱門範文卡片（由 main.js 動態產生）
+   ========================================================================== */
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.article-card:hover,
+.article-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.article-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.article-id {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.article-genre-tag {
+  font-size: 0.72rem;
+  color: var(--color-ink-soft);
+  background: var(--color-bg-alt);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.article-meta {
+  font-size: 0.8rem;
+  color: var(--color-ink-faint);
+}
+
+.article-question {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  /* 題目文字可能較長，最多顯示 3 行，超出的部分用「…」省略 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--color-jade);
+  background: var(--color-primary-soft);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+/* ==========================================================================
+   頁尾
+   ========================================================================== */
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 24px 0;
+}
+
+.footer-inner {
+  font-size: 0.82rem;
+  color: var(--color-ink-faint);
+  text-align: center;
+}
+
+/* ==========================================================================
+   響應式：平板（≤ 960px）
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .genre-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-motif {
+    font-size: 1.3rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
+
+/* ==========================================================================
+   響應式：手機（≤ 720px）
+   ========================================================================== */
+
+@media (max-width: 720px) {
+
+  .container {
+    padding: 0 18px;
+  }
+
+  /* --- 導航列改為漢堡選單 --- */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 20px 20px;
+    justify-content: flex-start;
+    /* 預設收起：往上位移並隱藏，避免遮住畫面或誤觸 */
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  }
+
+  .main-nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 14px;
+  }
+
+  .nav-links a {
+    padding: 10px 4px;
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  .nav-search {
+    width: 100%;
+  }
+
+  /* --- 主視覺改為單欄，隱藏裝飾直排文字 --- */
+  .hero {
+    padding: calc(var(--header-height) + 40px) 0 48px;
+  }
+
+  .hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-motif {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    flex: 1;
+  }
+
+  /* --- 卡片改為單欄 --- */
+  .genre-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .genre-glyph {
+    font-size: 5rem;
+  }
+
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 48px 0;
+  }
+}

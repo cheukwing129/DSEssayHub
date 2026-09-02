@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文體分類（開發中）｜文言・白話</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main style="padding: calc(var(--header-height) + 80px) 24px 80px; max-width: 640px; margin: 0 auto; text-align: center;">
+    <h1 style="font-size: 1.6rem; margin-bottom: 16px;">此文體分類頁面開發中</h1>
+    <p style="color: var(--color-ink-soft); margin-bottom: 8px;">
+      目前選擇的文體：<strong id="genreTypeDisplay">（讀取中）</strong>
+    </p>
+    <p style="color: var(--color-ink-soft); margin-bottom: 32px;">
+      這個頁面將在下一階段實作，用來顯示該文體底下所有範文的列表。
+    </p>
+    <a href="index.html" class="btn btn-primary">回到首頁</a>
+  </main>
+
+  <script>
+    // 從網址參數讀出 ?type=narrative 這種值，先顯示出來，方便確認連結有正確帶參數
+    const params = new URLSearchParams(window.location.search);
+    const genreType = params.get('type') || '（未指定）';
+    document.getElementById('genreTypeDisplay').textContent = genreType;
+  </script>
+</body>
+</html>
