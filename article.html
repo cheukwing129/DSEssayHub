@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>範文閱讀｜DSE 中文科範文自學平台</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .article-page{padding:calc(var(--header-height,72px) + 40px) 0 64px}
+    .article-header{margin-bottom:24px}.article-header h1{font-size:2rem;margin-bottom:10px}
+    .article-meta-line{color:var(--color-ink-soft);font-size:.9rem}.article-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+    .analysis{background:var(--color-surface,#fff);border:1px solid var(--color-border,#ddd6c4);border-radius:var(--radius-md,10px);margin-bottom:28px;overflow:hidden}
+    .analysis summary{cursor:pointer;padding:15px 18px;font-weight:700;color:var(--color-primary,#1f3a5f)}
+    .analysis-content{padding:0 18px 18px;color:var(--color-ink-soft)}.analysis-content h3{font-size:1rem;margin:16px 0 5px;color:var(--color-ink)}
+    .essay{max-width:820px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#ddd6c4);border-radius:var(--radius-md,10px);padding:28px 32px}
+    .paragraph{padding:15px 0;border-bottom:1px solid var(--color-border-soft,#e7e2d3);line-height:2;font-family:var(--font-serif,serif);font-size:1.08rem}
+    .paragraph:last-child{border-bottom:0}.paragraph-number{display:inline-block;min-width:2.3em;color:var(--color-primary,#1f3a5f);font-weight:700}
+    .comment-box{margin:10px 0 0 2.3em;padding:10px 12px;background:var(--color-bg-alt,#eef0e8);border-left:3px solid var(--color-primary,#1f3a5f);font-family:var(--font-sans,sans-serif);font-size:.9rem;color:var(--color-ink-soft)}
+    .comment-box summary{cursor:pointer;color:var(--color-primary,#1f3a5f);font-family:var(--font-sans,sans-serif);font-size:.85rem}
+    .technique-tags{display:flex;gap:5px;flex-wrap:wrap;margin:0 0 7px 2.3em}.technique-tag{font-family:var(--font-sans,sans-serif);font-size:.74rem;background:var(--color-primary-soft,#e7edf3);color:var(--color-primary,#1f3a5f);padding:2px 8px;border-radius:999px}
+    .loading,.error{padding:24px 0;color:var(--color-ink-soft)}.error{color:#8a2525}
+    .back-link{display:inline-block;margin-bottom:18px;color:var(--color-primary,#1f3a5f)}
+    @media(max-width:720px){.essay{padding:20px 16px}.paragraph{font-size:1rem}.comment-box,.technique-tags{margin-left:0}}
+  </style>
+</head>
+<body>
+<header class="site-header"><div class="container nav-inner">
+  <a href="index.html" class="logo"><span class="logo-mark">範文自學</span><span class="logo-sub">DSE 中文寫作</span></a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
+  <div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="index.html#genres">文體分類</a><a href="questions.html">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" onsubmit="return false"><input type="search" placeholder="搜尋關鍵字" aria-label="搜尋"></form></div>
+</div></header>
+<main class="article-page"><div class="container">
+  <a class="back-link" id="backLink" href="genre.html?type=narrative">← 返回文體分類</a>
+  <div id="content"><p class="loading">正在載入範文……</p></div>
+</div></main>
+<footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
+<script>
+(function(){
+  const navToggle=document.getElementById('navToggle'),mainNav=document.getElementById('mainNav');
+  if(navToggle&&mainNav)navToggle.addEventListener('click',()=>{const open=navToggle.getAttribute('aria-expanded')==='true';navToggle.setAttribute('aria-expanded',String(!open));mainNav.classList.toggle('is-open',!open)});
+  const id=new URLSearchParams(location.search).get('id');const content=document.getElementById('content');
+  const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式'};
+  const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  function articleTitle(a){const q=Array.isArray(a.relatedQuestions)?a.relatedQuestions[0]:null;return q?`${q.year}年 ${q.questionNumber}`:'年份／題號待補'}
+  function render(a,techniques,themes,questions){
+    document.title=`篇章 ${a.id}｜DSE 中文科範文自學平台`;
+    document.getElementById('backLink').href=`genre.html?type=${encodeURIComponent(a.genre||'narrative')}`;
+    const q=Array.isArray(a.relatedQuestions)?a.relatedQuestions[0]:null;
+    const question=q&&questions[`${q.year}_${q.questionNumber}`]?questions[`${q.year}_${q.questionNumber}`]:'題目待補';
+    const tags=(a.themeConceptIds||[]).map(t=>`<span class="tag">${esc(themes[t]||t)}</span>`).join('');
+    const paragraphs=(a.paragraphs||[]).map((p,i)=>{
+      const techniqueTags=(p.techniqueTagIds||[]).map(t=>`<span class="technique-tag">${esc(techniques[t]||t)}</span>`).join('');
+      const comment=p.comment?`<details class="comment-box"><summary>顯示段旨點評</summary><div>${esc(p.comment)}</div></details>`:'';
+      return `<div class="paragraph"><div class="technique-tags">${techniqueTags}</div><span class="paragraph-number">${i+1}.</span>${esc(p.text)}${comment}</div>`;
+    }).join('');
+    content.innerHTML=`<header class="article-header"><h1>篇章 ${String(a.id).padStart(2,'0')}</h1><p class="article-meta-line">${esc(labels[a.genre]||a.genre)}　｜　${esc(articleTitle(a))}　｜　約 ${esc(a.wordCount||'')} 字</p><p class="article-meta-line" style="margin-top:8px">${esc(question)}</p><div class="article-tags">${tags}</div></header><details class="analysis"><summary>顯示審題分析</summary><div class="analysis-content"><h3>主題字詞解說</h3><p>${esc(a.topicAnalysis?.keywordExplanation||'暫未提供')}</p>${a.topicAnalysis?.imageryDescription?`<h3>圖畫／寓意解說</h3><p>${esc(a.topicAnalysis.imageryDescription)}</p>`:''}<h3>取材方向與立意建議</h3><p>${esc(a.topicAnalysis?.directionSuggestion||'暫未提供')}</p>${(a.topicAnalysis?.referenceAnswerPoints||[]).length?`<h3>參考立意要點</h3><ul>${a.topicAnalysis.referenceAnswerPoints.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}</div></details><section class="essay" aria-label="範文全文">${paragraphs||'<p>目前尚未有段落內容。</p>'}</section>`;
+  }
+  async function load(){try{if(!id)throw Error('網址缺少文章 id，例如 article.html?id=1');const [ar,tr,thr,qr]=await Promise.all([fetch('data/articles.json',{cache:'no-store'}),fetch('data/techniques.json',{cache:'no-store'}),fetch('data/themes.json',{cache:'no-store'}),fetch('data/questions.json',{cache:'no-store'})]);if(!ar.ok)throw Error(`找不到 data/articles.json（HTTP ${ar.status}）`);const raw=await ar.json();const list=Array.isArray(raw)?raw:[raw];const a=list.find(x=>String(x.id)===String(id));if(!a)throw Error(`找不到篇章 ${id}`);const techData=tr.ok?await tr.json():[];const themeData=thr.ok?await thr.json():[];const qData=qr.ok?await qr.json():[];const techniques={},themes={},questions={};(Array.isArray(techData)?techData:[]).forEach(x=>techniques[x.id]=x.name);(Array.isArray(themeData)?themeData:[]).forEach(x=>themes[x.id]=x.name);(Array.isArray(qData)?qData:[]).forEach(x=>questions[`${x.year}_${x.questionNumber}`]=x.questionFull);render(a,techniques,themes,questions)}catch(e){content.innerHTML=`<p class="error">${esc(e.message)}</p><p><a href="index.html">返回首頁</a></p>`;console.error(e)}}load();
+})();
+</script></body></html>
