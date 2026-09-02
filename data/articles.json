@@ -492,5 +492,119 @@
   "wordCount": 1754,
   "themeConceptIds": ["th01", "th02", "th07"],
   "summary": "主角因升上高中後忙於學業，逐漸忽略母親的關愛；一次深夜喝下母親準備的熱湯，重新感受到母愛從未消失，並再次嘗到親情的溫暖。"
+},
+  {
+  "articles": [
+    {
+      "id": 29,
+      "file": "data/articles/article_29.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2020","subject":"中文","questionNumber":"Q3","title":"送禮之我見"}],
+      "wordCount": 1611,
+      "themeConceptIds": ["th03", "th05", "th06"],
+      "summary": "文章探討送禮的意義，指出送禮既是表達情感的媒介，也是禮儀和道德修養的延伸；面對物質主義影響，送禮不應只看重禮物的價值，而應重視其中的真心。"
+    },
+    {
+      "id": 30,
+      "file": "data/articles/article_30.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2020","subject":"中文","questionNumber":"Q3","title":"送禮之我見"}],
+      "wordCount": 1320,
+      "themeConceptIds": ["th03", "th05", "th06"],
+      "summary": "文章分析送禮的正面和負面意義，指出送禮可以表達謝意、孝心和愛意，但也可能被利用作為討好、行賄或形式化的手段；真正的送禮之道應做到內情外禮，並量力而為。"
+    },
+    {
+      "id": 31,
+      "file": "data/articles/article_31.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2019","subject":"中文","questionNumber":"Q3","title":"讀書無用"}],
+      "wordCount": 1650,
+      "themeConceptIds": ["th03", "th04", "th06"],
+      "summary": "文章從讀書的本質、對社會的作用、讀者態度及讀書限制等角度，探討讀書是否有用，最後認為讀書本身有用，但必須配合思考、實踐和探索。"
+    },
+    {
+      "id": 32,
+      "file": "data/articles/article_32.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2019","subject":"中文","questionNumber":"Q3","title":"讀書無用"}],
+      "wordCount": 2001,
+      "themeConceptIds": ["th03", "th04", "th06"],
+      "summary": "文章從文明進步、社會貢獻、自我認識和精神享受等角度肯定讀書的價值，同時承認書本知識未必直接應用於工作，最後認為讀書不應只以功利上的有用或無用衡量，而在於求知和閱讀的樂趣。"
+    },
+    {
+      "id": 33,
+      "file": "data/articles/article_33.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2019","subject":"中文","questionNumber":"Q3","title":"讀書無用"}],
+      "wordCount": 1738,
+      "themeConceptIds": ["th03", "th04", "th06"],
+      "summary": "文章從知識學習、生活充實、品德修養及社會進步等角度，論證讀書具有重要價值，最後否定讀書無用的看法。"
+    },
+    {
+      "id": 34,
+      "file": "data/articles/article_34.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2018","subject":"中文","questionNumber":"Q3","title":"談知己或談敵人"}],
+      "wordCount": 1849,
+      "themeConceptIds": ["th03", "th04", "th06"],
+      "summary": "文章選擇談敵人，指出敵人可以是父母、老師、老闆、心理和失敗等有形或無形的阻力；只要改變思考方式，便能化敵為友，從挫折中學習並促使自己成長。"
+    },
+    {
+      "id": 35,
+      "file": "data/articles/article_35.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2018","subject":"中文","questionNumber":"Q3","title":"談知己或談敵人"}],
+      "wordCount": 1575,
+      "themeConceptIds": ["th01", "th03", "th06"],
+      "summary": "文章探討知己的不同境界，指出知己可以與人或自然建立心靈共鳴，也可以理解並支持對方，甚至坦率批評、引導對方找回初心；知己不受年齡、身份和物種限制，能令人生由黯淡轉為光彩。"
+    },
+    {
+      "id": 36,
+      "file": "data/articles/article_36.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2018","subject":"中文","questionNumber":"Q3","title":"談知己或談敵人"}],
+      "wordCount": 1442,
+      "themeConceptIds": ["th01", "th03", "th06"],
+      "summary": "文章探討知己的意義，指出知己不受年齡、性格和身份限制，能在學習、順境及逆境中互相交流、扶持和鼓勵，是超越利益的深厚友誼，也是人生的重要力量。"
+    },
+    {
+      "id": 37,
+      "file": "data/articles/article_37.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2017","subject":"中文","questionNumber":"Q3","title":"談憤怒"}],
+      "wordCount": 1933,
+      "themeConceptIds": ["th03", "th04", "th06"],
+      "summary": "文章認為憤怒本身並非絕對好壞，正面的憤怒能凝聚民族、推動抗爭和藝術創作；但若失去理性控制，憤怒便會轉化為仇恨，造成暴力和反人類災難，因此處理憤怒需要智慧、節制和理性。"
+    },
+    {
+      "id": 38,
+      "file": "data/articles/article_38.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2017","subject":"中文","questionNumber":"Q3","title":"談憤怒"}],
+      "wordCount": 1770,
+      "themeConceptIds": ["th03", "th04", "th06"],
+      "summary": "文章以儒、釋、道三家思想探討憤怒，指出憤怒是自然情感，沒有絕對好壞，關鍵在於能否以道家的柔和、佛家的慈悲和儒家的克己復禮來面對及控制情緒。"
+    }
+  ]
 }
 ]
