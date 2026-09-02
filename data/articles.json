@@ -97,4 +97,43 @@
       "th12"
     ]
   }
+  {
+  "id": 11,
+  "file": "data/articles/article_11.json",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2016",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1095,
+  "themeConceptIds": ["th01", "th09"]
+}
+  {
+  "id": 12,
+  "file": "data/articles/article_12.json",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2016",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1626,
+  "themeConceptIds": ["th01", "th07", "th12"]
+}
+  {
+  "id": 13,
+  "file": "data/articles/article_13.json",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2016",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1689,
+  "themeConceptIds": ["th04", "th08", "th13"]
+}
 ]
