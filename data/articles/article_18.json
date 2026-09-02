@@ -1,0 +1,71 @@
+{
+  "id": 18,
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2015",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1439,
+  "themeConceptIds": [
+    "th02",
+    "th07",
+    "th05"
+  ],
+  "contentLabel": "中品示例",
+  "paragraphs": [
+    {
+      "text": "今天我沒有帶手提電話外出，因而有不一樣的經歷和體會。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "韶光荏苒，過了五天上課的日子，終於來到周末，我發覺自己過了一個既充實又豐富的周六。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "每逢周六，我會前往學校編配的老人院探訪。以往帶備電話的我經常躲在房間裏，感到沉悶且欠缺意義。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "今天因遲起床而沒有帶電話便外出探訪，我發覺人與人之間的關係拉近不少。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "由於不熟悉交通，又沒有電話，我只好向路人問路。一位老婆婆詳細告訴我路徑，我體會到人情的溫暖。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "到達老人院後，我與同學分工合作，派飯並主動找老人家談天，感受到交流和相處的珍貴。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "臨別時，我把小精品送予每位老人家作紀念，回想今天的經歷，發覺自己領略不少。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "科技方便了生活，卻可能使人與人疏離。這次沒帶電話的老人院探訪，使我從另一角度看人和事，比以前更有意義和充實感。",
+      "comment": "",
+      "techniqueTagIds": []
+    }
+  ],
+  "topicAnalysis": {
+    "analysisType": "keyword",
+    "keywordExplanation": "題目要求從指定開首續寫，寫出沒有手提電話的一天如何帶來不同經歷與體會。重點在於由具體事件反思科技與人際關係。",
+    "imageryDescription": "",
+    "directionSuggestion": "以日常經歷、人物交流及今昔對比，反思科技便利與人情互動之間的取捨。",
+    "referenceAnswerPoints": [
+      "必須扣連沒有手提電話的生活經歷。",
+      "應透過具體事件呈現主角的思想轉變。",
+      "結尾要回應不一樣的經歷和體會。"
+    ],
+    "openEndedAngles": []
+  }
+}

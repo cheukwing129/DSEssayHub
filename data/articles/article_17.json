@@ -1,0 +1,101 @@
+{
+  "id": 17,
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2015",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 1359,
+  "themeConceptIds": [
+    "th02",
+    "th07",
+    "th13"
+  ],
+  "contentLabel": "中品示例",
+  "paragraphs": [
+    {
+      "text": "因昨晚通宵達旦使用智能電話觀看動畫，我睡眼惺忪地起床，準備前往茶樓與表姑婆一家吃團年飯。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "途中我發現手提電話不翼而飛，爸爸叫我不要做低頭族，多洞悉身邊事物。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我到達茶樓，認識了白髮斑駁、滿臉皺紋的姑婆，並開始與她聊天。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我仍掛念虛擬世界的寵物和網友，覺得沒有帶手機十分失敗。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "姑婆訴說被兒子拋棄的經過，我頓生憐憫。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "姑婆送我賀年禮餅，我真摯道謝，看見她的笑容，倍感安慰。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "離別時，姑婆刻意放慢腳步，想爭取多一分相處時間。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我開始反思手提電話是否真是世間最珍貴的瑰寶。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我扶助一位推手推車的老婆婆，重新看見社會上被忽略的人。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "相比以前，我只沉淪在手機世界，不理會親朋、不感受節日氣氛，也不了解社會。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "這次遺忘使我更早了解姑婆，明白放下電話才能看見身邊的人。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "手提電話功能很多，但濫用會令人冷漠；只要放下電話，多了解人與事，人的心靈距離便能拉近。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "先哲葛勞德曾言：「生活最大的危險莫過於擁有空虛的心靈。」世人應捨棄一分玩手機的時間，換取相處和感受節日氣氛的時間。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "今天沒有帶手提電話外出反而使我喜出望外，我致電姑婆談天，不再是被網絡遊戲操控的機器人。",
+      "comment": "",
+      "techniqueTagIds": []
+    }
+  ],
+  "topicAnalysis": {
+    "analysisType": "keyword",
+    "keywordExplanation": "題目要求從指定開首續寫，寫出沒有手提電話的一天如何帶來不同經歷與體會。重點在於由具體事件反思科技與人際關係。",
+    "imageryDescription": "",
+    "directionSuggestion": "以日常經歷、人物交流及今昔對比，反思科技便利與人情互動之間的取捨。",
+    "referenceAnswerPoints": [
+      "必須扣連沒有手提電話的生活經歷。",
+      "應透過具體事件呈現主角的思想轉變。",
+      "結尾要回應不一樣的經歷和體會。"
+    ],
+    "openEndedAngles": []
+  }
+}

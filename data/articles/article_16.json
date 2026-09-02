@@ -1,0 +1,86 @@
+{
+  "id": 16,
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2015",
+      "questionNumber": "Q1"
+    }
+  ],
+  "wordCount": 2022,
+  "themeConceptIds": [
+    "th03",
+    "th05",
+    "th12"
+  ],
+  "contentLabel": "",
+  "paragraphs": [
+    {
+      "text": "我參加了學校的「無手機日」，學校希望參加者能感受生活上四周的氣氛，不要因手提電話或其他電子器材而忽略身邊許多人和事。就是這樣，我帶着驚惶的心，開展了沒有手提電話的一天。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我照常到旺角，在鋼琴老師家中學習鋼琴。乘搭升降機時，我首次感受層數飛快跳動的聲音；踏出升降機後，管理員熱情問好，我才發現自己平日只冷漠低頭。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "在地鐵車廂裏，我靜靜站在幕門旁，細心傾聽乘客交談，感受到人生百態，與平時聽手機音樂截然不同。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "到了旺角，沒有手機的我避開了低頭行走的人群，並駐足欣賞街頭表演者，重新注意到城市中被忽略的文化藝術。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "在鋼琴老師家中小休時，我跟老師談天，聽她分享奮鬥經歷，感受到人與人之間的距離拉近了。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "乘坐巴士時，我看着白雲飄飄，感慨自己為何這麼遲才感受到自然美。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "回到家中，媽媽告訴我祖父早上去世，而她曾多次致電我的手提電話卻無人接聽。我因錯過最後聯絡機會而內疚不已。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我躺在床上，回想祖父生前陪伴我的片段，心中十分痛苦。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "媽媽說祖父是在睡夢中去世，但我仍內疚不已。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "智能電話確實方便，但過度沉迷會減少人與人之間的互動，形成隔膜；若沒有電話，緊急通訊也會受阻。因此使用科技要權衡輕重，取得平衡，活在當下，珍惜眼前。",
+      "comment": "",
+      "techniqueTagIds": []
+    },
+    {
+      "text": "我今天的體會和經歷真不一樣，起碼這生離死別後悟出的道理，其他人未必能體會。",
+      "comment": "",
+      "techniqueTagIds": []
+    }
+  ],
+  "topicAnalysis": {
+    "analysisType": "keyword",
+    "keywordExplanation": "題目要求從指定開首續寫，寫出沒有手提電話的一天如何帶來不同經歷與體會。重點在於由具體事件反思科技與人際關係。",
+    "imageryDescription": "",
+    "directionSuggestion": "以日常經歷、人物交流及今昔對比，反思科技便利與人情互動之間的取捨。",
+    "referenceAnswerPoints": [
+      "必須扣連沒有手提電話的生活經歷。",
+      "應透過具體事件呈現主角的思想轉變。",
+      "結尾要回應不一樣的經歷和體會。"
+    ],
+    "openEndedAngles": []
+  }
+}
