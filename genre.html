@@ -9,25 +9,111 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    .genre-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
-    .genre-head { margin-bottom: 28px; }
-    .genre-head h1 { font-size: 2rem; margin-bottom: 8px; }
-    .genre-head p { color: var(--color-ink-soft, #5c6b5f); }
-    .structure { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 34px; }
-    .step { flex: 1; min-width: 145px; padding: 14px; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #ddd6c4); border-radius: var(--radius-md, 10px); }
-    .step b { color: var(--color-primary, #1f3a5f); }
-    .step small { display: block; margin-top: 4px; color: var(--color-ink-soft, #5c6b5f); }
-    .arrow { align-self: center; color: var(--color-ink-faint, #8b988e); font-size: 1.2rem; }
-    .filter { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 20px; }
-    .filter select { padding: 8px 12px; border: 1px solid var(--color-border, #ddd6c4); border-radius: 999px; background: #fff; font: inherit; }
-    .article-card { display: flex !important; flex-direction: column !important; gap: 10px !important; }
-    .article-card-link { margin-top: auto; color: var(--color-primary, #1f3a5f); font-size: .85rem; }
-    .status { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); }
-    .error-box { margin-top: 16px; padding: 14px 16px; border-left: 4px solid #a33; border-radius: 4px; color: #712; background: #fff3f3; line-height: 1.65; }
+    .genre-page {
+      padding: calc(var(--header-height, 72px) + 48px) 0 64px;
+    }
+
+    .genre-head {
+      margin-bottom: 28px;
+    }
+
+    .genre-head h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .genre-head p {
+      color: var(--color-ink-soft, #5c6b5f);
+    }
+
+    .structure {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 34px;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 145px;
+      padding: 14px;
+      background: var(--color-surface, #ffffff);
+      border: 1px solid var(--color-border, #ddd6c4);
+      border-radius: var(--radius-md, 10px);
+    }
+
+    .step b {
+      color: var(--color-primary, #1f3a5f);
+    }
+
+    .step small {
+      display: block;
+      margin-top: 4px;
+      color: var(--color-ink-soft, #5c6b5f);
+    }
+
+    .arrow {
+      align-self: center;
+      color: var(--color-ink-faint, #8b988e);
+      font-size: 1.2rem;
+    }
+
+    .filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .filter select {
+      padding: 8px 12px;
+      border: 1px solid var(--color-border, #ddd6c4);
+      border-radius: 999px;
+      background: #ffffff;
+      font: inherit;
+    }
+
+    .article-card {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+    }
+
+    .article-card-link {
+      margin-top: auto;
+      color: var(--color-primary, #1f3a5f);
+      font-size: 0.85rem;
+    }
+
+    .status {
+      padding: 20px 0;
+      color: var(--color-ink-soft, #5c6b5f);
+    }
+
+    .error-box {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-left: 4px solid #a33;
+      border-radius: 4px;
+      color: #712;
+      background: #fff3f3;
+      line-height: 1.65;
+    }
+
     @media (max-width: 720px) {
-      .genre-page { padding-top: calc(var(--header-height, 72px) + 30px); }
-      .structure { flex-direction: column; }
-      .arrow { transform: rotate(90deg); text-align: center; }
+      .genre-page {
+        padding-top: calc(var(--header-height, 72px) + 30px);
+      }
+
+      .structure {
+        flex-direction: column;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -38,9 +124,13 @@
         <span class="logo-mark">範文自學</span>
         <span class="logo-sub">DSE 中文寫作</span>
       </a>
+
       <button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
+
       <div class="main-nav" id="mainNav">
         <nav class="nav-links" aria-label="主導航">
           <a href="index.html#genres">文體分類</a>
@@ -48,6 +138,7 @@
           <a href="techniques.html">寫作技巧</a>
           <a href="notes.html">我的筆記</a>
         </nav>
+
         <form class="nav-search" role="search" onsubmit="return false">
           <input type="search" placeholder="搜尋關鍵字" aria-label="搜尋">
         </form>
@@ -72,19 +163,21 @@
       </div>
 
       <div class="article-grid" id="grid"></div>
-      <p class="status" id="status">正在載入範文……</p>
+      <p class="status" id="status">正在載入文章索引……</p>
       <div id="errorBox"></div>
     </div>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div>
+    <div class="container footer-inner">
+      <p>DSE 中文科範文自學平台</p>
+    </div>
   </footer>
 
   <script>
-    /* 手機版導航 */
     const navToggle = document.getElementById('navToggle');
     const mainNav = document.getElementById('mainNav');
+
     if (navToggle && mainNav) {
       navToggle.addEventListener('click', () => {
         const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
@@ -93,44 +186,67 @@
       });
     }
 
-    const LABELS = {
+    const GENRE_LABELS = {
       narrative: '記敘抒情文',
       argumentative: '論說文',
       descriptive: '描寫文',
       topic: '話題式／開放式'
     };
 
-    const DESCRIPTIONS = {
+    const GENRE_DESCRIPTIONS = {
       narrative: '以事件為骨架、抒情為血肉，掌握起承轉合。',
       argumentative: '由個人到社會、哲理，層層推進論證。',
       descriptive: '細膩描寫人物與景物，營造鮮明畫面。',
       topic: '掌握圖畫寓意或限定格式，發展合適的取材角度。'
     };
 
-    const FLOWS = {
-      narrative: [['起', '景物／伏筆'], ['承', '衝突與覺醒前'], ['轉', '關鍵人物／覺醒'], ['合', '立意與人生道理']],
-      argumentative: [['引入', '中心論點'], ['定義', '解釋關鍵詞'], ['角度一', '個人層面'], ['角度二', '社會層面'], ['駁論', '回應反方'], ['總結', '呼應論點']],
-      descriptive: [['外觀', '人物／景物'], ['動靜', '動態與靜態'], ['對比', '突顯特點'], ['側寫', '間接呈現']],
-      topic: [['審題', '解讀要求'], ['取材', '選取材料'], ['立意', '扣連寓意'], ['扣題', '完整收結']]
+    const WRITING_FLOWS = {
+      narrative: [
+        ['起', '景物／伏筆'],
+        ['承', '衝突與覺醒前'],
+        ['轉', '關鍵人物／覺醒'],
+        ['合', '立意與人生道理']
+      ],
+      argumentative: [
+        ['引入', '中心論點'],
+        ['定義', '解釋關鍵詞'],
+        ['角度一', '個人層面'],
+        ['角度二', '社會層面'],
+        ['駁論', '回應反方'],
+        ['總結', '呼應論點']
+      ],
+      descriptive: [
+        ['外觀', '人物／景物'],
+        ['動靜', '動態與靜態'],
+        ['對比', '突顯特點'],
+        ['側寫', '間接呈現']
+      ],
+      topic: [
+        ['審題', '解讀要求'],
+        ['取材', '選取材料'],
+        ['立意', '扣連寓意'],
+        ['扣題', '完整收結']
+      ]
     };
 
-    const type = new URLSearchParams(window.location.search).get('type') || 'narrative';
-    const title = document.getElementById('title');
-    const desc = document.getElementById('desc');
-    const structure = document.getElementById('structure');
-    const grid = document.getElementById('grid');
-    const status = document.getElementById('status');
+    const requestedGenre = new URLSearchParams(window.location.search).get('type') || 'narrative';
+    const titleElement = document.getElementById('title');
+    const descriptionElement = document.getElementById('desc');
+    const structureElement = document.getElementById('structure');
+    const gridElement = document.getElementById('grid');
+    const statusElement = document.getElementById('status');
     const themeSelect = document.getElementById('theme');
     const errorBox = document.getElementById('errorBox');
 
-    title.textContent = LABELS[type] || '文體分類';
-    desc.textContent = DESCRIPTIONS[type] || '請從首頁選擇文體。';
-    structure.innerHTML = (FLOWS[type] || []).map((item, index, array) => {
+    titleElement.textContent = GENRE_LABELS[requestedGenre] || '文體分類';
+    descriptionElement.textContent = GENRE_DESCRIPTIONS[requestedGenre] || '請從首頁選擇文體。';
+
+    structureElement.innerHTML = (WRITING_FLOWS[requestedGenre] || []).map((item, index, array) => {
       const arrow = index < array.length - 1 ? '<span class="arrow" aria-hidden="true">→</span>' : '';
       return `<div class="step"><b>${item[0]}</b><small>${item[1]}</small></div>${arrow}`;
     }).join('');
 
-    let allArticles = [];
+    let allArticleIndexes = [];
     let themeNameById = {};
     let questionByKey = {};
 
@@ -143,106 +259,147 @@
         .replace(/'/g, '&#039;');
     }
 
-    function normaliseToArray(data, fileName) {
-      if (Array.isArray(data)) return data;
-      if (data && typeof data === 'object') return [data];
-      throw new Error(`${fileName} 的格式不是文章陣列或文章物件。`);
-    }
+    function getQuestionText(articleIndex) {
+      const firstQuestion = Array.isArray(articleIndex.relatedQuestions)
+        ? articleIndex.relatedQuestions[0]
+        : null;
 
-    function getQuestionText(article) {
-      const firstQuestion = Array.isArray(article.relatedQuestions) ? article.relatedQuestions[0] : null;
       if (!firstQuestion) return '（題目待補）';
-      return questionByKey[`${firstQuestion.year}_${firstQuestion.questionNumber}`] || '（題目待補）';
+
+      const key = `${firstQuestion.year}_${firstQuestion.questionNumber}`;
+      return questionByKey[key] || '（題目待補）';
     }
 
-    function getQuestionMeta(article) {
-      const related = Array.isArray(article.relatedQuestions) ? article.relatedQuestions : [];
-      if (related.length === 0) return '年份／題號待補';
-      return related.map(q => `${q.year}年 ${q.questionNumber}`).join('・');
+    function getQuestionMeta(articleIndex) {
+      const relatedQuestions = Array.isArray(articleIndex.relatedQuestions)
+        ? articleIndex.relatedQuestions
+        : [];
+
+      if (relatedQuestions.length === 0) return '年份／題號待補';
+
+      return relatedQuestions
+        .map(question => `${question.year}年 ${question.questionNumber}`)
+        .join('・');
     }
 
-    function renderArticles(list) {
-      if (!list.length) {
-        grid.innerHTML = '';
-        status.textContent = '此文體目前尚未有符合條件的範文。';
-        status.style.display = '';
+    function renderArticleCards(articleIndexes) {
+      if (articleIndexes.length === 0) {
+        gridElement.innerHTML = '';
+        statusElement.textContent = '此文體目前尚未有符合條件的範文。';
+        statusElement.style.display = '';
         return;
       }
 
-      grid.innerHTML = list.map(article => {
-        const tags = (article.themeConceptIds || []).map(id => {
-          return `<span class="tag">${escapeHtml(themeNameById[id] || id)}</span>`;
+      gridElement.innerHTML = articleIndexes.map(articleIndex => {
+        const themeTags = (articleIndex.themeConceptIds || []).map(themeId => {
+          return `<span class="tag">${escapeHtml(themeNameById[themeId] || themeId)}</span>`;
         }).join('');
+
         return `
-          <a class="article-card" href="article.html?id=${encodeURIComponent(article.id)}">
+          <a class="article-card" href="article.html?id=${encodeURIComponent(articleIndex.id)}">
             <div class="article-card-head">
-              <span class="article-id">篇章 ${String(article.id).padStart(2, '0')}</span>
-              <span class="article-genre-tag">${escapeHtml(LABELS[article.genre] || article.genre)}</span>
+              <span class="article-id">篇章 ${String(articleIndex.id).padStart(2, '0')}</span>
+              <span class="article-genre-tag">${escapeHtml(GENRE_LABELS[articleIndex.genre] || articleIndex.genre)}</span>
             </div>
-            <p class="article-meta">${escapeHtml(getQuestionMeta(article))}</p>
-            <p class="article-question">${escapeHtml(getQuestionText(article))}</p>
-            <div class="article-tags">${tags}</div>
+            <p class="article-meta">${escapeHtml(getQuestionMeta(articleIndex))}</p>
+            <p class="article-question">${escapeHtml(getQuestionText(articleIndex))}</p>
+            <div class="article-tags">${themeTags}</div>
             <span class="article-card-link">閱讀範文 →</span>
           </a>
         `;
       }).join('');
-      status.style.display = 'none';
+
+      statusElement.style.display = 'none';
     }
 
     function showError(error) {
       console.error(error);
-      status.textContent = '資料載入失敗。';
-      status.style.display = '';
-      errorBox.innerHTML = `<div class="error-box"><strong>除錯訊息：</strong>${escapeHtml(error.message)}<br>請確認 data/articles.json、data/themes.json 及 data/questions.json 均為有效 JSON 檔案。</div>`;
+      statusElement.textContent = '文章索引載入失敗。';
+      statusElement.style.display = '';
+      errorBox.innerHTML = `
+        <div class="error-box">
+          <strong>除錯訊息：</strong>${escapeHtml(error.message)}<br>
+          請確認 <code>data/articles.json</code>、<code>data/themes.json</code> 與 <code>data/questions.json</code> 均為有效 JSON 檔案。
+        </div>
+      `;
     }
 
-    async function loadPage() {
+    async function loadGenrePage() {
       try {
-        const [articlesResponse, themesResponse, questionsResponse] = await Promise.all([
+        const [indexResponse, themesResponse, questionsResponse] = await Promise.all([
           fetch('data/articles.json', { cache: 'no-store' }),
           fetch('data/themes.json', { cache: 'no-store' }),
           fetch('data/questions.json', { cache: 'no-store' })
         ]);
 
-        if (!articlesResponse.ok) throw new Error(`找不到 data/articles.json（HTTP ${articlesResponse.status}）。`);
-        if (!themesResponse.ok) throw new Error(`找不到 data/themes.json（HTTP ${themesResponse.status}）。`);
-        if (!questionsResponse.ok) throw new Error(`找不到 data/questions.json（HTTP ${questionsResponse.status}）。`);
+        if (!indexResponse.ok) {
+          throw new Error(`找不到 data/articles.json（HTTP ${indexResponse.status}）。`);
+        }
 
-        const articleData = await articlesResponse.json();
-        const themeData = await themesResponse.json();
-        const questionData = await questionsResponse.json();
+        if (!themesResponse.ok) {
+          throw new Error(`找不到 data/themes.json（HTTP ${themesResponse.status}）。`);
+        }
 
-        const articlesArray = normaliseToArray(articleData, 'articles.json');
-        const themesArray = Array.isArray(themeData) ? themeData : [];
-        const questionsArray = Array.isArray(questionData) ? questionData : [];
+        if (!questionsResponse.ok) {
+          throw new Error(`找不到 data/questions.json（HTTP ${questionsResponse.status}）。`);
+        }
 
-        themesArray.forEach(theme => { themeNameById[theme.id] = theme.name; });
-        questionsArray.forEach(question => { questionByKey[`${question.year}_${question.questionNumber}`] = question.questionFull; });
+        const articleIndexData = await indexResponse.json();
+        const themesData = await themesResponse.json();
+        const questionsData = await questionsResponse.json();
 
-        allArticles = articlesArray
-          .filter(article => article && article.genre === type)
-          .sort((a, b) => Number(a.id) - Number(b.id));
+        if (!Array.isArray(articleIndexData)) {
+          throw new Error('data/articles.json 必須是文章索引陣列 [ ... ]。');
+        }
 
-        const usedThemeIds = [...new Set(allArticles.flatMap(article => Array.isArray(article.themeConceptIds) ? article.themeConceptIds : []))];
-        themeSelect.innerHTML = '<option value="">全部文章</option>' + usedThemeIds.map(id => {
-          return `<option value="${escapeHtml(id)}">${escapeHtml(themeNameById[id] || id)}</option>`;
+        if (!Array.isArray(themesData)) {
+          throw new Error('data/themes.json 必須是陣列 [ ... ]。');
+        }
+
+        if (!Array.isArray(questionsData)) {
+          throw new Error('data/questions.json 必須是陣列 [ ... ]。');
+        }
+
+        themesData.forEach(theme => {
+          themeNameById[theme.id] = theme.name;
+        });
+
+        questionsData.forEach(question => {
+          questionByKey[`${question.year}_${question.questionNumber}`] = question.questionFull;
+        });
+
+        allArticleIndexes = articleIndexData
+          .filter(articleIndex => articleIndex && articleIndex.genre === requestedGenre)
+          .sort((first, second) => Number(first.id) - Number(second.id));
+
+        const usedThemeIds = [...new Set(
+          allArticleIndexes.flatMap(articleIndex => Array.isArray(articleIndex.themeConceptIds)
+            ? articleIndex.themeConceptIds
+            : [])
+        )];
+
+        themeSelect.innerHTML = '<option value="">全部文章</option>' + usedThemeIds.map(themeId => {
+          return `<option value="${escapeHtml(themeId)}">${escapeHtml(themeNameById[themeId] || themeId)}</option>`;
         }).join('');
 
-        renderArticles(allArticles);
+        renderArticleCards(allArticleIndexes);
       } catch (error) {
         showError(error);
       }
     }
 
     themeSelect.addEventListener('change', () => {
-      const selectedTheme = themeSelect.value;
-      const filtered = selectedTheme
-        ? allArticles.filter(article => Array.isArray(article.themeConceptIds) && article.themeConceptIds.includes(selectedTheme))
-        : allArticles;
-      renderArticles(filtered);
+      const selectedThemeId = themeSelect.value;
+
+      const filteredIndexes = selectedThemeId
+        ? allArticleIndexes.filter(articleIndex => Array.isArray(articleIndex.themeConceptIds)
+          && articleIndex.themeConceptIds.includes(selectedThemeId))
+        : allArticleIndexes;
+
+      renderArticleCards(filteredIndexes);
     });
 
-    loadPage();
+    loadGenrePage();
   </script>
 </body>
 </html>
