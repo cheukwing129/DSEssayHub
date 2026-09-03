@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文體分類｜DSE 中文科範文自學平台</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* 本頁專屬樣式：其餘卡片外觀（.genre-grid / .genre-card / .genre-glyph）
+     直接沿用 style.css 首頁已定義好的樣式，這裡只補頁面獨有的排版 */
+  .genre-list-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
+
+  .genre-list-head { max-width: 640px; margin-bottom: 36px; }
+  .genre-list-head h1 { font-size: 2rem; margin-bottom: 10px; }
+  .genre-list-head p { color: var(--color-ink-soft, #5c6b5f); }
+
+  .genre-card { min-height: 220px; }
+
+  /* 「已收錄 X／28 篇」這行文字，資料載入前先顯示卡片上寫死的目標篇數 */
+  .genre-progress-note {
+    margin-top: 28px;
+    font-size: 0.85rem;
+    color: var(--color-ink-faint, #8b988e);
+  }
+
+  @media (max-width: 720px) {
+    .genre-list-page { padding-top: calc(var(--header-height, 72px) + 30px); }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">範文自學</span>
+      <span class="logo-sub">DSE 中文寫作</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="main-nav" id="mainNav">
+      <nav class="nav-links" aria-label="主導航">
+        <a href="genre-list.html">文體分類</a>
+        <a href="questions.html">歷屆試題</a>
+        <a href="techniques.html">寫作技巧</a>
+        <a href="notes.html">我的筆記</a>
+      </nav>
+      <form class="nav-search" role="search" onsubmit="return false">
+        <input type="search" placeholder="搜尋關鍵字" aria-label="搜尋">
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="genre-list-page">
+  <div class="container">
+
+    <div class="genre-list-head">
+      <h1>文體分類</h1>
+      <p>DSE 中文科寫作卷四大文體，各自有不同的評分重點與寫作套路。先選定文體、掌握該文體的寫作框架，再逐篇細讀對應範文，會比漫無目的地泛讀更有效率。</p>
+    </div>
+
+    <div class="genre-grid" id="genreGrid">
+
+      <a class="genre-card genre-narrative" href="genre.html?type=narrative">
+        <span class="genre-glyph" aria-hidden="true">記</span>
+        <h3>記敘抒情文</h3>
+        <p>從一件小事說起，寫出情感的轉折與體悟，掌握起承轉合的敘事節奏。</p>
+        <span class="genre-count" data-genre="narrative" data-range="篇章 1–28" data-target="28">篇章 1–28・共 28 篇</span>
+      </a>
+
+      <a class="genre-card genre-argumentative" href="genre.html?type=argumentative">
+        <span class="genre-glyph" aria-hidden="true">論</span>
+        <h3>論說文</h3>
+        <p>立論、駁論、舉證，練習把想法一層一層說得站得住腳。</p>
+        <span class="genre-count" data-genre="argumentative" data-range="篇章 29–44" data-target="16">篇章 29–44・共 16 篇</span>
+      </a>
+
+      <a class="genre-card genre-descriptive" href="genre.html?type=descriptive">
+        <span class="genre-glyph" aria-hidden="true">描</span>
+        <h3>描寫文</h3>
+        <p>用感官細節把畫面寫活，讓讀者如臨其境，是抒情文的重要基本功。</p>
+        <span class="genre-count" data-genre="descriptive" data-range="篇章 45–50" data-target="6">篇章 45–50・共 6 篇</span>
+      </a>
+
+      <a class="genre-card genre-topic" href="genre.html?type=topic">
+        <span class="genre-glyph" aria-hidden="true">話</span>
+        <h3>話題式／開放式</h3>
+        <p>圖畫題、談論類題目，考驗取材角度與立意深度，最沒有固定套路。</p>
+        <span class="genre-count" data-genre="topic" data-range="篇章 51–63" data-target="13">篇章 51–63・共 13 篇</span>
+      </a>
+
+    </div>
+
+    <p class="genre-progress-note" id="genreListStatus" hidden>
+      已收錄篇數目前無法讀取，以上顯示為各文體的目標篇數。
+    </p>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>DSE 中文科範文自學平台・內容僅供學習參考</p>
+  </div>
+</footer>
+
+<script>
+  // 手機版導航選單開關（與 genre.html／article.html 的寫法一致）
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', () => {
+      const open = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!open));
+      mainNav.classList.toggle('is-open', !open);
+    });
+  }
+
+  // 讀取 articles.json 索引檔，統計各文體目前已收錄幾篇，
+  // 把卡片上寫死的「共 28 篇」換成「已收錄 X／28 篇」，讓進度一目瞭然。
+  // 若讀取失敗，卡片會維持原本寫死的目標篇數文字，不影響瀏覽。
+  (async () => {
+    try {
+      const res = await fetch('data/articles.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`找不到 data/articles.json（HTTP ${res.status}）`);
+
+      const index = await res.json();
+      if (!Array.isArray(index)) throw new Error('data/articles.json 必須是陣列');
+
+      const countByGenre = {};
+      index.forEach(item => {
+        countByGenre[item.genre] = (countByGenre[item.genre] || 0) + 1;
+      });
+
+      document.querySelectorAll('.genre-count[data-genre]').forEach(el => {
+        const genre = el.dataset.genre;
+        const range = el.dataset.range;
+        const target = el.dataset.target;
+        const count = countByGenre[genre] || 0;
+        el.textContent = `${range}・已收錄 ${count}／${target} 篇`;
+      });
+
+    } catch (error) {
+      console.error('讀取文體統計時發生錯誤：', error);
+      document.getElementById('genreListStatus').hidden = false;
+    }
+  })();
+</script>
+
+</body>
+</html>

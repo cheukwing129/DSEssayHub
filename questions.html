@@ -1,37 +1,301 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>查看歷屆試題｜DSE 中文科寫作卷</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>歷屆試題｜DSE 中文科範文自學平台</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .questions-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
+
+  .questions-head { max-width: 640px; margin-bottom: 28px; }
+  .questions-head h1 { font-size: 2rem; margin-bottom: 10px; }
+  .questions-head p { color: var(--color-ink-soft, #5c6b5f); }
+
+  .q-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .q-filter-group { display: flex; align-items: center; gap: 8px; }
+  .q-filter label { font-size: 0.88rem; color: var(--color-ink-soft, #5c6b5f); }
+  .q-filter select {
+    padding: 8px 14px;
+    border: 1px solid var(--color-border, #ddd6c4);
+    border-radius: 999px;
+    background: #fff;
+    font: inherit;
+    font-size: 0.88rem;
+    color: var(--color-ink, #23322b);
+  }
+
+  .question-count-note {
+    font-size: 0.82rem;
+    color: var(--color-ink-faint, #8b988e);
+    margin-bottom: 20px;
+  }
+
+  .question-list { display: flex; flex-direction: column; gap: 14px; }
+
+  .question-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--color-surface, #fff);
+    border: 1px solid var(--color-border, #ddd6c4);
+    border-radius: var(--radius-md, 10px);
+    padding: 20px 22px;
+  }
+
+  .question-card-head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .question-year {
+    font-family: var(--font-serif, serif);
+    font-weight: 700;
+    color: var(--color-primary, #1f3a5f);
+    font-size: 0.95rem;
+  }
+
+  .question-type-tag {
+    font-size: 0.72rem;
+    color: var(--color-ink-soft, #5c6b5f);
+    background: var(--color-bg-alt, #eef0e8);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+
+  .question-full {
+    font-size: 1rem;
+    color: var(--color-ink, #23322b);
+    line-height: 1.85;
+  }
+
+  .question-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .question-links a {
+    font-size: 0.82rem;
+    color: var(--color-primary, #1f3a5f);
+    background: var(--color-primary-soft, #e7edf3);
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+
+  .question-links a:hover { opacity: 0.85; }
+
+  .question-links .no-article {
+    font-size: 0.82rem;
+    color: var(--color-ink-faint, #8b988e);
+  }
+
+  .status-text { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); }
+  .error-box {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-left: 4px solid #a33;
+    border-radius: 4px;
+    color: #712;
+    background: #fff3f3;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 720px) {
+    .questions-page { padding-top: calc(var(--header-height, 72px) + 30px); }
+    .q-filter { flex-direction: column; align-items: flex-start; }
+  }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html">DSE 中文科・寫作卷</a>
-    <nav class="main-nav" aria-label="主要導覽">
-      <a href="browse.html">瀏覽範文</a>
-      <a href="questions.html" aria-current="page">歷屆試題</a>
-      <a href="genre.html">按文體瀏覽</a>
-    </nav>
-  </header>
-  <main class="page-shell">
-    <p class="eyebrow">PAST PAPERS</p>
-    <h1>查看歷屆試題</h1>
-    <p class="page-lead">按年份或題號搜尋寫作卷題目，並查看相關範文。</p>
-    <div class="toolbar">
-      <label>搜尋試題<input id="searchInput" type="search" placeholder="例如：2018、Q2、禁區"></label>
-      <label>年份<select id="yearFilter"><option value="">全部年份</option></select></label>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">範文自學</span>
+      <span class="logo-sub">DSE 中文寫作</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="main-nav" id="mainNav">
+      <nav class="nav-links" aria-label="主導航">
+        <a href="genre-list.html">文體分類</a>
+        <a href="questions.html">歷屆試題</a>
+        <a href="techniques.html">寫作技巧</a>
+        <a href="notes.html">我的筆記</a>
+      </nav>
+      <form class="nav-search" role="search" onsubmit="return false">
+        <input type="search" placeholder="搜尋關鍵字" aria-label="搜尋">
+      </form>
     </div>
-    <p id="status" class="status">試題載入中…</p>
-    <section id="questionList" class="question-list" aria-live="polite"></section>
-  </main>
-  <script>
-    let questions=[],articles=[];
-    const esc=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-    async function load(){try{const [qr,ar]=await Promise.all([fetch('data/questions.json'),fetch('data/articles.json')]);if(!qr.ok||!ar.ok)throw Error();questions=await qr.json();articles=await ar.json();const years=[...new Set(questions.map(q=>q.year))].sort().reverse();document.querySelector('#yearFilter').innerHTML+='<option>'+years.map(esc).join('</option><option>')+'</option>';render();}catch(e){document.querySelector('#status').textContent='試題資料載入失敗，請確認 data/questions.json 是否存在。';}}
-    function render(){const q=document.querySelector('#searchInput').value.toLowerCase(),y=document.querySelector('#yearFilter').value;const list=questions.filter(x=>(!y||String(x.year)===y)&&(!q||JSON.stringify(x).toLowerCase().includes(q)));document.querySelector('#status').textContent=`共找到 ${list.length} 道試題`;document.querySelector('#questionList').innerHTML=list.map(x=>{const related=articles.filter(a=>(a.relatedQuestions||[]).some(r=>String(r.year)===String(x.year)&&r.questionNumber===x.questionNumber));return `<article class="question-card"><p class="card-kicker">${esc(x.year)}年 · ${esc(x.questionNumber)}</p><h2>${esc(x.title||'寫作題目')}</h2><p>${esc(x.questionFull||x.question||'題目內容待補')}</p>${related.length?`<p class="card-meta">相關範文：${related.map(a=>`<a href="article.html?id=${encodeURIComponent(a.id)}">篇章${String(a.id).padStart(2,'0')}</a>`).join('、')}</p>`:''}</article>`}).join('')||'<p>沒有符合條件的試題。</p>';}
-    document.querySelector('#searchInput').addEventListener('input',render);document.querySelector('#yearFilter').addEventListener('change',render);load();
-  </script>
+  </div>
+</header>
+
+<main class="questions-page">
+  <div class="container">
+
+    <div class="questions-head">
+      <h1>歷屆試題</h1>
+      <p>收錄 2012 至 2021 年 DSE 中文科寫作卷歷屆試題（含 Pilot Paper），可依年份或題型篩選，並直接連結到對應的範文拆解。</p>
+    </div>
+
+    <div class="q-filter">
+      <div class="q-filter-group">
+        <label for="yearFilter">年份：</label>
+        <select id="yearFilter"><option value="">全部年份</option></select>
+      </div>
+      <div class="q-filter-group">
+        <label for="typeFilter">題型：</label>
+        <select id="typeFilter"><option value="">全部題型</option></select>
+      </div>
+    </div>
+
+    <p class="question-count-note" id="countNote" hidden></p>
+
+    <div class="question-list" id="questionList">
+      <p class="status-text" id="questionStatus">試題載入中…</p>
+    </div>
+
+    <div id="errorBox"></div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>DSE 中文科範文自學平台・內容僅供學習參考</p>
+  </div>
+</footer>
+
+<script>
+  // 手機版導航選單開關
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', () => {
+      const open = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!open));
+      mainNav.classList.toggle('is-open', !open);
+    });
+  }
+
+  const listEl = document.getElementById('questionList');
+  const countNoteEl = document.getElementById('countNote');
+  const errorBoxEl = document.getElementById('errorBox');
+  const yearFilterEl = document.getElementById('yearFilter');
+  const typeFilterEl = document.getElementById('typeFilter');
+
+  let allQuestions = []; // 排序過、篩選前的完整試題清單
+
+  // 簡單的 HTML 逸出函式，避免資料中的特殊符號破壞版面
+  const esc = v => String(v ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+  // 把 "2012pp" 這種年份字串轉成可比較大小的數字，
+  // pilot paper 排在同年份正式卷之後（例如 2012pp 排在 2012 之後、2011 之前的順位）
+  function parseYearValue(yearStr) {
+    const num = parseInt(yearStr, 10);
+    const isPilot = String(yearStr).includes('pp');
+    return num + (isPilot ? -0.5 : 0);
+  }
+
+  function buildQuestionCardHtml(q) {
+    const hasRelated = Array.isArray(q.relatedArticleIds) && q.relatedArticleIds.length > 0;
+    const linksHtml = hasRelated
+      ? q.relatedArticleIds
+          .map(id => `<a href="article.html?id=${encodeURIComponent(id)}">查看範文・篇章 ${String(id).padStart(2, '0')} →</a>`)
+          .join('')
+      : '<span class="no-article">尚未有對應範文</span>';
+
+    return `
+      <article class="question-card">
+        <div class="question-card-head">
+          <span class="question-year">${esc(q.year)}年 ${esc(q.questionNumber)}</span>
+          <span class="question-type-tag">${esc(q.questionType)}</span>
+        </div>
+        <p class="question-full">${esc(q.questionFull)}</p>
+        <div class="question-links">${linksHtml}</div>
+      </article>
+    `;
+  }
+
+  function renderQuestions(list) {
+    countNoteEl.hidden = false;
+    countNoteEl.textContent = `共 ${list.length} 條試題`;
+
+    if (list.length === 0) {
+      listEl.innerHTML = '<p class="status-text">沒有符合篩選條件的試題，試試切換其他年份或題型。</p>';
+      return;
+    }
+
+    listEl.innerHTML = list.map(buildQuestionCardHtml).join('');
+  }
+
+  function populateFilterOptions(questions) {
+    const years = [...new Set(questions.map(q => q.year))]
+      .sort((a, b) => parseYearValue(b) - parseYearValue(a));
+    const types = [...new Set(questions.map(q => q.questionType))];
+
+    yearFilterEl.innerHTML = '<option value="">全部年份</option>' +
+      years.map(y => `<option value="${esc(y)}">${esc(y)}</option>`).join('');
+
+    typeFilterEl.innerHTML = '<option value="">全部題型</option>' +
+      types.map(t => `<option value="${esc(t)}">${esc(t)}</option>`).join('');
+  }
+
+  function applyFilters() {
+    const year = yearFilterEl.value;
+    const type = typeFilterEl.value;
+
+    const filtered = allQuestions.filter(q => {
+      const matchYear = !year || q.year === year;
+      const matchType = !type || q.questionType === type;
+      return matchYear && matchType;
+    });
+
+    renderQuestions(filtered);
+  }
+
+  (async () => {
+    try {
+      const res = await fetch('data/questions.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`找不到 data/questions.json（HTTP ${res.status}）`);
+
+      const questions = await res.json();
+      if (!Array.isArray(questions)) throw new Error('data/questions.json 必須是陣列');
+
+      // 依年份新到舊排序，方便學生優先看近年試題
+      allQuestions = [...questions].sort((a, b) => parseYearValue(b.year) - parseYearValue(a.year));
+
+      populateFilterOptions(allQuestions);
+      renderQuestions(allQuestions);
+
+    } catch (error) {
+      console.error(error);
+      countNoteEl.hidden = true;
+      listEl.innerHTML = '<p class="status-text">試題資料載入失敗。</p>';
+      errorBoxEl.innerHTML = `<div class="error-box"><strong>除錯訊息：</strong>${esc(error.message)}</div>`;
+    }
+  })();
+
+  yearFilterEl.addEventListener('change', applyFilters);
+  typeFilterEl.addEventListener('change', applyFilters);
+</script>
+
 </body>
 </html>
