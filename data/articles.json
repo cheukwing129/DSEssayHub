@@ -744,5 +744,59 @@
     {"id":57,"file":"data/articles/article_57.json","collection":"main","sourceType":"中文DSE","genre":"topic","relatedQuestions":[{"year":"2018","subject":"中文","questionNumber":"Q2","title":"禁區"}],"wordCount":1718,"themeConceptIds":["th02","th04","th07"],"summary":"文章以母女相處為主線，從女兒房間的私隱、洗手間和廚房等生活禁區，反思每個人都需要界線和尊重；禁區有時是為了安全，有時是保護內心，只有尊重和等待才能拉近彼此距離。"},
     {"id":58,"file":"data/articles/article_58.json","collection":"main","sourceType":"中文DSE","genre":"topic","relatedQuestions":[{"year":"2018","subject":"中文","questionNumber":"Q2","title":"禁區"}],"wordCount":1484,"themeConceptIds":["th02","th04","th13"],"summary":"文章以鐵閘禁區作比喻，從母親偷看信件、伴侶越過感情界線及網絡侵犯版權等經歷，說明個人私隱、空間和創作成果都應受尊重，越界可能導致關係破裂或造成更大傷害。"},
     {"id":59,"file":"data/articles/article_59.json","collection":"main","sourceType":"中文DSE","genre":"topic","relatedQuestions":[{"year":"2018","subject":"中文","questionNumber":"Q2","title":"禁區"}],"wordCount":1144,"themeConceptIds":["th02","th04","th06"],"summary":"文章由足球場上的禁區出發，指出生活中的禁區不一定代表危險或禁止，而是提醒人們提高警覺、保障安全和尊重私人空間；人際間的秘密也是一種禁區，能保護關係並維繫友誼。"},
-    {"id":60,"file":"data/articles/article_60.json","collection":"main","sourceType":"中文DSE","genre":"topic","relatedQuestions":[{"year":"2014","subject":"中文","questionNumber":"Q3","title":"陽光與陰影"}],"wordCount":1039,"themeConceptIds":["th01","th07","th13"],"summary":"文章以陽光與陰影的關係作比喻，指出陰影並非負面存在，而是希望、生命存在、真實自我及親情陪伴的象徵；人應接受陰影、認識自己並珍惜身邊的人和事。"}
+    {"id":60,"file":"data/articles/article_60.json","collection":"main","sourceType":"中文DSE","genre":"topic","relatedQuestions":[{"year":"2014","subject":"中文","questionNumber":"Q3","title":"陽光與陰影"}],"wordCount":1039,"themeConceptIds":["th01","th07","th13"],"summary":"文章以陽光與陰影的關係作比喻，指出陰影並非負面存在，而是希望、生命存在、真實自我及親情陪伴的象徵；人應接受陰影、認識自己並珍惜身邊的人和事。"},
+    {
+    "id": 61,
+    "file": "data/articles/article_61.json",
+    "collection": "main",
+    "sourceType": "中文DSE",
+    "genre": "topic",
+    "relatedQuestions": [
+      {
+        "year": "2014",
+        "subject": "中文",
+        "questionNumber": "Q3",
+        "title": "陽光與陰影"
+      }
+    ],
+    "wordCount": 1406,
+    "themeConceptIds": ["th01", "th04", "th13"],
+    "summary": "文章以孩童面對陽光和腳下陰影的畫面起筆，將陰影引申為人生的苦痛、挫敗與逆境。作者從樂觀、苦難磨練及陰陽相生三方面論證，指出人不應困囿於陰影，而應以從容平常之心面對逆境，滋養心中不落的太陽。"
+  },
+  {
+    "id": 62,
+    "file": "data/articles/article_62.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2020",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "拼圖"
+      }
+    ],
+    "wordCount": 1475,
+    "themeConceptIds": ["th01", "th07", "th12", "th13"],
+    "summary": "文章以拼圖象徵人生與家庭關係。主角因父親離家而失去安全感，長期守著心中的缺口，拒絕繼父的關愛；最終在畢業典禮上明白傷口雖不能完美復原，仍可接受新的愛與陪伴，走出孤獨。"
+  },
+  {
+    "id": 63,
+    "file": "data/articles/article_63.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2020",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "拼圖"
+      }
+    ],
+    "wordCount": 2477,
+    "themeConceptIds": ["th01", "th07", "th12", "th13"],
+    "summary": "文章以一幅缺角的陽明山拼圖貫串全文。母親發現兒子因臉上胎記而自卑，遂藉拼圖引導他明白人本來並不完美，缺憾不會抹煞個人價值；最終兒子接納自己，以自信姿態赴約，象徵他尋回內在完整。"
+  }
   ]
