@@ -642,5 +642,115 @@
       "summary": "文章同意現今學習生活中獨學而無友會令人孤陋寡聞，指出朋友能促進多角度和深層次思考，增進文學及數理學習，並透過互相切磋擴闊見聞。"
     }
   ]
-}
-]
+},
+      {
+      "id": 41,
+      "file": "data/articles/article_41.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2014","subject":"中文","questionNumber":"Q3","title":"不做第一，也不做最後"}],
+      "wordCount": 2182,
+      "themeConceptIds": ["th03","th04","th06"],
+      "summary": "文章認為「不做第一，也不做最後」並非消極逃避，而是量力而為、保持尊嚴和避免鋒芒太露的中庸處世之道；既要努力避免落後，也不必為爭第一而承受過度壓力或破壞人際關係。"
+    },
+    {
+      "id": 42,
+      "file": "data/articles/article_42.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2012pp","subject":"中文","questionNumber":"Q2","title":"物質生活與快樂"}],
+      "wordCount": 1725,
+      "themeConceptIds": ["th03","th04","th06"],
+      "summary": "文章較認同富庶的物質生活反令人難以快樂，指出物質只能帶來短暫享受和虛榮，無止境的慾望及拼命工作會消耗休息、親情和心靈滿足；真正的快樂源於知足和內心感受。"
+    },
+    {
+      "id": 43,
+      "file": "data/articles/article_43.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "argumentative",
+      "relatedQuestions": [{"year":"2012pp","subject":"中文","questionNumber":"Q2","title":"物質生活與快樂"}],
+      "wordCount": 951,
+      "themeConceptIds": ["th03","th04","th06"],
+      "summary": "文章較認同富庶物質生活反令人難以快樂，指出物質對小孩或許是快樂基礎，但對青少年和成人往往成為競爭、炫耀及生活壓力的來源，令人受物質束縛。"
+    },
+    {
+      "id": 44,
+      "file": "data/articles/article_44.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "narrative",
+      "relatedQuestions": [{"year":"2020","subject":"中文","questionNumber":"Q1","title":"嚴以律己，寬以待人"}],
+      "wordCount": 1909,
+      "themeConceptIds": ["th02","th04","th07"],
+      "summary": "文章透過一心在書法、學生會及義工探訪中的言行，刻畫她對自己要求嚴格、對他人寬容體諒的品格，並說明作者如何逐步理解這句家訓的真正意義。"
+    },
+    {
+      "id": 45,
+      "file": "data/articles/article_45.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "narrative",
+      "relatedQuestions": [{"year":"2018","subject":"中文","questionNumber":"Q1","title":"重遊舊地所見有感"}],
+      "wordCount": 1880,
+      "themeConceptIds": ["th01","th07","th09"],
+      "summary": "主角重遊童年居住的城中村，在水管、舊門和街口觸景生情，回憶童年歡樂、家庭溫暖及友人離別；面對舊地將被重建，主角由抗拒和傷感轉為釋懷，明白回憶能成為走向未來的力量。"
+    },
+    {
+      "id": 46,
+      "file": "data/articles/article_46.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "narrative",
+      "relatedQuestions": [{"year":"2018","subject":"中文","questionNumber":"Q1","title":"重遊舊地所見有感"}],
+      "wordCount": 1521,
+      "themeConceptIds": ["th01","th07","th09"],
+      "summary": "主角多年後與母親重遊故鄉，目睹田野被工廠取代、外公離世及祖屋荒涼，在景物變遷和回憶交錯中感到物是人非、失落和無奈。"
+    },
+    {
+      "id": 47,
+      "file": "data/articles/article_47.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "narrative",
+      "relatedQuestions": [{"year":"2012","subject":"中文","questionNumber":"Q1","title":"唐老師是我最敬愛的老師"}],
+      "wordCount": 1108,
+      "themeConceptIds": ["th02","th04","th07"],
+      "summary": "文章透過唐老師幫助街角老婦、病中派發成績表及與師生相處的事例，描寫他以行動體現孝順、守信和守禮等中國文化，抒發作者對他的敬愛。"
+    },
+    {
+      "id": 48,
+      "file": "data/articles/article_48.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "narrative",
+      "relatedQuestions": [{"year":"2012","subject":"中文","questionNumber":"Q1","title":"唐老師是我最敬愛的老師"}],
+      "wordCount": 1199,
+      "themeConceptIds": ["th02","th04","th07"],
+      "summary": "文章透過唐老師以歷史知識教導學生、以故事啟發失意學生，以及不願受不合理工作束縛而離職等事件，描寫他的博學、謙卑、關愛學生和有風骨，抒發作者的敬愛和感激。"
+    },
+    {
+      "id": 49,
+      "file": "data/articles/article_49.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "narrative",
+      "relatedQuestions": [{"year":"2012","subject":"中文","questionNumber":"Q1","title":"唐老師是我最敬愛的老師"}],
+      "wordCount": 1093,
+      "themeConceptIds": ["th02","th04","th07"],
+      "summary": "文章透過唐老師尊重年老校工及在巴士站禮讓、扶助婆婆的兩件小事，描寫他不說大道理而以身作則體現尊敬長輩、關懷他人的中國文化，抒發作者的敬愛。"
+    },
+    {
+      "id": 50,
+      "file": "data/articles/article_50.json",
+      "collection": "main",
+      "sourceType": "中文DSE",
+      "genre": "narrative",
+      "relatedQuestions": [{"year":"2012","subject":"中文","questionNumber":"Q1","title":"唐老師是我最敬愛的老師"}],
+      "wordCount": 1371,
+      "themeConceptIds": ["th02","th04","th07"],
+      "summary": "文章透過唐老師以歷史知識教導學生、以故事啟發失意學生，以及不願受不合理工作束縛而離職等事件，描寫他的博學、謙卑、關愛學生和有風骨，抒發作者的敬愛和感激。"
+    }
+  ]
