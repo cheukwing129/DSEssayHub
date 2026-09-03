@@ -323,5 +323,12 @@
     "questionFull": "再次嘗到的滋味",
     "questionType": "開放式",
     "relatedArticleIds": []
+  },
+        {
+    "year": "文學2020",
+    "questionNumber": "Q1",
+    "questionFull": "拼圖",
+    "questionType": "開放式",
+    "relatedArticleIds": []
   }
 ]
