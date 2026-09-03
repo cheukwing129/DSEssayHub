@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>查看歷屆試題｜DSE 中文科寫作卷</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">DSE 中文科・寫作卷</a>
+    <nav class="main-nav" aria-label="主要導覽">
+      <a href="browse.html">瀏覽範文</a>
+      <a href="questions.html" aria-current="page">歷屆試題</a>
+      <a href="genre.html">按文體瀏覽</a>
+    </nav>
+  </header>
+  <main class="page-shell">
+    <p class="eyebrow">PAST PAPERS</p>
+    <h1>查看歷屆試題</h1>
+    <p class="page-lead">按年份或題號搜尋寫作卷題目，並查看相關範文。</p>
+    <div class="toolbar">
+      <label>搜尋試題<input id="searchInput" type="search" placeholder="例如：2018、Q2、禁區"></label>
+      <label>年份<select id="yearFilter"><option value="">全部年份</option></select></label>
+    </div>
+    <p id="status" class="status">試題載入中…</p>
+    <section id="questionList" class="question-list" aria-live="polite"></section>
+  </main>
+  <script>
+    let questions=[],articles=[];
+    const esc=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+    async function load(){try{const [qr,ar]=await Promise.all([fetch('data/questions.json'),fetch('data/articles.json')]);if(!qr.ok||!ar.ok)throw Error();questions=await qr.json();articles=await ar.json();const years=[...new Set(questions.map(q=>q.year))].sort().reverse();document.querySelector('#yearFilter').innerHTML+='<option>'+years.map(esc).join('</option><option>')+'</option>';render();}catch(e){document.querySelector('#status').textContent='試題資料載入失敗，請確認 data/questions.json 是否存在。';}}
+    function render(){const q=document.querySelector('#searchInput').value.toLowerCase(),y=document.querySelector('#yearFilter').value;const list=questions.filter(x=>(!y||String(x.year)===y)&&(!q||JSON.stringify(x).toLowerCase().includes(q)));document.querySelector('#status').textContent=`共找到 ${list.length} 道試題`;document.querySelector('#questionList').innerHTML=list.map(x=>{const related=articles.filter(a=>(a.relatedQuestions||[]).some(r=>String(r.year)===String(x.year)&&r.questionNumber===x.questionNumber));return `<article class="question-card"><p class="card-kicker">${esc(x.year)}年 · ${esc(x.questionNumber)}</p><h2>${esc(x.title||'寫作題目')}</h2><p>${esc(x.questionFull||x.question||'題目內容待補')}</p>${related.length?`<p class="card-meta">相關範文：${related.map(a=>`<a href="article.html?id=${encodeURIComponent(a.id)}">篇章${String(a.id).padStart(2,'0')}</a>`).join('、')}</p>`:''}</article>`}).join('')||'<p>沒有符合條件的試題。</p>';}
+    document.querySelector('#searchInput').addEventListener('input',render);document.querySelector('#yearFilter').addEventListener('change',render);load();
+  </script>
+</body>
+</html>

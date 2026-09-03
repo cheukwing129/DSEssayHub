@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>開始瀏覽範文｜DSE 中文科寫作卷</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">DSE 中文科・寫作卷</a>
+    <nav class="main-nav" aria-label="主要導覽">
+      <a href="browse.html" aria-current="page">瀏覽範文</a>
+      <a href="questions.html">歷屆試題</a>
+      <a href="genre.html">按文體瀏覽</a>
+    </nav>
+  </header>
+  <main class="page-shell">
+    <p class="eyebrow">READING ROOM</p>
+    <h1>開始瀏覽範文</h1>
+    <p class="page-lead">按文體或關鍵字尋找範文，從段落結構、立意到寫作手法逐步閱讀。</p>
+    <div class="toolbar">
+      <label>搜尋範文<input id="searchInput" type="search" placeholder="輸入篇章、題目或關鍵字"></label>
+      <label>文體<select id="genreFilter"><option value="">全部文體</option><option value="narrative">記敘抒情文</option><option value="argumentative">論說文</option><option value="descriptive">描寫文</option><option value="topic">話題式／開放式</option></select></label>
+    </div>
+    <p id="status" class="status">範文載入中…</p>
+    <section id="articleGrid" class="article-grid" aria-live="polite"></section>
+  </main>
+  <script>
+    const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式'};
+    let articles=[];
+    const esc=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+    async function load(){
+      try{const r=await fetch('data/articles.json');if(!r.ok)throw Error();articles=await r.json();render();}
+      catch(e){document.querySelector('#status').textContent='資料載入失敗，請確認網站是透過伺服器開啟。';}
+    }
+    function render(){const q=document.querySelector('#searchInput').value.toLowerCase();const g=document.querySelector('#genreFilter').value;const list=articles.filter(a=>{const text=JSON.stringify(a).toLowerCase();return(!g||a.genre===g)&&(!q||text.includes(q));});document.querySelector('#status').textContent=`共找到 ${list.length} 篇範文`;document.querySelector('#articleGrid').innerHTML=list.map(a=>`<article class="article-card"><p class="card-kicker">篇章 ${String(a.id).padStart(2,'0')} · ${esc(labels[a.genre]||a.genre)}</p><h2>${esc(a.title||'範文篇章')}</h2><p>${esc(a.summary||'暫無摘要')}</p><p class="card-meta">${(a.relatedQuestions||[]).map(x=>`${esc(x.year)}年 ${esc(x.questionNumber)}`).join(' · ')}</p><a href="article.html?id=${encodeURIComponent(a.id)}">閱讀全文及段落分析 →</a></article>`).join('')||'<p>沒有符合條件的範文。</p>';}
+    document.querySelector('#searchInput').addEventListener('input',render);document.querySelector('#genreFilter').addEventListener('change',render);load();
+  </script>
+</body>
+</html>
