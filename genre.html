@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>文體分類｜DSE 中文科範文自學平台</title>
+  <title>DSE 中文科範文分類</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .genre-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
+    .genre-page { padding: calc(var(--header-height, 72px) + 48px) 48px 0 64px; }
     .genre-head { margin-bottom: 28px; }
     .genre-head h1 { font-size: 2rem; margin-bottom: 8px; }
     .genre-head p { color: var(--color-ink-soft, #5c6b5f); }
@@ -23,17 +23,37 @@
     .article-card-link { margin-top: auto; color: var(--color-primary, #1f3a5f); font-size: .85rem; }
     .status { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); }
     .error-box { margin-top: 16px; padding: 14px 16px; border-left: 4px solid #a33; border-radius: 4px; color: #712; background: #fff3f3; line-height: 1.65; }
-    @media (max-width: 720px) { .genre-page { padding-top: calc(var(--header-height, 72px) + 30px); } .structure { flex-direction: column; } .arrow { transform: rotate(90deg); text-align: center; } }
+    @media (max-width: 720px) { .genre-page { padding-top: calc(var(--header-height, 72px) + 30px); padding-left: 30px; padding-right: 30px; } .structure { flex-direction: column; } .arrow { transform: rotate(90deg); text-align: center; } }
   </style>
 </head>
 <body>
-<header class="site-header"><div class="container nav-inner"><a href="index.html" class="logo"><span class="logo-mark">範文自學</span><span class="logo-sub">DSE 中文寫作</span></a><button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button><div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="genre-list.html">文體分類</a><a href="questions.html">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" onsubmit="return false"><input type="search" placeholder="搜尋關鍵字" aria-label="搜尋"></form></div></div></header>
-<main class="genre-page"><div class="container"><div class="genre-head"><h1 id="title">文體分類</h1><p id="desc">資料載入中……</p></div><div class="structure" id="structure" aria-label="寫作框架"></div><div class="filter"><label for="theme">依立意向度：</label><select id="theme"><option value="">全部文章</option></select></div><div class="article-grid" id="grid"></div><p class="status" id="status">正在載入文章索引……</p><div id="errorBox"></div></div></main><footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
-<script>
-const navToggle=document.getElementById('navToggle'),mainNav=document.getElementById('mainNav');if(navToggle&&mainNav)navToggle.addEventListener('click',()=>{const open=navToggle.getAttribute('aria-expanded')==='true';navToggle.setAttribute('aria-expanded',String(!open));mainNav.classList.toggle('is-open',!open)});
-const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式'},descriptions={narrative:'以事件為骨架、抒情為血肉，掌握起承轉合。',argumentative:'由個人到社會、哲理，層層推進論證。',descriptive:'細膩描寫人物與景物，營造鮮明畫面。',topic:'掌握圖畫寓意或限定格式，發展合適的取材角度。'},flows={narrative:[['起','景物／伏筆'],['承','衝突與覺醒前'],['轉','關鍵人物／覺醒'],['合','立意與人生道理']],argumentative:[['引入','中心論點'],['定義','解釋關鍵詞'],['角度一','個人層面'],['角度二','社會層面'],['駁論','回應反方'],['總結','呼應論點']],descriptive:[['外觀','人物／景物'],['動靜','動態與靜態'],['對比','突顯特點'],['側寫','間接呈現']],topic:[['審題','解讀要求'],['取材','選取材料'],['立意','扣連寓意'],['扣題','完整收結']]};
-const type=new URLSearchParams(location.search).get('type')||'narrative';document.getElementById('title').textContent=labels[type]||'文體分類';document.getElementById('desc').textContent=descriptions[type]||'';const flow=flows[type]||[];document.getElementById('structure').innerHTML=flow.map((x,i)=>`<div class="step"><b>${x[0]}</b><small>${x[1]}</small></div>${i<flow.length-1?'<span class="arrow">→</span>':''}`).join('');
-const grid=document.getElementById('grid'),status=document.getElementById('status'),filter=document.getElementById('theme'),errorBox=document.getElementById('errorBox');let all=[],themeNames={},questionNames={};const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
-function render(list){if(!list.length){grid.innerHTML='';status.textContent='此文體目前尚未有符合條件的範文。';status.style.display='';return}status.style.display='none';grid.innerHTML=list.map(a=>{const q=(a.relatedQuestions||[])[0],meta=q?`${q.year}年 ${q.questionNumber}`:'年份／題號待補',title=q?(questionNames[`${q.year}_${q.questionNumber}`]||'題目待補'):'題目待補',tags=(a.themeConceptIds||[]).map(id=>`<span class="tag">${esc(themeNames[id]||id)}</span>`).join(''),level=a.contentLabel?`<span class="article-level-tag">${esc(a.contentLabel)}</span>`:'';return `<a class="article-card" href="article.html?id=${encodeURIComponent(a.id)}"><div class="article-card-head"><span class="article-id">篇章 ${String(a.id).padStart(2,'0')}</span><span class="article-genre-tag">${esc(labels[a.genre]||a.genre)}</span></div><p class="article-meta">${esc(meta)}</p><p class="article-question">${esc(title)}</p><p class="article-summary">${esc(a.summary||'內容簡介待補')}</p>${level}<div class="article-tags">${tags}</div><span class="article-card-link">閱讀範文 →</span></a>`}).join('')}
-(async()=>{try{const [ir,tr,qr]=await Promise.all([fetch('data/articles.json',{cache:'no-store'}),fetch('data/themes.json',{cache:'no-store'}),fetch('data/questions.json',{cache:'no-store'})]);if(!ir.ok)throw Error(`找不到 data/articles.json（HTTP ${ir.status}）`);if(!tr.ok)throw Error(`找不到 data/themes.json（HTTP ${tr.status}）`);if(!qr.ok)throw Error(`找不到 data/questions.json（HTTP ${qr.status}）`);const index=await ir.json(),themes=await tr.json(),questions=await qr.json();if(!Array.isArray(index))throw Error('data/articles.json 必須是陣列');themes.forEach(x=>themeNames[x.id]=x.name);questions.forEach(x=>questionNames[`${x.year}_${x.questionNumber}`]=x.questionFull);all=index.filter(x=>x.genre===type).sort((a,b)=>Number(a.id)-Number(b.id));const ids=[...new Set(all.flatMap(x=>x.themeConceptIds||[]))];filter.innerHTML='<option value="">全部文章</option>'+ids.map(id=>`<option value="${esc(id)}">${esc(themeNames[id]||id)}</option>`).join('');render(all)}catch(e){console.error(e);status.textContent='文章索引載入失敗。';errorBox.innerHTML=`<div class="error-box"><strong>除錯訊息：</strong>${esc(e.message)}</div>`}})();filter.addEventListener('change',()=>render(filter.value?all.filter(a=>(a.themeConceptIds||[]).includes(filter.value)):all));
-</script></body></html>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo"><span class="logo-mark">文</span><span class="logo-sub">DSE 中文科</span></a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
+      <div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主要導覽"><a href="genre-list.html">範文分類</a><a href="questions.html">歷屆試題</a><a href="techniques.html">寫作手法</a><a href="notes.html">我的筆記</a></nav></div>
+    </div>
+  </header>
+  <main class="genre-page"><div class="container">
+    <div class="genre-head"><h1 id="title">範文分類</h1><p id="desc"></p></div>
+    <div class="structure" id="structure" aria-label="寫作結構"></div>
+    <div class="filter"><label for="theme">立意向度：</label><select id="theme"><option value="">全部向度</option></select></div>
+    <div class="article-grid" id="grid"></div><p class="status" id="status">範文載入中…</p><div id="errorBox"></div>
+  </div></main>
+  <footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
+  <script>
+    const navToggle=document.getElementById('navToggle'),mainNav=document.getElementById('mainNav');if(navToggle&&mainNav)navToggle.addEventListener('click',()=>{const open=navToggle.getAttribute('aria-expanded')==='true';navToggle.setAttribute('aria-expanded',String(!open));mainNav.classList.toggle('is-open',!open)});
+    const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式',practical:'實用寫作'};
+    const descriptions={narrative:'從一件小事說起，寫出情感的轉折與體悟。',argumentative:'立論、駁論、舉證，練習把想法說得站得住腳。',descriptive:'用感官細節把畫面寫活，讓讀者如臨其境。',topic:'圖畫題、談論類題目，考驗取材角度與立意深度。',practical:'掌握對象、格式、語氣與寫作目的，完成實用文。'};
+    const flows={narrative:['事件起點','發展轉折','情感體悟'],argumentative:['提出立場','分析論據','總結觀點'],descriptive:['觀察景物','感官描寫','寄寓情感'],topic:['理解題意','多角度思考','深化立意'],practical:['辨識對象','組織內容','完成格式']};
+    const type=new URLSearchParams(location.search).get('type')||'narrative';document.getElementById('title').textContent=labels[type]||'範文分類';document.getElementById('desc').textContent=descriptions[type]||'';document.getElementById('structure').innerHTML=(flows[type]||[]).map((x,i)=>`<div class="step"><b>${i+1}</b><small>${x}</small></div>${i<(flows[type]||[]).length-1?'<span class="arrow">→</span>':''}`).join('');
+    const grid=document.getElementById('grid'),status=document.getElementById('status'),filter=document.getElementById('theme'),errorBox=document.getElementById('errorBox');let all=[],themeNames={},questionNames={};
+    const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+    function yearNumber(year){const m=String(year??'').match(/(\d{4})/);return m?Number(m[1]):-Infinity}function qNumber(q){const m=String(q??'').match(/(\d+)/);return m?Number(m[1]):999}
+    function sortByYearQuestion(a,b){const qa=a.relatedQuestions?.[0]||{},qb=b.relatedQuestions?.[0]||{};return yearNumber(qb.year)-yearNumber(qa.year)||qNumber(qa.questionNumber)-qNumber(qb.questionNumber)||Number(a.id||0)-Number(b.id||0)}
+    function render(){const selected=filter.value;const list=all.filter(a=>(!selected||(a.themeConceptIds||[]).includes(selected))).sort(sortByYearQuestion);if(!list.length){grid.innerHTML='';status.textContent='目前沒有符合條件的範文。';status.style.display='block';return}status.style.display='none';grid.innerHTML=list.map(a=>{const q=a.relatedQuestions?.[0],meta=q?`${q.year}年 ${q.questionNumber}`:'年份／題號待補',title=q?questionNames[`${q.year}_${q.questionNumber}`]:'題目待補',tags=(a.themeConceptIds||[]).map(id=>`<span class="tag">${esc(themeNames[id]||id)}</span>`).join('');return `<a class="article-card" href="article.html?id=${encodeURIComponent(a.id)}"><div class="article-card-head"><span class="article-id">${String(a.id).padStart(2,'0')}</span><span class="article-genre-tag">${esc(labels[a.genre]||a.genre)}</span></div><p class="article-meta">${esc(meta)}</p><p class="article-question">${esc(title)}</p><p class="article-summary">${esc(a.summary||'')}</p>${a.contentLabel?`<span class="article-level-tag">${esc(a.contentLabel)}</span>`:''}<div class="article-tags">${tags}</div><span class="article-card-link">查看範文拆解 →</span></a>`}).join('')}
+    async function load(){try{const [ir,tr,qr]=await Promise.all([fetch('data/articles.json',{cache:'no-store'}),fetch('data/themes.json',{cache:'no-store'}),fetch('data/questions.json',{cache:'no-store'})]);if(!ir.ok)throw Error(`data/articles.json HTTP ${ir.status}`);if(!tr.ok)throw Error(`data/themes.json HTTP ${tr.status}`);if(!qr.ok)throw Error(`data/questions.json HTTP ${qr.status}`);all=await ir.json();const themes=await tr.json(),questions=await qr.json();if(!Array.isArray(all))throw Error('data/articles.json 格式必須是陣列');themes.forEach(x=>themeNames[x.id]=x.name);questions.forEach(x=>questionNames[`${x.year}_${x.questionNumber}`]=x.questionFull);const ids=[...new Set(all.flatMap(x=>x.themeConceptIds||[]))];filter.innerHTML='<option value="">全部向度</option>'+ids.map(id=>`<option value="${esc(id)}">${esc(themeNames[id]||id)}</option>`).join('');render()}catch(e){status.style.display='none';errorBox.innerHTML=`<div class="error-box"><strong>資料載入失敗</strong><br>${esc(e.message)}<br>請確認資料檔案已上傳，而且網站是透過伺服器開啟。</div>`;console.error(e)}}
+    filter.addEventListener('change',render);load();
+  </script>
+</body>
+</html>
