@@ -256,7 +256,51 @@
 
 <script>
 const toggle=document.getElementById('navToggle'),nav=document.getElementById('mainNav');if(toggle&&nav)toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!open));nav.classList.toggle('is-open',!open)});const id=new URLSearchParams(location.search).get('id'),content=document.getElementById('content'),back=document.getElementById('backLink');const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式'};const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
-function mapNames(a){const m={};(Array.isArray(a)?a:[]).forEach(x=>{if(x?.id)m[x.id]=x.name});return m}function mapQuestions(a){const m={};(Array.isArray(a)?a:[]).forEach(x=>{m[`${x.year}_${x.questionNumber}`]=x.questionFull});return m}function render(index,body,tech,theme,questions){document.title=`篇章 ${index.id}｜DSE 中文科範文自學平台`;back.href=`genre.html?type=${encodeURIComponent(index.genre||'narrative')}`;const first=index.relatedQuestions?.[0],q=first?questions[`${first.year}_${first.questionNumber}`]:'題目待補';const tags=(index.themeConceptIds||[]).map(x=>`<span class="tag">${esc(theme[x]||x)}</span>`).join('');const ps=(body.paragraphs||[]).map((p,i)=>{const ts=(p.techniqueTagIds||[]).map(x=>`<span class="technique-tag">${esc(tech[x]||x)}</span>`).join('');const c=p.comment?`<details class="comment-box"><summary>顯示段旨點評</summary><div>${esc(p.comment)}</div></details>`:'';return `<div class="paragraph" data-paragraph-index="${i}"><div class="technique-tags">${ts}</div><span class="paragraph-number">${i+1}.</span><span class="paragraph-text">${esc(p.text)}</span><button type="button" class="note-indicator-btn" data-index="${i}" title="查看筆記" hidden><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5C3 4.67 3.67 4 4.5 4h11c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5H8l-3 3v-3H4.5A1.5 1.5 0 0 1 3 12.5v-7z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></button><button type="button" class="highlight-btn" data-index="${i}" aria-haspopup="true" aria-expanded="false" title="標記這段"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 16l1.5-4L13 4.5l2.5 2.5L8 14.5 4 16z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></button><div class="highlight-menu" hidden><button type="button" class="highlight-option" data-color="yellow"><span class="swatch swatch-yellow"></span>好詞好句</button><button type="button" class="highlight-option" data-color="pink"><span class="swatch swatch-pink"></span>修辭手法</button><button type="button" class="highlight-option" data-color="blue"><span class="swatch swatch-blue"></span>立意轉折</button><button type="button" class="highlight-option note-trigger" data-action="note"><svg class="option-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5C3 4.67 3.67 4 4.5 4h11c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5H8l-3 3v-3H4.5A1.5 1.5 0 0 1 3 12.5v-7z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>加註解</button><button type="button" class="highlight-option highlight-clear" data-color="">清除標記</button></div>${c}</div>`}).join('');const an=body.topicAnalysis||{};const refs=Array.isArray(an.referenceAnswerPoints)?an.referenceAnswerPoints:[];content.innerHTML=`<header class="article-header"><h1>篇章 ${String(index.id).padStart(2,'0')}</h1><p class="article-meta-line">${esc(labels[index.genre]||index.genre)}　｜　${esc(first?`${first.year}年 ${first.questionNumber}`:'年份／題號待補')}　｜　約 ${esc(index.wordCount||'')} 字</p>${index.summary?`<p class="article-summary">內容簡介：${esc(index.summary)}</p>`:''}<p class="article-meta-line">${esc(q||'題目待補')}</p><div class="article-tags">${tags}</div></header><details class="analysis"><summary>顯示審題分析</summary><div class="analysis-content"><h3>主題字詞解說</h3><p>${esc(an.keywordExplanation||'暫未提供')}</p>${an.imageryDescription?`<h3>圖畫／寓意解說</h3><p>${esc(an.imageryDescription)}</p>`:''}<h3>取材方向與立意建議</h3><p>${esc(an.directionSuggestion||'暫未提供')}</p>${refs.length?`<h3>參考立意要點</h3><ul>${refs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}</div></details><section class="essay" aria-label="範文全文">${ps||'<p>目前尚未有段落內容。</p>'}</section>`}
+function mapNames(a){const m={};(Array.isArray(a)?a:[]).forEach(x=>{if(x?.id)m[x.id]=x.name});return m}function mapQuestions(a){const m={};(Array.isArray(a)?a:[]).forEach(x=>{m[`${x.year}_${x.questionNumber}`]=x.questionFull});return m}
+
+// 舊版範文資料裡的段落，寫作手法用的是 t01～t35 這種代號；
+// 現在 techniques.json 已經改用 tag_xxx 這種語意化的 id，兩邊對不上，
+// 所以查名稱之前，先把舊代號「翻譯」成新代號。
+// 之後如果重新整理範文資料、把 techniqueTagIds 直接改成 tag_xxx，這個對照表就可以整個刪掉。
+const TECHNIQUE_ID_ALIASES = {
+  t01: 'tag_flashback',
+  t02: 'tag_sequence',
+  t03: 'tag_flashback',
+  t04: 'tag_echo',
+  t05: 'tag_scene',
+  t06: 'tag_character',
+  t07: 'tag_scene',
+  t08: 'tag_event_emotion',
+  t09: 'tag_direct_emotion',
+  t10: 'tag_dialogue',
+  t11: 'tag_psychological',
+  t12: 'tag_contrast',
+  t13: 'tag_scene_emotion',
+  t14: 'tag_symbolism',
+  t15: 'tag_question',
+  t16: 'tag_rhetorical_question',
+  t17: 'tag_parallel',
+  t18: 'tag_progression',
+  t19: 'tag_metaphor',
+  t20: 'tag_personification',
+  t21: 'tag_counterargument',
+  t22: 'tag_example',
+  t23: 'tag_quote',
+  t24: 'tag_balanced_argument',
+  t25: 'tag_analogy',
+  t26: 'tag_thesis',
+  t27: 'tag_foreshadowing',
+  t28: 'tag_suspense',
+  t29: 'tag_transition',
+  t30: 'tag_side_description',
+  t31: 'tag_dynamic_static',
+  t32: 'tag_sensory',
+  t33: 'tag_detail',
+  t34: 'tag_small_big',
+  t35: 'tag_question'
+};
+
+function render(index,body,tech,theme,questions){document.title=`篇章 ${index.id}｜DSE 中文科範文自學平台`;back.href=`genre.html?type=${encodeURIComponent(index.genre||'narrative')}`;const first=index.relatedQuestions?.[0],q=first?questions[`${first.year}_${first.questionNumber}`]:'題目待補';const tags=(index.themeConceptIds||[]).map(x=>`<span class="tag">${esc(theme[x]||x)}</span>`).join('');const ps=(body.paragraphs||[]).map((p,i)=>{const ts=(p.techniqueTagIds||[]).map(x=>{const normalizedId=TECHNIQUE_ID_ALIASES[x]||x;const name=tech[normalizedId]||normalizedId;return `<span class="technique-tag">${esc(name)}</span>`;}).join('');const c=p.comment?`<details class="comment-box"><summary>顯示段旨點評</summary><div>${esc(p.comment)}</div></details>`:'';return `<div class="paragraph" data-paragraph-index="${i}"><div class="technique-tags">${ts}</div><span class="paragraph-number">${i+1}.</span><span class="paragraph-text">${esc(p.text)}</span><button type="button" class="note-indicator-btn" data-index="${i}" title="查看筆記" hidden><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5C3 4.67 3.67 4 4.5 4h11c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5H8l-3 3v-3H4.5A1.5 1.5 0 0 1 3 12.5v-7z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></button><button type="button" class="highlight-btn" data-index="${i}" aria-haspopup="true" aria-expanded="false" title="標記這段"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 16l1.5-4L13 4.5l2.5 2.5L8 14.5 4 16z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></button><div class="highlight-menu" hidden><button type="button" class="highlight-option" data-color="yellow"><span class="swatch swatch-yellow"></span>好詞好句</button><button type="button" class="highlight-option" data-color="pink"><span class="swatch swatch-pink"></span>修辭手法</button><button type="button" class="highlight-option" data-color="blue"><span class="swatch swatch-blue"></span>立意轉折</button><button type="button" class="highlight-option note-trigger" data-action="note"><svg class="option-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5C3 4.67 3.67 4 4.5 4h11c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5H8l-3 3v-3H4.5A1.5 1.5 0 0 1 3 12.5v-7z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>加註解</button><button type="button" class="highlight-option highlight-clear" data-color="">清除標記</button></div>${c}</div>`}).join('');const an=body.topicAnalysis||{};const refs=Array.isArray(an.referenceAnswerPoints)?an.referenceAnswerPoints:[];content.innerHTML=`<header class="article-header"><h1>篇章 ${String(index.id).padStart(2,'0')}</h1><p class="article-meta-line">${esc(labels[index.genre]||index.genre)}　｜　${esc(first?`${first.year}年 ${first.questionNumber}`:'年份／題號待補')}　｜　約 ${esc(index.wordCount||'')} 字</p>${index.summary?`<p class="article-summary">內容簡介：${esc(index.summary)}</p>`:''}<p class="article-meta-line">${esc(q||'題目待補')}</p><div class="article-tags">${tags}</div></header><details class="analysis"><summary>顯示審題分析</summary><div class="analysis-content"><h3>主題字詞解說</h3><p>${esc(an.keywordExplanation||'暫未提供')}</p>${an.imageryDescription?`<h3>圖畫／寓意解說</h3><p>${esc(an.imageryDescription)}</p>`:''}<h3>取材方向與立意建議</h3><p>${esc(an.directionSuggestion||'暫未提供')}</p>${refs.length?`<h3>參考立意要點</h3><ul>${refs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}</div></details><section class="essay" aria-label="範文全文">${ps||'<p>目前尚未有段落內容。</p>'}</section>`}
 (async()=>{try{if(!id)throw Error('網址缺少文章 id，例如 article.html?id=1');const [ir,ar,tr,thr,qr]=await Promise.all([fetch('data/articles.json',{cache:'no-store'}),fetch(`data/articles/article_${String(id).padStart(2,'0')}.json`,{cache:'no-store'}),fetch('data/techniques.json',{cache:'no-store'}),fetch('data/themes.json',{cache:'no-store'}),fetch('data/questions.json',{cache:'no-store'})]);if(!ir.ok)throw Error(`找不到 data/articles.json（HTTP ${ir.status}）`);if(!ar.ok)throw Error(`找不到文章內容檔 data/articles/article_${String(id).padStart(2,'0')}.json（HTTP ${ar.status}）`);const indexes=await ir.json();if(!Array.isArray(indexes))throw Error('data/articles.json 必須是索引陣列');const index=indexes.find(x=>String(x.id)===String(id));if(!index)throw Error(`索引中找不到篇章 ${id}`);const body=await ar.json();render(index,body,mapNames(tr.ok?await tr.json():[]),mapNames(thr.ok?await thr.json():[]),mapQuestions(qr.ok?await qr.json():[]));wireHighlightInteractions(id);wireCommentInteractions(id);restoreHighlights(id);restoreComments(id)}catch(e){content.innerHTML=`<p class="error">載入文章時發生錯誤：${esc(e.message)}</p><p><a href="index.html">返回首頁</a></p>`;console.error(e)}})();
 </script>
 
