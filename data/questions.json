@@ -358,14 +358,6 @@
   {
     "year": "2025",
     "subject": "中文",
-    "questionNumber": "甲部",
-    "title": "「『寵』愛有家」計劃演講辭",
-    "genre": "practical",
-    "questionFull": "以香城中學義工服務團學生代表常天倫的名義，就南區義工服務團「『寵』愛有家」計劃撰寫一篇演講辭，於學校早會說明計劃意義，並呼籲同學支持計劃（全文不多於550字）。"
-  },
-  {
-    "year": "2025",
-    "subject": "中文",
     "questionNumber": "Q1",
     "title": "藏在泥土中的寶物",
     "genre": "narrative",
@@ -387,15 +379,7 @@
     "genre": "argumentative",
     "questionFull": "有容：「行事要量力而為，否則沒有好結果。」修端：「要踏出舒適圈，才可以突破能力的界限。」試寫作文章一篇，談談你對以上觀點的看法。"
   },
-  {
-    "year": "2024",
-    "subject": "中文",
-    "questionNumber": "甲部",
-    "title": "「潔淨環境 花香四溢」美化校園計劃書信",
-    "genre": "practical",
-    "questionFull": "以香城中學美化校園小組學生代表何英秀的名義，就「潔淨環境 花香四溢」美化校園計劃，在《校園通訊》刊登一封書信，說明計劃如何有助學生成長，並鼓勵同學支持計劃（全文不多於550字）。"
-  },
-  {
+   {
     "year": "2024",
     "subject": "中文",
     "questionNumber": "Q1",
@@ -408,7 +392,7 @@
     "subject": "中文",
     "questionNumber": "Q2",
     "title": "無愧的選擇",
-    "genre": "narrative",
+    "genre": "topic",
     "questionFull": "人生總有大大小小的選擇，無論選擇的結果如何，只要選擇時問心無愧，便已足夠。試以「無愧的選擇」為題，寫作文章一篇。"
   },
   {
