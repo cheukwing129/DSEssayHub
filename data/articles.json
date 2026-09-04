@@ -942,5 +942,77 @@
   "wordCount": 1330,
   "themeConceptIds": ["th01", "th03", "th07"],
   "summary": "文章寫主角因工作繁重及對母親的嘮叨感到煩躁，一直忽略生活中的細膻美好。透過同事的提醒、與同事夜行時抬頭賞月的經歷，以及回家後母親悉心準備的晚餐，主角逐漸領悟到母愛、自然景致等看似「無用」的事物，其實才是生活中最值得珍惜的美好。"
+},
+  {
+  "id": 72,
+  "file": "data/articles/article_72.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2024",
+      "subject": "中文",
+      "questionNumber": "Q1",
+      "title": "我最想尋回的一件玩具"
+    }
+  ],
+  "wordCount": 1050,
+  "themeConceptIds": ["th01", "th07", "th09"],
+  "summary": "文章以「芭比」玩偶為線索，回憶主角童年時因父母外出打工而由外公外婆照顧，「芭比」既是她對父母思念的寄託，也陪伴她度過與鄰居英秀的友誼歲月。後來主角因移居香港而任性將玩偶留在老家，失去玩偶亦象徵失去童年；文末主角領悟到執念應該放下，並以感激取代遺憾，完成對過去的釋懷。"
+},
+{
+  "id": 73,
+  "file": "data/articles/article_73.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "argumentative",
+  "relatedQuestions": [
+    {
+      "year": "2024",
+      "subject": "中文",
+      "questionNumber": "Q2",
+      "title": "無愧的選擇"
+    }
+  ],
+  "wordCount": 1180,
+  "themeConceptIds": ["th03", "th04", "th06"],
+  "summary": "文章論證無愧的選擇能令人心安理得，也更容易邁向成功，並以梁領彥、諸葛亮、李安等例子說明不介懷結果、忠於己心的選擇的價值；同時提出重要前提，即無愧的選擇必須合乎道義，並以麻原彰晃、孫安佐及世越號船長等反例警示無愧不能凌駕是非，最後總結唯有在合義前提下三思而後行，才能作出真正無愧的選擇。"
+},
+{
+  "id": 74,
+  "file": "data/articles/article_74.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "argumentative",
+  "relatedQuestions": [
+    {
+      "year": "2024",
+      "subject": "中文",
+      "questionNumber": "Q3",
+      "title": "遵守諾言與放棄諾言"
+    }
+  ],
+  "wordCount": 1250,
+  "themeConceptIds": ["th03", "th04", "th06"],
+  "summary": "文章先肯定遵守諾言是誠信的表現，以關羽義釋曹操及馬雲信守承諾為例加以論證；再指出放棄諾言在一般情況下屬不負責任，以呂布背信棄義為反例；然後提出關乎社稷百姓時放棄諾言可視為負責任，以劉邦背棄與項羽之約為例；並以劉備一意伐吳作反例，說明一味守諾亦可能禍及天下，最終總結應視乎諾言涉及的對象和後果，靈活判斷遵守或放棄諾言是否負責任。"
+},
+{
+  "id": 75,
+  "file": "data/articles/article_75.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2024",
+      "subject": "中文",
+      "questionNumber": "Q1",
+      "title": "我最想尋回的一件玩具"
+    }
+  ],
+  "wordCount": 780,
+  "themeConceptIds": ["th01", "th07", "th09"],
+  "summary": "文章以父親親手削製的竹蜻蜓為線索，回憶主角出身農村的樸實童年，及後升學離鄉時竹蜻蜓不慎遺失，多年來在繁華都市生活的主角漸漸淡忘故鄉與父母。直到偶遇蜻蜓觸動記憶，主角返家尋回竹蜻蜓，領悟自己不應忘本，家鄉與親情才是真正的歸屬。"
 }
   ]
