@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寫作技巧｜DSE 中文科範文自學平台</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .techniques-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
+
+    .techniques-head { max-width: 640px; margin-bottom: 28px; }
+    .techniques-head h1 { font-size: 2rem; margin-bottom: 10px; }
+    .techniques-head p { color: var(--color-ink-soft, #5c6b5f); line-height: 1.8; }
+
+    /* 分類篩選：用按鈕做成類似分頁籤的樣式，選中的那顆會變成實心 */
+    .category-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .category-btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--color-border, #ddd6c4);
+      background: #fff;
+      color: var(--color-ink-soft, #5c6b5f);
+      font: inherit;
+      font-size: .85rem;
+      cursor: pointer;
+      transition: background .15s ease, color .15s ease, border-color .15s ease;
+    }
+    .category-btn:hover { border-color: var(--color-primary, #1f3a5f); }
+    .category-btn.is-active {
+      background: var(--color-primary, #1f3a5f);
+      border-color: var(--color-primary, #1f3a5f);
+      color: #fff;
+    }
+
+    .technique-count-note { font-size: .82rem; color: var(--color-ink-faint, #8b988e); margin-bottom: 20px; }
+
+    .technique-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .technique-card {
+      background: var(--color-surface, #fff);
+      border: 1px solid var(--color-border, #ddd6c4);
+      border-left-width: 4px;
+      border-radius: var(--radius-md, 10px);
+      padding: 18px 20px;
+    }
+
+    .technique-card.cat-narrative { border-left-color: var(--color-narrative, #1f3a5f); }
+    .technique-card.cat-rhetoric { border-left-color: var(--color-jade, #2f4a3c); }
+    .technique-card.cat-structure { border-left-color: var(--color-descriptive, #6b5a3f); }
+
+    .technique-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .technique-name { font-family: var(--font-serif, serif); font-weight: 700; font-size: 1.02rem; color: var(--color-ink, #23322b); }
+
+    .technique-category-tag { font-size: .7rem; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+    .cat-narrative .technique-category-tag { background: var(--color-primary-soft, #e7edf3); color: var(--color-narrative, #1f3a5f); }
+    .cat-rhetoric .technique-category-tag { background: #e5ece8; color: var(--color-jade, #2f4a3c); }
+    .cat-structure .technique-category-tag { background: #f1ece2; color: var(--color-descriptive, #6b5a3f); }
+
+    .technique-description { font-size: .88rem; color: var(--color-ink-soft, #5c6b5f); line-height: 1.75; }
+
+    .status-text { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); }
+    .error-box { margin-top: 16px; padding: 14px 16px; border-left: 4px solid #a33; border-radius: 4px; color: #712; background: #fff3f3; line-height: 1.65; }
+
+    @media (max-width: 720px) {
+      .techniques-page { padding-top: calc(var(--header-height, 72px) + 30px); }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">範文自學</span>
+      <span class="logo-sub">DSE 中文寫作</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="main-nav" id="mainNav">
+      <nav class="nav-links" aria-label="主導航">
+        <a href="genre-list.html">文體分類</a>
+        <a href="questions.html">歷屆試題</a>
+        <a href="techniques.html" aria-current="page">寫作技巧</a>
+        <a href="notes.html">我的筆記</a>
+      </nav>
+      <form class="nav-search" role="search" action="search.html" method="get">
+        <input type="search" name="q" placeholder="搜尋篇章、題目或年份…" aria-label="搜尋範文">
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="techniques-page">
+  <div class="container">
+
+    <div class="techniques-head">
+      <h1>寫作技巧</h1>
+      <p>收錄記敘抒情文、論說文、描寫文常見的寫作手法，分成敘事技巧、修辭手法、結構手法三類。閱讀範文時看到段落旁的標籤，可以回來這裡查是什麼意思；寫作文時也可以先看看有哪些手法能用得上。</p>
+    </div>
+
+    <div class="category-filter" id="categoryFilter">
+      <button type="button" class="category-btn is-active" data-category="">全部</button>
+      <button type="button" class="category-btn" data-category="敘事技巧">敘事技巧</button>
+      <button type="button" class="category-btn" data-category="修辭手法">修辭手法</button>
+      <button type="button" class="category-btn" data-category="結構手法">結構手法</button>
+    </div>
+
+    <p class="technique-count-note" id="countNote" hidden></p>
+
+    <div class="technique-grid" id="techniqueGrid">
+      <p class="status-text" id="techniqueStatus">技巧資料載入中…</p>
+    </div>
+
+    <div id="errorBox"></div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>DSE 中文科範文自學平台</p>
+  </div>
+</footer>
+
+<script>
+  // 手機版導航選單開關
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', () => {
+      const open = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!open));
+      mainNav.classList.toggle('is-open', !open);
+    });
+  }
+
+  const gridEl = document.getElementById('techniqueGrid');
+  const countNoteEl = document.getElementById('countNote');
+  const errorBoxEl = document.getElementById('errorBox');
+  const categoryFilterEl = document.getElementById('categoryFilter');
+
+  let allTechniques = [];
+  let currentCategory = '';
+
+  const esc = v => String(v ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+  // 分類名稱轉成 CSS class 用的英文代號，決定卡片左邊那條顏色線用哪個顏色
+  const CATEGORY_CLASS = {
+    '敘事技巧': 'cat-narrative',
+    '修辭手法': 'cat-rhetoric',
+    '結構手法': 'cat-structure'
+  };
+
+  function buildTechniqueCardHtml(technique) {
+    const categoryClass = CATEGORY_CLASS[technique.category] || 'cat-structure';
+    return `
+      <div class="technique-card ${categoryClass}">
+        <div class="technique-card-head">
+          <span class="technique-name">${esc(technique.name)}</span>
+          <span class="technique-category-tag">${esc(technique.category)}</span>
+        </div>
+        <p class="technique-description">${esc(technique.description || '')}</p>
+      </div>
+    `;
+  }
+
+  function render() {
+    const filtered = currentCategory
+      ? allTechniques.filter(t => t.category === currentCategory)
+      : allTechniques;
+
+    countNoteEl.hidden = false;
+    countNoteEl.textContent = `共 ${filtered.length} 個寫作手法`;
+
+    gridEl.innerHTML = filtered.length
+      ? filtered.map(buildTechniqueCardHtml).join('')
+      : '<p class="status-text">這個分類目前沒有資料。</p>';
+  }
+
+  categoryFilterEl.addEventListener('click', (event) => {
+    const btn = event.target.closest('.category-btn');
+    if (!btn) return;
+
+    categoryFilterEl.querySelectorAll('.category-btn').forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+
+    currentCategory = btn.dataset.category;
+    render();
+  });
+
+  (async () => {
+    try {
+      const res = await fetch('data/techniques.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`data/techniques.json HTTP ${res.status}`);
+
+      const techniques = await res.json();
+      if (!Array.isArray(techniques)) throw new Error('data/techniques.json 必須是陣列');
+
+      allTechniques = techniques;
+      render();
+
+    } catch (error) {
+      console.error(error);
+      countNoteEl.hidden = true;
+      gridEl.innerHTML = '<p class="status-text">技巧資料載入失敗。</p>';
+      errorBoxEl.innerHTML = `<div class="error-box"><strong>資料載入失敗</strong><br>${esc(error.message)}<br>請確認資料檔案已上傳，而且網站是透過伺服器開啟。</div>`;
+    }
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的筆記｜DSE 中文科範文自學平台</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .notes-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
+
+    .notes-head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
+    .notes-head-text { max-width: 640px; }
+    .notes-head h1 { font-size: 2rem; margin-bottom: 10px; }
+    .notes-head p { color: var(--color-ink-soft, #5c6b5f); line-height: 1.8; }
+
+    .notes-device-hint {
+      font-size: .8rem;
+      color: var(--color-ink-faint, #8b988e);
+      background: var(--color-bg-alt, #eef0e8);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 16px 0 28px;
+      line-height: 1.7;
+    }
+
+    .btn-clear-all {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--color-border, #ddd6c4);
+      color: var(--color-ink-soft, #5c6b5f);
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: .85rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-clear-all:hover { border-color: #a24b4b; color: #a24b4b; }
+
+    .notes-summary { font-size: .85rem; color: var(--color-ink-faint, #8b988e); margin-bottom: 28px; }
+
+    .note-article-group {
+      margin-bottom: 28px;
+      background: var(--color-surface, #fff);
+      border: 1px solid var(--color-border, #ddd6c4);
+      border-radius: var(--radius-md, 10px);
+      padding: 20px 22px;
+    }
+
+    .note-article-head {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .note-article-title { font-size: 1rem; color: var(--color-ink, #23322b); line-height: 1.6; margin: 8px 0 14px; }
+    .note-article-link { font-size: .82rem; color: var(--color-primary, #1f3a5f); margin-left: auto; }
+
+    .note-subsection { margin-top: 16px; }
+    .note-subsection:first-of-type { margin-top: 0; }
+    .note-subsection h3 {
+      font-size: .82rem;
+      color: var(--color-ink-faint, #8b988e);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .note-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background: var(--color-bg-alt, #eef0e8);
+    }
+    .note-item:last-child { margin-bottom: 0; }
+
+    .note-item-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .dot-yellow { background: #f0cf5a; }
+    .dot-pink { background: #e79bb2; }
+    .dot-blue { background: #7fa8d9; }
+    .dot-comment { background: var(--color-primary, #1f3a5f); }
+
+    .note-item-body { flex: 1; min-width: 0; }
+    .note-item-label { font-size: .74rem; color: var(--color-ink-faint, #8b988e); margin-bottom: 4px; }
+    .note-item-text { font-size: .9rem; color: var(--color-ink, #23322b); line-height: 1.7; }
+    .note-item-content {
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px dashed var(--color-border, #ddd6c4);
+      font-size: .88rem;
+      color: var(--color-ink-soft, #5c6b5f);
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .note-item-delete {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      color: var(--color-ink-faint, #8b988e);
+      font-size: .78rem;
+      cursor: pointer;
+      padding: 4px 6px;
+      white-space: nowrap;
+    }
+    .note-item-delete:hover { color: #a24b4b; }
+
+    .status-text { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); line-height: 1.8; }
+    .empty-state { text-align: center; padding: 60px 20px; }
+    .empty-state p { color: var(--color-ink-soft, #5c6b5f); margin-bottom: 18px; }
+
+    @media (max-width: 720px) {
+      .notes-page { padding-top: calc(var(--header-height, 72px) + 30px); }
+      .notes-head { flex-direction: column; }
+      .note-article-link { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">範文自學</span>
+      <span class="logo-sub">DSE 中文寫作</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="main-nav" id="mainNav">
+      <nav class="nav-links" aria-label="主導航">
+        <a href="genre-list.html">文體分類</a>
+        <a href="questions.html">歷屆試題</a>
+        <a href="techniques.html">寫作技巧</a>
+        <a href="notes.html" aria-current="page">我的筆記</a>
+      </nav>
+      <form class="nav-search" role="search" action="search.html" method="get">
+        <input type="search" name="q" placeholder="搜尋篇章、題目或年份…" aria-label="搜尋範文">
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="notes-page">
+  <div class="container">
+
+    <div class="notes-head">
+      <div class="notes-head-text">
+        <h1>我的筆記</h1>
+        <p>這裡整理你在各篇範文裡標記的好詞好句、修辭手法、立意轉折點，以及寫下的段落註解。</p>
+      </div>
+      <button type="button" class="btn-clear-all" id="clearAllBtn" hidden>清除全部筆記</button>
+    </div>
+
+    <p class="notes-device-hint">筆記目前只存在這台瀏覽器裡（尚未同步到雲端），換裝置或清除瀏覽器資料會遺失，記得重要內容要另外備份。</p>
+
+    <p class="notes-summary" id="notesSummary" hidden></p>
+
+    <div id="notesContent">
+      <p class="status-text" id="notesStatus">筆記載入中…</p>
+    </div>
+
+    <div id="errorBox"></div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>DSE 中文科範文自學平台</p>
+  </div>
+</footer>
+
+<script>
+  // 手機版導航選單開關
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', () => {
+      const open = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!open));
+      mainNav.classList.toggle('is-open', !open);
+    });
+  }
+
+  const NOTES_STORAGE_KEY = 'dse_notes'; // 跟 article.html 用同一把 key，讀寫的是同一份資料
+
+  const contentEl = document.getElementById('notesContent');
+  const summaryEl = document.getElementById('notesSummary');
+  const errorBoxEl = document.getElementById('errorBox');
+  const clearAllBtn = document.getElementById('clearAllBtn');
+
+  const GENRE_LABELS = {
+    narrative: '記敘抒情文',
+    argumentative: '論說文',
+    descriptive: '描寫文',
+    topic: '話題式／開放式',
+    practical: '實用寫作'
+  };
+
+  // 高亮顏色代號轉成畫面上顯示的中文標籤，跟 article.html 選單裡的文字一致
+  const HIGHLIGHT_LABELS = {
+    yellow: '好詞好句',
+    pink: '修辭手法',
+    blue: '立意轉折'
+  };
+
+  const esc = v => String(v ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+  /** 讀出全部筆記，跟 article.html 的 getAllNotes() 邏輯一致。 */
+  function getAllNotes() {
+    try {
+      const raw = localStorage.getItem(NOTES_STORAGE_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (err) {
+      console.error('讀取筆記資料失敗，可能是 LocalStorage 內容格式損毀：', err);
+      return [];
+    }
+  }
+
+  function saveAllNotes(notes) {
+    try {
+      localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notes));
+    } catch (err) {
+      console.error('儲存筆記資料失敗：', err);
+      alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
+    }
+  }
+
+  /** 把某一筆高亮從資料裡移除。 */
+  function deleteHighlight(articleId, paragraphIndex) {
+    const notes = getAllNotes().filter(n =>
+      !(n.type === 'highlight' &&
+        String(n.articleId) === String(articleId) &&
+        n.paragraphIndex === paragraphIndex)
+    );
+    saveAllNotes(notes);
+  }
+
+  /** 把某一筆註解從資料裡移除。 */
+  function deleteComment(articleId, paragraphIndex) {
+    const notes = getAllNotes().filter(n =>
+      !(n.type === 'comment' &&
+        String(n.articleId) === String(articleId) &&
+        n.paragraphIndex === paragraphIndex)
+    );
+    saveAllNotes(notes);
+  }
+
+  /** 把所有筆記依 articleId 分組，並算出每篇文章「最後更新時間」（組內最新的 timestamp）。 */
+  function groupNotesByArticle(notes) {
+    const groups = {};
+
+    notes.forEach(note => {
+      const key = String(note.articleId);
+      if (!groups[key]) {
+        groups[key] = { articleId: key, highlights: [], comments: [], lastTimestamp: 0 };
+      }
+
+      if (note.type === 'highlight') groups[key].highlights.push(note);
+      if (note.type === 'comment') groups[key].comments.push(note);
+
+      groups[key].lastTimestamp = Math.max(groups[key].lastTimestamp, note.timestamp || 0);
+    });
+
+    Object.values(groups).forEach(group => {
+      group.highlights.sort((a, b) => a.paragraphIndex - b.paragraphIndex);
+      group.comments.sort((a, b) => a.paragraphIndex - b.paragraphIndex);
+    });
+
+    // 最近有更新筆記的文章排前面
+    return Object.values(groups).sort((a, b) => b.lastTimestamp - a.lastTimestamp);
+  }
+
+  function buildArticleTitle(articleMeta, questionFullByKey) {
+    if (!articleMeta) return '';
+    const firstQuestion = (articleMeta.relatedQuestions || [])[0];
+    if (!firstQuestion) return '';
+    return questionFullByKey[`${firstQuestion.year}_${firstQuestion.questionNumber}`] || '';
+  }
+
+  function buildHighlightItemHtml(note) {
+    const dotClass = `dot-${note.color}`;
+    const label = HIGHLIGHT_LABELS[note.color] || note.color;
+    return `
+      <div class="note-item" data-type="highlight" data-article-id="${esc(note.articleId)}" data-paragraph-index="${note.paragraphIndex}">
+        <span class="note-item-dot ${dotClass}"></span>
+        <div class="note-item-body">
+          <p class="note-item-label">第 ${note.paragraphIndex + 1} 段・${esc(label)}</p>
+          <p class="note-item-text">${esc(note.text || '')}</p>
+        </div>
+        <button type="button" class="note-item-delete" data-action="delete-highlight">移除</button>
+      </div>
+    `;
+  }
+
+  function buildCommentItemHtml(note) {
+    return `
+      <div class="note-item" data-type="comment" data-article-id="${esc(note.articleId)}" data-paragraph-index="${note.paragraphIndex}">
+        <span class="note-item-dot dot-comment"></span>
+        <div class="note-item-body">
+          <p class="note-item-label">第 ${note.paragraphIndex + 1} 段</p>
+          <p class="note-item-text">${esc(note.text || '')}</p>
+          <p class="note-item-content">${esc(note.noteContent || '')}</p>
+        </div>
+        <button type="button" class="note-item-delete" data-action="delete-comment">刪除</button>
+      </div>
+    `;
+  }
+
+  function buildArticleGroupHtml(group, articleById, questionFullByKey) {
+    const articleMeta = articleById[group.articleId];
+    const paddedId = String(group.articleId).padStart(2, '0');
+    const genreLabel = articleMeta ? (GENRE_LABELS[articleMeta.genre] || articleMeta.genre) : '';
+    const title = buildArticleTitle(articleMeta, questionFullByKey);
+
+    const highlightsHtml = group.highlights.length
+      ? `<div class="note-subsection"><h3>高亮段落（${group.highlights.length}）</h3>${group.highlights.map(buildHighlightItemHtml).join('')}</div>`
+      : '';
+
+    const commentsHtml = group.comments.length
+      ? `<div class="note-subsection"><h3>段落註解（${group.comments.length}）</h3>${group.comments.map(buildCommentItemHtml).join('')}</div>`
+      : '';
+
+    return `
+      <section class="note-article-group">
+        <div class="note-article-head">
+          <span class="article-id">篇章 ${esc(paddedId)}</span>
+          ${genreLabel ? `<span class="article-genre-tag">${esc(genreLabel)}</span>` : ''}
+          <a class="note-article-link" href="article.html?id=${encodeURIComponent(group.articleId)}">前往範文 →</a>
+        </div>
+        ${title ? `<p class="note-article-title">${esc(title)}</p>` : ''}
+        ${highlightsHtml}
+        ${commentsHtml}
+      </section>
+    `;
+  }
+
+  function renderEmptyState() {
+    contentEl.innerHTML = `
+      <div class="empty-state">
+        <p>目前還沒有任何筆記。打開一篇範文，試試幫段落標色或加註解，內容會自動出現在這裡。</p>
+        <a class="btn btn-primary" href="genre-list.html">去瀏覽範文</a>
+      </div>
+    `;
+  }
+
+  function render(articleById, questionFullByKey) {
+    const notes = getAllNotes();
+
+    if (notes.length === 0) {
+      summaryEl.hidden = true;
+      clearAllBtn.hidden = true;
+      renderEmptyState();
+      return;
+    }
+
+    const groups = groupNotesByArticle(notes);
+    const highlightCount = notes.filter(n => n.type === 'highlight').length;
+    const commentCount = notes.filter(n => n.type === 'comment').length;
+
+    summaryEl.hidden = false;
+    summaryEl.textContent = `共 ${groups.length} 篇文章有筆記・高亮 ${highlightCount} 段・註解 ${commentCount} 則`;
+    clearAllBtn.hidden = false;
+
+    contentEl.innerHTML = groups.map(g => buildArticleGroupHtml(g, articleById, questionFullByKey)).join('');
+  }
+
+  function wireContentInteractions(articleById, questionFullByKey) {
+    contentEl.addEventListener('click', (event) => {
+      const btn = event.target.closest('.note-item-delete');
+      if (!btn) return;
+
+      const itemEl = btn.closest('.note-item');
+      const articleId = itemEl.dataset.articleId;
+      const paragraphIndex = Number(itemEl.dataset.paragraphIndex);
+      const action = btn.dataset.action;
+
+      if (action === 'delete-highlight') {
+        deleteHighlight(articleId, paragraphIndex);
+      } else if (action === 'delete-comment') {
+        deleteComment(articleId, paragraphIndex);
+      }
+
+      // 刪除後重新整理整個列表，比只移除單一 DOM 節點更保險
+      // （不然「共 X 篇文章有筆記」這類統計數字會跟畫面兜不起來）
+      render(articleById, questionFullByKey);
+    });
+
+    clearAllBtn.addEventListener('click', () => {
+      const confirmed = confirm('確定要清除全部筆記嗎？這個動作沒辦法復原。');
+      if (!confirmed) return;
+
+      saveAllNotes([]);
+      render(articleById, questionFullByKey);
+    });
+  }
+
+  (async () => {
+    try {
+      const [ar, qr] = await Promise.all([
+        fetch('data/articles.json', { cache: 'no-store' }),
+        fetch('data/questions.json', { cache: 'no-store' })
+      ]);
+
+      if (!ar.ok) throw new Error(`data/articles.json HTTP ${ar.status}`);
+      if (!qr.ok) throw new Error(`data/questions.json HTTP ${qr.status}`);
+
+      const articles = await ar.json();
+      const questions = await qr.json();
+
+      if (!Array.isArray(articles)) throw new Error('data/articles.json 必須是陣列');
+      if (!Array.isArray(questions)) throw new Error('data/questions.json 必須是陣列');
+
+      const articleById = {};
+      articles.forEach(a => { articleById[String(a.id)] = a; });
+
+      const questionFullByKey = {};
+      questions.forEach(q => { questionFullByKey[`${q.year}_${q.questionNumber}`] = q.questionFull; });
+
+      wireContentInteractions(articleById, questionFullByKey);
+      render(articleById, questionFullByKey);
+
+    } catch (error) {
+      console.error(error);
+      // 就算文章資料讀取失敗，筆記本身還是存在 LocalStorage 裡，
+      // 所以這裡退而求其次：article/question 資料查不到時，就不顯示文體與題目，只顯示篇章編號跟筆記內容
+      wireContentInteractions({}, {});
+      render({}, {});
+      errorBoxEl.innerHTML = `<div class="error-box"><strong>提醒：</strong>文章資訊（文體、題目）載入失敗，以下筆記僅顯示篇章編號。<br>${esc(error.message)}</div>`;
+    }
+  })();
+</script>
+
+</body>
+</html>
