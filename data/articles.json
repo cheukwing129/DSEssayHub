@@ -798,5 +798,77 @@
     "wordCount": 2477,
     "themeConceptIds": ["th01", "th07", "th12", "th13"],
     "summary": "文章以一幅缺角的陽明山拼圖貫串全文。母親發現兒子因臉上胎記而自卑，遂藉拼圖引導他明白人本來並不完美，缺憾不會抹煞個人價值；最終兒子接納自己，以自信姿態赴約，象徵他尋回內在完整。"
-  }
+  },
+  {
+  "id": 64,
+  "file": "data/articles/article_64.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "topic",
+  "relatedQuestions": [
+    {
+      "year": "2022",
+      "subject": "中文",
+      "questionNumber": "Q2",
+      "title": "得不償失"
+    }
+  ],
+  "wordCount": 1373,
+  "themeConceptIds": ["th01", "th04", "th13"],
+  "summary": "文章以「得不償失」為中心，批評人因貪念、從眾和功名欲望而盲目攫取。作者從自助餐過度取食、青年為求認同放棄興趣，以及職場為求成功而忽略親情和失去正義感等例子，指出人應分辨真正追求，放下執念，避免失去更重要的人生價值。"
+},
+{
+  "id": 65,
+  "file": "data/articles/article_65.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "topic",
+  "relatedQuestions": [
+    {
+      "year": "2022",
+      "subject": "中文",
+      "questionNumber": "Q2",
+      "title": "得不償失"
+    }
+  ],
+  "wordCount": 1013,
+  "themeConceptIds": ["th01", "th04", "th09"],
+  "summary": "文章以一場夜跑經歷為主線，主角把同行陌生人視作競爭對手，一心求勝，最終雖然贏了比賽，卻在對手單純的笑容中察覺自己已失去跑步原有的快樂與初心，明白執著於勝負乃得不償失，並重新尋回運動的本義。"
+},
+{
+  "id": 66,
+  "file": "data/articles/article_66.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "argumentative",
+  "relatedQuestions": [
+    {
+      "year": "2022",
+      "subject": "中文",
+      "questionNumber": "Q3",
+      "title": "專精一事與多元人生"
+    }
+  ],
+  "wordCount": 1250,
+  "themeConceptIds": ["th03", "th04", "th06"],
+  "summary": "文章比較「專精一事」與「多元人生」的價值，先從功利、知識與眼界角度論證多元發展更能適應時代變化、增廣見聞，並以何啟為例說明多元的成就；後段承認專一精神值得學習，但指出社會變化急速，選擇比盲目堅持更重要，最終主張以專一的堅持精神灌注於多元發展之中。"
+},
+{
+  "id": 67,
+  "file": "data/articles/article_67.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2022",
+      "subject": "中文",
+      "questionNumber": "Q1",
+      "title": "校服的自述"
+    }
+  ],
+  "wordCount": 1370,
+  "themeConceptIds": ["th01", "th08", "th09"],
+  "summary": "文章以校服為第一人稱敘事者，回顧主人從中學到成年的成長片段，包括籃球場上的青春熱血、對一心的青澀暗戀、小賣部與朋友分享食物的溫暖時光，最後在主人準備搬家時，校服帶著祝福被放進紙箱，象徵告別青春並勇敢邁向人生下一站。"
+}
   ]
