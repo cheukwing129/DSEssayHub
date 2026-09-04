@@ -1,134 +1,43 @@
 [
-  {
-    "id": "tag_background",
-    "name": "背景交代",
-    "category": "結構手法",
-    "description": "交代人物、時間、地點或事情背景，讓讀者了解文章情境。"
-  },
-  {
-    "id": "tag_thesis",
-    "name": "提出主旨",
-    "category": "結構手法",
-    "description": "在文章開首或段落中提出中心思想或主要論點。"
-  },
-  {
-    "id": "tag_definition",
-    "name": "下定義",
-    "category": "論說手法",
-    "description": "以簡潔明確的方式界定概念的意義和範圍。"
-  },
-  {
-    "id": "tag_dialogue",
-    "name": "對話描寫",
-    "category": "描寫手法",
-    "description": "透過人物對話呈現性格、關係、想法或推動情節。"
-  },
-  {
-    "id": "tag_flashback",
-    "name": "回憶／倒敘",
-    "category": "敘事技巧",
-    "description": "回顧過去經歷，補充背景或深化人物情感。"
-  },
-  {
-    "id": "tag_scene",
-    "name": "場景描寫",
-    "category": "描寫手法",
-    "description": "描寫事件發生的環境和場景，增加畫面感及真實感。"
-  },
-  {
-    "id": "tag_background",
-    "name": "背景交代",
-    "category": "結構手法",
-    "description": "交代人物、時間、地點或事情背景，讓讀者了解文章情境。"
-  },
-  {
-    "id": "tag_example",
-    "name": "舉例",
-    "category": "論說手法",
-    "description": "以具體事例說明或支持文章中的觀點。"
-  },
-  {
-    "id": "tag_concession",
-    "name": "讓步論證",
-    "category": "論說手法",
-    "description": "先承認對方觀點部分合理，再提出補充或反駁。"
-  },
-  {
-    "id": "tag_contrast",
-    "name": "對比",
-    "category": "修辭手法",
-    "description": "把兩種相反或不同的事物並列，突出各自特點。"
-  },
-  {
-    "id": "tag_counterargument",
-    "name": "反駁論點",
-    "category": "論說手法",
-    "description": "提出並反駁相反觀點，以加強自己的立場。"
-  },
-  {
-    "id": "tag_cause_effect",
-    "name": "因果關係",
-    "category": "論說手法",
-    "description": "說明事情的原因、結果及兩者之間的關聯。"
-  },
-  {
-    "id": "tag_quote",
-    "name": "引用",
-    "category": "論說手法",
-    "description": "引用名言、詩句、俗語或人物觀點，增強說服力。"
-  },
-  {
-    "id": "tag_metaphor",
-    "name": "比喻",
-    "category": "修辭手法",
-    "description": "以具體事物比擬抽象概念，使表達更形象。"
-  },
-  {
-    "id": "tag_symbolism",
-    "name": "象徵",
-    "category": "修辭手法",
-    "description": "以具體事物代表抽象概念、情感或人生道理。"
-  },
-  {
-    "id": "tag_personification",
-    "name": "擬人",
-    "category": "修辭手法",
-    "description": "把事物人格化，賦予它人的動作、思想或情感。"
-  },
-  {
-    "id": "tag_parallel",
-    "name": "排比",
-    "category": "修辭手法",
-    "description": "運用結構相近的句子連續排列，增強氣勢和節奏。"
-  },
-  {
-    "id": "tag_rhetorical_question",
-    "name": "反問／設問",
-    "category": "修辭手法",
-    "description": "以問句引發思考或加強語氣，突出文章觀點。"
-  },
-  {
-    "id": "tag_question",
-    "name": "設問",
-    "category": "修辭手法",
-    "description": "先提出問題，再自行回答或引導讀者思考。"
-  },
-  {
-    "id": "tag_ending",
-    "name": "反問結尾",
-    "category": "結構手法",
-    "description": "以反問或疑問句結束文章，留下思考空間和餘韻。"
-  },
-  {
-    "id": "tag_conclusion",
-    "name": "總結／結尾",
-    "category": "結構手法",
-    "description": "總結全文主旨，提出啟示、感悟或呼籲。"
-  },
-  {
-    "id": "tag_ending_open",
-    "name": "開放式結尾",
-    "category": "結構手法",
-    "description": "不把意思完全說盡，讓讀者自行想像或思考。"
-  }
+  {"id":"tag_background","name":"背景交代","category":"結構手法","description":"交代人物、時間、地點或事情背景，讓讀者了解文章情境。"},
+  {"id":"tag_thesis","name":"提出主旨／點題","category":"結構手法","description":"在文章開首或段落中提出中心思想，或明確扣連題目。"},
+  {"id":"tag_definition","name":"下定義","category":"論說手法","description":"以簡潔明確的方式界定概念的意義和範圍。"},
+  {"id":"tag_dialogue","name":"對話描寫","category":"描寫手法","description":"透過人物對話呈現性格、關係、想法或推動情節。"},
+  {"id":"tag_flashback","name":"回憶／倒敘","category":"敘事技巧","description":"回顧過去經歷，補充背景或深化人物情感。"},
+  {"id":"tag_sequence","name":"順敘","category":"敘事技巧","description":"依照時間先後順序敘述事件。"},
+  {"id":"tag_scene","name":"場景描寫","category":"描寫手法","description":"描寫事件發生的環境和場景，增加畫面感及真實感。"},
+  {"id":"tag_character","name":"人物描寫","category":"描寫手法","description":"描寫人物的外貌、動作或神情，以呈現性格與心理。"},
+  {"id":"tag_detail","name":"細節描寫","category":"描寫手法","description":"捕捉細微的動作、表情或物件以增強真實感。"},
+  {"id":"tag_psychological","name":"心理描寫","category":"描寫手法","description":"描寫人物內心的思緒、掙扎與轉變。"},
+  {"id":"tag_side_description","name":"側寫","category":"描寫手法","description":"透過描寫周邊人物或環境，間接呈現主角特點。"},
+  {"id":"tag_dynamic_static","name":"動靜結合","category":"描寫手法","description":"交錯運用動態與靜態描寫，增加畫面感。"},
+  {"id":"tag_sensory","name":"感官描寫","category":"描寫手法","description":"運用視覺、聽覺、觸覺等感官描寫景物或場景。"},
+  {"id":"tag_event_emotion","name":"借事抒情","category":"抒情手法","description":"透過敘述具體事件抒發個人情感。"},
+  {"id":"tag_direct_emotion","name":"直接抒情","category":"抒情手法","description":"直接表達內心感受，不假借事物襯托。"},
+  {"id":"tag_contrast","name":"對比襯托","category":"修辭手法","description":"把兩種相反或不同的事物並列，突出各自特點。"},
+  {"id":"tag_scene_emotion","name":"以景寓情","category":"修辭手法","description":"透過描寫景物寄寓個人情感或哲理。"},
+  {"id":"tag_symbolism","name":"象徵手法","category":"修辭手法","description":"以具體事物代表抽象概念、情感或人生道理。"},
+  {"id":"tag_question","name":"設問／自問自答","category":"修辭手法","description":"先提出問題，再自行回答或引導讀者思考。"},
+  {"id":"tag_rhetorical_question","name":"反問","category":"修辭手法","description":"以問句表達確定意思，加強語氣或引發思考。"},
+  {"id":"tag_parallel","name":"排比","category":"修辭手法","description":"運用結構相近的句子連續排列，增強氣勢和節奏。"},
+  {"id":"tag_progression","name":"層遞","category":"修辭手法","description":"依程度深淺、範圍大小等順序排列句子或論點。"},
+  {"id":"tag_metaphor","name":"比喻","category":"修辭手法","description":"以具體事物比擬抽象概念，使表達更形象。"},
+  {"id":"tag_personification","name":"擬人","category":"修辭手法","description":"把事物人格化，賦予它人的動作、思想或情感。"},
+  {"id":"tag_repetition","name":"反覆","category":"修辭手法","description":"重複使用字詞、句式或意象，強化語氣和主題。"},
+  {"id":"tag_counterargument","name":"反駁論點／駁論法","category":"論說手法","description":"提出並反駁相反觀點，以加強自己的立場。"},
+  {"id":"tag_example","name":"舉例／舉例論證","category":"論說手法","description":"以具體事例說明或支持文章中的觀點。"},
+  {"id":"tag_quote","name":"引用／引用論證","category":"論說手法","description":"引用名言、詩句、俗語或人物觀點，增強說服力。"},
+  {"id":"tag_balanced_argument","name":"正反論證","category":"論說手法","description":"從正面與反面角度分析論點，使論述更全面。"},
+  {"id":"tag_analogy","name":"類比論證","category":"論說手法","description":"以相似事物類比說明論點。"},
+  {"id":"tag_small_big","name":"以小見大","category":"論說手法","description":"從小事件或細節引申出較大的道理或社會現象。"},
+  {"id":"tag_concession","name":"讓步論證","category":"論說手法","description":"先承認對方觀點部分合理，再提出補充或反駁。"},
+  {"id":"tag_cause_effect","name":"因果關係","category":"論說手法","description":"說明事情的原因、結果及兩者之間的關聯。"},
+  {"id":"tag_echo","name":"首尾呼應","category":"結構手法","description":"文章開首與結尾使用相同或相關的意象、句子，使結構完整。"},
+  {"id":"tag_foreshadowing","name":"伏筆","category":"結構手法","description":"提前埋下線索，為後文情節發展做準備。"},
+  {"id":"tag_suspense","name":"懸念","category":"結構手法","description":"製造疑問或緊張感，引發讀者好奇追讀。"},
+  {"id":"tag_transition","name":"轉折","category":"結構手法","description":"文章情節或情感在關鍵處出現轉變。"},
+  {"id":"tag_ending","name":"反問結尾","category":"結構手法","description":"以反問或疑問句結束文章，留下思考空間和餘韻。"},
+  {"id":"tag_conclusion","name":"總結／結尾","category":"結構手法","description":"總結全文主旨，提出啟示、感悟或呼籲。"},
+  {"id":"tag_ending_open","name":"開放式結尾","category":"結構手法","description":"不把意思完全說盡，讓讀者自行想像或思考。"},
+  {"id":"tag_climax","name":"高潮","category":"結構手法","description":"情節或情感發展至最緊張、最關鍵的部分。"}
 ]
