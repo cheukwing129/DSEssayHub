@@ -870,5 +870,77 @@
   "wordCount": 1370,
   "themeConceptIds": ["th01", "th08", "th09"],
   "summary": "文章以校服為第一人稱敘事者，回顧主人從中學到成年的成長片段，包括籃球場上的青春熱血、對一心的青澀暗戀、小賣部與朋友分享食物的溫暖時光，最後在主人準備搬家時，校服帶著祝福被放進紙箱，象徵告別青春並勇敢邁向人生下一站。"
+},
+  {
+  "id": 68,
+  "file": "data/articles/article_68.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2023",
+      "subject": "中文",
+      "questionNumber": "Q1",
+      "title": "一次令我百感交集的聚餐"
+    }
+  ],
+  "wordCount": 950,
+  "themeConceptIds": ["th01", "th07", "th09"],
+  "summary": "文章以老字號糖水舖結業前的最後一場聚餐為背景，敘述老闆娘與街坊、顧客共聚一堂，回顧與亡夫共同經營的歲月，並透過與陳伯、英秀等人的交談，呈現數十年人情與歲月變遷，最終在店舖熄燈、街道落葉的畫面中，抒發對聚散無常和店舖結業的複雜感受。"
+},
+{
+  "id": 69,
+  "file": "data/articles/article_69.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "topic",
+  "relatedQuestions": [
+    {
+      "year": "2023",
+      "subject": "中文",
+      "questionNumber": "Q2",
+      "title": "原來我們忽略了不少日常生活中的美好"
+    }
+  ],
+  "wordCount": 1050,
+  "themeConceptIds": ["th01", "th03", "th07"],
+  "summary": "文章寫主角長期被繁重工作壓垮，因心力交瘁被上司強令放假，途經公園時本欲匆匆離去，卻在觀察螞蟻、老人打太極、孩童嬉戲及品嚐小販烤蕃薯的過程中，逐漸放慢步伐，重新感受到日常生活中一直被忽略的美好與人情溫暖。"
+},
+{
+  "id": 70,
+  "file": "data/articles/article_70.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "argumentative",
+  "relatedQuestions": [
+    {
+      "year": "2023",
+      "subject": "中文",
+      "questionNumber": "Q3",
+      "title": "談模仿"
+    }
+  ],
+  "wordCount": 1130,
+  "themeConceptIds": ["th03", "th04", "th06"],
+  "summary": "文章同意「模仿缺乏個性」的觀點，分別從個人穿搭、音樂創作及產品設計三方面，論證盲目模仿使人喪失自身風格與思想；後段以書法臨摹為例，讓步指出適當模仿有助培養基本審美，但強調模仿只應作為啟蒙階段，不應成為個性發展的終點，總結呼籲人應謹慎對待模仿、避免成為模仿的傀儡。"
+},
+{
+  "id": 71,
+  "file": "data/articles/article_71.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "topic",
+  "relatedQuestions": [
+    {
+      "year": "2023",
+      "subject": "中文",
+      "questionNumber": "Q2",
+      "title": "原來我們忽略了不少日常生活中的美好"
+    }
+  ],
+  "wordCount": 1330,
+  "themeConceptIds": ["th01", "th03", "th07"],
+  "summary": "文章寫主角因工作繁重及對母親的嘮叨感到煩躁，一直忽略生活中的細膻美好。透過同事的提醒、與同事夜行時抬頭賞月的經歷，以及回家後母親悉心準備的晚餐，主角逐漸領悟到母愛、自然景致等看似「無用」的事物，其實才是生活中最值得珍惜的美好。"
 }
   ]
