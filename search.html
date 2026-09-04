@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>搜尋結果｜DSE 中文科範文自學平台</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .search-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
+
+    .search-head { margin-bottom: 8px; }
+    .search-head h1 { font-size: 1.7rem; margin-bottom: 6px; word-break: break-word; }
+    .search-hint { color: var(--color-ink-soft, #5c6b5f); font-size: .92rem; }
+
+    .search-summary { font-size: .85rem; color: var(--color-ink-faint, #8b988e); margin: 14px 0 28px; }
+
+    .result-section { margin-bottom: 40px; }
+    .result-section h2 { font-size: 1.1rem; margin-bottom: 14px; color: var(--color-ink, #23322b); }
+
+    /* 範文結果卡片：跟 genre.html 的範文卡片共用同一套外觀 */
+    .article-card { display: flex !important; flex-direction: column !important; gap: 10px !important; }
+    .article-summary { color: var(--color-ink-soft, #5c6b5f); font-size: .9rem; line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .article-card-link { margin-top: auto; color: var(--color-primary, #1f3a5f); font-size: .85rem; }
+
+    /* 試題結果卡片：跟 questions.html 的試題卡片共用同一套外觀 */
+    .question-list { display: flex; flex-direction: column; gap: 14px; }
+    .question-card { display: flex; flex-direction: column; gap: 10px; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #ddd6c4); border-radius: var(--radius-md, 10px); padding: 20px 22px; }
+    .question-card-head { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .question-year { font-family: var(--font-serif, serif); font-weight: 700; color: var(--color-primary, #1f3a5f); font-size: .95rem; }
+    .question-number { color: var(--color-ink, #23322b); font-weight: 700; }
+    .question-type-tag { font-size: .72rem; color: var(--color-ink-soft, #5c6b5f); background: var(--color-bg-alt, #eef0e8); padding: 3px 10px; border-radius: 999px; }
+    .question-full { font-size: 1rem; color: var(--color-ink, #23322b); line-height: 1.85; }
+    .question-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .question-links a { font-size: .82rem; color: var(--color-primary, #1f3a5f); background: var(--color-primary-soft, #e7edf3); padding: 5px 12px; border-radius: 999px; }
+    .question-links a:hover { opacity: .85; }
+    .no-article { font-size: .82rem; color: var(--color-ink-faint, #8b988e); }
+
+    /* 命中關鍵字的地方用柔和的底色標出，跟全站低飽和度的配色一致，不用瀏覽器預設的螢光黃 */
+    mark { background: #f3e3a6; color: inherit; border-radius: 2px; padding: 0 1px; }
+
+    .status-text { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); line-height: 1.8; }
+    .error-box { margin-top: 16px; padding: 14px 16px; border-left: 4px solid #a33; border-radius: 4px; color: #712; background: #fff3f3; line-height: 1.65; }
+
+    @media (max-width: 720px) {
+      .search-page { padding-top: calc(var(--header-height, 72px) + 30px); }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">範文自學</span>
+      <span class="logo-sub">DSE 中文寫作</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="main-nav" id="mainNav">
+      <nav class="nav-links" aria-label="主導航">
+        <a href="genre-list.html">文體分類</a>
+        <a href="questions.html">歷屆試題</a>
+        <a href="techniques.html">寫作技巧</a>
+        <a href="notes.html">我的筆記</a>
+      </nav>
+      <form class="nav-search" role="search" action="search.html" method="get">
+        <input type="search" name="q" placeholder="搜尋篇章、題目或年份…" aria-label="搜尋範文">
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="search-page">
+  <div class="container">
+
+    <div class="search-head">
+      <h1 id="searchHeading">搜尋</h1>
+      <p class="search-hint">可以搜尋篇章編號、題目文字、年份、文體，或立意向度（例如「個人成長」）。</p>
+    </div>
+
+    <p class="search-summary" id="searchSummary"></p>
+
+    <div id="searchResults">
+      <p class="status-text" id="searchStatus">搜尋中…</p>
+    </div>
+
+    <div id="errorBox"></div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>DSE 中文科範文自學平台</p>
+  </div>
+</footer>
+
+<script>
+  // 手機版導航選單開關
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', () => {
+      const open = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!open));
+      mainNav.classList.toggle('is-open', !open);
+    });
+  }
+
+  const headingEl = document.getElementById('searchHeading');
+  const summaryEl = document.getElementById('searchSummary');
+  const resultsEl = document.getElementById('searchResults');
+  const errorBoxEl = document.getElementById('errorBox');
+  const navSearchInput = document.querySelector('.nav-search input[name="q"]');
+
+  const GENRE_LABELS = {
+    narrative: '記敘抒情文',
+    argumentative: '論說文',
+    descriptive: '描寫文',
+    topic: '話題式／開放式',
+    practical: '實用寫作'
+  };
+
+  const esc = v => String(v ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+  const normalize = v => String(v ?? '').toLowerCase();
+
+  const escapeRegExp = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  /**
+   * 把 text 裡命中任一個 terms 關鍵字的地方，用 <mark> 包起來。
+   * 先把整段文字 escape 過（避免破壞版面或造成 XSS），再對「escape 過的文字」做關鍵字比對，
+   * 所以比對用的關鍵字也要用同一套 esc() 處理，兩邊格式才會一致。
+   */
+  function highlight(text, terms) {
+    let result = esc(text);
+    terms.forEach(term => {
+      if (!term) return;
+      const escapedTerm = esc(term);
+      const re = new RegExp(escapeRegExp(escapedTerm), 'gi');
+      result = result.replace(re, matched => `<mark>${matched}</mark>`);
+    });
+    return result;
+  }
+
+  /** 把一篇範文（索引資料）組成一段可搜尋的純文字，之後直接用 includes() 比對。 */
+  function buildArticleSearchText(article, themeNameById, questionFullByKey) {
+    const themeNames = (article.themeConceptIds || []).map(id => themeNameById[id] || '').join(' ');
+    const relatedText = (article.relatedQuestions || []).map(q => {
+      const title = questionFullByKey[`${q.year}_${q.questionNumber}`] || '';
+      return `${q.year} ${q.year}年 ${q.questionNumber} ${title}`;
+    }).join(' ');
+
+    return normalize([
+      `篇章${article.id}`,
+      GENRE_LABELS[article.genre] || article.genre || '',
+      article.summary || '',
+      themeNames,
+      relatedText
+    ].join(' '));
+  }
+
+  /** 把一條歷屆試題組成一段可搜尋的純文字。 */
+  function buildQuestionSearchText(question) {
+    return normalize([
+      question.year,
+      `${question.year}年`,
+      question.questionNumber,
+      question.questionFull || '',
+      question.questionType || ''
+    ].join(' '));
+  }
+
+  /** 找出跟這條試題（年份＋題號）對應的範文 id 清單，跟 questions.html 的邏輯一致。 */
+  function relatedArticleIdsFor(question, articles) {
+    return [...new Set(
+      articles
+        .filter(a => (a.relatedQuestions || []).some(r =>
+          String(r.year) === String(question.year) &&
+          String(r.questionNumber) === String(question.questionNumber)
+        ))
+        .map(a => a.id)
+    )];
+  }
+
+  function buildArticleCardHtml(article, themeNameById, questionFullByKey, terms) {
+    const firstQuestion = (article.relatedQuestions || [])[0];
+    const meta = firstQuestion ? `${firstQuestion.year}年 ${firstQuestion.questionNumber}` : '年份／題號待補';
+    const title = firstQuestion
+      ? (questionFullByKey[`${firstQuestion.year}_${firstQuestion.questionNumber}`] || '題目待補')
+      : '題目待補';
+    const tags = (article.themeConceptIds || [])
+      .map(id => `<span class="tag">${esc(themeNameById[id] || id)}</span>`)
+      .join('');
+
+    return `
+      <a class="article-card" href="article.html?id=${encodeURIComponent(article.id)}">
+        <div class="article-card-head">
+          <span class="article-id">篇章 ${String(article.id).padStart(2, '0')}</span>
+          <span class="article-genre-tag">${esc(GENRE_LABELS[article.genre] || article.genre)}</span>
+        </div>
+        <p class="article-meta">${esc(meta)}</p>
+        <p class="article-question">${highlight(title, terms)}</p>
+        <p class="article-summary">${highlight(article.summary || '內容簡介待補', terms)}</p>
+        <div class="article-tags">${tags}</div>
+        <span class="article-card-link">閱讀範文 →</span>
+      </a>
+    `;
+  }
+
+  function buildQuestionCardHtml(question, articles, terms) {
+    const articleIds = relatedArticleIdsFor(question, articles);
+    const linksHtml = articleIds.length
+      ? articleIds.map(id => `<a href="article.html?id=${encodeURIComponent(id)}">查看篇章 ${String(id).padStart(2, '0')}</a>`).join('')
+      : '<span class="no-article">暫未有對應範文</span>';
+
+    return `
+      <article class="question-card">
+        <div class="question-card-head">
+          <span class="question-year">${esc(question.year)}年</span>
+          <span class="question-number">${esc(question.questionNumber)}</span>
+          <span class="question-type-tag">${esc(question.questionType || '題目')}</span>
+        </div>
+        <p class="question-full">${highlight(question.questionFull || '題目內容待補', terms)}</p>
+        <div class="question-links">${linksHtml}</div>
+      </article>
+    `;
+  }
+
+  function renderResults(query, articles, questions, themeNameById, questionFullByKey) {
+    const trimmedQuery = query.trim();
+    headingEl.textContent = trimmedQuery ? `「${trimmedQuery}」的搜尋結果` : '搜尋';
+
+    if (!trimmedQuery) {
+      summaryEl.textContent = '';
+      resultsEl.innerHTML = '<p class="status-text">請在上方輸入關鍵字，例如篇章編號、題目文字、年份，或立意向度。</p>';
+      return;
+    }
+
+    // 支援多個關鍵字（用空白分隔），全部命中才算符合，查詢邏輯是「AND」不是「OR」
+    const terms = normalize(trimmedQuery).split(/\s+/).filter(Boolean);
+
+    const matchedArticles = articles.filter(a =>
+      terms.every(term => buildArticleSearchText(a, themeNameById, questionFullByKey).includes(term))
+    );
+    const matchedQuestions = questions.filter(q =>
+      terms.every(term => buildQuestionSearchText(q).includes(term))
+    );
+
+    const totalCount = matchedArticles.length + matchedQuestions.length;
+    summaryEl.textContent = `共找到 ${totalCount} 項結果（範文 ${matchedArticles.length} 篇・試題 ${matchedQuestions.length} 條）`;
+
+    if (totalCount === 0) {
+      resultsEl.innerHTML = `<p class="status-text">沒有找到與「${esc(trimmedQuery)}」相關的內容，換個關鍵字試試——可以試試篇章編號、年份，或立意向度如「個人成長」。</p>`;
+      return;
+    }
+
+    let html = '';
+
+    if (matchedArticles.length) {
+      html += `
+        <section class="result-section">
+          <h2>符合的範文（${matchedArticles.length}）</h2>
+          <div class="article-grid">
+            ${matchedArticles.map(a => buildArticleCardHtml(a, themeNameById, questionFullByKey, terms)).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    if (matchedQuestions.length) {
+      html += `
+        <section class="result-section">
+          <h2>符合的試題（${matchedQuestions.length}）</h2>
+          <div class="question-list">
+            ${matchedQuestions.map(q => buildQuestionCardHtml(q, articles, terms)).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    resultsEl.innerHTML = html;
+  }
+
+  (async () => {
+    const params = new URLSearchParams(location.search);
+    const query = params.get('q') || '';
+
+    // 把搜尋欄裡的文字補回目前的查詢字串，這樣使用者可以直接在原地修改關鍵字再送出一次
+    if (navSearchInput) navSearchInput.value = query;
+
+    try {
+      const [ar, qr, tr] = await Promise.all([
+        fetch('data/articles.json', { cache: 'no-store' }),
+        fetch('data/questions.json', { cache: 'no-store' }),
+        fetch('data/themes.json', { cache: 'no-store' })
+      ]);
+
+      if (!ar.ok) throw new Error(`data/articles.json HTTP ${ar.status}`);
+      if (!qr.ok) throw new Error(`data/questions.json HTTP ${qr.status}`);
+      if (!tr.ok) throw new Error(`data/themes.json HTTP ${tr.status}`);
+
+      const articles = await ar.json();
+      const questions = await qr.json();
+      const themes = await tr.json();
+
+      if (!Array.isArray(articles)) throw new Error('data/articles.json 必須是陣列');
+      if (!Array.isArray(questions)) throw new Error('data/questions.json 必須是陣列');
+
+      const themeNameById = {};
+      themes.forEach(t => { themeNameById[t.id] = t.name; });
+
+      const questionFullByKey = {};
+      questions.forEach(q => { questionFullByKey[`${q.year}_${q.questionNumber}`] = q.questionFull; });
+
+      renderResults(query, articles, questions, themeNameById, questionFullByKey);
+
+    } catch (error) {
+      console.error(error);
+      summaryEl.textContent = '';
+      resultsEl.innerHTML = '<p class="status-text">搜尋資料載入失敗。</p>';
+      errorBoxEl.innerHTML = `<div class="error-box"><strong>資料載入失敗</strong><br>${esc(error.message)}<br>請確認資料檔案已上傳，而且網站是透過伺服器開啟。</div>`;
+    }
+  })();
+</script>
+
+</body>
+</html>

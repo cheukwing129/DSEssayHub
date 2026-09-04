@@ -36,8 +36,8 @@
         <a href="notes.html">我的筆記</a>
       </nav>
 
-      <!-- 搜尋欄目前只做 UI，之後階段才接上搜尋邏輯 -->
-      <form class="nav-search" role="search" onsubmit="return false;">
+      <!-- 搜尋欄：送出後會導到 search.html?q=... -->
+      <form class="nav-search" role="search" action="search.html" method="get">
         <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
           <circle cx="8.5" cy="8.5" r="6" stroke="currentColor" stroke-width="1.6"/>
           <line x1="13.1" y1="13.1" x2="18" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
