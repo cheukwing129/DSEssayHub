@@ -330,5 +330,143 @@
     "questionFull": "拼圖",
     "questionType": "開放式",
     "relatedArticleIds": []
+  },
+    {
+    "year": "2026",
+    "subject": "中文",
+    "questionNumber": "Q1",
+    "title": "眼前的甜點令這頓飯別具意義",
+    "genre": "narrative",
+    "questionFull": "餐膳常伴有甜點，如蛋糕、芝麻糊、冰淇淋等。有時候，食物除了飽腹之外，還有其他意義。試以「眼前的甜點令這頓飯別具意義」為題，寫作文章一篇。"
+  },
+  {
+    "year": "2026",
+    "subject": "中文",
+    "questionNumber": "Q2",
+    "title": "在城市中，我看到了大自然的生命光芒",
+    "genre": "descriptive",
+    "questionFull": "即使在城市中，大自然仍能展現其生命力。如渡輪碼頭旁自由暢泳的魚兒，行人路上生氣勃勃的野草，樓宇間振翅高飛的雀鳥，皆展現著活力和希望。試以「在城市中，我看到了大自然的生命光芒」為題，寫作文章一篇。"
+  },
+  {
+    "year": "2026",
+    "subject": "中文",
+    "questionNumber": "Q3",
+    "title": "談說話",
+    "genre": "argumentative",
+    "questionFull": "言語的影響很大，正如古人說：「與人善言，暖於布帛；傷人以言，深於矛戟」，大意是對人說美善的話，比給他衣服更讓人感到溫暖；以惡劣的言語傷害他人，比用利器攻擊他人的傷害更大。試根據以上古語，以「談說話」為題，寫作文章一篇。"
+  },
+  {
+    "year": "2025",
+    "subject": "中文",
+    "questionNumber": "甲部",
+    "title": "「『寵』愛有家」計劃演講辭",
+    "genre": "practical",
+    "questionFull": "以香城中學義工服務團學生代表常天倫的名義，就南區義工服務團「『寵』愛有家」計劃撰寫一篇演講辭，於學校早會說明計劃意義，並呼籲同學支持計劃（全文不多於550字）。"
+  },
+  {
+    "year": "2025",
+    "subject": "中文",
+    "questionNumber": "Q1",
+    "title": "藏在泥土中的寶物",
+    "genre": "narrative",
+    "questionFull": "試以「藏在泥土中的寶物」為題，寫作文章一篇。"
+  },
+  {
+    "year": "2025",
+    "subject": "中文",
+    "questionNumber": "Q2",
+    "title": "為不完美添色彩",
+    "genre": "topic",
+    "questionFull": "在白布鞋的污跡上繪畫花朵，活化破舊建築為時尚藝術館，在緊湊的旅程上遇上暴風雨可享受片刻悠閒。世事無完美，能為事物或心境增添新的色彩，則事事皆美。試以「為不完美添色彩」為題，寫作文章一篇。"
+  },
+  {
+    "year": "2025",
+    "subject": "中文",
+    "questionNumber": "Q3",
+    "title": "量力而為與踏出舒適圈",
+    "genre": "argumentative",
+    "questionFull": "有容：「行事要量力而為，否則沒有好結果。」修端：「要踏出舒適圈，才可以突破能力的界限。」試寫作文章一篇，談談你對以上觀點的看法。"
+  },
+  {
+    "year": "2024",
+    "subject": "中文",
+    "questionNumber": "甲部",
+    "title": "「潔淨環境 花香四溢」美化校園計劃書信",
+    "genre": "practical",
+    "questionFull": "以香城中學美化校園小組學生代表何英秀的名義，就「潔淨環境 花香四溢」美化校園計劃，在《校園通訊》刊登一封書信，說明計劃如何有助學生成長，並鼓勵同學支持計劃（全文不多於550字）。"
+  },
+  {
+    "year": "2024",
+    "subject": "中文",
+    "questionNumber": "Q1",
+    "title": "我最想尋回的一件玩具",
+    "genre": "narrative",
+    "questionFull": "試以「我最想尋回的一件玩具」為題，寫作文章一篇。"
+  },
+  {
+    "year": "2024",
+    "subject": "中文",
+    "questionNumber": "Q2",
+    "title": "無愧的選擇",
+    "genre": "narrative",
+    "questionFull": "人生總有大大小小的選擇，無論選擇的結果如何，只要選擇時問心無愧，便已足夠。試以「無愧的選擇」為題，寫作文章一篇。"
+  },
+  {
+    "year": "2024",
+    "subject": "中文",
+    "questionNumber": "Q3",
+    "title": "遵守諾言與放棄諾言",
+    "genre": "argumentative",
+    "questionFull": "向華：「遵守諾言是具誠信的表現。」幼羚：「我卻認為，有時候，放棄諾言也是負責任的行為。」試寫作文章一篇，談談你對以上兩個觀點的看法。"
+  },
+  {
+    "year": "2023",
+    "subject": "中文",
+    "questionNumber": "Q1",
+    "title": "一次令我百感交集的聚餐",
+    "genre": "narrative",
+    "questionFull": "試以「一次令我百感交集的聚餐」為題，寫作文章一篇。"
+  },
+  {
+    "year": "2023",
+    "subject": "中文",
+    "questionNumber": "Q2",
+    "title": "原來我們忽略了不少日常生活中的美好",
+    "genre": "topic",
+    "questionFull": "「偶然，我抬頭一看，發現嫩葉長出來了。原來我們忽略了不少日常生活中的美好。」以上描述中「原來我們忽略了不少日常生活中的美好」，引發了你怎樣的聯想或思考？試結合生活，寫作文章一篇。"
+  },
+  {
+    "year": "2023",
+    "subject": "中文",
+    "questionNumber": "Q3",
+    "title": "談模仿",
+    "genre": "argumentative",
+    "questionFull": "模仿在生活中處處可見。當紅的偶像、著名的藝術品、成功的策略……，均可為模仿對象。有人認為：「模仿缺乏個性。」你同意嗎？試撰文一篇，論述你的看法。"
+  },
+  {
+    "year": "2022",
+    "subject": "中文",
+    "questionNumber": "Q1",
+    "title": "校服的自述",
+    "genre": "narrative",
+    "questionFull": "「我是一套校服，今日要和主人分離，回想過去我們一起生活，別有一番體會。」以上是文章的開首，試以「校服的自述」為題，續寫這篇文章。"
+  },
+  {
+    "year": "2022",
+    "subject": "中文",
+    "questionNumber": "Q2",
+    "title": "得不償失",
+    "genre": "topic",
+    "questionFull": "試就下圖對你的啟發，以「得不償失」為題，寫一篇文章。",
+    "hasImage": true,
+    "imageNote": "原題附圖，請保留題目圖片或於頁面標示「原題附圖」。"
+  },
+  {
+    "year": "2022",
+    "subject": "中文",
+    "questionNumber": "Q3",
+    "title": "專精一事與多元人生",
+    "genre": "argumentative",
+    "questionFull": "爺爺：「我當鐘錶匠超過50年，畢生專注這門手藝，能做到分毫不差。」允行：「我是品味生活的咖啡師，亦是書寫人生的作家，更是培育後進的武術教練。」各人對人生有不同追求。有人認為：「與其一生專精一事，不如發展多元人生。」你同意嗎？試撰文一篇，論述你的看法。"
   }
 ]
