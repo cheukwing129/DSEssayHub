@@ -1014,5 +1014,129 @@
   "wordCount": 780,
   "themeConceptIds": ["th01", "th07", "th09"],
   "summary": "文章以父親親手削製的竹蜻蜓為線索，回憶主角出身農村的樸實童年，及後升學離鄉時竹蜻蜓不慎遺失，多年來在繁華都市生活的主角漸漸淡忘故鄉與父母。直到偶遇蜻蜓觸動記憶，主角返家尋回竹蜻蜓，領悟自己不應忘本，家鄉與親情才是真正的歸屬。"
+},
+  {
+
+"id": 76,
+
+"file": "data/articles/article_76.json",
+
+"collection": "main",
+
+"sourceType": "中文DSE",
+
+"genre": "narrative",
+
+"relatedQuestions": [
+
+
+{
+
+
+
+"year": "2025",
+
+
+
+"subject": "中文",
+
+
+
+"questionNumber": "Q1",
+
+
+
+"title": "藏在泥土中的寶物"
+
+
+}
+
+],
+
+"wordCount": 900,
+
+"themeConceptIds": ["th01", "th08", "th13"],
+
+"summary": "文章以主角挖出童年時埋在老樹下的一顆心型假鑽石為線索，回憶當年下棋贏過爺爺後將假鑽石作獎勵送給他，而爺爺當時正默默承受商場中的造謠與競爭。多年後主角挖出鐵盒重遇假鑽石，才明白爺爺珍視的並非鑽石本身，而是提醒自己保持本心善良、堅守仁德的寓意，並決心繼承爺爺這份透亮的心。"
+},
+{
+
+"id": 77,
+
+"file": "data/articles/article_77.json",
+
+"collection": "main",
+
+"sourceType": "中文DSE",
+
+"genre": "topic",
+
+"relatedQuestions": [
+
+
+{
+
+
+
+"year": "2025",
+
+
+
+"subject": "中文",
+
+
+
+"questionNumber": "Q2",
+
+
+
+"title": "為不完美添色彩"
+
+
+}
+
+],
+
+"wordCount": 1080,
+
+"themeConceptIds": ["th01", "th04", "th13"],
+
+"summary": "文章寫主角自小因臉上胎記而遭受同學的奇異目光和嘲笑，一度以化妝遮蓋胎記換取「正常」的外表，卻換來好友「失去獨特」的坦白提醒。母親以在污跡布袋上繪畫圖案為喻，啟發主角明白不完美同樣可以增添色彩，主角最終卸下遮瑕、重新展露胎記，學會欣賞自己的獨特，並以更包容的眼光看待生活中的種種不完美。"
+},
+{
+  "id": 78,
+  "file": "data/articles/article_78.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "argumentative",
+  "relatedQuestions": [
+    {
+      "year": "2025",
+      "subject": "中文",
+      "questionNumber": "Q3",
+      "title": "量力而為與踏出舒適圈"
+    }
+  ],
+  "wordCount": 1030,
+  "themeConceptIds": ["th03", "th04", "th06"],
+  "summary": "文章從李嘉誠和馬丁·路德·金的例子，論證踏出舒適圈能助人提升能力、培養求變的勇氣；再以《惡血》主角伊莉莎白盲目自信終致失敗的反例，承認量力而為有其保護作用；最後從社會發展的角度，以孔子和昂山素姬為例，指出若人人只求量力而為，社會將無法進步，總結唯有勇於挑戰自己，才能突破能力界限並推動社會前行。"
+},
+{
+  "id": 79,
+  "file": "data/articles/article_79.json",
+  "collection": "main",
+  "sourceType": "中文DSE",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "2025",
+      "subject": "中文",
+      "questionNumber": "Q1",
+      "title": "藏在泥土中的寶物"
+    }
+  ],
+  "wordCount": 900,
+  "themeConceptIds": ["th01", "th07", "th09"],
+  "summary": "文章寫主角因與母親冷戰而被迫回鄉探望病中的外婆，重遇外婆後想起幼時與外婆一同埋在院子泥土中的鐵皮盒子，於是挖出盒子，發現裡面珍藏著外婆縫製的小豬包、當年練字的紙張及採集的樹葉。主角同時發現外婆家中掛滿自己成長各階段的照片，明白外婆多年來對自己的愛從未改變，最終向外婆道歉並承諾珍惜眼前人，實現幼時許下的諾言。"
 }
   ]
