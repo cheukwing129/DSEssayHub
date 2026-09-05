@@ -14,10 +14,10 @@
   --swatch-blue:#7fa8d9;
 }
 
-/* 每個段落都預留右側空間放兩顆圖示按鈕（標記 + 筆記），並設 position:relative 讓按鈕／選單可以定位在它裡面 */
+/* 每個段落都預留右側空間放三顆圖示按鈕（標記 + 筆記 + 素材庫），並設 position:relative 讓按鈕／選單可以定位在它裡面 */
 .paragraph{
   position:relative;
-  padding-right:80px;
+  padding-right:116px;
   border-radius:6px;
   transition:background-color .2s ease;
 }
@@ -28,7 +28,7 @@
 .paragraph.highlight-pink,
 .paragraph.highlight-blue{
   padding-left:14px;
-  padding-right:94px;
+  padding-right:130px;
   margin-left:-14px;
   margin-right:-14px;
 }
@@ -100,7 +100,7 @@
   font-family:var(--font-sans,sans-serif);
 }
 .highlight-option:hover{background:var(--color-bg-alt,#eef0e8);}
-.highlight-option.note-trigger{
+.highlight-option.material-trigger{
   border-top:1px solid var(--color-border-soft,#e7e2d3);
   margin-top:4px;
   padding-top:9px;
@@ -140,6 +140,26 @@
 }
 .note-indicator-btn[hidden]{display:none;}
 .note-indicator-btn svg{width:14px;height:14px;}
+
+/* 段落旁的「已存入素材庫」小圖示，跟筆記圖示並排，用暖色系（琥珀色）跟筆記的藍色區分開 */
+.material-indicator-btn{
+  position:absolute;
+  top:14px;
+  right:76px;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  border:1px solid #b8935a;
+  background:#f7edd3;
+  color:#765014;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  padding:0;
+}
+.material-indicator-btn[hidden]{display:none;}
+.material-indicator-btn svg{width:14px;height:14px;}
 
 /* 註解輸入視窗：整頁置中的小對話框，桌面／手機共用同一套樣式 */
 .note-modal-overlay{
@@ -232,9 +252,204 @@
   .paragraph.highlight-pink,
   .paragraph.highlight-blue{margin-left:-8px;margin-right:-8px;padding-left:8px;}
 }
+
+/* ===================== 筆記系統 5-4：文章內筆記面板 ===================== */
+
+/* 面板開關按鈕：固定在右下角的浮動按鈕，桌面／手機都用同一顆 */
+.notebook-toggle-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:150;
+  background:var(--color-primary,#1f3a5f);
+  color:#fff;
+  border:none;
+  border-radius:999px;
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:.88rem;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(35,50,43,.25);
+}
+.notebook-toggle-btn svg{width:16px;height:16px;}
+.notebook-toggle-btn:hover{background:var(--color-primary-dark,#16283f);}
+
+/* 面板本體：桌面版是從右側滑入的側欄，手機版（見下方 media query）改成從底部滑上來的抽屜 */
+.notebook-panel{
+  position:fixed;
+  top:var(--header-height,72px);
+  right:0;
+  bottom:0;
+  width:360px;
+  max-width:90vw;
+  background:#fff;
+  border-left:1px solid var(--color-border,#ddd6c4);
+  box-shadow:-8px 0 24px rgba(35,50,43,.12);
+  z-index:140;
+  display:flex;
+  flex-direction:column;
+  transform:translateX(100%);
+  transition:transform .25s ease;
+}
+.notebook-panel.is-open{transform:translateX(0);}
+
+.notebook-handle{display:none;}
+
+.notebook-panel-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 18px;
+  border-bottom:1px solid var(--color-border-soft,#e7e2d3);
+  flex-shrink:0;
+}
+.notebook-panel-head h3{margin:0;font-size:1rem;color:var(--color-ink,#23322b);}
+.notebook-close-btn{
+  background:none;
+  border:none;
+  font-size:1.3rem;
+  line-height:1;
+  color:var(--color-ink-faint,#8b988e);
+  cursor:pointer;
+  padding:2px 6px;
+}
+
+.notebook-tabs{display:flex;border-bottom:1px solid var(--color-border-soft,#e7e2d3);flex-shrink:0;}
+.notebook-tab{
+  flex:1;
+  padding:11px 8px;
+  background:none;
+  border:none;
+  font-size:.8rem;
+  color:var(--color-ink-soft,#5c6b5f);
+  cursor:pointer;
+  border-bottom:2px solid transparent;
+  font-family:var(--font-sans,sans-serif);
+}
+.notebook-tab.is-active{
+  color:var(--color-primary,#1f3a5f);
+  border-bottom-color:var(--color-primary,#1f3a5f);
+  font-weight:700;
+}
+
+.notebook-tab-panels{flex:1;overflow-y:auto;padding:16px 18px;}
+.notebook-tab-panel{display:none;}
+.notebook-tab-panel.is-active{display:block;}
+
+.notebook-tab-hint{font-size:.82rem;color:var(--color-ink-soft,#5c6b5f);line-height:1.7;margin-bottom:12px;}
+.notebook-textarea{
+  width:100%;
+  min-height:220px;
+  resize:vertical;
+  border:1px solid var(--color-border,#ddd6c4);
+  border-radius:8px;
+  padding:10px 12px;
+  font:inherit;
+  font-size:.88rem;
+  color:var(--color-ink,#23322b);
+  line-height:1.7;
+  box-sizing:border-box;
+  font-family:var(--font-sans,sans-serif);
+}
+.notebook-save-status{font-size:.74rem;color:var(--color-ink-faint,#8b988e);margin-top:6px;min-height:1em;}
+
+.notebook-list-heading{font-size:.8rem;color:var(--color-ink-faint,#8b988e);font-weight:600;margin:16px 0 8px;}
+.notebook-list-heading:first-child{margin-top:0;}
+.notebook-list-item{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:8px;
+  background:var(--color-bg-alt,#eef0e8);
+  margin-bottom:8px;
+}
+.notebook-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.notebook-dot.dot-yellow{background:#f0cf5a;}
+.notebook-dot.dot-pink{background:#e79bb2;}
+.notebook-dot.dot-blue{background:#7fa8d9;}
+.notebook-dot.dot-material{background:#cba667;}
+.notebook-item-label{font-size:.72rem;color:var(--color-ink-faint,#8b988e);margin-bottom:3px;}
+.notebook-item-text{font-size:.85rem;color:var(--color-ink,#23322b);line-height:1.6;}
+
+@media(max-width:720px){
+  .notebook-toggle-btn{bottom:16px;right:16px;padding:11px 16px;font-size:.82rem;}
+
+  .notebook-panel{
+    top:auto;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    max-width:100%;
+    height:75vh;
+    border-left:none;
+    border-top:1px solid var(--color-border,#ddd6c4);
+    border-radius:18px 18px 0 0;
+    box-shadow:0 -8px 24px rgba(35,50,43,.18);
+    transform:translateY(100%);
+  }
+  .notebook-panel.is-open{transform:translateY(0);}
+
+  .notebook-handle{
+    display:block;
+    width:40px;
+    height:4px;
+    background:var(--color-border,#ddd6c4);
+    border-radius:999px;
+    margin:10px auto 0;
+    flex-shrink:0;
+  }
+}
+
 </style></head><body>
 <header class="site-header"><div class="container nav-inner"><a href="index.html" class="logo"><span class="logo-mark">範文自學</span><span class="logo-sub">DSE 中文寫作</span></a><button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button><div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="genre-list.html">文體分類</a><a href="questions.html">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="搜尋關鍵字" aria-label="搜尋"></form></div></div></header>
 <main class="article-page"><div class="container"><a class="back-link" id="backLink" href="genre.html?type=narrative">← 返回文體分類</a><div id="content"><p class="loading">正在載入範文……</p></div></div></main><footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
+
+<!-- 筆記面板開關按鈕：固定在右下角，桌面／手機通用 -->
+<button type="button" class="notebook-toggle-btn" id="notebookToggleBtn" aria-expanded="false" aria-controls="notebookPanel">
+  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 3h9a1 1 0 0 1 1 1v11.5a.5.5 0 0 1-.74.44L11 14l-3.26 1.94A.5.5 0 0 1 7 15.5V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 3v13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+  筆記面板
+</button>
+
+<!-- 筆記面板本體：桌面版是右側滑入的側欄，手機版改成底部滑上的抽屜（見 style 裡的 media query） -->
+<aside class="notebook-panel" id="notebookPanel" aria-hidden="true">
+  <div class="notebook-handle" aria-hidden="true"></div>
+  <div class="notebook-panel-head">
+    <h3>這篇文章的筆記</h3>
+    <button type="button" class="notebook-close-btn" id="notebookCloseBtn" aria-label="關閉筆記面板">×</button>
+  </div>
+
+  <div class="notebook-tabs" role="tablist">
+    <button type="button" class="notebook-tab is-active" data-tab="structure" role="tab" aria-selected="true">結構分析</button>
+    <button type="button" class="notebook-tab" data-tab="highlights" role="tab" aria-selected="false">佳句與手法</button>
+    <button type="button" class="notebook-tab" data-tab="reflection" role="tab" aria-selected="false">個人反思</button>
+  </div>
+
+  <div class="notebook-tab-panels">
+
+    <div class="notebook-tab-panel is-active" data-panel="structure">
+      <p class="notebook-tab-hint">寫下這篇文章的起承轉合分析，內容會自動儲存在這台裝置裡。</p>
+      <textarea id="structureTextarea" class="notebook-textarea" placeholder="起：……&#10;承：……&#10;轉：……&#10;合：……"></textarea>
+      <p class="notebook-save-status" id="structureSaveStatus"></p>
+    </div>
+
+    <div class="notebook-tab-panel" data-panel="highlights">
+      <div id="highlightsSummaryList">
+        <p class="notebook-tab-hint">目前還沒有標記任何段落。在範文裡點段落旁的圖示，選顏色來標記好詞好句、修辭手法或立意轉折點，也可以存入素材庫，內容會自動出現在這裡。</p>
+      </div>
+    </div>
+
+    <div class="notebook-tab-panel" data-panel="reflection">
+      <p class="notebook-tab-hint">寫下你的個人反思，或試著仿寫這篇文章用到的某個手法。</p>
+      <textarea id="reflectionTextarea" class="notebook-textarea" placeholder="我的反思與仿寫練習……"></textarea>
+      <p class="notebook-save-status" id="reflectionSaveStatus"></p>
+    </div>
+
+  </div>
+</aside>
 
 <!-- 段落註解的輸入視窗：全站只需要一個，開哪一段的筆記就把內容填進來，用完再清空 -->
 <div class="note-modal-overlay" id="noteModalOverlay" hidden>
@@ -300,8 +515,8 @@ const TECHNIQUE_ID_ALIASES = {
   t35: 'tag_question'
 };
 
-function render(index,body,tech,theme,questions){document.title=`篇章 ${index.id}｜DSE 中文科範文自學平台`;back.href=`genre.html?type=${encodeURIComponent(index.genre||'narrative')}`;const first=index.relatedQuestions?.[0],q=first?questions[`${first.year}_${first.questionNumber}`]:'題目待補';const tags=(index.themeConceptIds||[]).map(x=>`<span class="tag">${esc(theme[x]||x)}</span>`).join('');const ps=(body.paragraphs||[]).map((p,i)=>{const ts=(p.techniqueTagIds||[]).map(x=>{const normalizedId=TECHNIQUE_ID_ALIASES[x]||x;const name=tech[normalizedId]||normalizedId;return `<span class="technique-tag">${esc(name)}</span>`;}).join('');const c=p.comment?`<details class="comment-box"><summary>顯示段旨點評</summary><div>${esc(p.comment)}</div></details>`:'';return `<div class="paragraph" data-paragraph-index="${i}"><div class="technique-tags">${ts}</div><span class="paragraph-number">${i+1}.</span><span class="paragraph-text">${esc(p.text)}</span><button type="button" class="note-indicator-btn" data-index="${i}" title="查看筆記" hidden><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5C3 4.67 3.67 4 4.5 4h11c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5H8l-3 3v-3H4.5A1.5 1.5 0 0 1 3 12.5v-7z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></button><button type="button" class="highlight-btn" data-index="${i}" aria-haspopup="true" aria-expanded="false" title="標記這段"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 16l1.5-4L13 4.5l2.5 2.5L8 14.5 4 16z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></button><div class="highlight-menu" hidden><button type="button" class="highlight-option" data-color="yellow"><span class="swatch swatch-yellow"></span>好詞好句</button><button type="button" class="highlight-option" data-color="pink"><span class="swatch swatch-pink"></span>修辭手法</button><button type="button" class="highlight-option" data-color="blue"><span class="swatch swatch-blue"></span>立意轉折</button><button type="button" class="highlight-option note-trigger" data-action="note"><svg class="option-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5C3 4.67 3.67 4 4.5 4h11c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5H8l-3 3v-3H4.5A1.5 1.5 0 0 1 3 12.5v-7z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>加註解</button><button type="button" class="highlight-option highlight-clear" data-color="">清除標記</button></div>${c}</div>`}).join('');const an=body.topicAnalysis||{};const refs=Array.isArray(an.referenceAnswerPoints)?an.referenceAnswerPoints:[];content.innerHTML=`<header class="article-header"><h1>篇章 ${String(index.id).padStart(2,'0')}</h1><p class="article-meta-line">${esc(labels[index.genre]||index.genre)}　｜　${esc(first?`${first.year}年 ${first.questionNumber}`:'年份／題號待補')}　｜　約 ${esc(index.wordCount||'')} 字</p>${index.summary?`<p class="article-summary">內容簡介：${esc(index.summary)}</p>`:''}<p class="article-meta-line">${esc(q||'題目待補')}</p><div class="article-tags">${tags}</div></header><details class="analysis"><summary>顯示審題分析</summary><div class="analysis-content"><h3>主題字詞解說</h3><p>${esc(an.keywordExplanation||'暫未提供')}</p>${an.imageryDescription?`<h3>圖畫／寓意解說</h3><p>${esc(an.imageryDescription)}</p>`:''}<h3>取材方向與立意建議</h3><p>${esc(an.directionSuggestion||'暫未提供')}</p>${refs.length?`<h3>參考立意要點</h3><ul>${refs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}</div></details><section class="essay" aria-label="範文全文">${ps||'<p>目前尚未有段落內容。</p>'}</section>`}
-(async()=>{try{if(!id)throw Error('網址缺少文章 id，例如 article.html?id=1');const [ir,ar,tr,thr,qr]=await Promise.all([fetch('data/articles.json',{cache:'no-store'}),fetch(`data/articles/article_${String(id).padStart(2,'0')}.json`,{cache:'no-store'}),fetch('data/techniques.json',{cache:'no-store'}),fetch('data/themes.json',{cache:'no-store'}),fetch('data/questions.json',{cache:'no-store'})]);if(!ir.ok)throw Error(`找不到 data/articles.json（HTTP ${ir.status}）`);if(!ar.ok)throw Error(`找不到文章內容檔 data/articles/article_${String(id).padStart(2,'0')}.json（HTTP ${ar.status}）`);const indexes=await ir.json();if(!Array.isArray(indexes))throw Error('data/articles.json 必須是索引陣列');const index=indexes.find(x=>String(x.id)===String(id));if(!index)throw Error(`索引中找不到篇章 ${id}`);const body=await ar.json();render(index,body,mapNames(tr.ok?await tr.json():[]),mapNames(thr.ok?await thr.json():[]),mapQuestions(qr.ok?await qr.json():[]));wireHighlightInteractions(id);wireCommentInteractions(id);restoreHighlights(id);restoreComments(id)}catch(e){content.innerHTML=`<p class="error">載入文章時發生錯誤：${esc(e.message)}</p><p><a href="index.html">返回首頁</a></p>`;console.error(e)}})();
+function render(index,body,tech,theme,questions){document.title=`篇章 ${index.id}｜DSE 中文科範文自學平台`;back.href=`genre.html?type=${encodeURIComponent(index.genre||'narrative')}`;const first=index.relatedQuestions?.[0],q=first?questions[`${first.year}_${first.questionNumber}`]:'題目待補';const tags=(index.themeConceptIds||[]).map(x=>`<span class="tag">${esc(theme[x]||x)}</span>`).join('');const ps=(body.paragraphs||[]).map((p,i)=>{const ts=(p.techniqueTagIds||[]).map(x=>{const normalizedId=TECHNIQUE_ID_ALIASES[x]||x;const name=tech[normalizedId]||normalizedId;return `<span class="technique-tag">${esc(name)}</span>`;}).join('');const c=p.comment?`<details class="comment-box"><summary>顯示段旨點評</summary><div>${esc(p.comment)}</div></details>`:'';return `<div class="paragraph" data-paragraph-index="${i}"><div class="technique-tags">${ts}</div><span class="paragraph-number">${i+1}.</span><span class="paragraph-text">${esc(p.text)}</span><button type="button" class="material-indicator-btn" data-index="${i}" title="已存入素材庫" hidden><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h7A1.5 1.5 0 0 1 15 3.5v13l-5-3-5 3v-13z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></button><button type="button" class="note-indicator-btn" data-index="${i}" title="查看筆記" hidden><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5C3 4.67 3.67 4 4.5 4h11c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5H8l-3 3v-3H4.5A1.5 1.5 0 0 1 3 12.5v-7z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></button><button type="button" class="highlight-btn" data-index="${i}" aria-haspopup="true" aria-expanded="false" title="標記這段"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 16l1.5-4L13 4.5l2.5 2.5L8 14.5 4 16z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></button><div class="highlight-menu" hidden><button type="button" class="highlight-option" data-color="yellow"><span class="swatch swatch-yellow"></span>好詞好句</button><button type="button" class="highlight-option" data-color="pink"><span class="swatch swatch-pink"></span>修辭手法</button><button type="button" class="highlight-option" data-color="blue"><span class="swatch swatch-blue"></span>立意轉折</button><button type="button" class="highlight-option material-trigger" data-action="material"><svg class="option-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 3.5A1.5 1.5 0 0 1 6.5 2h7A1.5 1.5 0 0 1 15 3.5v13l-5-3-5 3v-13z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>加入素材庫</button><button type="button" class="highlight-option note-trigger" data-action="note"><svg class="option-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5C3 4.67 3.67 4 4.5 4h11c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5H8l-3 3v-3H4.5A1.5 1.5 0 0 1 3 12.5v-7z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>加註解</button><button type="button" class="highlight-option highlight-clear" data-color="">清除標記</button></div>${c}</div>`}).join('');const an=body.topicAnalysis||{};const refs=Array.isArray(an.referenceAnswerPoints)?an.referenceAnswerPoints:[];content.innerHTML=`<header class="article-header"><h1>篇章 ${String(index.id).padStart(2,'0')}</h1><p class="article-meta-line">${esc(labels[index.genre]||index.genre)}　｜　${esc(first?`${first.year}年 ${first.questionNumber}`:'年份／題號待補')}　｜　約 ${esc(index.wordCount||'')} 字</p>${index.summary?`<p class="article-summary">內容簡介：${esc(index.summary)}</p>`:''}<p class="article-meta-line">${esc(q||'題目待補')}</p><div class="article-tags">${tags}</div></header><details class="analysis"><summary>顯示審題分析</summary><div class="analysis-content"><h3>主題字詞解說</h3><p>${esc(an.keywordExplanation||'暫未提供')}</p>${an.imageryDescription?`<h3>圖畫／寓意解說</h3><p>${esc(an.imageryDescription)}</p>`:''}<h3>取材方向與立意建議</h3><p>${esc(an.directionSuggestion||'暫未提供')}</p>${refs.length?`<h3>參考立意要點</h3><ul>${refs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}</div></details><section class="essay" aria-label="範文全文">${ps||'<p>目前尚未有段落內容。</p>'}</section>`}
+(async()=>{try{if(!id)throw Error('網址缺少文章 id，例如 article.html?id=1');const [ir,ar,tr,thr,qr]=await Promise.all([fetch('data/articles.json',{cache:'no-store'}),fetch(`data/articles/article_${String(id).padStart(2,'0')}.json`,{cache:'no-store'}),fetch('data/techniques.json',{cache:'no-store'}),fetch('data/themes.json',{cache:'no-store'}),fetch('data/questions.json',{cache:'no-store'})]);if(!ir.ok)throw Error(`找不到 data/articles.json（HTTP ${ir.status}）`);if(!ar.ok)throw Error(`找不到文章內容檔 data/articles/article_${String(id).padStart(2,'0')}.json（HTTP ${ar.status}）`);const indexes=await ir.json();if(!Array.isArray(indexes))throw Error('data/articles.json 必須是索引陣列');const index=indexes.find(x=>String(x.id)===String(id));if(!index)throw Error(`索引中找不到篇章 ${id}`);const body=await ar.json();render(index,body,mapNames(tr.ok?await tr.json():[]),mapNames(thr.ok?await thr.json():[]),mapQuestions(qr.ok?await qr.json():[]));wireHighlightInteractions(id);wireCommentInteractions(id);wireMaterialInteractions(id);restoreHighlights(id);restoreComments(id);restoreMaterials(id);initNotebookPanel(id)}catch(e){content.innerHTML=`<p class="error">載入文章時發生錯誤：${esc(e.message)}</p><p><a href="index.html">返回首頁</a></p>`;console.error(e)}})();
 </script>
 
 <!-- ============================================================
@@ -471,9 +686,10 @@ function wireHighlightInteractions(articleId) {
 
     // 情況二：點到選單裡的某個顏色（或「清除標記」）
     if (optionBtn) {
-      // 「加註解」按鈕也是 .highlight-option，但它交給 wireCommentInteractions 處理，
+      // 「加註解」「加入素材庫」按鈕也是 .highlight-option，但它們交給各自的函式處理，
       // 這裡要先跳過，不然會被誤判成「選了一個空顏色」而不小心把高亮清掉
       if (optionBtn.classList.contains('note-trigger')) return;
+      if (optionBtn.classList.contains('material-trigger')) return;
 
       const paragraphEl = optionBtn.closest('.paragraph');
       const paragraphIndex = Number(paragraphEl.dataset.paragraphIndex);
@@ -688,5 +904,325 @@ function wireCommentInteractions(articleId) {
     }
   });
 }
+
+/* ===================== 筆記系統 5-3：素材庫收藏 ===================== */
+
+// 素材庫刻意存在跟高亮／註解「不同」的 LocalStorage key 底下，
+// 因為它的性質比較像「收藏的好句子清單」，跟針對單一段落的個人筆記是不同用途的資料。
+const MATERIAL_STORAGE_KEY = 'materialBank';
+
+/** 讀出全部素材庫收藏。 */
+function getMaterialBank() {
+  try {
+    const raw = localStorage.getItem(MATERIAL_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (err) {
+    console.error('讀取素材庫資料失敗，可能是 LocalStorage 內容格式損毀：', err);
+    return [];
+  }
+}
+
+function saveMaterialBank(items) {
+  try {
+    localStorage.setItem(MATERIAL_STORAGE_KEY, JSON.stringify(items));
+  } catch (err) {
+    console.error('儲存素材庫資料失敗：', err);
+    alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
+  }
+}
+
+/** 找出「這篇文章、這一段」是否已經存在素材庫裡。 */
+function findMaterial(items, articleId, paragraphIndex) {
+  return items.find(m =>
+    String(m.articleId) === String(articleId) &&
+    m.paragraphIndex === paragraphIndex
+  );
+}
+
+/** 把某一段加入素材庫（如果已經存過就不重複加）。 */
+function addToMaterialBank(articleId, paragraphIndex, paragraphText) {
+  const items = getMaterialBank();
+  if (findMaterial(items, articleId, paragraphIndex)) return;
+
+  items.push({
+    articleId: String(articleId),
+    paragraphIndex,
+    type: 'material',
+    text: paragraphText,
+    timestamp: Date.now()
+  });
+  saveMaterialBank(items);
+}
+
+/** 把某一段從素材庫移除。 */
+function removeFromMaterialBank(articleId, paragraphIndex) {
+  const items = getMaterialBank().filter(m =>
+    !(String(m.articleId) === String(articleId) && m.paragraphIndex === paragraphIndex)
+  );
+  saveMaterialBank(items);
+}
+
+/**
+ * 同步更新「這段是否在素材庫裡」在畫面上的兩個地方：
+ * 段落旁的書籤圖示（顯示／隱藏），以及選單裡按鈕的文字（加入／移出素材庫）。
+ */
+function updateMaterialUI(paragraphEl, isSaved) {
+  if (!paragraphEl) return;
+
+  const indicatorBtn = paragraphEl.querySelector('.material-indicator-btn');
+  if (indicatorBtn) indicatorBtn.hidden = !isSaved;
+
+  const menuBtn = paragraphEl.querySelector('.material-trigger');
+  if (menuBtn) {
+    // 保留按鈕原本的圖示（svg），只把後面的文字換掉
+    const icon = menuBtn.querySelector('svg');
+    menuBtn.textContent = isSaved ? '移出素材庫' : '加入素材庫';
+    if (icon) menuBtn.prepend(icon);
+  }
+}
+
+/**
+ * 頁面載入完成、範文渲染出來之後呼叫：
+ * 把 LocalStorage 裡屬於這篇文章的素材庫收藏，一一還原成段落旁的書籤圖示。
+ */
+function restoreMaterials(articleId) {
+  const items = getMaterialBank();
+  document.querySelectorAll('.paragraph[data-paragraph-index]').forEach(paragraphEl => {
+    const paragraphIndex = Number(paragraphEl.dataset.paragraphIndex);
+    const isSaved = Boolean(findMaterial(items, articleId, paragraphIndex));
+    updateMaterialUI(paragraphEl, isSaved);
+  });
+}
+
+/**
+ * 幫「已存入素材庫」小圖示、以及選單裡的「加入／移出素材庫」按鈕綁上點擊事件。
+ * 一樣是事件委派，理由跟高亮、註解功能相同。
+ */
+function wireMaterialInteractions(articleId) {
+  const essayEl = document.querySelector('.essay');
+  if (!essayEl) return;
+
+  essayEl.addEventListener('click', (event) => {
+    // 點到段落旁的書籤圖示 → 直接移出素材庫（想重新收藏，再從選單加回來即可）
+    const indicatorBtn = event.target.closest('.material-indicator-btn');
+    if (indicatorBtn) {
+      const paragraphEl = indicatorBtn.closest('.paragraph');
+      const paragraphIndex = Number(paragraphEl.dataset.paragraphIndex);
+      removeFromMaterialBank(articleId, paragraphIndex);
+      updateMaterialUI(paragraphEl, false);
+      return;
+    }
+
+    // 點到選單裡的「加入／移出素材庫」→ 依目前狀態切換
+    const materialBtn = event.target.closest('.highlight-option.material-trigger');
+    if (materialBtn) {
+      const paragraphEl = materialBtn.closest('.paragraph');
+      const paragraphIndex = Number(paragraphEl.dataset.paragraphIndex);
+      const textEl = paragraphEl.querySelector('.paragraph-text');
+      const paragraphText = textEl ? textEl.textContent : '';
+
+      const alreadySaved = Boolean(findMaterial(getMaterialBank(), articleId, paragraphIndex));
+
+      if (alreadySaved) {
+        removeFromMaterialBank(articleId, paragraphIndex);
+        updateMaterialUI(paragraphEl, false);
+      } else {
+        addToMaterialBank(articleId, paragraphIndex, paragraphText);
+        updateMaterialUI(paragraphEl, true);
+      }
+
+      closeOpenHighlightMenu();
+      return;
+    }
+  });
+}
+
+/* ===================== 筆記系統 5-4：文章內筆記面板 ===================== */
+
+// 「結構分析」「個人反思」這兩則是整篇文章一則，不是逐段的，
+// 所以存放方式跟高亮／註解／素材庫都不一樣：用 articleId 當 key，存在自己的物件裡。
+const ARTICLE_PROGRESS_KEY = 'articleProgress';
+
+// 高亮顏色代號轉成中文標籤，跟選單裡的文字一致（這裡重新宣告一次，
+// 是因為這段程式碼要能獨立閱讀，不用跳去別的區塊找對照表）
+const NOTEBOOK_HIGHLIGHT_LABELS = { yellow: '好詞好句', pink: '修辭手法', blue: '立意轉折' };
+
+function getAllArticleProgress() {
+  try {
+    const raw = localStorage.getItem(ARTICLE_PROGRESS_KEY);
+    const parsed = raw ? JSON.parse(raw) : {};
+    // 這份資料必須是「物件」（用 articleId 當 key），不是陣列，跟其他三種筆記資料的形狀不一樣
+    return (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) ? parsed : {};
+  } catch (err) {
+    console.error('讀取文章筆記面板資料失敗，可能是 LocalStorage 內容格式損毀：', err);
+    return {};
+  }
+}
+
+function saveAllArticleProgress(data) {
+  try {
+    localStorage.setItem(ARTICLE_PROGRESS_KEY, JSON.stringify(data));
+  } catch (err) {
+    console.error('儲存文章筆記面板資料失敗：', err);
+  }
+}
+
+function getArticleProgress(articleId) {
+  const all = getAllArticleProgress();
+  return all[String(articleId)] || { structureNote: '', reflectionNote: '' };
+}
+
+/** 更新某篇文章的其中一個欄位（structureNote 或 reflectionNote），其餘欄位維持不變。 */
+function saveArticleProgressField(articleId, field, value) {
+  const all = getAllArticleProgress();
+  const key = String(articleId);
+  if (!all[key]) all[key] = { structureNote: '', reflectionNote: '' };
+  all[key][field] = value;
+  all[key].updatedAt = Date.now();
+  saveAllArticleProgress(all);
+}
+
+/**
+ * 簡單的 debounce：使用者停止打字一段時間後才真正執行 fn，
+ * 避免每打一個字就存一次 LocalStorage（效能浪費，也沒必要）。
+ */
+function debounce(fn, delay) {
+  let timer = null;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delay);
+  };
+}
+
+/** 幫一個 textarea 接上「自動儲存」：打字時顯示「正在輸入…」，停下來 600ms 後存檔並顯示儲存時間。 */
+function setupAutoSaveTextarea(textareaEl, statusEl, articleId, field) {
+  const debouncedSave = debounce((value) => {
+    saveArticleProgressField(articleId, field, value);
+    const timeText = new Date().toLocaleTimeString('zh-Hant', { hour: '2-digit', minute: '2-digit' });
+    statusEl.textContent = `已自動儲存・${timeText}`;
+  }, 600);
+
+  textareaEl.addEventListener('input', () => {
+    statusEl.textContent = '正在輸入…';
+    debouncedSave(textareaEl.value);
+  });
+}
+
+/** 把「佳句與手法」分頁的內容重新畫出來：這篇文章目前所有的高亮段落＋收藏的素材。 */
+function renderNotebookHighlightsTab(articleId) {
+  const container = document.getElementById('highlightsSummaryList');
+  if (!container) return;
+
+  const highlights = getAllNotes()
+    .filter(n => n.type === 'highlight' && String(n.articleId) === String(articleId))
+    .sort((a, b) => a.paragraphIndex - b.paragraphIndex);
+
+  const materials = getMaterialBank()
+    .filter(m => String(m.articleId) === String(articleId))
+    .sort((a, b) => a.paragraphIndex - b.paragraphIndex);
+
+  if (highlights.length === 0 && materials.length === 0) {
+    container.innerHTML = '<p class="notebook-tab-hint">目前還沒有標記任何段落。在範文裡點段落旁的圖示，選顏色來標記好詞好句、修辭手法或立意轉折點，也可以存入素材庫，內容會自動出現在這裡。</p>';
+    return;
+  }
+
+  let html = '';
+
+  if (highlights.length) {
+    html += `<h4 class="notebook-list-heading">高亮段落（${highlights.length}）</h4>`;
+    html += highlights.map(n => `
+      <div class="notebook-list-item">
+        <span class="notebook-dot dot-${n.color}"></span>
+        <div>
+          <p class="notebook-item-label">第 ${n.paragraphIndex + 1} 段・${esc(NOTEBOOK_HIGHLIGHT_LABELS[n.color] || n.color)}</p>
+          <p class="notebook-item-text">${esc(n.text || '')}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  if (materials.length) {
+    html += `<h4 class="notebook-list-heading">收藏的素材（${materials.length}）</h4>`;
+    html += materials.map(m => `
+      <div class="notebook-list-item">
+        <span class="notebook-dot dot-material"></span>
+        <div>
+          <p class="notebook-item-label">第 ${m.paragraphIndex + 1} 段</p>
+          <p class="notebook-item-text">${esc(m.text || '')}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  container.innerHTML = html;
+}
+
+/** 初始化整個筆記面板：填入已存的內容、接上自動儲存、接上分頁切換、接上開關按鈕。 */
+function initNotebookPanel(articleId) {
+  const toggleBtn = document.getElementById('notebookToggleBtn');
+  const panel = document.getElementById('notebookPanel');
+  const closeBtn = document.getElementById('notebookCloseBtn');
+  if (!toggleBtn || !panel || !closeBtn) return;
+
+  // 把之前存過的結構分析／個人反思內容填回 textarea
+  const progress = getArticleProgress(articleId);
+  const structureTextarea = document.getElementById('structureTextarea');
+  const reflectionTextarea = document.getElementById('reflectionTextarea');
+  const structureSaveStatus = document.getElementById('structureSaveStatus');
+  const reflectionSaveStatus = document.getElementById('reflectionSaveStatus');
+
+  structureTextarea.value = progress.structureNote || '';
+  reflectionTextarea.value = progress.reflectionNote || '';
+
+  setupAutoSaveTextarea(structureTextarea, structureSaveStatus, articleId, 'structureNote');
+  setupAutoSaveTextarea(reflectionTextarea, reflectionSaveStatus, articleId, 'reflectionNote');
+
+  // 面板開關
+  function openPanel() {
+    panel.classList.add('is-open');
+    panel.setAttribute('aria-hidden', 'false');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closePanel() {
+    panel.classList.remove('is-open');
+    panel.setAttribute('aria-hidden', 'true');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (panel.classList.contains('is-open')) closePanel();
+    else openPanel();
+  });
+  closeBtn.addEventListener('click', closePanel);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && panel.classList.contains('is-open')) closePanel();
+  });
+
+  // 分頁切換：點哪個分頁按鈕，就顯示對應的內容區塊
+  const tabs = panel.querySelectorAll('.notebook-tab');
+  const tabPanels = panel.querySelectorAll('.notebook-tab-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+      tabPanels.forEach(p => p.classList.remove('is-active'));
+
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+
+      const targetPanel = panel.querySelector(`.notebook-tab-panel[data-panel="${tab.dataset.tab}"]`);
+      if (targetPanel) targetPanel.classList.add('is-active');
+
+      // 「佳句與手法」分頁的內容會隨時變動（使用者可能剛標記完段落），
+      // 所以每次切到這個分頁都重新讀一次 LocalStorage，而不是只在頁面載入時讀一次
+      if (tab.dataset.tab === 'highlights') {
+        renderNotebookHighlightsTab(articleId);
+      }
+    });
+  });
+}
+
 </script>
 </body></html>

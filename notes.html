@@ -87,6 +87,7 @@
     .dot-pink { background: #e79bb2; }
     .dot-blue { background: #7fa8d9; }
     .dot-comment { background: var(--color-primary, #1f3a5f); }
+    .dot-material { background: #cba667; } /* 跟 article.html 書籤圖示同一套琥珀色系 */
 
     .note-item-body { flex: 1; min-width: 0; }
     .note-item-label { font-size: .74rem; color: var(--color-ink-faint, #8b988e); margin-bottom: 4px; }
@@ -100,6 +101,19 @@
       line-height: 1.7;
       white-space: pre-wrap;
     }
+
+    .note-item-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0; }
+
+    .note-item-copy {
+      background: none;
+      border: none;
+      color: var(--color-primary, #1f3a5f);
+      font-size: .78rem;
+      cursor: pointer;
+      padding: 4px 6px;
+      white-space: nowrap;
+    }
+    .note-item-copy:hover { text-decoration: underline; }
 
     .note-item-delete {
       flex-shrink: 0;
@@ -155,9 +169,9 @@
     <div class="notes-head">
       <div class="notes-head-text">
         <h1>我的筆記</h1>
-        <p>這裡整理你在各篇範文裡標記的好詞好句、修辭手法、立意轉折點，以及寫下的段落註解。</p>
+        <p>這裡整理你在各篇範文裡標記的好詞好句、修辭手法、立意轉折點，收藏進素材庫的段落，以及寫下的段落註解。</p>
       </div>
-      <button type="button" class="btn-clear-all" id="clearAllBtn" hidden>清除全部筆記</button>
+      <button type="button" class="btn-clear-all" id="clearAllBtn" hidden>清除全部筆記與素材</button>
     </div>
 
     <p class="notes-device-hint">筆記目前只存在這台瀏覽器裡（尚未同步到雲端），換裝置或清除瀏覽器資料會遺失，記得重要內容要另外備份。</p>
@@ -191,7 +205,8 @@
     });
   }
 
-  const NOTES_STORAGE_KEY = 'dse_notes'; // 跟 article.html 用同一把 key，讀寫的是同一份資料
+  const NOTES_STORAGE_KEY = 'dse_notes';       // 高亮／註解，跟 article.html 用同一把 key
+  const MATERIAL_STORAGE_KEY = 'materialBank'; // 素材庫是獨立的 key，跟 article.html 的設計一致
 
   const contentEl = document.getElementById('notesContent');
   const summaryEl = document.getElementById('notesSummary');
@@ -261,28 +276,84 @@
     saveAllNotes(notes);
   }
 
-  /** 把所有筆記依 articleId 分組，並算出每篇文章「最後更新時間」（組內最新的 timestamp）。 */
-  function groupNotesByArticle(notes) {
+  /** 讀出全部素材庫收藏，邏輯跟 getAllNotes() 一樣，只是換了一把 key。 */
+  function getMaterialBank() {
+    try {
+      const raw = localStorage.getItem(MATERIAL_STORAGE_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (err) {
+      console.error('讀取素材庫資料失敗，可能是 LocalStorage 內容格式損毀：', err);
+      return [];
+    }
+  }
+
+  function saveMaterialBank(items) {
+    try {
+      localStorage.setItem(MATERIAL_STORAGE_KEY, JSON.stringify(items));
+    } catch (err) {
+      console.error('儲存素材庫資料失敗：', err);
+      alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
+    }
+  }
+
+  /** 把某一筆素材收藏移除。 */
+  function deleteMaterial(articleId, paragraphIndex) {
+    const items = getMaterialBank().filter(m =>
+      !(String(m.articleId) === String(articleId) && m.paragraphIndex === paragraphIndex)
+    );
+    saveMaterialBank(items);
+  }
+
+  /**
+   * 把文字複製到剪貼簿，並在按鈕上短暫顯示「已複製」作為回饋。
+   * 這個動作不會改變任何資料，所以不需要重新整理列表。
+   */
+  function copyTextToClipboard(text, buttonEl) {
+    const originalLabel = buttonEl.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      buttonEl.textContent = '已複製';
+      setTimeout(() => { buttonEl.textContent = originalLabel; }, 1500);
+    }).catch(err => {
+      console.error('複製失敗：', err);
+      alert('複製失敗，請手動選取文字複製。');
+    });
+  }
+
+  /**
+   * 把「筆記」（高亮／註解）跟「素材庫」兩份不同來源的資料，合併成同一份「依文章分組」的結構，
+   * 並算出每篇文章「最後更新時間」（組內最新的 timestamp），讓最近有動作的文章排前面。
+   */
+  function buildGroups(notes, materials) {
     const groups = {};
 
-    notes.forEach(note => {
-      const key = String(note.articleId);
+    function ensureGroup(articleId) {
+      const key = String(articleId);
       if (!groups[key]) {
-        groups[key] = { articleId: key, highlights: [], comments: [], lastTimestamp: 0 };
+        groups[key] = { articleId: key, highlights: [], comments: [], materials: [], lastTimestamp: 0 };
       }
+      return groups[key];
+    }
 
-      if (note.type === 'highlight') groups[key].highlights.push(note);
-      if (note.type === 'comment') groups[key].comments.push(note);
+    notes.forEach(note => {
+      const group = ensureGroup(note.articleId);
+      if (note.type === 'highlight') group.highlights.push(note);
+      if (note.type === 'comment') group.comments.push(note);
+      group.lastTimestamp = Math.max(group.lastTimestamp, note.timestamp || 0);
+    });
 
-      groups[key].lastTimestamp = Math.max(groups[key].lastTimestamp, note.timestamp || 0);
+    materials.forEach(material => {
+      const group = ensureGroup(material.articleId);
+      group.materials.push(material);
+      group.lastTimestamp = Math.max(group.lastTimestamp, material.timestamp || 0);
     });
 
     Object.values(groups).forEach(group => {
       group.highlights.sort((a, b) => a.paragraphIndex - b.paragraphIndex);
       group.comments.sort((a, b) => a.paragraphIndex - b.paragraphIndex);
+      group.materials.sort((a, b) => a.paragraphIndex - b.paragraphIndex);
     });
 
-    // 最近有更新筆記的文章排前面
     return Object.values(groups).sort((a, b) => b.lastTimestamp - a.lastTimestamp);
   }
 
@@ -322,6 +393,22 @@
     `;
   }
 
+  function buildMaterialItemHtml(material) {
+    return `
+      <div class="note-item" data-type="material" data-article-id="${esc(material.articleId)}" data-paragraph-index="${material.paragraphIndex}">
+        <span class="note-item-dot dot-material"></span>
+        <div class="note-item-body">
+          <p class="note-item-label">第 ${material.paragraphIndex + 1} 段</p>
+          <p class="note-item-text">${esc(material.text || '')}</p>
+        </div>
+        <div class="note-item-actions">
+          <button type="button" class="note-item-copy" data-action="copy-material">複製</button>
+          <button type="button" class="note-item-delete" data-action="delete-material">移除</button>
+        </div>
+      </div>
+    `;
+  }
+
   function buildArticleGroupHtml(group, articleById, questionFullByKey) {
     const articleMeta = articleById[group.articleId];
     const paddedId = String(group.articleId).padStart(2, '0');
@@ -330,6 +417,10 @@
 
     const highlightsHtml = group.highlights.length
       ? `<div class="note-subsection"><h3>高亮段落（${group.highlights.length}）</h3>${group.highlights.map(buildHighlightItemHtml).join('')}</div>`
+      : '';
+
+    const materialsHtml = group.materials.length
+      ? `<div class="note-subsection"><h3>收藏的素材（${group.materials.length}）</h3>${group.materials.map(buildMaterialItemHtml).join('')}</div>`
       : '';
 
     const commentsHtml = group.comments.length
@@ -345,6 +436,7 @@
         </div>
         ${title ? `<p class="note-article-title">${esc(title)}</p>` : ''}
         ${highlightsHtml}
+        ${materialsHtml}
         ${commentsHtml}
       </section>
     `;
@@ -353,7 +445,7 @@
   function renderEmptyState() {
     contentEl.innerHTML = `
       <div class="empty-state">
-        <p>目前還沒有任何筆記。打開一篇範文，試試幫段落標色或加註解，內容會自動出現在這裡。</p>
+        <p>目前還沒有任何筆記或收藏。打開一篇範文，試試幫段落標色、加註解，或存入素材庫，內容會自動出現在這裡。</p>
         <a class="btn btn-primary" href="genre-list.html">去瀏覽範文</a>
       </div>
     `;
@@ -361,20 +453,22 @@
 
   function render(articleById, questionFullByKey) {
     const notes = getAllNotes();
+    const materials = getMaterialBank();
 
-    if (notes.length === 0) {
+    if (notes.length === 0 && materials.length === 0) {
       summaryEl.hidden = true;
       clearAllBtn.hidden = true;
       renderEmptyState();
       return;
     }
 
-    const groups = groupNotesByArticle(notes);
+    const groups = buildGroups(notes, materials);
     const highlightCount = notes.filter(n => n.type === 'highlight').length;
     const commentCount = notes.filter(n => n.type === 'comment').length;
+    const materialCount = materials.length;
 
     summaryEl.hidden = false;
-    summaryEl.textContent = `共 ${groups.length} 篇文章有筆記・高亮 ${highlightCount} 段・註解 ${commentCount} 則`;
+    summaryEl.textContent = `共 ${groups.length} 篇文章有紀錄・高亮 ${highlightCount} 段・註解 ${commentCount} 則・素材 ${materialCount} 則`;
     clearAllBtn.hidden = false;
 
     contentEl.innerHTML = groups.map(g => buildArticleGroupHtml(g, articleById, questionFullByKey)).join('');
@@ -382,30 +476,42 @@
 
   function wireContentInteractions(articleById, questionFullByKey) {
     contentEl.addEventListener('click', (event) => {
-      const btn = event.target.closest('.note-item-delete');
-      if (!btn) return;
+      // 複製素材文字：純粹讀取，不改資料，不用重新整理列表
+      const copyBtn = event.target.closest('.note-item-copy');
+      if (copyBtn) {
+        const itemEl = copyBtn.closest('.note-item');
+        const textEl = itemEl.querySelector('.note-item-text');
+        copyTextToClipboard(textEl ? textEl.textContent : '', copyBtn);
+        return;
+      }
 
-      const itemEl = btn.closest('.note-item');
+      const deleteBtn = event.target.closest('.note-item-delete');
+      if (!deleteBtn) return;
+
+      const itemEl = deleteBtn.closest('.note-item');
       const articleId = itemEl.dataset.articleId;
       const paragraphIndex = Number(itemEl.dataset.paragraphIndex);
-      const action = btn.dataset.action;
+      const action = deleteBtn.dataset.action;
 
       if (action === 'delete-highlight') {
         deleteHighlight(articleId, paragraphIndex);
       } else if (action === 'delete-comment') {
         deleteComment(articleId, paragraphIndex);
+      } else if (action === 'delete-material') {
+        deleteMaterial(articleId, paragraphIndex);
       }
 
       // 刪除後重新整理整個列表，比只移除單一 DOM 節點更保險
-      // （不然「共 X 篇文章有筆記」這類統計數字會跟畫面兜不起來）
+      // （不然「共 X 篇文章有紀錄」這類統計數字會跟畫面兜不起來）
       render(articleById, questionFullByKey);
     });
 
     clearAllBtn.addEventListener('click', () => {
-      const confirmed = confirm('確定要清除全部筆記嗎？這個動作沒辦法復原。');
+      const confirmed = confirm('確定要清除全部筆記與素材庫收藏嗎？這個動作沒辦法復原。');
       if (!confirmed) return;
 
       saveAllNotes([]);
+      saveMaterialBank([]);
       render(articleById, questionFullByKey);
     });
   }
