@@ -35,6 +35,20 @@
     .question-links a:hover { opacity: .85; }
     .no-article { font-size: .82rem; color: var(--color-ink-faint, #8b988e); }
 
+    /* 寫作技巧結果卡片：跟 techniques.html 的卡片共用同一套外觀 */
+    .technique-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .technique-card { background: var(--color-surface, #fff); border: 1px solid var(--color-border, #ddd6c4); border-left-width: 4px; border-radius: var(--radius-md, 10px); padding: 18px 20px; }
+    .technique-card.cat-narrative { border-left-color: var(--color-narrative, #1f3a5f); }
+    .technique-card.cat-rhetoric { border-left-color: var(--color-jade, #2f4a3c); }
+    .technique-card.cat-structure { border-left-color: var(--color-descriptive, #6b5a3f); }
+    .technique-card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .technique-name { font-family: var(--font-serif, serif); font-weight: 700; font-size: 1.02rem; color: var(--color-ink, #23322b); }
+    .technique-category-tag { font-size: .7rem; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+    .cat-narrative .technique-category-tag { background: var(--color-primary-soft, #e7edf3); color: var(--color-narrative, #1f3a5f); }
+    .cat-rhetoric .technique-category-tag { background: #e5ece8; color: var(--color-jade, #2f4a3c); }
+    .cat-structure .technique-category-tag { background: #f1ece2; color: var(--color-descriptive, #6b5a3f); }
+    .technique-description { font-size: .88rem; color: var(--color-ink-soft, #5c6b5f); line-height: 1.75; }
+
     /* 命中關鍵字的地方用柔和的底色標出，跟全站低飽和度的配色一致，不用瀏覽器預設的螢光黃 */
     mark { background: #f3e3a6; color: inherit; border-radius: 2px; padding: 0 1px; }
 
@@ -76,7 +90,7 @@
 
     <div class="search-head">
       <h1 id="searchHeading">搜尋</h1>
-      <p class="search-hint">可以搜尋篇章編號、題目文字、年份、文體，或立意向度（例如「個人成長」）。</p>
+      <p class="search-hint">可以搜尋篇章編號、題目文字、年份、文體、立意向度（例如「個人成長」），或寫作手法（例如「駁論法」）。</p>
     </div>
 
     <p class="search-summary" id="searchSummary"></p>
@@ -177,6 +191,23 @@
     ].join(' '));
   }
 
+  /** 把一個寫作手法組成一段可搜尋的純文字：名稱、分類、說明文字都算。 */
+  function buildTechniqueSearchText(technique) {
+    return normalize([
+      technique.name || '',
+      technique.category || '',
+      technique.description || ''
+    ].join(' '));
+  }
+
+  // 分類名稱轉成 CSS class 用的英文代號，跟 techniques.html 是同一套對照表，
+  // 決定卡片左邊那條顏色線用哪個顏色
+  const TECHNIQUE_CATEGORY_CLASS = {
+    '敘事技巧': 'cat-narrative',
+    '修辭手法': 'cat-rhetoric',
+    '結構手法': 'cat-structure'
+  };
+
   /** 找出跟這條試題（年份＋題號）對應的範文 id 清單，跟 questions.html 的邏輯一致。 */
   function relatedArticleIdsFor(question, articles) {
     return [...new Set(
@@ -233,7 +264,20 @@
     `;
   }
 
-  function renderResults(query, articles, questions, themeNameById, questionFullByKey) {
+  function buildTechniqueCardHtml(technique, terms) {
+    const categoryClass = TECHNIQUE_CATEGORY_CLASS[technique.category] || 'cat-structure';
+    return `
+      <a class="technique-card ${categoryClass}" href="techniques.html?highlight=${encodeURIComponent(technique.id)}">
+        <div class="technique-card-head">
+          <span class="technique-name">${highlight(technique.name, terms)}</span>
+          <span class="technique-category-tag">${esc(technique.category)}</span>
+        </div>
+        <p class="technique-description">${highlight(technique.description || '', terms)}</p>
+      </a>
+    `;
+  }
+
+  function renderResults(query, articles, questions, techniques, themeNameById, questionFullByKey) {
     const trimmedQuery = query.trim();
     headingEl.textContent = trimmedQuery ? `「${trimmedQuery}」的搜尋結果` : '搜尋';
 
@@ -252,12 +296,15 @@
     const matchedQuestions = questions.filter(q =>
       terms.every(term => buildQuestionSearchText(q).includes(term))
     );
+    const matchedTechniques = techniques.filter(t =>
+      terms.every(term => buildTechniqueSearchText(t).includes(term))
+    );
 
-    const totalCount = matchedArticles.length + matchedQuestions.length;
-    summaryEl.textContent = `共找到 ${totalCount} 項結果（範文 ${matchedArticles.length} 篇・試題 ${matchedQuestions.length} 條）`;
+    const totalCount = matchedArticles.length + matchedQuestions.length + matchedTechniques.length;
+    summaryEl.textContent = `共找到 ${totalCount} 項結果（範文 ${matchedArticles.length} 篇・試題 ${matchedQuestions.length} 條・寫作手法 ${matchedTechniques.length} 個）`;
 
     if (totalCount === 0) {
-      resultsEl.innerHTML = `<p class="status-text">沒有找到與「${esc(trimmedQuery)}」相關的內容，換個關鍵字試試——可以試試篇章編號、年份，或立意向度如「個人成長」。</p>`;
+      resultsEl.innerHTML = `<p class="status-text">沒有找到與「${esc(trimmedQuery)}」相關的內容，換個關鍵字試試——可以試試篇章編號、年份、立意向度如「個人成長」，或寫作手法如「駁論法」。</p>`;
       return;
     }
 
@@ -269,6 +316,17 @@
           <h2>符合的範文（${matchedArticles.length}）</h2>
           <div class="article-grid">
             ${matchedArticles.map(a => buildArticleCardHtml(a, themeNameById, questionFullByKey, terms)).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    if (matchedTechniques.length) {
+      html += `
+        <section class="result-section">
+          <h2>符合的寫作手法（${matchedTechniques.length}）</h2>
+          <div class="technique-grid">
+            ${matchedTechniques.map(t => buildTechniqueCardHtml(t, terms)).join('')}
           </div>
         </section>
       `;
@@ -296,22 +354,26 @@
     if (navSearchInput) navSearchInput.value = query;
 
     try {
-      const [ar, qr, tr] = await Promise.all([
+      const [ar, qr, tr, techR] = await Promise.all([
         fetch('data/articles.json', { cache: 'no-store' }),
         fetch('data/questions.json', { cache: 'no-store' }),
-        fetch('data/themes.json', { cache: 'no-store' })
+        fetch('data/themes.json', { cache: 'no-store' }),
+        fetch('data/techniques.json', { cache: 'no-store' })
       ]);
 
       if (!ar.ok) throw new Error(`data/articles.json HTTP ${ar.status}`);
       if (!qr.ok) throw new Error(`data/questions.json HTTP ${qr.status}`);
       if (!tr.ok) throw new Error(`data/themes.json HTTP ${tr.status}`);
+      if (!techR.ok) throw new Error(`data/techniques.json HTTP ${techR.status}`);
 
       const articles = await ar.json();
       const questions = await qr.json();
       const themes = await tr.json();
+      const techniques = await techR.json();
 
       if (!Array.isArray(articles)) throw new Error('data/articles.json 必須是陣列');
       if (!Array.isArray(questions)) throw new Error('data/questions.json 必須是陣列');
+      if (!Array.isArray(techniques)) throw new Error('data/techniques.json 必須是陣列');
 
       const themeNameById = {};
       themes.forEach(t => { themeNameById[t.id] = t.name; });
@@ -319,7 +381,7 @@
       const questionFullByKey = {};
       questions.forEach(q => { questionFullByKey[`${q.year}_${q.questionNumber}`] = q.questionFull; });
 
-      renderResults(query, articles, questions, themeNameById, questionFullByKey);
+      renderResults(query, articles, questions, techniques, themeNameById, questionFullByKey);
 
     } catch (error) {
       console.error(error);

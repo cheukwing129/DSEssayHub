@@ -68,6 +68,13 @@
 
     .technique-description { font-size: .88rem; color: var(--color-ink-soft, #5c6b5f); line-height: 1.75; }
 
+    /* 從搜尋結果點進來、指定要跳到某個技巧時，短暫用外框脈動一下，提示「就是這個」 */
+    .technique-card.is-target { animation: technique-pulse 1.6s ease 2; }
+    @keyframes technique-pulse {
+      0%, 100% { box-shadow: none; }
+      50% { box-shadow: 0 0 0 3px var(--color-primary-soft, #e7edf3), 0 0 0 5px var(--color-primary, #1f3a5f); }
+    }
+
     .status-text { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); }
     .error-box { margin-top: 16px; padding: 14px 16px; border-left: 4px solid #a33; border-radius: 4px; color: #712; background: #fff3f3; line-height: 1.65; }
 
@@ -170,7 +177,7 @@
   function buildTechniqueCardHtml(technique) {
     const categoryClass = CATEGORY_CLASS[technique.category] || 'cat-structure';
     return `
-      <div class="technique-card ${categoryClass}">
+      <div class="technique-card ${categoryClass}" id="technique-${esc(technique.id)}">
         <div class="technique-card-head">
           <span class="technique-name">${esc(technique.name)}</span>
           <span class="technique-category-tag">${esc(technique.category)}</span>
@@ -178,6 +185,26 @@
         <p class="technique-description">${esc(technique.description || '')}</p>
       </div>
     `;
+  }
+
+  function scrollToHighlightedTechnique() {
+    const params = new URLSearchParams(location.search);
+    const targetId = params.get('highlight');
+    if (!targetId) return;
+
+    // 確保目標卡片所在的分類目前有顯示出來（例如篩選還停在「全部」以外的分類時，先切回全部）。
+    // 這個 .click() 會同步觸發 render()、重建整個網格的 DOM，所以一定要等它跑完，
+    // 再重新抓一次目標卡片──不然抓到的會是切換分類前、已經被換掉的舊節點。
+    if (currentCategory) {
+      categoryFilterEl.querySelector('.category-btn[data-category=""]').click();
+    }
+
+    const targetEl = document.getElementById(`technique-${targetId}`);
+    if (!targetEl) return;
+
+    targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    targetEl.classList.add('is-target');
+    targetEl.addEventListener('animationend', () => targetEl.classList.remove('is-target'), { once: true });
   }
 
   function render() {
@@ -214,6 +241,7 @@
 
       allTechniques = techniques;
       render();
+      scrollToHighlightedTechnique();
 
     } catch (error) {
       console.error(error);

@@ -23,8 +23,9 @@
       line-height: 1.7;
     }
 
-    .btn-clear-all {
-      flex-shrink: 0;
+    .notes-actions { display: flex; gap: 8px; flex-wrap: wrap; flex-shrink: 0; }
+
+    .btn-notes-action {
       background: none;
       border: 1px solid var(--color-border, #ddd6c4);
       color: var(--color-ink-soft, #5c6b5f);
@@ -34,7 +35,18 @@
       cursor: pointer;
       white-space: nowrap;
     }
-    .btn-clear-all:hover { border-color: #a24b4b; color: #a24b4b; }
+    .btn-notes-action:hover { border-color: var(--color-primary, #1f3a5f); color: var(--color-primary, #1f3a5f); }
+    .btn-notes-action.btn-danger:hover { border-color: #a24b4b; color: #a24b4b; }
+
+    .import-status-box {
+      font-size: .85rem;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .import-status-ok { background: var(--color-primary-soft, #e7edf3); color: var(--color-primary, #1f3a5f); }
+    .import-status-error { background: #fff3f3; color: #a33; border-left: 4px solid #a33; }
 
     .notes-summary { font-size: .85rem; color: var(--color-ink-faint, #8b988e); margin-bottom: 28px; }
 
@@ -171,10 +183,17 @@
         <h1>我的筆記</h1>
         <p>這裡整理你在各篇範文裡標記的好詞好句、修辭手法、立意轉折點，收藏進素材庫的段落，以及寫下的段落註解。</p>
       </div>
-      <button type="button" class="btn-clear-all" id="clearAllBtn" hidden>清除全部筆記與素材</button>
+      <div class="notes-actions">
+        <button type="button" class="btn-notes-action" id="exportBtn">匯出備份</button>
+        <button type="button" class="btn-notes-action" id="importBtn">匯入備份</button>
+        <input type="file" id="importFileInput" accept="application/json,.json" hidden>
+        <button type="button" class="btn-notes-action btn-danger" id="clearAllBtn" hidden>清除全部筆記與素材</button>
+      </div>
     </div>
 
-    <p class="notes-device-hint">筆記目前只存在這台瀏覽器裡（尚未同步到雲端），換裝置或清除瀏覽器資料會遺失，記得重要內容要另外備份。</p>
+    <p class="notes-device-hint">筆記目前只存在這台瀏覽器裡（尚未同步到雲端），換裝置或清除瀏覽器資料會遺失。建議定期按「匯出備份」把筆記存成檔案，換裝置時再用「匯入備份」讀回來。</p>
+
+    <p class="import-status-box" id="importStatus" hidden></p>
 
     <p class="notes-summary" id="notesSummary" hidden></p>
 
@@ -207,11 +226,16 @@
 
   const NOTES_STORAGE_KEY = 'dse_notes';       // 高亮／註解，跟 article.html 用同一把 key
   const MATERIAL_STORAGE_KEY = 'materialBank'; // 素材庫是獨立的 key，跟 article.html 的設計一致
+  const ARTICLE_PROGRESS_KEY = 'articleProgress'; // 結構分析／個人反思／審題訓練，同樣跟 article.html 共用
 
   const contentEl = document.getElementById('notesContent');
   const summaryEl = document.getElementById('notesSummary');
   const errorBoxEl = document.getElementById('errorBox');
   const clearAllBtn = document.getElementById('clearAllBtn');
+  const exportBtn = document.getElementById('exportBtn');
+  const importBtn = document.getElementById('importBtn');
+  const importFileInput = document.getElementById('importFileInput');
+  const importStatusEl = document.getElementById('importStatus');
 
   const GENRE_LABELS = {
     narrative: '記敘抒情文',
@@ -303,6 +327,27 @@
       !(String(m.articleId) === String(articleId) && m.paragraphIndex === paragraphIndex)
     );
     saveMaterialBank(items);
+  }
+
+  /** 讀出「結構分析／個人反思／審題訓練」資料，格式是物件（用 articleId 當 key），不是陣列。 */
+  function getAllArticleProgress() {
+    try {
+      const raw = localStorage.getItem(ARTICLE_PROGRESS_KEY);
+      const parsed = raw ? JSON.parse(raw) : {};
+      return (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) ? parsed : {};
+    } catch (err) {
+      console.error('讀取文章筆記面板資料失敗，可能是 LocalStorage 內容格式損毀：', err);
+      return {};
+    }
+  }
+
+  function saveAllArticleProgress(data) {
+    try {
+      localStorage.setItem(ARTICLE_PROGRESS_KEY, JSON.stringify(data));
+    } catch (err) {
+      console.error('儲存文章筆記面板資料失敗：', err);
+      alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
+    }
   }
 
   /**
@@ -442,6 +487,156 @@
     `;
   }
 
+  /**
+   * 把目前三份資料（高亮／註解、素材庫、結構分析等）打包成一個 JSON 檔案，觸發瀏覽器下載。
+   * 檔名帶日期，方便自己分辨是哪一次的備份。
+   */
+  function exportBackup() {
+    const backup = {
+      exportedAt: new Date().toISOString(),
+      version: 1, // 之後如果資料格式有變動，可以用這個欄位判斷舊備份還相不相容
+      dse_notes: getAllNotes(),
+      materialBank: getMaterialBank(),
+      articleProgress: getAllArticleProgress()
+    };
+
+    const jsonText = JSON.stringify(backup, null, 2);
+    const blob = new Blob([jsonText], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const dateStr = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `dse-notes-backup-${dateStr}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // 下載觸發後這個暫時的物件網址就沒用了，釋放掉避免累積
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  /**
+   * 合併兩份陣列型資料（高亮／註解、素材庫都是這個形狀）：
+   * 用 keyFn 算出的字串判斷「是不是同一筆」，遇到重複的就比 timestamp，留下比較新的那筆；
+   * 匯入檔案裡有、但目前資料裡沒有的，就直接加進來。
+   */
+  function mergeArrayByKey(existingArr, importedArr, keyFn) {
+    const merged = existingArr.slice();
+    const indexByKey = new Map();
+    merged.forEach((item, i) => indexByKey.set(keyFn(item), i));
+
+    let addedCount = 0;
+    let updatedCount = 0;
+
+    importedArr.forEach(importedItem => {
+      const key = keyFn(importedItem);
+      if (indexByKey.has(key)) {
+        const i = indexByKey.get(key);
+        if ((importedItem.timestamp || 0) > (merged[i].timestamp || 0)) {
+          merged[i] = importedItem;
+          updatedCount++;
+        }
+      } else {
+        merged.push(importedItem);
+        indexByKey.set(key, merged.length - 1);
+        addedCount++;
+      }
+    });
+
+    return { merged, addedCount, updatedCount };
+  }
+
+  /** 合併 articleProgress（用 articleId 當 key 的物件，不是陣列），邏輯跟上面類似，一樣是比 updatedAt。 */
+  function mergeArticleProgress(existing, imported) {
+    const merged = Object.assign({}, existing);
+    let addedCount = 0;
+    let updatedCount = 0;
+
+    Object.keys(imported || {}).forEach(articleId => {
+      const importedRecord = imported[articleId];
+      const existingRecord = merged[articleId];
+
+      if (!existingRecord) {
+        merged[articleId] = importedRecord;
+        addedCount++;
+      } else if ((importedRecord.updatedAt || 0) > (existingRecord.updatedAt || 0)) {
+        merged[articleId] = importedRecord;
+        updatedCount++;
+      }
+    });
+
+    return { merged, addedCount, updatedCount };
+  }
+
+  function showImportStatus(message, isError) {
+    importStatusEl.hidden = false;
+    importStatusEl.textContent = message;
+    importStatusEl.classList.toggle('import-status-error', isError);
+    importStatusEl.classList.toggle('import-status-ok', !isError);
+  }
+
+  /**
+   * 讀取使用者選的備份檔案，驗證格式，跟目前資料「合併」（不會覆蓋或刪除現有內容）。
+   * 合併而不是直接取代，是刻意的：這樣就算選錯檔案，最多只是多了一些舊資料，不會把現有筆記洗掉。
+   */
+  function handleImportFile(event, articleById, questionFullByKey) {
+    const file = event.target.files[0];
+    event.target.value = ''; // 清空，這樣使用者重選同一個檔案也能再次觸發 change 事件
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      let backup;
+      try {
+        backup = JSON.parse(reader.result);
+      } catch (err) {
+        showImportStatus('這不是有效的 JSON 檔案，匯入失敗。', true);
+        return;
+      }
+
+      if (!backup || typeof backup !== 'object') {
+        showImportStatus('備份檔案格式不正確，匯入失敗。', true);
+        return;
+      }
+
+      const importedNotes = Array.isArray(backup.dse_notes) ? backup.dse_notes : [];
+      const importedMaterials = Array.isArray(backup.materialBank) ? backup.materialBank : [];
+      const importedProgress = (backup.articleProgress && typeof backup.articleProgress === 'object' && !Array.isArray(backup.articleProgress))
+        ? backup.articleProgress
+        : {};
+
+      if (importedNotes.length === 0 && importedMaterials.length === 0 && Object.keys(importedProgress).length === 0) {
+        showImportStatus('這份備份檔案裡沒有可匯入的筆記內容。', true);
+        return;
+      }
+
+      const confirmed = confirm('確定要匯入這份備份嗎？內容會跟目前的筆記合併，不會覆蓋或刪除現有資料。');
+      if (!confirmed) return;
+
+      const notesResult = mergeArrayByKey(getAllNotes(), importedNotes, n => `${n.articleId}_${n.paragraphIndex}_${n.type}`);
+      const materialsResult = mergeArrayByKey(getMaterialBank(), importedMaterials, m => `${m.articleId}_${m.paragraphIndex}`);
+      const progressResult = mergeArticleProgress(getAllArticleProgress(), importedProgress);
+
+      saveAllNotes(notesResult.merged);
+      saveMaterialBank(materialsResult.merged);
+      saveAllArticleProgress(progressResult.merged);
+
+      const totalAdded = notesResult.addedCount + materialsResult.addedCount + progressResult.addedCount;
+      const totalUpdated = notesResult.updatedCount + materialsResult.updatedCount + progressResult.updatedCount;
+
+      showImportStatus(`匯入完成：新增 ${totalAdded} 筆、更新 ${totalUpdated} 筆。`, false);
+      render(articleById, questionFullByKey);
+    };
+
+    reader.onerror = () => {
+      showImportStatus('讀取檔案時發生錯誤，請重試一次。', true);
+    };
+
+    reader.readAsText(file);
+  }
+
   function renderEmptyState() {
     contentEl.innerHTML = `
       <div class="empty-state">
@@ -514,6 +709,11 @@
       saveMaterialBank([]);
       render(articleById, questionFullByKey);
     });
+
+    exportBtn.addEventListener('click', exportBackup);
+
+    importBtn.addEventListener('click', () => importFileInput.click());
+    importFileInput.addEventListener('change', (event) => handleImportFile(event, articleById, questionFullByKey));
   }
 
   (async () => {
