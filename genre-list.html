@@ -108,17 +108,8 @@
   </div>
 </footer>
 
+<script src="site.js"></script>
 <script>
-  // 手機版導航選單開關（與 genre.html／article.html 的寫法一致）
-  const navToggle = document.getElementById('navToggle');
-  const mainNav = document.getElementById('mainNav');
-  if (navToggle && mainNav) {
-    navToggle.addEventListener('click', () => {
-      const open = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!open));
-      mainNav.classList.toggle('is-open', !open);
-    });
-  }
 
   // 讀取 articles.json 索引檔，統計各文體目前已收錄幾篇，
   // 數量完全由資料產生，避免新增文章後出現「38／28」一類過期目標。
