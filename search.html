@@ -135,12 +135,7 @@
     practical: '實用寫作'
   };
 
-  const esc = v => String(v ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+  const esc = DSEHub.escapeHtml;
 
   const normalize = v => String(v ?? '').toLowerCase();
 
