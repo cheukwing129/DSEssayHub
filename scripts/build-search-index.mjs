@@ -9,18 +9,6 @@ const techniques = readJson('data/techniques.json');
 const outputPath = path.join(root, 'data/search-index.json');
 const checkOnly = process.argv.includes('--check');
 
-const aliases = {
-  t01:'tag_flashback', t02:'tag_sequence', t03:'tag_flashback', t04:'tag_echo',
-  t05:'tag_scene', t06:'tag_character', t07:'tag_scene', t08:'tag_event_emotion',
-  t09:'tag_direct_emotion', t10:'tag_dialogue', t11:'tag_psychological', t12:'tag_contrast',
-  t13:'tag_scene_emotion', t14:'tag_symbolism', t15:'tag_question', t16:'tag_rhetorical_question',
-  t17:'tag_parallel', t18:'tag_progression', t19:'tag_metaphor', t20:'tag_personification',
-  t21:'tag_counterargument', t22:'tag_example', t23:'tag_quote', t24:'tag_balanced_argument',
-  t25:'tag_analogy', t26:'tag_thesis', t27:'tag_foreshadowing', t28:'tag_suspense',
-  t29:'tag_transition', t30:'tag_side_description', t31:'tag_dynamic_static', t32:'tag_sensory',
-  t33:'tag_detail', t34:'tag_small_big', t35:'tag_question'
-};
-
 const techniqueNameById = Object.fromEntries(techniques.map(item => [item.id, item.name]));
 const flatten = value => Array.isArray(value) ? value.flatMap(flatten) : [String(value ?? '').trim()];
 
@@ -29,7 +17,7 @@ const index = articles.map(article => {
   const paragraphs = Array.isArray(detail.paragraphs) ? detail.paragraphs : [];
   const techniqueNames = [...new Set(paragraphs.flatMap(paragraph =>
     (paragraph.techniqueTagIds || [])
-      .map(id => techniqueNameById[aliases[id] || id])
+      .map(id => techniqueNameById[id])
       .filter(Boolean)
   ))];
 
