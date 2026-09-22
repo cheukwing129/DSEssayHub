@@ -433,14 +433,9 @@
       if (!Array.isArray(techniques)) throw new Error('data/techniques.json 必須是陣列');
       if (!Array.isArray(searchIndex)) throw new Error('data/search-index.json 必須是陣列');
 
-      const themeNameById = {};
-      themes.forEach(t => { themeNameById[t.id] = t.name; });
-
-      const questionFullByKey = {};
-      questions.forEach(q => { questionFullByKey[`${q.year}_${q.questionNumber}`] = q.questionFull; });
-
-      const searchIndexById = {};
-      searchIndex.forEach(item => { searchIndexById[item.id] = item; });
+      const themeNameById = DSEHub.nameById(themes);
+      const questionFullByKey = DSEHub.questionTextByKey(questions);
+      const searchIndexById = DSEHub.itemById(searchIndex);
 
       renderResults(query, articles, questions, techniques, searchIndexById, themeNameById, questionFullByKey);
 
