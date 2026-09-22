@@ -214,11 +214,12 @@
 </footer>
 
 <script src="site.js"></script>
+<script src="storage.js"></script>
 <script>
 
-  const NOTES_STORAGE_KEY = 'dse_notes';       // 高亮／註解，跟 article.html 用同一把 key
-  const MATERIAL_STORAGE_KEY = 'materialBank'; // 素材庫是獨立的 key，跟 article.html 的設計一致
-  const ARTICLE_PROGRESS_KEY = 'articleProgress'; // 結構分析／個人反思／審題訓練，同樣跟 article.html 共用
+  const NOTES_STORAGE_KEY = DSEHub.storage.KEYS.NOTES;       // 高亮／註解，跟 article.html 用同一把 key
+  const MATERIAL_STORAGE_KEY = DSEHub.storage.KEYS.MATERIALS; // 素材庫是獨立的 key，跟 article.html 的設計一致
+  const ARTICLE_PROGRESS_KEY = DSEHub.storage.KEYS.ARTICLE_PROGRESS; // 結構分析／個人反思／審題訓練，同樣跟 article.html 共用
 
   const contentEl = document.getElementById('notesContent');
   const summaryEl = document.getElementById('notesSummary');
@@ -248,25 +249,13 @@
 
   /** 讀出全部筆記，跟 article.html 的 getAllNotes() 邏輯一致。 */
   function getAllNotes() {
-    try {
-      const raw = localStorage.getItem(NOTES_STORAGE_KEY);
-      const parsed = raw ? JSON.parse(raw) : [];
-      return Array.isArray(parsed) ? parsed : [];
-    } catch (err) {
-      console.error('讀取筆記資料失敗，可能是 LocalStorage 內容格式損毀：', err);
-      return [];
-    }
+    return DSEHub.storage.readArray(NOTES_STORAGE_KEY, { label: '筆記資料' });
   }
 
   function saveAllNotes(notes) {
-    try {
-      localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notes));
-      return true;
-    } catch (err) {
-      console.error('儲存筆記資料失敗：', err);
-      alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
-      return false;
-    }
+    const saved = DSEHub.storage.writeJson(NOTES_STORAGE_KEY, notes, { label: '筆記資料' });
+    if (!saved) alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
+    return saved;
   }
 
   /** 把某一筆高亮從資料裡移除。 */
@@ -291,25 +280,13 @@
 
   /** 讀出全部素材庫收藏，邏輯跟 getAllNotes() 一樣，只是換了一把 key。 */
   function getMaterialBank() {
-    try {
-      const raw = localStorage.getItem(MATERIAL_STORAGE_KEY);
-      const parsed = raw ? JSON.parse(raw) : [];
-      return Array.isArray(parsed) ? parsed : [];
-    } catch (err) {
-      console.error('讀取素材庫資料失敗，可能是 LocalStorage 內容格式損毀：', err);
-      return [];
-    }
+    return DSEHub.storage.readArray(MATERIAL_STORAGE_KEY, { label: '素材庫資料' });
   }
 
   function saveMaterialBank(items) {
-    try {
-      localStorage.setItem(MATERIAL_STORAGE_KEY, JSON.stringify(items));
-      return true;
-    } catch (err) {
-      console.error('儲存素材庫資料失敗：', err);
-      alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
-      return false;
-    }
+    const saved = DSEHub.storage.writeJson(MATERIAL_STORAGE_KEY, items, { label: '素材庫資料' });
+    if (!saved) alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
+    return saved;
   }
 
   /** 把某一筆素材收藏移除。 */
@@ -322,25 +299,13 @@
 
   /** 讀出「結構分析／個人反思／審題訓練」資料，格式是物件（用 articleId 當 key），不是陣列。 */
   function getAllArticleProgress() {
-    try {
-      const raw = localStorage.getItem(ARTICLE_PROGRESS_KEY);
-      const parsed = raw ? JSON.parse(raw) : {};
-      return (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) ? parsed : {};
-    } catch (err) {
-      console.error('讀取文章筆記面板資料失敗，可能是 LocalStorage 內容格式損毀：', err);
-      return {};
-    }
+    return DSEHub.storage.readObject(ARTICLE_PROGRESS_KEY, { label: '文章筆記面板資料' });
   }
 
   function saveAllArticleProgress(data) {
-    try {
-      localStorage.setItem(ARTICLE_PROGRESS_KEY, JSON.stringify(data));
-      return true;
-    } catch (err) {
-      console.error('儲存文章筆記面板資料失敗：', err);
-      alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
-      return false;
-    }
+    const saved = DSEHub.storage.writeJson(ARTICLE_PROGRESS_KEY, data, { label: '文章筆記面板資料' });
+    if (!saved) alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
+    return saved;
   }
 
   /**
