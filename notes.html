@@ -188,7 +188,7 @@
         <button type="button" class="btn-notes-action" id="exportBtn">匯出備份</button>
         <button type="button" class="btn-notes-action" id="importBtn">匯入備份</button>
         <input type="file" id="importFileInput" accept="application/json,.json" hidden>
-        <button type="button" class="btn-notes-action btn-danger" id="clearAllBtn" hidden>清除全部筆記與素材</button>
+        <button type="button" class="btn-notes-action btn-danger" id="clearAllBtn" hidden>清除全部學習紀錄</button>
       </div>
     </div>
 
@@ -623,8 +623,10 @@
   function render(articleById, questionFullByKey) {
     const notes = getAllNotes();
     const materials = getMaterialBank();
+    const articleProgress = getAllArticleProgress();
+    const progressCount = Object.keys(articleProgress).length;
 
-    if (notes.length === 0 && materials.length === 0) {
+    if (notes.length === 0 && materials.length === 0 && progressCount === 0) {
       summaryEl.hidden = true;
       clearAllBtn.hidden = true;
       renderEmptyState();
@@ -637,8 +639,18 @@
     const materialCount = materials.length;
 
     summaryEl.hidden = false;
-    summaryEl.textContent = `共 ${groups.length} 篇文章有紀錄・高亮 ${highlightCount} 段・註解 ${commentCount} 則・素材 ${materialCount} 則`;
+    summaryEl.textContent = `共 ${groups.length} 篇有段落紀錄・高亮 ${highlightCount} 段・註解 ${commentCount} 則・素材 ${materialCount} 則・文章學習紀錄 ${progressCount} 篇`;
     clearAllBtn.hidden = false;
+
+    if (groups.length === 0) {
+      contentEl.innerHTML = `
+        <div class="empty-state">
+          <p>目前沒有高亮、段落註解或素材，但仍有 ${progressCount} 篇範文保存了結構分析、個人反思或審題訓練紀錄。這些內容可回到相應範文查看，並會包含在匯出備份中。</p>
+          <a class="btn btn-primary" href="genre-list.html">去瀏覽範文</a>
+        </div>
+      `;
+      return;
+    }
 
     contentEl.innerHTML = groups.map(g => buildArticleGroupHtml(g, articleById, questionFullByKey)).join('');
   }
@@ -676,11 +688,21 @@
     });
 
     clearAllBtn.addEventListener('click', () => {
-      const confirmed = confirm('確定要清除全部筆記與素材庫收藏嗎？這個動作沒辦法復原。');
+      const confirmed = confirm('確定要清除全部學習紀錄嗎？這會刪除高亮、段落註解、素材庫收藏、結構分析、個人反思及審題訓練，而且無法復原。');
       if (!confirmed) return;
 
-      saveAllNotes([]);
-      saveMaterialBank([]);
+      const saved = [
+        saveAllNotes([]),
+        saveMaterialBank([]),
+        saveAllArticleProgress({})
+      ].every(Boolean);
+
+      if (!saved) {
+        showImportStatus('未能完整清除學習紀錄，請檢查瀏覽器儲存空間後重試。', true);
+        return;
+      }
+
+      showImportStatus('已清除全部學習紀錄。', false);
       render(articleById, questionFullByKey);
     });
 
