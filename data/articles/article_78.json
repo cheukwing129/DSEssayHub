@@ -53,7 +53,10 @@
     {
       "text": "踏出舒適圈，看似困難重重，但其實不然。或許今天可以鼓起勇氣，與敬重的前輩交談；或許週末可以先放下手機，在日落餘暉中慢跑。願你我皆能踏出自己的舒適圈，以全新的視角看待生活！",
       "comment": "以貼近生活的具體建議作結，呼籲讀者從小處嘗試踏出舒適圈，語氣親切而具號召力，總結全文立場。",
-      "techniqueTagIds": ["tag_example", "tag_conclusion"]
+      "techniqueTagIds": [
+        "tag_advice",
+        "tag_conclusion"
+      ]
     }
   ],
   "topicAnalysis": {
