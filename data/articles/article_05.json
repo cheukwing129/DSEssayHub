@@ -104,8 +104,13 @@
     "analysisType": "keyword",
     "keywordExplanation": "「心結」可指糾纏心中的芥蒂，是一些想不通、難以紓解的困惑，放不下忘不了的人和事。",
     "imageryDescription": "",
-    "directionSuggestion": "記述為甚麼有心結；記述如何解開心結。抒發心中有結未解和解開心結的感受和體會。",
-    "referenceAnswerPoints": [],
+    "directionSuggestion": "本文的心結不是放不下亡夫，而是寡婦不願把亡夫的書信交給文化研究者，擔心私人回憶被取走。可寫研究者說明書信的歷史價值、以尊重態度查閱，以及主角最後同意合作，呈現她由守住物件轉為願意分享亡夫留下的記憶。",
+    "referenceAnswerPoints": [
+      "交代主角起初拒絕交出亡夫書信，原因是書信承載私人回憶。",
+      "以研究者說明書信的文化／歷史價值，呈現主角開始重新衡量保存方式。",
+      "透過研究者尊重書信及亡夫的態度，建立主角願意合作的信任。",
+      "指出主角放下的是對書信的佔有與封存，並非忘記或放下亡夫。"
+    ],
     "openEndedAngles": []
   },
   "reviewStatus": "pending-human-review"

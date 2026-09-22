@@ -99,8 +99,13 @@
     "analysisType": "keyword",
     "keywordExplanation": "「心結」可指糾纏心中的芥蒂，是一些想不通、難以紓解的困惑，放不下忘不了的人和事。",
     "imageryDescription": "",
-    "directionSuggestion": "記述為甚麼有心結；記述如何解開心結。抒發心中有結未解和解開心結的感受和體會。",
-    "referenceAnswerPoints": [],
+    "directionSuggestion": "本文的心結源於教師曾錯誤指控學生抄襲，雖查明真相，卻因自尊而沒有道歉。可沿着「發現真相—多年愧疚—改變教學方式—學生淡忘往事」的脈絡，寫出主角明白自己把傷痛放大投射到學生身上，並反省當年若及早道歉或能減少傷害。",
+    "referenceAnswerPoints": [
+      "以教師錯怪學生抄襲、事後查明真相卻未道歉，交代心結的由來。",
+      "透過多年後改變教學方式及持續自責，呈現主角如何受往事牽制。",
+      "藉學生已淡忘事件與教師仍耿耿於懷的落差，帶出主角對自身投射的反省。",
+      "結尾呈現主角承認當年的錯失並自行放下；不宜寫成已向學生補上道歉。"
+    ],
     "openEndedAngles": []
   },
   "reviewStatus": "pending-human-review"

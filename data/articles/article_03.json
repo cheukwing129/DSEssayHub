@@ -100,8 +100,13 @@
     "analysisType": "keyword",
     "keywordExplanation": "「心結」可指糾纏心中的芥蒂，是一些想不通、難以紓解的困惑，放不下忘不了的人和事。",
     "imageryDescription": "",
-    "directionSuggestion": "記述為甚麼有心結；記述如何解開心結。抒發心中有結未解和解開心結的感受和體會。",
-    "referenceAnswerPoints": [],
+    "directionSuggestion": "以主角未能陪祖父返鄉的遺憾為核心，先交代祖父離世後的自責，再透過返鄉、村民回憶祖父及得知祖父以主角為傲，讓主角重新認識祖父的一生。結尾以承接祖父助人的精神、投入義教，呈現遺憾轉化為行動。",
+    "referenceAnswerPoints": [
+      "交代主角因未能陪祖父返鄉而長期自責。",
+      "透過返鄉及村民講述祖父對村子的貢獻，補足主角原先不知道的祖父形象。",
+      "寫出主角得知祖父以自己為傲後，對祖父及自身遺憾的重新理解。",
+      "以主角決定參與義教承接祖父助人精神作結，呈現由遺憾轉為行動。"
+    ],
     "openEndedAngles": []
   },
   "reviewStatus": "pending-human-review"
