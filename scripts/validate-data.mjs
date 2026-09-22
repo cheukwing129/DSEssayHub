@@ -61,6 +61,13 @@ for (const article of articles) {
   }
 
   const detail = readJson(article.file);
+  if (detail.reviewStatus !== undefined && !['pending-human-review', 'reviewed'].includes(detail.reviewStatus)) {
+    fail(`篇章 ${article.id} 的 reviewStatus 無效：${detail.reviewStatus}`);
+  }
+  if (detail.reviewStatus === 'reviewed') {
+    if (!String(detail.reviewedBy || '').trim()) fail(`篇章 ${article.id} 已標記 reviewed，但缺少 reviewedBy。`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(detail.reviewedAt || ''))) fail(`篇章 ${article.id} 已標記 reviewed，但 reviewedAt 必須是 YYYY-MM-DD。`);
+  }
   for (const field of ['id', 'genre', 'wordCount', 'summary']) {
     if (detail[field] !== undefined && JSON.stringify(detail[field]) !== JSON.stringify(article[field])) {
       fail(`篇章 ${article.id} 的 ${field} 在索引與內容檔不一致。`);
