@@ -215,6 +215,7 @@
 
 <script src="site.js"></script>
 <script src="storage.js"></script>
+<script src="backup.js"></script>
 <script>
 
   const NOTES_STORAGE_KEY = DSEHub.storage.KEYS.NOTES;       // 高亮／註解，跟 article.html 用同一把 key
@@ -559,18 +560,25 @@
         return;
       }
 
-      const importedNotes = Array.isArray(backup.dse_notes) ? backup.dse_notes : [];
-      const importedMaterials = Array.isArray(backup.materialBank) ? backup.materialBank : [];
-      const importedProgress = (backup.articleProgress && typeof backup.articleProgress === 'object' && !Array.isArray(backup.articleProgress))
-        ? backup.articleProgress
-        : {};
-
-      if (importedNotes.length === 0 && importedMaterials.length === 0 && Object.keys(importedProgress).length === 0) {
-        showImportStatus('這份備份檔案裡沒有可匯入的筆記內容。', true);
+      const validation = DSEHub.backup.sanitizeBackup(backup);
+      if (!validation.ok) {
+        showImportStatus(`${validation.error} 匯入失敗。`, true);
         return;
       }
 
-      const confirmed = confirm('確定要匯入這份備份嗎？內容會跟目前的筆記合併，不會覆蓋或刪除現有資料。');
+      const importedNotes = validation.data.dse_notes;
+      const importedMaterials = validation.data.materialBank;
+      const importedProgress = validation.data.articleProgress;
+      const invalidCount = validation.invalidCount;
+
+      if (importedNotes.length === 0 && importedMaterials.length === 0 && Object.keys(importedProgress).length === 0) {
+        const skipped = invalidCount ? `（已略過 ${invalidCount} 筆無效資料）` : '';
+        showImportStatus(`這份備份檔案裡沒有可匯入的有效筆記內容。${skipped}`, true);
+        return;
+      }
+
+      const skippedHint = invalidCount ? `\n\n已檢查內容，其中 ${invalidCount} 筆無效資料將被略過。` : '';
+      const confirmed = confirm(`確定要匯入這份備份嗎？內容會跟目前的筆記合併，不會覆蓋或刪除現有資料。${skippedHint}`);
       if (!confirmed) return;
 
       const notesResult = mergeArrayByKey(getAllNotes(), importedNotes, n => `${n.articleId}_${n.paragraphIndex}_${n.type}`);
@@ -591,7 +599,8 @@
       const totalAdded = notesResult.addedCount + materialsResult.addedCount + progressResult.addedCount;
       const totalUpdated = notesResult.updatedCount + materialsResult.updatedCount + progressResult.updatedCount;
 
-      showImportStatus(`匯入完成：新增 ${totalAdded} 筆、更新 ${totalUpdated} 筆。`, false);
+      const skippedSummary = invalidCount ? `、略過 ${invalidCount} 筆無效資料` : '';
+      showImportStatus(`匯入完成：新增 ${totalAdded} 筆、更新 ${totalUpdated} 筆${skippedSummary}。`, false);
       render(articleById, questionFullByKey);
     };
 
