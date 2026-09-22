@@ -16,58 +16,105 @@
   "paragraphs": [
     {
       "text": "今天午飯時間後，我和一心特意在班上召開了一場會議，事關距離班際舞蹈比賽的日子已不遠了，我們需要及早選定舞種和主題。我和一心身為舞蹈學會會長和副會長，編排舞蹈的責任自然落在我們身上，我們均為此合作機會興奮不已，希望編排出一場精彩絕倫的舞蹈，為班爭光。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "交代班際舞蹈比賽的背景，以及主角與一心共同負責編舞的身分；兩人對合作充滿期待，為後文意見衝突建立關係基礎。",
+      "techniqueTagIds": [
+        "tag_background",
+        "tag_foreshadowing"
+      ]
     },
     {
       "text": "不過，在今次會議之前，我和一心都因忙着應付測驗而沒有討論過有關事宜。但「船到橋頭自然直」，我認為我和一心一向有默契，會議討論過程理應順利，因此我也沒有為會議多加費心，只是想在今天表達一些初步構思。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角因過往默契而低估會議準備的重要性，抱着「船到橋頭自然直」的心態；這種自信也為稍後發現自己忽略一心的付出埋下伏筆。",
+      "techniqueTagIds": [
+        "tag_characterization",
+        "tag_foreshadowing",
+        "tag_quote"
+      ]
     },
     {
       "text": "會議一開始，我們先分派工作，並無甚麼特別。只是，當我們開始討論舞種的時候……",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "會議前段平淡順利，直到討論舞種才突然停頓；省略號製造懸念，預告衝突即將出現。",
+      "techniqueTagIds": [
+        "tag_suspense",
+        "tag_transition"
+      ]
     },
     {
       "text": "「我提議我班在是次比賽中跳中國舞！」一心站於全班面前，笑面盈盈地表達自己的意願。聽到這提議，同樣站於全班面前的我頓時呆了。中國舞？那是一種難以取得突破的舞種呢！記得在過往幾年的比賽中，從沒有任何隊伍能憑這種舞得勝。能取得評判歡心和博得觀眾掌聲的，多是一些節奏明快、主題新穎、能掀起全場氣氛的舞蹈！中國舞不僅節奏緩慢，而且可以發揮的主題多限於自然景物等千篇一律的東西，根本不能顯示我們澎湃的活力和高超的技巧。選擇這個舞種，豈非是已經判了自己死刑？我們哪有指望能坐上冠軍寶座？",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "一心提出中國舞後，主角立即從比賽往績、節奏、主題和得獎機會等角度全面否定；連串反問與內心獨白凸顯其強烈成見，也建立『想開口反對』的必要前提。",
+      "techniqueTagIds": [
+        "tag_inner_thought",
+        "tag_question",
+        "tag_conflict",
+        "tag_rhetorical_question"
+      ]
     },
     {
       "text": "在我思潮起伏之際，班上的同學已禁不住抱怨，紛紛拋出不滿。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "同學的抱怨迅速加入，令原本兩人的意見分歧變成群體壓力；主角也因有人附和而更準備公開反對。",
+      "techniqueTagIds": [
+        "tag_side_description",
+        "tag_conflict",
+        "tag_progression"
+      ]
     },
     {
       "text": "「中國舞很悶呀！」有同學叫道。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "同學直接以『很悶』否定中國舞，簡短對話呈現現場負面氣氛，並側面加重一心承受的壓力。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_side_description"
+      ]
     },
     {
       "text": "「中國舞又難跳又不討好！」另一位同學亦搶着道。我暗暗點頭，正想力陳己見，表達我的反對立場。相信我身為另一位隊長，我的反對必能推翻資歷較淺的一心的提議。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "另一同學再批評中國舞難跳、不討好，主角暗自贊同，甚至認為憑自己較高資歷即可推翻一心；這段揭示他當時以權威和勝負思維看待討論。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_inner_thought",
+        "tag_characterization",
+        "tag_conflict"
+      ]
     },
     {
       "text": "正當我準備開口之時，我眼角卻見到一心那隻放在教師桌的手正壓着一張充滿皺摺的紙。細看之下，是一行又一行潦草的字，和很多動作指示圖。我立時明瞭那是一心編舞的草圖。倏忽，我覺得那張紙有點兒似曾相識。過去幾個月，一心總是拿着那張紙，我那時還以為那是她溫習的筆記。原來，她早已付出很多心機和時間為舞蹈比賽張羅。那背後的付出，原來是不為外人所道。我看到的只是她一個不甚突出的建議，但原來提議是經過如此的深思熟慮。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角在開口前注意到一心手上的編舞草圖，從皺摺、潦草字跡和動作圖重新理解她早已長期準備；同一提議由『不突出』被重新看成『經深思熟慮的成果』，是全文最重要的認知轉折。",
+      "techniqueTagIds": [
+        "tag_detail",
+        "tag_revelation",
+        "tag_reframing",
+        "tag_turning_point"
+      ]
     },
     {
       "text": "想到這裏，我把已到口邊的話吞回肚子裏，保持了沉默。一心繼續忙於應付同學的怨言，神態甚是尷尬。同學之中終於有人喊出：「喂，有容，你反對一心的提議嗎？說句話吧！」一心轉身望向我，眼神甚是懇切，我微微一笑，輕輕搖頭，表示自己並不反對。我明白，在那刻，沉默是必要的。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "理解一心付出後，主角把反對話語吞回去，以微笑和搖頭選擇不公開否定；這個沉默不是無話可說，而是明知發言可能傷害對方努力後作出的克制，直接扣題。",
+      "techniqueTagIds": [
+        "tag_action",
+        "tag_psychological",
+        "tag_thesis",
+        "tag_turning_point"
+      ]
     },
     {
       "text": "表達自己意見、否定他人之見，是很容易的事。若然要力陳己見，執著於批評別人或事情的不足，那將會扼殺他人的努力和付出。既然如此，在適當的時候選擇沉默，讓他人有機會增加自信、發揮自己，實在不失為一件美事。沉默不是代表認輸或甘於不爭取，而是意識到執意抒出己見會對他人構成傷害，因而選擇的風度。因為世上否定的聲音太多，包容和理解的沉默太少。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "由個別事件提升為一般反思：表達反對很容易，但若只執着指出不足，可能抹殺他人的努力；因此把『必要的沉默』重新界定為一種基於理解、包容和避免傷害的選擇。",
+      "techniqueTagIds": [
+        "tag_reflection",
+        "tag_reframing",
+        "tag_advice",
+        "tag_thesis"
+      ]
     },
     {
       "text": "我看着一心臉上展露的笑容，不禁想像到一隻羽翼漸滿的小鳥，終有一天長成鵬鳥，飛向更高、更遠的天空。我相信，我選擇的沉默是對的。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "一心的笑容被想像成羽翼漸滿的小鳥，象徵她在獲得空間後可以成長；結尾以主角再次確認沉默的意義，收束『沉默是為了成全他人發揮』的主旨。",
+      "techniqueTagIds": [
+        "tag_metaphor",
+        "tag_symbolism",
+        "tag_conclusion",
+        "tag_echo"
+      ]
     }
   ],
   "topicAnalysis": {
@@ -81,5 +128,6 @@
       "結尾要回應「必要」二字。"
     ],
     "openEndedAngles": []
-  }
+  },
+  "reviewStatus": "pending-human-review"
 }
