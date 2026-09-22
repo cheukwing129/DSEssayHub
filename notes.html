@@ -213,17 +213,8 @@
   </div>
 </footer>
 
+<script src="site.js"></script>
 <script>
-  // 手機版導航選單開關
-  const navToggle = document.getElementById('navToggle');
-  const mainNav = document.getElementById('mainNav');
-  if (navToggle && mainNav) {
-    navToggle.addEventListener('click', () => {
-      const open = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!open));
-      mainNav.classList.toggle('is-open', !open);
-    });
-  }
 
   const NOTES_STORAGE_KEY = 'dse_notes';       // 高亮／註解，跟 article.html 用同一把 key
   const MATERIAL_STORAGE_KEY = 'materialBank'; // 素材庫是獨立的 key，跟 article.html 的設計一致

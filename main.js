@@ -1,36 +1,12 @@
 /* ==========================================================================
    DSE 中文科範文自學平台 — 首頁邏輯 (main.js)
 
-   這個檔案做兩件事：
-   1. 手機版導航選單的開關（純 UI 互動，不涉及資料）
-   2. 讀取 data/articles.json 與 data/themes.json，
-      動態產生「熱門範文」卡片
+   這個檔案讀取 data/articles.json 與 data/themes.json，
+   動態產生「熱門範文」卡片。共用導航互動已移到 site.js。
    ========================================================================== */
 
 /* -------------------------------------------------------------------------
-   1. 手機版導航選單開關
-   ------------------------------------------------------------------------- */
-
-// 抓取按鈕本身，以及要被開關的選單容器
-const navToggle = document.getElementById('navToggle');
-const mainNav = document.getElementById('mainNav');
-
-if (navToggle && mainNav) {
-  navToggle.addEventListener('click', () => {
-    // aria-expanded 目前是不是 "true"，用字串比較（因為 HTML attribute 都是字串）
-    const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-
-    // 切換開關狀態：true 變 false，false 變 true
-    navToggle.setAttribute('aria-expanded', String(!isOpen));
-
-    // 用 class 控制選單的顯示／隱藏（實際樣式寫在 style.css 的 .main-nav.is-open）
-    mainNav.classList.toggle('is-open', !isOpen);
-  });
-}
-
-
-/* -------------------------------------------------------------------------
-   2. 「熱門範文」卡片：讀取 JSON 資料並動態產生 HTML
+   1. 「熱門範文」卡片：讀取 JSON 資料並動態產生 HTML
    ------------------------------------------------------------------------- */
 
 // 首頁最多顯示幾張範文卡片

@@ -23,15 +23,16 @@
     .article-level-tag { display: inline-block; width: fit-content; padding: 3px 9px; border-radius: 999px; color: #765014; background: #f7edd3; font-size: .75rem; }
     .article-card-link { margin-top: auto; color: var(--color-primary, #1f3a5f); font-size: .85rem; }
     .status { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); }
-    .error-box { margin-top: 16px; padding: 14px 16px; border-left: 4px solid #a33; border-radius: 4px; color: #712; background: #fff3f3; line-height: 1.65; }
+    
     @media (max-width: 720px) { .genre-page { padding-top: calc(var(--header-height, 72px) + 30px); } .structure { flex-direction: column; } .arrow { transform: rotate(90deg); text-align: center; } }
   </style>
 </head>
 <body>
 <header class="site-header"><div class="container nav-inner"><a href="index.html" class="logo"><span class="logo-mark">範文自學</span><span class="logo-sub">DSE 中文寫作</span></a><button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button><div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="genre-list.html">文體分類</a><a href="questions.html">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="搜尋關鍵字" aria-label="搜尋"></form></div></div></header>
 <main class="genre-page"><div class="container"><div class="genre-head"><h1 id="title">文體分類</h1><p id="desc">資料載入中……</p></div><div class="structure" id="structure" aria-label="寫作框架"></div><div class="filter"><label for="theme">依立意向度：</label><select id="theme"><option value="">全部文章</option></select></div><div class="article-grid" id="grid"></div><p class="status" id="status">正在載入文章索引……</p><div id="errorBox"></div></div></main><footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
+<script src="site.js"></script>
 <script>
-const navToggle=document.getElementById('navToggle'),mainNav=document.getElementById('mainNav');if(navToggle&&mainNav)navToggle.addEventListener('click',()=>{const open=navToggle.getAttribute('aria-expanded')==='true';navToggle.setAttribute('aria-expanded',String(!open));mainNav.classList.toggle('is-open',!open)});
+
 const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式'},descriptions={narrative:'以事件為骨架、抒情為血肉，掌握起承轉合。',argumentative:'由個人到社會、哲理，層層推進論證。',descriptive:'細膩描寫人物與景物，營造鮮明畫面。',topic:'掌握圖畫寓意或限定格式，發展合適的取材角度。'},flows={narrative:[['起','景物／伏筆'],['承','衝突與覺醒前'],['轉','關鍵人物／覺醒'],['合','立意與人生道理']],argumentative:[['引入','中心論點'],['定義','解釋關鍵詞'],['角度一','個人層面'],['角度二','社會層面'],['駁論','回應反方'],['總結','呼應論點']],descriptive:[['外觀','人物／景物'],['動靜','動態與靜態'],['對比','突顯特點'],['側寫','間接呈現']],topic:[['審題','解讀要求'],['取材','選取材料'],['立意','扣連寓意'],['扣題','完整收結']]};
 const type=new URLSearchParams(location.search).get('type')||'narrative';document.getElementById('title').textContent=labels[type]||'文體分類';document.getElementById('desc').textContent=descriptions[type]||'';const flow=flows[type]||[];document.getElementById('structure').innerHTML=flow.map((x,i)=>`<div class="step"><b>${x[0]}</b><small>${x[1]}</small></div>${i<flow.length-1?'<span class="arrow">→</span>':''}`).join('');
 const grid=document.getElementById('grid'),status=document.getElementById('status'),filter=document.getElementById('theme'),errorBox=document.getElementById('errorBox');let all=[],themeNames={},questionNames={};const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
