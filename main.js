@@ -53,21 +53,9 @@ async function loadFeaturedArticles() {
     const themes = await themesRes.json();
     const questions = await questionsRes.json();
 
-    // 把 themes.json 的陣列轉成「id -> 名稱」的對照表，方便之後用 id 快速查名稱
-    // 例如 { "th01": "個人成長", "th02": "處世之道", ... }
-    const themeNameById = {};
-    themes.forEach(theme => {
-      themeNameById[theme.id] = theme.name;
-    });
-
-    // 把 questions.json 轉成「年份_題號 -> 題目全文」的對照表，
-    // 例如 { "2015_Q1": "試以「未曾說出口的……」為題……", "2013_Q3": "……" }
-    // 之後用 article.relatedQuestions 裡的 year + questionNumber 組成同樣的 key 去查
-    const questionFullByKey = {};
-    questions.forEach(question => {
-      const key = `${question.year}_${question.questionNumber}`;
-      questionFullByKey[key] = question.questionFull;
-    });
+    // 共用 helper 將資料轉成畫面查找用的對照表。
+    const themeNameById = DSEHub.nameById(themes);
+    const questionFullByKey = DSEHub.questionTextByKey(questions);
 
     renderArticleCards(articles, themeNameById, questionFullByKey);
 
