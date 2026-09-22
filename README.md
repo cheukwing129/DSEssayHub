@@ -19,11 +19,12 @@ python3 -m http.server 8000
 - `data/questions.json`：歷屆試題；`relatedArticleIds` 由同步腳本產生，不應手動修改。
 - `data/themes.json`：立意向度主檔。
 - `data/techniques.json`：寫作手法主檔。
+- `data/search-index.json`：由腳本產生的全文搜尋索引，不應手動修改。
 
 新增或修改內容後執行：
 
 ```bash
-npm run sync:data
+npm run sync
 npm run validate
 ```
 
@@ -33,7 +34,7 @@ npm run validate
 npm run check
 ```
 
-GitHub Actions 會在每個 Pull Request 重複執行相同檢查，驗證 JSON、檔案存在、ID 唯一性、跨檔案關聯、手法標籤和索引資料一致性。
+`npm run sync` 會同步試題關聯並重建全文搜尋索引。GitHub Actions 會在每個 Pull Request 重複執行檢查，驗證 JSON、檔案存在、ID 唯一性、跨檔案關聯、手法標籤、文章索引及搜尋索引一致性。
 
 更完整的資料格式及筆記結構請參閱 [SCHEMA.md](SCHEMA.md)。
 

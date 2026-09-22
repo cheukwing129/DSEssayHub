@@ -15,8 +15,9 @@ const articles = readJson('data/articles.json');
 const questions = readJson('data/questions.json');
 const themes = readJson('data/themes.json');
 const techniques = readJson('data/techniques.json');
+const searchIndex = readJson('data/search-index.json');
 
-for (const [name, value] of Object.entries({ articles, questions, themes, techniques })) {
+for (const [name, value] of Object.entries({ articles, questions, themes, techniques, searchIndex })) {
   if (!Array.isArray(value)) fail(`${name} 必須是陣列。`);
 }
 
@@ -35,6 +36,7 @@ const articleIds = uniqueIds(articles, '文章');
 const themeIds = uniqueIds(themes, '立意向度');
 const techniqueIds = uniqueIds(techniques, '寫作手法');
 const questionKeys = uniqueIds(questions, '試題', q => `${q.year}_${q.questionNumber}`);
+const searchIndexIds = uniqueIds(searchIndex, '搜尋索引');
 const allowedGenres = new Set(['narrative', 'argumentative', 'descriptive', 'topic']);
 const allowedAnalysisTypes = new Set(['keyword', 'image', 'imagery', 'quote', 'continuation', 'argumentative', 'open']);
 const aliases = {
@@ -118,6 +120,10 @@ for (const question of questions) {
 const indexedFiles = new Set(articles.map(article => path.basename(article.file)));
 for (const file of fs.readdirSync(articleDir).filter(file => file.endsWith('.json'))) {
   if (!indexedFiles.has(file)) fail(`發現未列入索引的文章檔：data/articles/${file}`);
+}
+
+if (searchIndexIds.size !== articleIds.size || [...articleIds].some(id => !searchIndexIds.has(id))) {
+  fail('搜尋索引未完整涵蓋 articles.json 的所有篇章。');
 }
 
 const commentCoverage = paragraphCount ? (commentCount / paragraphCount * 100).toFixed(1) : '0.0';

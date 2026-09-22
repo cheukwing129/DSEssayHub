@@ -5,8 +5,12 @@
   "type": "module",
   "scripts": {
     "sync:data": "node scripts/sync-question-links.mjs",
+    "build:search": "node scripts/build-search-index.mjs",
+    "sync": "npm run sync:data && npm run build:search",
+    "check:search": "node scripts/build-search-index.mjs --check",
+    "test:search": "node scripts/test-search.mjs",
     "validate": "node scripts/validate-data.mjs",
-    "check": "npm run sync:data -- --check && npm run validate"
+    "check": "npm run sync:data -- --check && npm run check:search && npm run validate && npm run test:search"
   },
   "engines": {
     "node": ">=20"
