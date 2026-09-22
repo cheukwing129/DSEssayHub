@@ -15,133 +15,244 @@
   "paragraphs": [
     {
       "text": "「醫生，我知道他已沒有救回來的可能了。他這樣痛苦，我可以請求放棄治療，給他一個解決嗎？」眼前的女人骨瘦嶙峋，神情充滿掙扎，仿似用盡了全身的力量才得以支撐她問出這樣的一個重若千斤的問題。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "以病人妻子直接詢問是否放棄治療開篇，立即把人物置於艱難的生死抉擇；她消瘦、掙扎的外貌描寫突出問題的沉重，也為主角昔日的家庭創傷埋下觸發點。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_character",
+        "tag_conflict",
+        "tag_suspense"
+      ]
     },
     {
       "text": "她年幼的女兒正熟睡在病房外，渾然不知這裏發生的對話。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "病房外熟睡的女兒與室內沉重對話形成強烈反差；孩子的無知無覺，也映照主角當年作為子女時只能從自己的依戀理解父親病情。",
+      "techniqueTagIds": [
+        "tag_contrast",
+        "tag_foreshadowing",
+        "tag_side_description"
+      ]
     },
     {
       "text": "我轉個頭去看這女子的丈夫。他今天又病發了，渾身顫抖，瞳孔渙散，口中止不住地溢些白沫，溢遍了整個枕頭。疼痛和疾病讓他無法言語，更失去專嚴。但在我們的全力挽救下，他也只能維持這樣的狀況，直到我們預估他的生命的盡頭──三個月後。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "具體描寫病人發作、失去言語與尊嚴，以及醫療只能延長有限生命的處境，交代妻子提出問題的現實背景，令衝突不只是抽象倫理討論。",
+      "techniqueTagIds": [
+        "tag_detail",
+        "tag_sensory",
+        "tag_background",
+        "tag_conflict"
+      ]
     },
     {
       "text": "而眼前這個女人的問題，直接讓我啞然。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "妻子的問題令身為醫生的主角啞然，短句把敘事暫停，標誌眼前病例已碰到主角多年未解的心結。",
+      "techniqueTagIds": [
+        "tag_transition",
+        "tag_psychological"
+      ]
     },
     {
       "text": "當年時的記憶忽然在一瞬間從腦海深處湧出，紛沓而至，令我幾乎無法呼吸。在我仍是十六七歲的時候，我的父親患上了和這女人丈夫一模一樣的病，整天只能躺在床上，等待死亡的降臨。在得知無法挽回，母親簽了那放棄治療同意書。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "由現時病例倒敘十多年前父親患上相同疾病，母親簽署放棄治療同意書；相似情境把過去與現在扣連，正式揭示心結來源。",
+      "techniqueTagIds": [
+        "tag_flashback",
+        "tag_echo",
+        "tag_background",
+        "tag_turning_point"
+      ]
     },
     {
       "text": "我還清楚的記得，我是多麼歇斯底里地抓住母親的衣著，苦苦地哀求她不要這樣做，求她把父親剩餘的時間還給我，求她不要就這樣放棄父親的生命。即使是躺在病床上，不能動彈也不能說話的爸爸也好；即使是只能再生存幾十天的爸爸，我也迫切地想要活生生的他呀。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "回憶少年時抓住母親哀求的場面，反覆強調只想父親『活着』，集中呈現當時以子女依戀出發、無法接受失去的情緒。",
+      "techniqueTagIds": [
+        "tag_flashback",
+        "tag_action",
+        "tag_repetition",
+        "tag_direct_emotion"
+      ]
     },
     {
       "text": "可是，母親堅定地做了那個決定。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "母親仍堅定作出決定，短句與上一段激烈哀求形成對照，凸顯母子立場衝突，也加深主角日後對母親的不解。",
+      "techniqueTagIds": [
+        "tag_contrast",
+        "tag_conflict"
+      ]
     },
     {
       "text": "這件事成為了一條疤痕，一個心結，令我再成為救死扶傷的醫生的十多年後仍無法釋懷。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "把往事比作『疤痕』和『心結』，明確點題；即使多年後成為醫生，主角仍未能釋懷，說明專業身分並沒有自動解開私人創傷。",
+      "techniqueTagIds": [
+        "tag_metaphor",
+        "tag_thesis",
+        "tag_psychological"
+      ]
     },
     {
       "text": "現在，看著眼前這個女士的臉龐，我心中無數的情緒突然湧現。我多麼想告訴她，我曾經對失去父親那沉重的憤然和不甘；我多麼想告訴她，我當初對父親的極度不捨；我多麼想告訴她，我是那樣地渴望能一直在床邊好好陪伴父親直至那最後一秒。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "眼前妻子使主角再次湧起失父時的不甘、不捨與陪伴渴望；三次『我多麼想告訴她』的反覆把壓抑多年的情緒推高。",
+      "techniqueTagIds": [
+        "tag_repetition",
+        "tag_direct_emotion",
+        "tag_flashback"
+      ]
     },
     {
       "text": "到時刻，我的心裏仍有對母親存有一絲憤恨。這段回憶，成為了我心中一觸及便痛苦萬分的一道瘡疤。我是那樣地渴望父親能多陪我一些時日呀。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角承認自己至今仍對母親存有憤恨，並再次以瘡疤比喻回憶，顯示心結的核心不只是喪父，而是始終無法理解母親當年的決定。",
+      "techniqueTagIds": [
+        "tag_metaphor",
+        "tag_psychological",
+        "tag_conflict"
+      ]
     },
     {
       "text": "但看到眼前這個女人消瘦憔悴的面容，我突然心生不忍起來。她的眼神真切而有著渴求，我忽然明白到，她需要一個客觀公正的答案。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "看見妻子憔悴、渴求的神情後，主角開始壓下自己的私人情緒，意識到作為醫生應提供客觀回應；這是由『以自己經驗判斷』轉向重新觀察他人的第一步。",
+      "techniqueTagIds": [
+        "tag_character",
+        "tag_perspective",
+        "tag_turning_point"
+      ]
     },
     {
       "text": "回想起她這數十天的遭遇，我作為主治醫生也歷歷在目。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "一句承接語把視線轉向妻子這數十天的照料經歷，預備從旁觀者角度重新理解她的痛苦。",
+      "techniqueTagIds": [
+        "tag_transition",
+        "tag_foreshadowing"
+      ]
     },
     {
       "text": "她的父親發病非常頻密，一發作起來便會痛苦萬分。她束手無策，也只能輕輕地用溫熱的毛巾為丈夫擦拭身體。每當這個時候，她也只能看著丈夫捲縮在床邊的苦楚，聽著他的低聲哀叫，但只能為他不停流淚。她本來是一個精明幹練的女士，但看著她的丈夫受苦，她自己也彷彿被掏空了一樣。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "透過丈夫反覆病發、妻子擦拭身體、流淚陪伴等細節，呈現照料者長期承受的無力感；原本精明幹練的她被折磨得彷彿掏空，深化其抉擇背後的代價。",
+      "techniqueTagIds": [
+        "tag_detail",
+        "tag_action",
+        "tag_side_description",
+        "tag_emotion"
+      ]
     },
     {
       "text": "回憶著她這些天來的折磨，我作為旁觀者也突然感到無比的難過。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角由記錄病情轉為感受妻子的折磨，表明他的觀察角度已改變；這份共情成為重新理解母親的橋樑。",
+      "techniqueTagIds": [
+        "tag_emotion",
+        "tag_perspective",
+        "tag_transition"
+      ]
     },
     {
       "text": "剎那間，眼前女人的身影和當年前冇身瘦小的身影漸漸重疊。我忽然想起，我的母親不單是一位母親，她更是一位妻子。她當年要對主治醫生作出這樣的決定，是不是也像眼前這位女士一樣痛苦和掙扎？",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "眼前妻子的身影與昔日母親重疊，主角第一次把母親看成『妻子』而不只看成『作決定的母親』；換位提問使多年心結出現真正突破。",
+      "techniqueTagIds": [
+        "tag_perspective",
+        "tag_question",
+        "tag_revelation",
+        "tag_turning_point"
+      ]
     },
     {
       "text": "我好像拾起了與當年的母親連結的那條鑰匙，讓我在頃刻間明白了她的想法。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "把新的理解比作找到一條與母親連結的鑰匙，象徵主角終於能打開過去封閉的解讀方式。",
+      "techniqueTagIds": [
+        "tag_metaphor",
+        "tag_symbolism",
+        "tag_revelation"
+      ]
     },
     {
       "text": "作為一位妻子，當她看到自己的丈夫終日昏迷在病床上時，會是怎樣的心酸？當她看到自己的丈夫被病魔的利爪折磨得不成人形，渾渾噩噩時，會是怎樣的心痛？當她看到自己的丈夫因疾病而弄得嘔吐物滿床，毫無尊嚴時，會是怎樣的絕望？",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "連串設問從妻子的角度想像丈夫昏迷、受折磨、失去尊嚴時的心酸與絕望；主角以同理視角補回自己少年時未曾理解的部分。",
+      "techniqueTagIds": [
+        "tag_question",
+        "tag_parallel",
+        "tag_perspective",
+        "tag_reflection"
+      ]
     },
     {
       "text": "我回想起母親不捨但溫柔地在父親耳邊說再見時，她早已淚流滿面。父親對我而言是摯愛，可對她來說何嘗不是？",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "回想母親含淚向父親道別，主角終於承認母親對父親的愛並不比自己少；反問把過去『母親冷酷』的單一判斷推翻。",
+      "techniqueTagIds": [
+        "tag_flashback",
+        "tag_rhetorical_question",
+        "tag_revelation"
+      ]
     },
     {
       "text": "而此刻我終於明白到，母親只會比我更愛父親。她的決定不是冷血而殘酷的，自是出於比大海更深沉的對丈夫的愛。她和眼前的女士一樣，都是不忍丈夫再受到痛苦的折磨，為丈夫留下最後一份尊嚴，才做出放棄治療的決定。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角重新詮釋母親當年的決定：在文章敘事中，那不是缺乏感情，而是出於不忍丈夫繼續受苦、希望保留尊嚴的愛；這是解開心結的核心領悟。",
+      "techniqueTagIds": [
+        "tag_reframing",
+        "tag_revelation",
+        "tag_thesis",
+        "tag_reflection"
+      ]
     },
     {
       "text": "眼笑的女人和母親一樣，都比我更堅強。如果我是父親的話，也不希望再承受這無邊的痛苦，也不希望最愛的妻兒目睹我的淒苦和痛楚。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角進一步設身處地想像若自己是病人，也未必希望承受痛苦或讓妻兒目睹；由觀察母親轉向想像病人本人的處境，使視角更完整。",
+      "techniqueTagIds": [
+        "tag_hypothesis",
+        "tag_perspective",
+        "tag_reflection"
+      ]
     },
     {
       "text": "當我仍在孩童視角看待這一生死之事時，認為大哭大鬧為父親留下那幾十天的時光，才是最好的。現在想想，我是那麼自私。我沒有真切地體驗過父親的痛苦，反而希望他能在人世間多留幾日，讓我仍感受到他的存在。但只有貼身照料的母親才最清楚丈夫需要的解決。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "回看少年時只想延長父親陪伴自己的願望，主角承認其中帶有自我中心；他區分了『自己想留住父親』與『父親實際承受甚麼』，完成價值判斷的轉變。",
+      "techniqueTagIds": [
+        "tag_flashback",
+        "tag_reframing",
+        "tag_reflection",
+        "tag_revelation"
+      ]
     },
     {
       "text": "捨，往往比留更需要勇氣。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "以極簡短句『捨，往往比留更需要勇氣』凝練全文領悟，把母親昔日的決定重新理解為艱難承擔，而非輕易放棄。",
+      "techniqueTagIds": [
+        "tag_thesis",
+        "tag_contrast",
+        "tag_reflection"
+      ]
     },
     {
       "text": "我好像回到十多年前，看到那個被父親病重的烏雲折磨得受傷無比的母親，和她勇敢堅強的身影。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角重新想起受傷卻堅強的母親，昔日帶着怨恨的回憶如今被新的理解改寫；同一人物形象因此完成重新詮釋。",
+      "techniqueTagIds": [
+        "tag_flashback",
+        "tag_reframing",
+        "tag_characterization"
+      ]
     },
     {
       "text": "於是我告訴這位女士，「請依從你心所想去決定吧。我們已經盡了本份，剩下的便由你來決擇。」",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "面對眼前妻子，主角不替她作決定，而是鼓勵她依從自己的判斷；敘事上顯示他已能把私人經驗轉化為較克制的專業回應。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_reframing",
+        "tag_action"
+      ]
     },
     {
       "text": "幾天後，我收到一份放棄治療同意書。不知為何，我竟沒有預期中的沉重，而是如釋重負。我看到這位女士堅定的眼神，我知道她已經作出最好的決定。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "幾天後收到放棄治療同意書，主角感到的不是預期中的沉重，而是如釋重負；眼前妻子的抉擇同時讓他重新理解母親，現實事件完成對舊心結的療解。",
+      "techniqueTagIds": [
+        "tag_reversal",
+        "tag_echo",
+        "tag_revelation",
+        "tag_conclusion"
+      ]
     },
     {
       "text": "自此以後，我終於解開了心結。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "最後以一句『終於解開了心結』直接扣題，收束由不解、怨恨、換位、理解到釋懷的完整心理歷程。",
+      "techniqueTagIds": [
+        "tag_echo",
+        "tag_conclusion",
+        "tag_thesis"
+      ]
     }
   ],
   "topicAnalysis": {
@@ -151,5 +262,6 @@
     "directionSuggestion": "記述為甚麼有心結；記述如何解開心結。抒發心中有結未解和解開心結的感受和體會。",
     "referenceAnswerPoints": [],
     "openEndedAngles": []
-  }
+  },
+  "reviewStatus": "pending-human-review"
 }
