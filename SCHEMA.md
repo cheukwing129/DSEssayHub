@@ -61,8 +61,7 @@
 
 | 欄位 | 型別 | 說明 |
 |---|---|---|
-| `text` | string | 段落原文；如來源確實缺漏，可暫為空字串，但必須同時設 `sourceMissing: true` |
-| `sourceMissing` | boolean（可選） | 只有原稿來源缺漏且正文暫無法核實時才設為 `true`；前端會顯示缺漏提示，驗證器亦會追蹤 |
+| `text` | string | 段落原文；不得為空字串。如匯入後出現空白段，應先核對是否只是切段／格式錯誤 |
 | `comment` | string | 段旨點評，可為空字串 |
 | `techniqueTagIds` | array of string | 參照 `techniques.json` 的語意化 `id`（`tag_xxx`）；驗證腳本會拒絕舊版 `tNN` 代號 |
 
@@ -79,7 +78,7 @@
 | `referenceAnswerPoints` | array of string | 參考立意要點，審題訓練模式「查看參考答案」後第一層顯示的內容 |
 | `openEndedAngles` | array of string | 開放式取材角度，只有話題式文體（`genre: "topic"`）會用到，其他文體是空陣列 |
 
-**新增一篇範文的流程**：用 `/tools/paste-to-json-tool.html` 把 Word 原文貼上切段，複製產生的 `paragraphs` 陣列，貼進新的 `article_NN.json`，手動補上 `comment`／`techniqueTagIds`／`topicAnalysis`；同時記得在 `articles.json` 加一筆對應的索引項目。**不要以推測文字填補原稿缺漏**；若來源暫時無法核實，保留空 `text` 並設 `sourceMissing: true`，待找到原稿後再補回正文及移除標記。
+**新增一篇範文的流程**：用 `/tools/paste-to-json-tool.html` 把 Word 原文貼上切段，複製產生的 `paragraphs` 陣列，貼進新的 `article_NN.json`，手動補上 `comment`／`techniqueTagIds`／`topicAnalysis`；同時記得在 `articles.json` 加一筆對應的索引項目。若匯入後出現空白段，應先核對原稿與切段結果；不要把純格式空行當成正文段落，也不要以推測文字補寫原稿。
 
 ### 1.3 `questions.json` — 歷屆試題
 
