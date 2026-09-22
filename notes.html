@@ -732,11 +732,8 @@
       if (!Array.isArray(articles)) throw new Error('data/articles.json 必須是陣列');
       if (!Array.isArray(questions)) throw new Error('data/questions.json 必須是陣列');
 
-      const articleById = {};
-      articles.forEach(a => { articleById[String(a.id)] = a; });
-
-      const questionFullByKey = {};
-      questions.forEach(q => { questionFullByKey[`${q.year}_${q.questionNumber}`] = q.questionFull; });
+      const articleById = DSEHub.itemById(articles);
+      const questionFullByKey = DSEHub.questionTextByKey(questions);
 
       wireContentInteractions(articleById, questionFullByKey);
       render(articleById, questionFullByKey);

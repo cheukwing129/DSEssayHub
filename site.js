@@ -7,8 +7,31 @@
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 
+  const indexBy = (items, keyOf, valueOf = item => item) => {
+    const result = {};
+    (Array.isArray(items) ? items : []).forEach(item => {
+      const key = keyOf(item);
+      if (key === undefined || key === null || key === '') return;
+      result[key] = valueOf(item);
+    });
+    return result;
+  };
+
+  const nameById = items => indexBy(items, item => item?.id, item => item?.name);
+  const questionTextByKey = items => indexBy(
+    items,
+    item => item?.year != null && item?.questionNumber != null
+      ? `${item.year}_${item.questionNumber}`
+      : null,
+    item => item?.questionFull
+  );
+  const itemById = items => indexBy(items, item => item?.id);
+
   global.DSEHub = global.DSEHub || {};
   global.DSEHub.escapeHtml = escapeHtml;
+  global.DSEHub.nameById = nameById;
+  global.DSEHub.questionTextByKey = questionTextByKey;
+  global.DSEHub.itemById = itemById;
 
   if (typeof document === 'undefined') return;
 
