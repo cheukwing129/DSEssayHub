@@ -16,58 +16,117 @@
   "paragraphs": [
     {
       "text": "我拉著媽媽乾癟的手，心裡有千言萬語想要跟她說，但，我開不了口。我不敢對上媽媽的熾熱的目光，是我太膽小？還是，我經歷過今次的活動後，自覺慚愧呢？",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "以「想說卻說不出口」的當下開篇，透過避開母親目光和連串自問先呈現慚愧；文章先寫結果，再逐步回溯造成愧疚的義工經歷與欺騙行為。",
+      "techniqueTagIds": [
+        "tag_psychological",
+        "tag_question",
+        "tag_suspense",
+        "tag_flashback"
+      ]
     },
     {
       "text": "「小心過馬路啊！待你回來才吃晚飯！」媽媽一如既往地向著說要出門去補習的我再三叮囑，我不敢多回答她幾句，我害怕她總有天會發現，發現我這個大謊話……",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "母親照常叮囑出門，主角卻以補習作藉口掩飾真正行程；母親的關心與主角的欺瞞形成反差，也埋下後文必須坦白的道德衝突。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_contrast",
+        "tag_conflict",
+        "tag_foreshadowing"
+      ]
     },
     {
       "text": "到達巴士站，一心在等我。只見她拿著一張單張，上面印著「己所不欲，勿施於人」的字句，她說今天我們要去當一天義工，探訪獨居老人。我立刻「哇哈哈」地捧腹大笑，什麼年代了，還有人用這樣老套的說話來宣傳，都不知道聽過多少百次了！我們還竟然用每星期偷偷混出來的幾小時做義工，真是天大的笑話。但一心不說分由，拉了我到社區中心，我只好屈服。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "義工單張上的「己所不欲，勿施於人」首次出現，主角卻把它視為老套笑話；這種輕視正好建立思想起點，為後文真正理解這句話形成前後對照。",
+      "techniqueTagIds": [
+        "tag_quote",
+        "tag_contrast",
+        "tag_characterization",
+        "tag_foreshadowing"
+      ]
     },
     {
       "text": "我們探訪的一位獨居老婆婆手拉拐杖。樣子慈祥，雖然身穿一件普通的灰白大衣卻不掩她的雍容華貴，年過六十的她依然目光炯炯，精神閃爍，實在難得。經一番閒聊後，得知婆婆原來兒孫滿堂，那就令我們更百思不得其解。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "獨居婆婆看來精神、體面，卻又兒孫滿堂，形成表面狀況與獨居事實的反差；這個疑問推動主角進一步了解她的人生經歷。",
+      "techniqueTagIds": [
+        "tag_character",
+        "tag_detail",
+        "tag_contrast",
+        "tag_suspense"
+      ]
     },
     {
       "text": "為什麼我會想到這些呢？眼前的媽媽已經放了一碗熱騰騰的湯在我面前，蒸汽讓我的腦袋變得一片空白，耳邊卻縈繞着婆婆的說話。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "敘事由義工回憶切回眼前的母親與熱湯，形成現在與過去交錯；婆婆的話仍在耳邊縈繞，顯示義工經歷已開始滲入主角對母親的理解。",
+      "techniqueTagIds": [
+        "tag_transition",
+        "tag_flashback",
+        "tag_imagery",
+        "tag_psychological"
+      ]
     },
     {
       "text": "「今天有人客啊！今天有人客啊！快坐，快坐，讓我好好招呼你們。」婆婆蹣跚走到廚房，一邊哼着歌，一邊為我們這些「稀客」準備水果。婆婆說我們像她的女兒，眼圓圓的，嘴小小的。婆婆又說她的女兒像她，就連不孝的性格，也一模一樣。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "婆婆熱情招呼兩名義工，並把她們聯想到自己的女兒；由開心招待轉到一句「不孝的性格」埋下隱痛，使表面歡樂下逐漸浮現家庭創傷。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_characterization",
+        "tag_foreshadowing",
+        "tag_contrast"
+      ]
     },
     {
       "text": "婆婆轉過頭去，掩飾臉上的淚痕。她凝望着掛在牆上那照片，沉默了好一會。雖然婆婆沒有開口，但我知道，照片中那個與婆婆的面容有幾分相似的女人，應該是她的母親。「是我自私，我任性，現在得到報應了，得報應了。」婆婆喃喃自語。我們不敢多問，後來經社工口中得知，當年婆婆丟下母親不理，只顧玩樂，所以被子女遺棄的她一直當作是報應。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "婆婆看着母親照片落淚，並把自己被子女遺棄理解為昔日遺棄母親的「報應」；她的人生把「己所不欲，勿施於人」具體化，成為主角最重要的警示。",
+      "techniqueTagIds": [
+        "tag_detail",
+        "tag_dialogue",
+        "tag_revelation",
+        "tag_cause_effect",
+        "tag_small_big"
+      ]
     },
     {
       "text": "「呀！」一聲，從廚房傳來媽媽的叫聲把我從沉思中召喚回來，我馬上跑到廚房一探，媽媽的手被燙到了，她輕聲說「沒事，我的皮粗，不痛不痛……」看着通紅的手上一道道深深淺淺的皺紋，我內疚的心一下子就如氣球一樣，瞬間被充滿了氣，胸膛已經再沒有容下的空間，一滴一滴的淚水打到媽媽燙傷的手上。媽媽！對不起！",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "母親被燙傷把主角從回憶拉回現實；皺紋、紅手與母親仍說「不痛」的細節放大她的付出，令主角的內疚爆發並直接道歉。",
+      "techniqueTagIds": [
+        "tag_transition",
+        "tag_detail",
+        "tag_metaphor",
+        "tag_direct_emotion",
+        "tag_climax"
+      ]
     },
     {
       "text": "一直以來，我都以補習作藉口，騙了媽媽辛辛苦苦賺來的錢，騙了媽媽對我的期望，騙了媽媽對我的信任。但是我卻從沒有想過將來當我為人母，會希望被子女欺騙嗎？會希望被最愛的人出賣嗎？正如老婆婆一樣，到時候我大概只能自責吧！不，我不能接受！",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角終於正視自己以補習為名騙錢、騙期望、騙信任的行為，再設想將來若自己被子女欺騙會否接受；透過換位思考，把婆婆的遭遇真正套回自身。",
+      "techniqueTagIds": [
+        "tag_flashback",
+        "tag_question",
+        "tag_perspective",
+        "tag_revelation",
+        "tag_conflict"
+      ]
     },
     {
       "text": "其實，明明從小聽說「己所不欲，勿施於人」，但，又有多少人能夠做到？我們往往都會有雙重標準，對人嚴，卻對自己寬。「別人的錯在眼中是一根柱，自己的錯卻只是一根針。」那在對別人做出一些行為前，為何不先問問自己一個問題：「如果是你，你可以接受嗎？」雖然簡單，卻意義重大。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "由個人悔悟提升為一般道理：人常對己寬、對人嚴，因此在行動前應先問自己能否承受同樣對待；引用格言與比喻進一步闡明「己所不欲，勿施於人」的實踐方法。",
+      "techniqueTagIds": [
+        "tag_quote",
+        "tag_metaphor",
+        "tag_reflection",
+        "tag_advice",
+        "tag_thesis"
+      ]
     },
     {
       "text": "我拉着媽媽的手，向她坦白一切，我倆手牽手，共同寫下「己所不欲，勿施於人」一句座右銘。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "結尾由「開不了口」轉為主動拉住母親、坦白一切，並共同寫下座右銘；實際行動證明主角不只明白道理，也願意修正自己，完成首尾呼應。",
+      "techniqueTagIds": [
+        "tag_action",
+        "tag_echo",
+        "tag_conclusion",
+        "tag_thesis"
+      ]
     }
   ],
   "topicAnalysis": {
@@ -81,5 +140,6 @@
       "結尾以坦白及立下座右銘，具體呈現改變。"
     ],
     "openEndedAngles": []
-  }
+  },
+  "reviewStatus": "pending-human-review"
 }
