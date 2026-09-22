@@ -14,7 +14,8 @@
   ├─ articles/article_NN.json  （每篇範文的完整內容，分檔存放）
   ├─ questions.json
   ├─ themes.json
-  └─ techniques.json
+  ├─ techniques.json
+  └─ search-index.json          （由腳本產生的全文搜尋索引）
 
 使用者資料（LocalStorage，瀏覽器本地，讀寫）
   ├─ dse_notes        （高亮＋段落註解）
@@ -109,6 +110,12 @@
 | `description` | string |
 
 舊文章仍可能使用 `t01`–`t35` 代號，詳見第五章。新增或修改文章時應直接使用 `tag_xxx` 語意化 ID。
+
+### 1.6 `search-index.json` — 自動產生的全文搜尋索引
+
+搜尋索引由 `npm run build:search` 讀取82個文章分檔後產生，包含正文、段旨點評、題目分析及文章實際使用的寫作手法名稱。`search.html` 只需額外讀取這一個檔案，不會在每次搜尋時逐篇請求82個 JSON。
+
+這個檔案不可手動修改。新增或修改文章後應執行 `npm run sync`；`npm run check` 會檢查索引內容是否為最新版本及是否完整涵蓋全部篇章。
 
 ---
 
@@ -210,7 +217,7 @@
 | `techniques.html` | 寫作手法字典，可依分類篩選；支援 `?highlight=<id>` 深層連結（從搜尋結果點進來時捲動＋脈動提示） | `techniques.json` |
 | `article.html?id=xxx` | 範文詳情頁，全站最複雜的頁面（見下方獨立說明） | `articles.json`、`articles/article_NN.json`、`themes.json`、`techniques.json`、`questions.json` |
 | `notes.html` | 我的筆記，跨文章彙整所有高亮／註解／素材／匯出入備份 | `articles.json`、`questions.json`＋三把 LocalStorage key |
-| `search.html` | 全站搜尋，同時搜範文／試題／寫作手法 | `articles.json`、`questions.json`、`themes.json`、`techniques.json` |
+| `search.html` | 全站搜尋，同時搜範文全文／段旨／分析／試題／寫作手法，並按相關度排列範文 | `articles.json`、`search-index.json`、`questions.json`、`themes.json`、`techniques.json` |
 
 ### `article.html` 內部功能一覽
 
@@ -253,7 +260,3 @@
 - `dse_notes` → 可以直接對應 `users/{uid}/notes/{noteId}` 這種子集合
 - `materialBank` → `users/{uid}/materials/{materialId}`
 - `articleProgress` → `users/{uid}/articleProgress/{articleId}`（這個本來就是用 articleId 當 key，剛好對應 Firestore 文件 ID）
-
-### 5.3 搜尋尚未涵蓋範文全文段落內容
-
-`search.html` 目前只搜「索引層級」的資料：`articles.json` 的摘要／立意向度／對應題目，以及 `questions.json`／`techniques.json` 全文。**不會**搜到82篇範文內文段落的實際文字，因為那些內容分散在82個 `article_NN.json` 檔案裡。日後應在提交或部署時預先產生全文搜尋索引，而不是每次搜尋都即時抓取全部文章。
