@@ -1,0 +1,14 @@
+{
+  "name": "dse-essay-hub",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync:data": "node scripts/sync-question-links.mjs",
+    "validate": "node scripts/validate-data.mjs",
+    "check": "npm run sync:data -- --check && npm run validate"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

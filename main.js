@@ -111,9 +111,17 @@ async function loadFeaturedArticles() {
  * @param {Object} questionFullByKey - 「年份_題號 -> 題目全文」對照表
  */
 function renderArticleCards(articles, themeNameById, questionFullByKey) {
-  // 只取前 FEATURED_ARTICLE_COUNT 篇作為「熱門範文」展示
-  // （未來若要改成真的依熱門程度排序，只要在這裡換成排序過的陣列即可）
-  const featuredArticles = articles.slice(0, FEATURED_ARTICLE_COUNT);
+  // 先讓四種文體各有一篇代表作，再按索引次序補足餘額。
+  // 這比直接取前六篇更符合首頁「從不同文體挑選」的說明。
+  const featuredArticles = [];
+  Object.keys(GENRE_LABELS).forEach(genre => {
+    const representative = articles.find(article => article.genre === genre);
+    if (representative) featuredArticles.push(representative);
+  });
+  for (const article of articles) {
+    if (featuredArticles.length >= FEATURED_ARTICLE_COUNT) break;
+    if (!featuredArticles.some(featured => featured.id === article.id)) featuredArticles.push(article);
+  }
 
   if (featuredArticles.length === 0) {
     articleStatus.textContent = '目前尚未有範文資料。';
@@ -215,5 +223,7 @@ function escapeHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }

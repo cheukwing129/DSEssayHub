@@ -2,7 +2,7 @@
   "id": 46,
   "collection": "main",
   "sourceType": "中文DSE",
-  "genre": "narrative",
+  "genre": "descriptive",
   "relatedQuestions": [{"year":"2018","subject":"中文","questionNumber":"Q1","title":"重遊舊地所見有感"}],
   "wordCount": 1521,
   "themeConceptIds": ["th01", "th07", "th09"],

@@ -443,7 +443,9 @@
   "relatedQuestions": [
     {
       "year": "文學2020",
-      "questionNumber": "Q2"
+      "subject": "文學",
+      "questionNumber": "Q2",
+      "title": "如釋重負"
     }
   ],
   "wordCount": 1860,
@@ -464,13 +466,15 @@
   "relatedQuestions": [
     {
       "year": "文學2020",
-      "questionNumber": "Q2"
+      "subject": "文學",
+      "questionNumber": "Q2",
+      "title": "如釋重負"
     }
   ],
-  "wordCount": 1860,
+  "wordCount": 2453,
   "themeConceptIds": [
     "th01",
-    "th07",
+    "th12",
     "th13"
   ],
   "summary": "主角因隱瞞大體美容師的職業而長期背負心理壓力，最後得到好友理解，決定公開自己的職業，終於如釋重負。"
@@ -631,7 +635,7 @@
       "collection": "main",
       "sourceType": "中文DSE",
       "genre": "argumentative",
-      "relatedQuestions": [{"year":"2014","subject":"中文","questionNumber":"Q3","title":"不做第一，也不做最後"}],
+      "relatedQuestions": [{"year":"2014","subject":"中文","questionNumber":"Q2","title":"不做第一，也不做最後"}],
       "wordCount": 2182,
       "themeConceptIds": ["th03","th04","th06"],
       "summary": "文章認為「不做第一，也不做最後」並非消極逃避，而是量力而為、保持尊嚴和避免鋒芒太露的中庸處世之道；既要努力避免落後，也不必為爭第一而承受過度壓力或破壞人際關係。"
@@ -711,7 +715,7 @@
       "relatedQuestions": [{"year":"2012","subject":"中文","questionNumber":"Q1","title":"唐老師是我最敬愛的老師"}],
       "wordCount": 1199,
       "themeConceptIds": ["th02","th04","th07"],
-      "summary": "文章透過唐老師以歷史知識教導學生、以故事啟發失意學生，以及不願受不合理工作束縛而離職等事件，描寫他的博學、謙卑、關愛學生和有風骨，抒發作者的敬愛和感激。"
+      "summary": "文章透過唐老師踩污球鞋後鄭重道歉、在文學課講解愛國文化，以及為作弊的學生補課等事例，描寫他以身教和言教傳承禮、責任和堅毅等中國文化，並表達作者對他的敬愛與感激。"
     },
     {
       "id": 49,
@@ -1011,9 +1015,9 @@
       "title": "我最想尋回的一件玩具"
     }
   ],
-  "wordCount": 780,
+  "wordCount": 1350,
   "themeConceptIds": ["th01", "th07", "th09"],
-  "summary": "文章以父親親手削製的竹蜻蜓為線索，回憶主角出身農村的樸實童年，及後升學離鄉時竹蜻蜓不慎遺失，多年來在繁華都市生活的主角漸漸淡忘故鄉與父母。直到偶遇蜻蜓觸動記憶，主角返家尋回竹蜻蜓，領悟自己不應忘本，家鄉與親情才是真正的歸屬。"
+  "summary": "文章以父親親手削製的竹蜻蜓為線索，回憶主角出身農村的樸實童年。升學離鄉那天竹蜻蜓不慎遺失，主角雖多番尋找仍無所獲，多年來在繁華都市生活中漸漸淡忘故鄉與父母。直到偶遇路人的竹蜻蜓觸動記憶，主角連夜返家，終在房中尋回落灰的竹蜻蜓，領悟自己不應忘本，家鄉與親情才是真正的歸屬。"
 },
   {
 
