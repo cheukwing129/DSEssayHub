@@ -80,7 +80,7 @@
     }
 
     .status-text { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); }
-    .error-box { margin-top: 16px; padding: 14px 16px; border-left: 4px solid #a33; border-radius: 4px; color: #712; background: #fff3f3; line-height: 1.65; }
+    
 
     @media (max-width: 720px) {
       .techniques-page { padding-top: calc(var(--header-height, 72px) + 30px); }
@@ -141,17 +141,8 @@
   </div>
 </footer>
 
+<script src="site.js"></script>
 <script>
-  // 手機版導航選單開關
-  const navToggle = document.getElementById('navToggle');
-  const mainNav = document.getElementById('mainNav');
-  if (navToggle && mainNav) {
-    navToggle.addEventListener('click', () => {
-      const open = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!open));
-      mainNav.classList.toggle('is-open', !open);
-    });
-  }
 
   const gridEl = document.getElementById('techniqueGrid');
   const countNoteEl = document.getElementById('countNote');
