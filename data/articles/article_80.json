@@ -55,7 +55,7 @@
       "techniqueTagIds": [
         "tag_symbolism",
         "tag_metaphor",
-        "tag_direct_emotion",
+        "tag_revelation",
         "tag_characterization"
       ]
     },
@@ -97,7 +97,7 @@
         "tag_progression",
         "tag_parallel",
         "tag_conclusion",
-        "tag_direct_emotion"
+        "tag_advice"
       ]
     },
     {
@@ -107,7 +107,7 @@
         "tag_echo",
         "tag_symbolism",
         "tag_metaphor",
-        "tag_ending"
+        "tag_conclusion"
       ]
     }
   ],

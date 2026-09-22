@@ -25,8 +25,9 @@
       "text": "原來有時候，我們在某些問題面前需要的不是確切的答案，而是由心的理解。",
       "comment": "先提出全文的核心體會，為後文的敘事作鋪墊。",
       "techniqueTagIds": [
-        "tag_event_emotion",
-        "tag_foreshadowing"
+        "tag_foreshadowing",
+        "tag_reflection",
+        "tag_thesis"
       ]
     },
     {
@@ -158,8 +159,7 @@
       "text": "「那還是別搬了，他不過是一時興起罷了，畢竟這裡還有咱們的根啊。」",
       "comment": "以父親的話點出家鄉與家庭的牽繫。",
       "techniqueTagIds": [
-        "tag_dialogue",
-        "tag_thesis"
+        "tag_dialogue"
       ]
     },
     {
@@ -200,7 +200,6 @@
       "text": "有句話，不敢忘。",
       "comment": "短句收束情緒，重提全文關鍵語句。",
       "techniqueTagIds": [
-        "tag_thesis",
         "tag_suspense"
       ]
     },
@@ -208,8 +207,7 @@
       "text": "「好。」",
       "comment": "單句對白突顯這句話對主角一生的深刻影響。",
       "techniqueTagIds": [
-        "tag_dialogue",
-        "tag_thesis"
+        "tag_dialogue"
       ]
     },
     {
@@ -217,7 +215,7 @@
       "comment": "以聲音意象作結，呼應開首的「這一句話」，形成首尾呼應。",
       "techniqueTagIds": [
         "tag_echo",
-        "tag_scene_emotion"
+        "tag_sound"
       ]
     }
   ],

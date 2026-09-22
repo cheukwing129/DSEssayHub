@@ -18,7 +18,10 @@
     {
       "text": "春意盎然，煦日正高懸。我握着一把鐵鏟，在樹根旁奮力，汗如雨下。只因這片黑土之中，埋藏着我好奇許久的寶物。",
       "comment": "以春日挖掘的場景開篇，並點出泥土中藏有令主角好奇已久的寶物，設下懸念，引出全文回憶的主線。",
-      "techniqueTagIds": ["tag_scene", "tag_suspense", "tag_thesis"]
+      "techniqueTagIds": [
+        "tag_scene",
+        "tag_suspense"
+      ]
     },
     {
       "text": "說起寶物，那是我曾經和爺爺的約定。",
