@@ -660,3 +660,15 @@ button {
     padding: 48px 0;
   }
 }
+
+
+/* Shared feedback */
+.error-box {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-left: 4px solid #a33;
+  border-radius: 4px;
+  color: #712;
+  background: #fff3f3;
+  line-height: 1.65;
+}
