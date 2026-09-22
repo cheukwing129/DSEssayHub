@@ -257,8 +257,13 @@
     "analysisType": "keyword",
     "keywordExplanation": "「心結」可指糾纏心中的芥蒂，是一些想不通、難以紓解的困惑，放不下忘不了的人和事。",
     "imageryDescription": "",
-    "directionSuggestion": "記述為甚麼有心結；記述如何解開心結。抒發心中有結未解和解開心結的感受和體會。",
-    "referenceAnswerPoints": [],
+    "directionSuggestion": "本文以醫生主角對母親當年撤除父親治療的怨懟為心結。可聚焦他在照顧另一名病人時，目睹病人太太面對相似抉擇，因而理解母親當時的處境；結尾寫他如何重新看待母親的決定及自己的怨懟，不延伸成現實醫療建議。",
+    "referenceAnswerPoints": [
+      "交代主角一直怨恨母親替病重父親撤除治療，形成心結。",
+      "以醫生工作中遇到相似家庭抉擇的情節，促使主角換位思考。",
+      "呈現主角由只看見父親離世的結果，轉而理解母親當時的艱難處境。",
+      "結尾聚焦主角對母親及往事的情感變化，不把個人經歷概括成普遍醫療判斷。"
+    ],
     "openEndedAngles": []
   },
   "reviewStatus": "pending-human-review"
