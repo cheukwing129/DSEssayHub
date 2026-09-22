@@ -16,128 +16,233 @@
   "paragraphs": [
     {
       "text": "「度、度、度……」",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "以盲人過路提示聲「度、度、度」單獨成段開篇，先用聲音造成現場感，也留下「這聲音為何重要」的懸念。",
+      "techniqueTagIds": [
+        "tag_sound",
+        "tag_suspense",
+        "tag_foreshadowing"
+      ]
     },
     {
       "text": "我在回家的路上，在斑馬線的中心，等候著綠燈亮起。突然聽到幾下「度、度」的聲音。我抬頭望望對岸，原來是一位盲人提著盲人輔助棒走過。我仔細一看，還有幾個小學生追著他，他們在背後作狀對那個盲人拳打腳踢，一個小胖子還在咧著嘴巴指著他取笑著。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角在斑馬線看見盲人過路，同時目睹小學生在背後模仿拳打腳踢並取笑；眼前場景立即喚起「不尊重他人」的主題衝突。",
+      "techniqueTagIds": [
+        "tag_scene",
+        "tag_action",
+        "tag_conflict",
+        "tag_side_description"
+      ]
     },
     {
       "text": "看著他們幼稚的行為，我不禁想起以前的自己。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "一句「想起以前的自己」把現在切回過去，明確提示接下來的回憶將解釋主角為何對眼前一幕感受特別深。",
+      "techniqueTagIds": [
+        "tag_transition",
+        "tag_flashback"
+      ]
     },
     {
       "text": "那年是小學六年級。有一次，我在上學的途中碰上了一位盲眼的叔叔，他提著輔助棒拍著地下，左右有致的。我抬頭看看，瞥見他架著太陽眼鏡，面無表情，有趣極了！於是，我在他的旁邊用力的拍著手。他突然停了下來，把頭轉到左邊又轉到右邊，用力嗅嗅。我頓時沒有說話，拋下一句「笨盲仔」便頭也不回跑走了。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "倒敘小六時主角曾故意拍手戲弄盲人，最後還罵「笨盲仔」逃走；具體行為交代他從前欠缺同理心，建立思想轉變前的起點。",
+      "techniqueTagIds": [
+        "tag_flashback",
+        "tag_action",
+        "tag_dialogue",
+        "tag_characterization"
+      ]
     },
     {
       "text": "下學期的時候，老師推薦我和幾位同學參加「傷健共融一天團」的活動。起初，我是沒有什麼興趣的，總覺得和那些傷殘人士玩遊戲定會悶得發瘋，是想隨便出席敷衍一下老師。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "老師安排參加傷健共融活動，主角起初只覺得沉悶、打算敷衍，延續對殘疾人士的成見，也為後來親身體驗形成反差。",
+      "techniqueTagIds": [
+        "tag_background",
+        "tag_characterization",
+        "tag_contrast",
+        "tag_foreshadowing"
+      ]
     },
     {
       "text": "到了那天，我和幾個傷殘人士一組完成各項任務，其中一個任務名為「黑色世界」。原來是要以為組員模仿盲人，在馬路前請求五位行人扶著自己橫過馬路。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "「黑色世界」任務要求模擬失明並請陌生人協助過馬路，把抽象的同理心教育轉化成必須親身承受的情境。",
+      "techniqueTagIds": [
+        "tag_background",
+        "tag_perspective",
+        "tag_foreshadowing"
+      ]
     },
     {
       "text": "我身先士卒舉手說要負責這個任務，他們都欣然同意。我先用膠紙封著雙眼再架上太陽眼鏡，再提著輔助棒，緩緩走至馬路旁。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角主動負責任務，蒙眼、戴眼鏡、持輔助棒，正式由旁觀者轉為體驗者；角色位置的改變是全文的重要結構轉折。",
+      "techniqueTagIds": [
+        "tag_action",
+        "tag_perspective",
+        "tag_turning_point"
+      ]
     },
     {
       "text": "走著走著，我的心開始不由自主地狂蹦亂跳，面對著眼前一片漆黑的世界，我感到十分陌生，聽著路人馬不停蹄的腳步聲，似是一下一下的鑿在我的心房，深怕他們不知哪隻腳會踏中我的腳，這樣的不安在背後緊緊的追隨著我。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "失去視覺後，腳步聲被放大成威脅，主角由不安到恐懼；聽覺與心理描寫使讀者切身感受他對環境失去掌控的焦慮。",
+      "techniqueTagIds": [
+        "tag_sensory",
+        "tag_psychological",
+        "tag_metaphor",
+        "tag_emotion"
+      ]
     },
     {
       "text": "突然，一陣清新的花香味在我的鼻子前蕩漾。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "花香突然出現，主角只能依靠嗅覺判斷有人接近；感官重心由視覺轉到嗅覺，進一步強化模擬失明後的陌生感。",
+      "techniqueTagIds": [
+        "tag_sensory",
+        "tag_detail"
+      ]
     },
     {
       "text": "「不好意思，拜託你能扶著我過馬路嗎？」我徐徐吐出了一句話。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角小心開口請求協助，語氣謹慎，顯示他第一次處於需要依靠陌生人善意的位置。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_psychological"
+      ]
     },
     {
       "text": "然而，我沒有聽到一句回應，只聽到兩隻高跟鞋跑著走著，那股香水味也漸漸離我而去。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "對方沒有回應，只留下高跟鞋聲與逐漸遠去的香味；以聲音和氣味的消失呈現被忽視，讓主角第一次感到求助落空。",
+      "techniqueTagIds": [
+        "tag_sound",
+        "tag_sensory",
+        "tag_contrast",
+        "tag_emotion"
+      ]
     },
     {
       "text": "然後，我又聽到了幾位大哥哥的對話。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "聽到幾位年輕人交談後，主角再次嘗試求助，延續任務，也把期待推向下一個人際回應。",
+      "techniqueTagIds": [
+        "tag_sound",
+        "tag_transition"
+      ]
     },
     {
       "text": "「哥哥，不好意思，可以扶我過對面嗎？」我好不容易又吐出這句話。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "對方以嘲弄語氣拒絕，還把失明與行動能力混為一談；這段把歧視由冷漠升級為直接羞辱，使主角真正承受自己曾施加給別人的傷害。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_conflict",
+        "tag_climax"
+      ]
     },
     {
       "text": "「小朋友，你不懂過馬路嗎？你是盲了，不是跛了喔！哥哥幫不了你了！哈哈哈哈！」",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角雖然蒙眼，卻說能『看透』對方黑色的心，以黑色和腐臭味把外在失明與內在冷酷對照，強化被侮辱後的憤怒。",
+      "techniqueTagIds": [
+        "tag_metaphor",
+        "tag_symbolism",
+        "tag_contrast",
+        "tag_emotion"
+      ]
     },
     {
       "text": "即使我的眼睛被蒙著了，但我也能看透他們的心，是黑色的，是那堅固又沉實的黑色，還飄著那陣噁心的腐臭味。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "再次傳來「呆盲仔」與笑聲，重複的稱呼直接勾連主角童年時對盲人叔叔說過的「笨盲仔」，形成關鍵呼應。",
+      "techniqueTagIds": [
+        "tag_repetition",
+        "tag_echo",
+        "tag_sound",
+        "tag_conflict"
+      ]
     },
     {
       "text": "「不要跌倒喔！呆盲仔！」說罷就傳來了一陣恥笑聲。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "被辱罵後，主角形容自己跌入黑洞，情緒由不安升至崩潰；此刻他第一次由受害者角度明白，失明人士需要的首先是基本尊重。",
+      "techniqueTagIds": [
+        "tag_metaphor",
+        "tag_psychological",
+        "tag_revelation",
+        "tag_climax"
+      ]
     },
     {
       "text": "「呆盲仔」這句話頓時把我推到黑洞，我在這伸手不見五指的地方，再也無法站得起來。那份不安已追上了我，把我的軀體完全侵蝕。我想大叫，歇斯底里的吶喊，看不見的人也應受到基本的尊重！",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角勉強完成任務，簡短一句讓情緒暫時收束，也標誌體驗階段結束，準備進入反思。",
+      "techniqueTagIds": [
+        "tag_transition",
+        "tag_action"
+      ]
     },
     {
       "text": "最後，我硬著頭皮終於完成了任務。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "老師邀請分享感受，主角毫不猶豫答應，顯示態度已由開始時的敷衍轉為主動表達與承擔。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_revelation",
+        "tag_characterization"
+      ]
     },
     {
       "text": "活動完結後，老師問我們可否在明天和同學分享今天的感受，我毫不猶豫便答應了。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角總結活動帶來的教訓：殘疾人士與所有人一樣有情感，也需要尊重與關愛；由個人受挫上升為對待他人的基本原則。",
+      "techniqueTagIds": [
+        "tag_reflection",
+        "tag_thesis",
+        "tag_small_big"
+      ]
     },
     {
       "text": "這天的活動實在讓我上了寶貴的一課。從前的我不懂得尊重傷殘人士，在路上碰見了他們，只會取笑和作弄他們一番，讓他們難堪，從來也沒有切身處地為他們想想。雖然他們的身體並不健全，但是他們的心靈也是和常人一樣的，他們需要尊重也需要愛護。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角把自己被嘲笑時的痛苦反照到當年被自己辱罵的盲人叔叔，真正完成換位思考；過去一句戲言，如今被重新理解成可能造成深刻傷害。",
+      "techniqueTagIds": [
+        "tag_flashback",
+        "tag_perspective",
+        "tag_reframing",
+        "tag_revelation"
+      ]
     },
     {
       "text": "我在活動中模仿了一天盲人的生活，原來被別人取笑或是別人的不接納是如此的心疼和傷心。我開始有點後悔從前自己在上學的路上曾對著那位盲人叔叔的不禮貌，我那無意的一句「笨盲仔」也曾無情地把他推到在無底的深潭裏去。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "引用「己所不欲，勿施於人」，並連結儒家「恕」的觀念，把活動所得與題目核心直接扣連。",
+      "techniqueTagIds": [
+        "tag_quote",
+        "tag_reference",
+        "tag_thesis"
+      ]
     },
     {
       "text": "「己所不欲，勿施於人」不就是儒家思想中「忠恕」的「恕」意思嗎？",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角把格言轉化成日常原則：自己不願被不尊重，也不應把不尊重加諸他人，明確說明換位思考的實踐方式。",
+      "techniqueTagIds": [
+        "tag_reflection",
+        "tag_advice",
+        "tag_thesis"
+      ]
     },
     {
       "text": "我們不喜歡別人對自己不尊重，我們也不應該不尊重別人，尊重別人是最基本待人處世的觀念。我們不愛好、討厭的也不應該施予在別人的身上。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "由活動經歷歸納出普遍的待人態度，重點從『不要取笑殘疾人士』擴大為『不要把自己厭惡的對待施加在任何人身上』。",
+      "techniqueTagIds": [
+        "tag_small_big",
+        "tag_synthesis",
+        "tag_reflection"
+      ]
     },
     {
       "text": "這次的活動使我獲益良多。對不起，盲人叔叔！",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "直接向昔日的盲人叔叔道歉，讓反思由抽象道理回到具體對象；一句呼告表達遲來的悔意。",
+      "techniqueTagIds": [
+        "tag_direct_address",
+        "tag_direct_emotion",
+        "tag_conclusion"
+      ]
     },
     {
       "text": "我再次抬抬頭，馬路的燈已從紅轉綠，我不再想太多，馬上去扶著那盲人，協助他回家去。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "敘事回到開首的斑馬線與盲人，紅燈轉綠後主角主動上前協助；實際行動證明他已由旁觀、取笑他人，轉變為願意尊重和幫助，完成首尾呼應。",
+      "techniqueTagIds": [
+        "tag_echo",
+        "tag_action",
+        "tag_revelation",
+        "tag_conclusion"
+      ]
     }
   ],
   "topicAnalysis": {
@@ -151,5 +256,6 @@
       "結尾可由個人反思提升至待人處世原則。"
     ],
     "openEndedAngles": []
-  }
+  },
+  "reviewStatus": "pending-human-review"
 }
