@@ -4,6 +4,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const siteScript = fs.readFileSync(path.join(root, 'site.js'), 'utf8');
 const html = fs.readFileSync(path.join(root, 'search.html'), 'utf8');
 const script = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)]
   .map(match => match[1])
@@ -32,6 +33,7 @@ async function search(query) {
     console, document, fetch, URLSearchParams, encodeURIComponent,
     location: { search: `?q=${encodeURIComponent(query)}` }
   });
+  new vm.Script(siteScript, { filename: 'site.js' }).runInContext(context);
   new vm.Script(script, { filename: 'search-inline.js' }).runInContext(context);
   await new Promise(resolve => setTimeout(resolve, 0));
   if (elements.errorBox.innerHTML) throw new Error(elements.errorBox.innerHTML);
