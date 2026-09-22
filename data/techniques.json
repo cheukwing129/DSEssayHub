@@ -47,5 +47,17 @@
   {"id":"tag_climax","name":"高潮","category":"結構手法","description":"情節或情感發展至最緊張、最關鍵的部分。"},
   {"id":"tag_ending","name":"反問結尾","category":"結構手法","description":"以反問或疑問句結束文章，留下思考空間和餘韻。"},
   {"id":"tag_conclusion","name":"總結／結尾","category":"結構手法","description":"總結全文主旨，提出啟示、感悟或呼籲。"},
-  {"id":"tag_ending_open","name":"開放式結尾","category":"結構手法","description":"不把意思完全說盡，讓讀者自行想像或思考。"}
+  {"id":"tag_ending_open","name":"開放式結尾","category":"結構手法","description":"不把意思完全說盡，讓讀者自行想像或思考。"},
+  {"id":"tag_reframing","name":"重新詮釋","category":"論說手法","description":"改變觀察或理解事情的框架，從另一角度賦予概念新的意義。"},
+  {"id":"tag_perspective","name":"視角轉換","category":"敘事技巧","description":"改變敘述或觀察角度，呈現同一事件的不同面向。"},
+  {"id":"tag_imagery","name":"意象描寫","category":"描寫手法","description":"運用具體而有象徵意味的景物或形象，營造氣氛並寄託情感。"},
+  {"id":"tag_synthesis","name":"綜合歸納","category":"論說手法","description":"綜合前文的例證與分析，歸納出較完整的觀點或結論。"},
+  {"id":"tag_comparison","name":"比較論證","category":"論說手法","description":"比較兩個或以上對象的異同，藉此突出論點。"},
+  {"id":"tag_hypothesis","name":"假設論證","category":"論說手法","description":"提出假設情境並推演其結果，以說明論點是否成立。"},
+  {"id":"tag_revelation","name":"領悟／頓悟","category":"敘事技巧","description":"人物在關鍵事件後獲得新的理解，帶動思想或情感轉變。"},
+  {"id":"tag_turning_point","name":"情節轉折點","category":"結構手法","description":"標示情節、人物態度或情感方向發生重要改變的位置。"},
+  {"id":"tag_reflection","name":"反思感悟","category":"抒情手法","description":"由經歷延伸思考，表達對人生、價值或自身行為的體會。"},
+  {"id":"tag_direct_address","name":"呼告","category":"修辭手法","description":"直接呼喚人物或事物，以加強感情和語氣。"},
+  {"id":"tag_irony","name":"反諷","category":"修辭手法","description":"表面意思與真正用意形成反差，以突出批評或諷刺效果。"},
+  {"id":"tag_reversal","name":"情節逆轉","category":"敘事技巧","description":"讓情節結果出乎預期，形成前後反差並深化主題。"}
 ]

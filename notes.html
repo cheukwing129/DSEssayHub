@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>我的筆記｜DSE 中文科範文自學平台</title>
+  <meta name="description" content="整理範文高亮、段落註解與寫作素材，並匯出或匯入本機學習筆記。">
   <link rel="stylesheet" href="style.css">
   <style>
     .notes-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
@@ -274,9 +275,11 @@
   function saveAllNotes(notes) {
     try {
       localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notes));
+      return true;
     } catch (err) {
       console.error('儲存筆記資料失敗：', err);
       alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
+      return false;
     }
   }
 
@@ -315,9 +318,11 @@
   function saveMaterialBank(items) {
     try {
       localStorage.setItem(MATERIAL_STORAGE_KEY, JSON.stringify(items));
+      return true;
     } catch (err) {
       console.error('儲存素材庫資料失敗：', err);
       alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
+      return false;
     }
   }
 
@@ -344,9 +349,11 @@
   function saveAllArticleProgress(data) {
     try {
       localStorage.setItem(ARTICLE_PROGRESS_KEY, JSON.stringify(data));
+      return true;
     } catch (err) {
       console.error('儲存文章筆記面板資料失敗：', err);
       alert('操作失敗，可能是瀏覽器的儲存空間已滿，或目前處於無痕瀏覽模式。');
+      return false;
     }
   }
 
@@ -619,9 +626,16 @@
       const materialsResult = mergeArrayByKey(getMaterialBank(), importedMaterials, m => `${m.articleId}_${m.paragraphIndex}`);
       const progressResult = mergeArticleProgress(getAllArticleProgress(), importedProgress);
 
-      saveAllNotes(notesResult.merged);
-      saveMaterialBank(materialsResult.merged);
-      saveAllArticleProgress(progressResult.merged);
+      const saved = [
+        saveAllNotes(notesResult.merged),
+        saveMaterialBank(materialsResult.merged),
+        saveAllArticleProgress(progressResult.merged)
+      ].every(Boolean);
+
+      if (!saved) {
+        showImportStatus('匯入未能完整儲存，請檢查瀏覽器儲存空間後重試。', true);
+        return;
+      }
 
       const totalAdded = notesResult.addedCount + materialsResult.addedCount + progressResult.addedCount;
       const totalUpdated = notesResult.updatedCount + materialsResult.updatedCount + progressResult.updatedCount;

@@ -2,7 +2,7 @@
   "id": 49,
   "collection": "main",
   "sourceType": "中文DSE",
-  "genre": "narrative",
+  "genre": "descriptive",
   "relatedQuestions": [{"year":"2012","subject":"中文","questionNumber":"Q1","title":"唐老師是我最敬愛的老師"}],
   "wordCount": 1093,
   "themeConceptIds": ["th02", "th04", "th07"],

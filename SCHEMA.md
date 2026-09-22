@@ -36,18 +36,18 @@
 
 | 欄位 | 型別 | 說明 |
 |---|---|---|
-| `id` | number | 篇章編號，1–63，全站唯一 |
+| `id` | number | 篇章編號，1–82，全站唯一 |
 | `genre` | string | `"narrative"` / `"argumentative"` / `"descriptive"` / `"topic"` 之一 |
 | `relatedQuestions` | array of object | `{ year, questionNumber }`，一篇可能對應多年題目 |
 | `wordCount` | number | 全文字數 |
 | `themeConceptIds` | array of string | 參照 `themes.json` 的 `id` |
 | `summary` | string | 一兩句話的內容簡介，首頁／文體列表／搜尋結果／範文詳情頁都會用到 |
 
-**為什麼拆成索引 + 分檔**：63 篇 × 10–20 段全部塞進一個檔案，光是列表頁（只需要標題跟摘要）也要整份下載，太浪費。拆開之後，列表類頁面只讀這份輕量索引，點進單篇才去抓完整內容。
+**為什麼拆成索引 + 分檔**：82 篇全文全部塞進一個檔案，光是列表頁（只需要題目跟摘要）也要整份下載，太浪費。拆開之後，列表類頁面只讀輕量索引，點進單篇才抓完整內容。
 
 ### 1.2 `articles/article_NN.json` — 單篇範文完整內容
 
-`NN` 是篇章編號補零到兩位數（例如篇章 5 對應 `article_05.json`）。每個檔案是一個物件：
+`NN` 是篇章編號補零到兩位數（例如篇章 5 對應 `article_05.json`）。每個檔案是一個物件。現有資料亦保留 `id`、`genre`、`relatedQuestions`、`wordCount`、`themeConceptIds` 和 `summary` 等索引欄位；這些欄位必須與 `articles.json` 一致，驗證腳本會自動檢查：
 
 ```json
 {
@@ -68,10 +68,10 @@
 
 | 欄位 | 型別 | 說明 |
 |---|---|---|
-| `analysisType` | string | `"keyword"` 或 `"imagery"`，決定顯示哪一組解說欄位 |
-| `keywordExplanation` | string | 主題字詞解說（`analysisType` 為 `"keyword"` 時使用） |
-| `imageryDescription` | string | 圖畫／寓意描述（`analysisType` 為 `"imagery"` 時使用） |
-| `directionSuggestion` | string | 取材方向與立意建議，兩種類型都會用到 |
+| `analysisType` | string | `"keyword"` / `"image"` / `"quote"` / `"continuation"` / `"argumentative"` / `"open"`；舊資料亦兼容 `"imagery"` |
+| `keywordExplanation` | string | 題目字詞、引文、續寫要求或議題解說 |
+| `imageryDescription` | string | 圖畫／寓意及核心意象描述；`image`／`imagery` 類型會優先顯示此欄 |
+| `directionSuggestion` | string | 取材方向與立意建議，各類型都會使用 |
 | `referenceAnswerPoints` | array of string | 參考立意要點，審題訓練模式「查看參考答案」後第一層顯示的內容 |
 | `openEndedAngles` | array of string | 開放式取材角度，只有話題式文體（`genre: "topic"`）會用到，其他文體是空陣列 |
 
@@ -87,9 +87,9 @@
 | `questionNumber` | string | 題號，如 `"Q1"` |
 | `questionFull` | string | 題目完整文字 |
 | `questionType` | string | `"續寫"` / `"題旨"` / `"談論類"` / `"圖畫題"` 之一 |
-| `relatedArticleIds` | array of number | 對應 `articles.json` 的 `id`，可為空陣列 |
+| `relatedArticleIds` | array of number | 對應 `articles.json` 的 `id`；由同步腳本產生，不應手動修改 |
 
-`articles.json.relatedQuestions` 跟這裡的 `relatedArticleIds` 是同一份對應關係的兩個查詢方向，整理資料時兩邊要保持一致。
+`articles.json.relatedQuestions` 是關聯的唯一人工維護來源。執行 `npm run sync:data` 會重建 `questions.json.relatedArticleIds`，`npm run check` 會阻止未同步資料進入主分支。
 
 ### 1.4 `themes.json` — 立意向度主檔
 
@@ -105,10 +105,10 @@
 |---|---|
 | `id` | string |
 | `name` | string，如「倒敘法」 |
-| `category` | string，`"敘事技巧"` / `"修辭手法"` / `"結構手法"` 之一 |
+| `category` | string，`"敘事技巧"` / `"描寫手法"` / `"抒情手法"` / `"修辭手法"` / `"論說手法"` / `"結構手法"` 之一 |
 | `description` | string |
 
-⚠️ **這份檔案的 `id` 命名格式目前不一致，詳見第五章「已知技術債」，補資料或改程式前請先讀那一段。**
+舊文章仍可能使用 `t01`–`t35` 代號，詳見第五章。新增或修改文章時應直接使用 `tag_xxx` 語意化 ID。
 
 ---
 
@@ -240,11 +240,11 @@
 
 ## 五、已知技術債／待辦事項
 
-### 5.1 `techniques.json` 的 `id` 命名不一致 ⚠️
+### 5.1 舊版寫作手法 ID 尚待遷移
 
 歷史因素：階段一設計時 `id` 是 `"t01"`–`"t40"` 這種格式，後來範文資料改用 `"tag_flashback"`／`"tag_scene"` 這種語意化的 id。為了不用重新改所有範文檔案裡的 `techniqueTagIds`，`article.html` 裡加了一個對照表 `TECHNIQUE_ID_ALIASES`，把舊代號翻譯成新代號再去查名稱。
 
-**這個對照表只覆蓋到 `t35`**，如果之後補資料時用到 `t36`–`t40`（立論法／舉例論證／引用論證／比喻論證／歸謬法），段落標籤會顯示原始代號而不是中文名稱。長期應該讓 `techniqueTagIds` 直接存新版 id，把這個對照表整個刪掉；短期如果真的用到 `t36`–`t40`，要記得去 `article.html` 補那幾行對照。
+目前舊代號對照至 `t35`，而資料驗證會阻止不存在的代號或語意化 ID 被提交。長期仍應把文章內的舊代號一次過遷移成 `tag_xxx`，再移除 `TECHNIQUE_ID_ALIASES`。
 
 ### 5.2 尚未接 Firebase，資料只存在單一瀏覽器
 
@@ -256,4 +256,4 @@
 
 ### 5.3 搜尋尚未涵蓋範文全文段落內容
 
-`search.html` 目前只搜「索引層級」的資料：`articles.json` 的摘要／立意向度／對應題目，以及 `questions.json`／`techniques.json` 全文。**不會**搜到 63 篇範文內文段落的實際文字，因為那些內容分散在 63 個 `article_NN.json` 檔案裡，即時抓取全部檔案來搜尋成本較高。如果之後要做，比較好的做法是額外產生一份「全文搜尋索引」（例如建置時預先打包好的一個檔案），而不是每次搜尋都抓 63 個檔案。
+`search.html` 目前只搜「索引層級」的資料：`articles.json` 的摘要／立意向度／對應題目，以及 `questions.json`／`techniques.json` 全文。**不會**搜到82篇範文內文段落的實際文字，因為那些內容分散在82個 `article_NN.json` 檔案裡。日後應在提交或部署時預先產生全文搜尋索引，而不是每次搜尋都即時抓取全部文章。

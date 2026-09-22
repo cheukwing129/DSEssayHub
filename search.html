@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>搜尋結果｜DSE 中文科範文自學平台</title>
+  <meta name="description" content="搜尋 DSE 中文科範文、歷屆試題、立意向度及常用寫作手法。">
   <link rel="stylesheet" href="style.css">
   <style>
     .search-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
@@ -41,12 +42,18 @@
     .technique-card.cat-narrative { border-left-color: var(--color-narrative, #1f3a5f); }
     .technique-card.cat-rhetoric { border-left-color: var(--color-jade, #2f4a3c); }
     .technique-card.cat-structure { border-left-color: var(--color-descriptive, #6b5a3f); }
+    .technique-card.cat-argument { border-left-color: var(--color-argumentative, #2f4a3c); }
+    .technique-card.cat-description { border-left-color: var(--color-descriptive, #6b5a3f); }
+    .technique-card.cat-emotion { border-left-color: var(--color-topic, #5c4a66); }
     .technique-card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
     .technique-name { font-family: var(--font-serif, serif); font-weight: 700; font-size: 1.02rem; color: var(--color-ink, #23322b); }
     .technique-category-tag { font-size: .7rem; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
     .cat-narrative .technique-category-tag { background: var(--color-primary-soft, #e7edf3); color: var(--color-narrative, #1f3a5f); }
     .cat-rhetoric .technique-category-tag { background: #e5ece8; color: var(--color-jade, #2f4a3c); }
     .cat-structure .technique-category-tag { background: #f1ece2; color: var(--color-descriptive, #6b5a3f); }
+    .cat-argument .technique-category-tag { background: #e5ece8; color: var(--color-argumentative, #2f4a3c); }
+    .cat-description .technique-category-tag { background: #f1ece2; color: var(--color-descriptive, #6b5a3f); }
+    .cat-emotion .technique-category-tag { background: #eee8f1; color: var(--color-topic, #5c4a66); }
     .technique-description { font-size: .88rem; color: var(--color-ink-soft, #5c6b5f); line-height: 1.75; }
 
     /* 命中關鍵字的地方用柔和的底色標出，跟全站低飽和度的配色一致，不用瀏覽器預設的螢光黃 */
@@ -205,7 +212,10 @@
   const TECHNIQUE_CATEGORY_CLASS = {
     '敘事技巧': 'cat-narrative',
     '修辭手法': 'cat-rhetoric',
-    '結構手法': 'cat-structure'
+    '結構手法': 'cat-structure',
+    '論說手法': 'cat-argument',
+    '描寫手法': 'cat-description',
+    '抒情手法': 'cat-emotion'
   };
 
   /** 找出跟這條試題（年份＋題號）對應的範文 id 清單，跟 questions.html 的邏輯一致。 */

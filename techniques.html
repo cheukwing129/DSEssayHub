@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>寫作技巧｜DSE 中文科範文自學平台</title>
+  <meta name="description" content="查閱 DSE 中文寫作常用的敘事、描寫、抒情、修辭、論說及結構手法。">
   <link rel="stylesheet" href="style.css">
   <style>
     .techniques-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
@@ -51,6 +52,9 @@
     .technique-card.cat-narrative { border-left-color: var(--color-narrative, #1f3a5f); }
     .technique-card.cat-rhetoric { border-left-color: var(--color-jade, #2f4a3c); }
     .technique-card.cat-structure { border-left-color: var(--color-descriptive, #6b5a3f); }
+    .technique-card.cat-argument { border-left-color: var(--color-argumentative, #2f4a3c); }
+    .technique-card.cat-description { border-left-color: var(--color-descriptive, #6b5a3f); }
+    .technique-card.cat-emotion { border-left-color: var(--color-topic, #5c4a66); }
 
     .technique-card-head {
       display: flex;
@@ -113,14 +117,11 @@
 
     <div class="techniques-head">
       <h1>寫作技巧</h1>
-      <p>收錄記敘抒情文、論說文、描寫文常見的寫作手法，分成敘事技巧、修辭手法、結構手法三類。閱讀範文時看到段落旁的標籤，可以回來這裡查是什麼意思；寫作文時也可以先看看有哪些手法能用得上。</p>
+      <p>收錄記敘抒情文、論說文、描寫文常見的寫作手法，涵蓋敘事、描寫、抒情、修辭、論說及結構。閱讀範文時看到段落旁的標籤，可以回來這裡查是什麼意思；寫作文時也可以先看看有哪些手法能用得上。</p>
     </div>
 
     <div class="category-filter" id="categoryFilter">
-      <button type="button" class="category-btn is-active" data-category="">全部</button>
-      <button type="button" class="category-btn" data-category="敘事技巧">敘事技巧</button>
-      <button type="button" class="category-btn" data-category="修辭手法">修辭手法</button>
-      <button type="button" class="category-btn" data-category="結構手法">結構手法</button>
+      <button type="button" class="category-btn is-active" data-category="" aria-pressed="true">全部</button>
     </div>
 
     <p class="technique-count-note" id="countNote" hidden></p>
@@ -171,8 +172,22 @@
   const CATEGORY_CLASS = {
     '敘事技巧': 'cat-narrative',
     '修辭手法': 'cat-rhetoric',
-    '結構手法': 'cat-structure'
+    '結構手法': 'cat-structure',
+    '論說手法': 'cat-argument',
+    '描寫手法': 'cat-description',
+    '抒情手法': 'cat-emotion'
   };
+
+  const CATEGORY_ORDER = ['敘事技巧', '描寫手法', '抒情手法', '修辭手法', '論說手法', '結構手法'];
+
+  function renderCategoryButtons() {
+    const categories = [...new Set(allTechniques.map(t => t.category).filter(Boolean))]
+      .sort((a, b) => CATEGORY_ORDER.indexOf(a) - CATEGORY_ORDER.indexOf(b));
+    categoryFilterEl.innerHTML = `
+      <button type="button" class="category-btn is-active" data-category="" aria-pressed="true">全部</button>
+      ${categories.map(category => `<button type="button" class="category-btn" data-category="${esc(category)}" aria-pressed="false">${esc(category)}</button>`).join('')}
+    `;
+  }
 
   function buildTechniqueCardHtml(technique) {
     const categoryClass = CATEGORY_CLASS[technique.category] || 'cat-structure';
@@ -224,8 +239,12 @@
     const btn = event.target.closest('.category-btn');
     if (!btn) return;
 
-    categoryFilterEl.querySelectorAll('.category-btn').forEach(b => b.classList.remove('is-active'));
+    categoryFilterEl.querySelectorAll('.category-btn').forEach(b => {
+      b.classList.remove('is-active');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('is-active');
+    btn.setAttribute('aria-pressed', 'true');
 
     currentCategory = btn.dataset.category;
     render();
@@ -240,6 +259,7 @@
       if (!Array.isArray(techniques)) throw new Error('data/techniques.json 必須是陣列');
 
       allTechniques = techniques;
+      renderCategoryButtons();
       render();
       scrollToHighlightedTechnique();
 
