@@ -10,10 +10,11 @@
     "check:search": "node scripts/build-search-index.mjs --check",
     "test:search": "node scripts/test-search.mjs",
     "validate": "node scripts/validate-data.mjs",
-    "check": "npm run sync:data -- --check && npm run check:search && npm run validate && npm run test:search && npm run test:site && npm run test:storage && npm run test:backup",
+    "check": "npm run sync:data -- --check && npm run check:search && npm run validate && npm run test:search && npm run test:site && npm run test:storage && npm run test:backup && npm run test:notes",
     "test:site": "node scripts/test-site-utils.mjs",
     "test:storage": "node scripts/test-storage.mjs",
-    "test:backup": "node scripts/test-backup.mjs"
+    "test:backup": "node scripts/test-backup.mjs",
+    "test:notes": "node scripts/test-notes-page.mjs"
   },
   "engines": {
     "node": ">=20"
