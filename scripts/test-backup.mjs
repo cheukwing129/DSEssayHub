@@ -67,7 +67,7 @@ const mixed = sanitizeBackup(JSON.parse(`{
   }
 }`));
 assert.equal(mixed.ok, true);
-assert.equal(mixed.invalidCount, 5);
+assert.equal(mixed.invalidCount, 6);
 assert.equal(mixed.data.dse_notes.length, 1);
 assert.equal(mixed.data.materialBank.length, 1);
 assert.deepEqual(Object.keys(mixed.data.articleProgress), ['3']);
