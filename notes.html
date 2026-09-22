@@ -244,12 +244,7 @@
     blue: '立意轉折'
   };
 
-  const esc = v => String(v ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+  const esc = DSEHub.escapeHtml;
 
   /** 讀出全部筆記，跟 article.html 的 getAllNotes() 邏輯一致。 */
   function getAllNotes() {
