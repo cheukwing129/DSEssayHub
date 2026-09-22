@@ -48,24 +48,24 @@ assert.equal(legacy.ok, true);
 assert.equal(legacy.data.dse_notes[0].articleId, '1');
 assert.equal(legacy.data.dse_notes[0].timestamp, 0);
 
-const mixed = sanitizeBackup({
-  version: 1,
-  dse_notes: [
-    { articleId: '1', paragraphIndex: 0, type: 'highlight', color: 'pink' },
-    { articleId: '__proto__', paragraphIndex: 0, type: 'comment', noteContent: '壞資料' },
-    { articleId: '2', paragraphIndex: -1, type: 'highlight', color: 'yellow' },
-    { articleId: '2', paragraphIndex: 1, type: 'highlight', color: 'purple' }
+const mixed = sanitizeBackup(JSON.parse(`{
+  "version": 1,
+  "dse_notes": [
+    { "articleId": "1", "paragraphIndex": 0, "type": "highlight", "color": "pink" },
+    { "articleId": "__proto__", "paragraphIndex": 0, "type": "comment", "noteContent": "壞資料" },
+    { "articleId": "2", "paragraphIndex": -1, "type": "highlight", "color": "yellow" },
+    { "articleId": "2", "paragraphIndex": 1, "type": "highlight", "color": "purple" }
   ],
-  materialBank: [
-    { articleId: '2', paragraphIndex: 1, text: '有效素材' },
-    { articleId: '2', paragraphIndex: 2, text: '' }
+  "materialBank": [
+    { "articleId": "2", "paragraphIndex": 1, "text": "有效素材" },
+    { "articleId": "2", "paragraphIndex": 2, "text": "" }
   ],
-  articleProgress: {
-    '3': { structureNote: '有效', updatedAt: 5 },
-    '__proto__': { structureNote: '無效' },
-    '4': { structureNote: 123 }
+  "articleProgress": {
+    "3": { "structureNote": "有效", "updatedAt": 5 },
+    "__proto__": { "structureNote": "無效" },
+    "4": { "structureNote": 123 }
   }
-});
+}`));
 assert.equal(mixed.ok, true);
 assert.equal(mixed.invalidCount, 5);
 assert.equal(mixed.data.dse_notes.length, 1);
