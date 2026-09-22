@@ -76,7 +76,13 @@ for (const article of articles) {
   } else {
     detail.paragraphs.forEach((paragraph, index) => {
       paragraphCount += 1;
-      if (!String(paragraph.text || '').trim()) warn(`篇章 ${article.id} 第 ${index + 1} 段缺少正文，需人工核對原稿。`);
+      const paragraphText = String(paragraph.text || '').trim();
+      if (!paragraphText) {
+        if (paragraph.sourceMissing === true) warn(`篇章 ${article.id} 第 ${index + 1} 段已標記為原稿缺漏，待核對來源。`);
+        else fail(`篇章 ${article.id} 第 ${index + 1} 段缺少正文，且未標記 sourceMissing。`);
+      } else if (paragraph.sourceMissing === true) {
+        fail(`篇章 ${article.id} 第 ${index + 1} 段已有正文，不應再標記 sourceMissing。`);
+      }
       if (String(paragraph.comment || '').trim()) commentCount += 1;
       if ((paragraph.techniqueTagIds || []).length) taggedCount += 1;
       for (const tagId of paragraph.techniqueTagIds || []) {
