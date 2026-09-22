@@ -17,73 +17,138 @@
   "paragraphs": [
     {
       "text": "因昨晚通宵達旦地使用我的智能電話觀看動畫，故此今早我睏得不肯離開床鋪。「允行！起床了！」，爸爸高亢的嚷著，於是我睡眼惺忪地起床梳洗，準備前往茶樓與表姑婆一家吃一年一次的團年飯。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "以通宵玩手機導致睡眠不足開篇，先具體交代主角沉迷手機的程度，再安排團年飯作為沒有手機後重新接觸親情與節日氣氛的場景。",
+      "techniqueTagIds": [
+        "tag_background",
+        "tag_cause_effect",
+        "tag_characterization"
+      ]
     },
     {
       "text": "我步履緩慢地跟著爸爸出門，然後登上計程車前往龍鳳茶樓，路途中，我乍然摸一摸口袋，發現常伴身旁的手提電話不翼而飛，我驚惶失措地搜掠全身，也找尋不到它的尾巴，頃刻爸爸冷靜地說了句「不用找了，你把它遺留在家，不是更好嗎？不要做低頭族，多洞悉身邊事物吧！」我並不對爸爸的話銘記於心，可以選擇的話，我寧可跑回家拿回我的摯愛，也不要前往茶樓吃無意義的團年飯。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "發現手機遺留家中後，主角立刻驚慌，並把手機稱為「摯愛」；父親勸他不要做低頭族，但他仍認為團年飯無聊，鮮明呈現故事開始時的價值取向。",
+      "techniqueTagIds": [
+        "tag_psychological",
+        "tag_dialogue",
+        "tag_contrast",
+        "tag_foreshadowing"
+      ]
     },
     {
       "text": "我踱步如年地到達茶樓，眼前只見一個白髮斑駁，臉上佈滿皺紋，眉頭鎖緊，腰彎得像蜷曲的蛇的老人，聽爸爸說過後，原來她就是姑婆，於是我們安頓好後，開始叫點心吃，並聊起天來。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "姑婆衰老的外貌第一次進入主角視線，說明沒有手機分散注意力後，他開始真正觀看身邊的人；陌生感也反映過往多年雖同桌吃飯，彼此其實並不親近。",
+      "techniqueTagIds": [
+        "tag_character",
+        "tag_detail",
+        "tag_revelation"
+      ]
     },
     {
       "text": "我心想：「虛擬世界的寵物還健康嗎？我的網友有找我嗎？真失敗！竟沒有帶我的手提電話。」",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "內心仍只惦記虛擬寵物和網友，顯示主角尚未真正轉變；這段刻意保留對手機的牽掛，令後來的醒悟不致來得過於突然。",
+      "techniqueTagIds": [
+        "tag_inner_thought",
+        "tag_psychological",
+        "tag_foreshadowing"
+      ]
     },
     {
       "text": "姑婆訴說她被兒子拋棄的經過，原來她被兒子搶光了家產，賣掉了屋子並趕出家門，後來政府因姑婆未合符退休金領取所需年齡而拒絕發放退休金，姑婆愈說愈激動，淚珠開始由眼簾傾盤而下，轉眼間變得激眼婆娑，本不煽情的我，頓生憐憫之感。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "聽見姑婆被兒子棄養、失去居所的遭遇後，主角由原先冷漠轉為憐憫；人物敘述使他第一次接觸到手機以外、真實而具重量的人生困境。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_emotion",
+        "tag_turning_point",
+        "tag_event_emotion"
+      ]
     },
     {
       "text": "姑婆笨拙地拿出一盒賀年禮餅，恭敬地交付於我手，道：「新年快樂！學業進步！這是我的小小心意！」我頃刻會心微笑，真摯的道出一句感謝，看見姑婆靦腆的笑容口，我倍感安慰。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "姑婆即使處境困難仍送上賀年禮餅和祝福，具體行動表現長輩對晚輩的心意；主角真誠道謝，標誌關係由陌生逐步轉向有情感交流。",
+      "techniqueTagIds": [
+        "tag_action",
+        "tag_dialogue",
+        "tag_characterization",
+        "tag_revelation"
+      ]
     },
     {
       "text": "離別時，姑婆總刻意放慢笨重的腳步，欲意爭取多一分、多一秒的相處時間，於是我們背道而行。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "離別時姑婆刻意放慢腳步，從動作側寫她珍惜相聚；「多一分、多一秒」把她的不捨具體化，也讓主角更清楚看見自己過去忽略的親情。",
+      "techniqueTagIds": [
+        "tag_action",
+        "tag_side_description",
+        "tag_emotion"
+      ]
     },
     {
       "text": "我邊走邊想：「我怎麼如斯墜落？手提電話真是世間最珍貴的瑰寶嗎？」",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角開始反問手機是否真是最珍貴的東西，說明價值判斷出現轉折；由先前把手機視為「摯愛」，走到質疑其重要性。",
+      "techniqueTagIds": [
+        "tag_question",
+        "tag_revelation",
+        "tag_turning_point",
+        "tag_contrast"
+      ]
     },
     {
       "text": "走著走著，我突然被一架手推車跘倒了，那老人與姑婆有八分相似，原來她無力推扶手推車，於是我前往扶持，我眼望老婆婆販賣紙皮獲得幾毛錢後的歡容，我心裡有個不解之謎——為什麼要勞碌奔命，不依靠綜援金的幫助呢？",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "街上協助推紙皮車的老人，令主角把關注由家庭延伸到陌生人與社會處境；老婆婆賺到少量金錢仍露笑容，觸發他進一步思考現實生活中的艱難與選擇。",
+      "techniqueTagIds": [
+        "tag_action",
+        "tag_side_description",
+        "tag_question",
+        "tag_small_big"
+      ]
     },
     {
       "text": "相比以前，吃團年飯時，我只會全神貫注地玩手提電話，並不理會親朋的每番說話，不會感受節日氣氛，更不會親身去了解社會上正在發生的事，從前我懂的，只是按著手提電話，不論是在家、在街上和公眾場合，我只沉淪在虛擬世界的誘惑中。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "回望過去六年的團年飯，主角承認自己一直只顧手機，錯過親友談話、節日氣氛和社會觀察；今昔對比把「沒有手機」帶來的改變集中呈現。",
+      "techniqueTagIds": [
+        "tag_flashback",
+        "tag_contrast",
+        "tag_reflection",
+        "tag_cause_effect"
+      ]
     },
     {
       "text": "我和姑婆吃團年飯的活動已持續了六年，若不是這一次幸運的遺忘，我便會更遲的了解姑婆，更遲的送上暖暖的慰問。今天這件事，使我有不一樣的經歷和體會。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "主角明白若非這次遺忘手機，自己可能更遲才真正認識姑婆；由偶然事件轉化成珍惜親情的契機，直接回扣題目要求的「不一樣的經歷和體會」。",
+      "techniqueTagIds": [
+        "tag_revelation",
+        "tag_echo",
+        "tag_thesis"
+      ]
     },
     {
       "text": "手提電話的功能很多，可以與人聊天，擴濶社交網絡；可以玩電子遊戲，消磨時間，作娛樂之用；可以查找資訊，增廣見聞。然而世人，包括我在內，都濫用了這些功能，人的溝通逐漸隨著科技日新月異而減少，多了一份冷漠，少了一份溫暖。其實只要放下手提電話，多了解人與事，便會覺悟到現實中，有很多熟悉與陌生的臉孔被忽略了，其實，有很多人值得我們去珍惜、去關懷，亦存在一種需要去珍惜和關係，那麼，人的心靈距離便能逐漸拉近，社會變得更和諧。再者，中國傳統是該受尊重的，若能放下盛行的手提電話，與親朋共度喜慶節日，便是世間不可多得的痛快。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "先承認手機具備通訊、娛樂與資訊功能，再批評過度使用造成冷漠，形成正反分析；其後把體會由個人推廣至關懷他人、珍惜親情與節日文化。",
+      "techniqueTagIds": [
+        "tag_balanced_argument",
+        "tag_reflection",
+        "tag_small_big",
+        "tag_advice"
+      ]
     },
     {
       "text": "先哲葛勞德曾言：「生活最大的危險莫過於擁有空虛的心靈。」常持手提電話使人心靈變得空虛而不聞世事，適當使用手提電話的人能珍惜人與事，並不是大害，故此，世人應捨棄一分玩手提電話的時間，換取多一分的相處和感受節日氣氛的時間。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "引用名言強化「心靈不應被手機佔滿」的主張，並補充適當使用手機並非問題；結論重點落在減少部分使用時間，換取更多真實相處，而非完全拒絕科技。",
+      "techniqueTagIds": [
+        "tag_quote",
+        "tag_concession",
+        "tag_advice",
+        "tag_conclusion"
+      ]
     },
     {
       "text": "今天沒有帶來手提電話外出反而使我喜出望外，有不一樣的經歷和體會，我回家拿起手提電話，致電姑婆談天，我不再是被網絡遊戲操控的機器人。",
-      "comment": "",
-      "techniqueTagIds": []
+      "comment": "回家後主角不是把手機丟棄，而是用它致電姑婆，具體示範「適當使用」：科技由操控主角的工具，轉變為維繫親情的媒介，首尾形成有意義的轉變。",
+      "techniqueTagIds": [
+        "tag_reframing",
+        "tag_action",
+        "tag_echo",
+        "tag_conclusion"
+      ]
     }
   ],
   "topicAnalysis": {
@@ -97,5 +162,6 @@
       "結尾要回應不一樣的經歷和體會。"
     ],
     "openEndedAngles": []
-  }
+  },
+  "reviewStatus": "pending-human-review"
 }
