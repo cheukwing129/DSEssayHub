@@ -191,15 +191,4 @@ function buildThemeTagsHtml(themeConceptIds, themeNameById) {
     .join('');
 }
 
-/**
- * 簡單的 HTML 逸出函式，避免資料裡若含有 < > & 等符號時破壞版面或造成 XSS。
- * 因為目前資料是我們自己維護的 JSON，風險很低，但養成習慣比較安全。
- */
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
+const escapeHtml = DSEHub.escapeHtml;
