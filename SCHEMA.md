@@ -66,6 +66,8 @@
 | `comment` | string | 段旨點評，可為空字串 |
 | `techniqueTagIds` | array of string | 參照 `techniques.json` 的語意化 `id`（`tag_xxx`）；驗證腳本會拒絕舊版 `tNN` 代號 |
 
+文章層級可另設 `reviewStatus`：`pending-human-review` 表示點評／標籤已整理但尚待人工覆核；只有完成人工覆核後才可改為 `reviewed`，而且必須同時填寫 `reviewedBy` 與 `reviewedAt`（`YYYY-MM-DD`）。這個欄位用來區分「內容已補齊」與「已由人手確認」兩件事，避免把自動整理誤當人工審核。
+
 **`topicAnalysis`**：
 
 | 欄位 | 型別 | 說明 |
