@@ -63,7 +63,7 @@
 |---|---|---|
 | `text` | string | 段落原文 |
 | `comment` | string | 段旨點評，可為空字串 |
-| `techniqueTagIds` | array of string | 參照 `techniques.json` 的 `id`（⚠️ 見第五章的已知問題） |
+| `techniqueTagIds` | array of string | 參照 `techniques.json` 的語意化 `id`（`tag_xxx`）；驗證腳本會拒絕舊版 `tNN` 代號 |
 
 **`topicAnalysis`**：
 
@@ -109,7 +109,7 @@
 | `category` | string，`"敘事技巧"` / `"描寫手法"` / `"抒情手法"` / `"修辭手法"` / `"論說手法"` / `"結構手法"` 之一 |
 | `description` | string |
 
-舊文章仍可能使用 `t01`–`t35` 代號，詳見第五章。新增或修改文章時應直接使用 `tag_xxx` 語意化 ID。
+所有文章現已統一使用 `tag_xxx` 語意化 ID；新增或修改文章時亦必須直接使用這些 ID。
 
 ### 1.6 `search-index.json` — 自動產生的全文搜尋索引
 
@@ -247,13 +247,7 @@
 
 ## 五、已知技術債／待辦事項
 
-### 5.1 舊版寫作手法 ID 尚待遷移
-
-歷史因素：階段一設計時 `id` 是 `"t01"`–`"t40"` 這種格式，後來範文資料改用 `"tag_flashback"`／`"tag_scene"` 這種語意化的 id。為了不用重新改所有範文檔案裡的 `techniqueTagIds`，`article.html` 裡加了一個對照表 `TECHNIQUE_ID_ALIASES`，把舊代號翻譯成新代號再去查名稱。
-
-目前舊代號對照至 `t35`，而資料驗證會阻止不存在的代號或語意化 ID 被提交。長期仍應把文章內的舊代號一次過遷移成 `tag_xxx`，再移除 `TECHNIQUE_ID_ALIASES`。
-
-### 5.2 尚未接 Firebase，資料只存在單一瀏覽器
+### 5.1 尚未接 Firebase，資料只存在單一瀏覽器
 
 `dse_notes`／`materialBank`／`articleProgress` 都只存在瀏覽器的 LocalStorage，換裝置或清除瀏覽器資料就會遺失。目前用「匯出／匯入備份」（見 2.4）作為暫時的解法，長期還是要接雲端同步。三把 key 的資料形狀已經比較穩定，之後要接 Firestore 的話：
 

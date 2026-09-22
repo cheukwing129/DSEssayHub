@@ -39,18 +39,6 @@ const questionKeys = uniqueIds(questions, '試題', q => `${q.year}_${q.question
 const searchIndexIds = uniqueIds(searchIndex, '搜尋索引');
 const allowedGenres = new Set(['narrative', 'argumentative', 'descriptive', 'topic']);
 const allowedAnalysisTypes = new Set(['keyword', 'image', 'imagery', 'quote', 'continuation', 'argumentative', 'open']);
-const aliases = {
-  t01:'tag_flashback', t02:'tag_sequence', t03:'tag_flashback', t04:'tag_echo',
-  t05:'tag_scene', t06:'tag_character', t07:'tag_scene', t08:'tag_event_emotion',
-  t09:'tag_direct_emotion', t10:'tag_dialogue', t11:'tag_psychological', t12:'tag_contrast',
-  t13:'tag_scene_emotion', t14:'tag_symbolism', t15:'tag_question', t16:'tag_rhetorical_question',
-  t17:'tag_parallel', t18:'tag_progression', t19:'tag_metaphor', t20:'tag_personification',
-  t21:'tag_counterargument', t22:'tag_example', t23:'tag_quote', t24:'tag_balanced_argument',
-  t25:'tag_analogy', t26:'tag_thesis', t27:'tag_foreshadowing', t28:'tag_suspense',
-  t29:'tag_transition', t30:'tag_side_description', t31:'tag_dynamic_static', t32:'tag_sensory',
-  t33:'tag_detail', t34:'tag_small_big', t35:'tag_question'
-};
-
 const derivedLinks = new Map(questions.map(q => [`${q.year}_${q.questionNumber}`, []]));
 let paragraphCount = 0;
 let commentCount = 0;
@@ -92,8 +80,11 @@ for (const article of articles) {
       if (String(paragraph.comment || '').trim()) commentCount += 1;
       if ((paragraph.techniqueTagIds || []).length) taggedCount += 1;
       for (const tagId of paragraph.techniqueTagIds || []) {
-        const normalized = aliases[tagId] || tagId;
-        if (!techniqueIds.has(normalized)) fail(`篇章 ${article.id} 第 ${index + 1} 段參照不存在的手法：${tagId}`);
+        if (/^t\d{2}$/.test(tagId)) {
+          fail(`篇章 ${article.id} 第 ${index + 1} 段仍使用舊版手法代號：${tagId}`);
+        } else if (!techniqueIds.has(tagId)) {
+          fail(`篇章 ${article.id} 第 ${index + 1} 段參照不存在的手法：${tagId}`);
+        }
       }
     });
   }
