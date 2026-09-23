@@ -77,8 +77,8 @@
     }
   ],
   "topicAnalysis": {
-    "analysisType": "keyword",
-    "keywordExplanation": "題目要求以指定句子為首句，文章可由一句具有哲理的話引發論述，並說明自己為何會終身記住它。",
+    "analysisType": "continuation",
+    "keywordExplanation": "本題為指定首句續寫。本文採偏議論抒懷的寫法，由一句具有哲理的話展開論述，並說明自己為何會終身記住它；這是跨文體示例，不代表所有續寫題都可以省略事件或情境鋪陳。",
     "imageryDescription": "",
     "directionSuggestion": "本文以老師的格言為引，論證遺憾並非全然負面：得不到會留下遺憾，得到後也可能因失去而更感遺憾，而遺憾亦能推動人珍惜和成長。可沿用文中「若有時光機」的假設檢視遺憾是否值得抹去，並清楚交代主角認為遺憾不可避免且有其價值。",
     "referenceAnswerPoints": [
