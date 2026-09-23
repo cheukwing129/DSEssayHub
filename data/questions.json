@@ -232,7 +232,9 @@
       61
     ],
     "hasImage": true,
-    "imageNote": "題目提及原題附圖；目前資料未收錄圖像，請於頁面標示「原題附圖」。"
+    "imageNote": "原題附圖",
+    "imagePath": "assets/question-images/2014_Q3.png",
+    "imageAlt": "2014 DSE 中文科寫作 Q3「陽光與陰影」原題附圖"
   },
   {
     "year": "2013",
@@ -312,7 +314,9 @@
     "questionType": "開放式",
     "relatedArticleIds": [],
     "hasImage": true,
-    "imageNote": "題目提及原題附圖；目前資料未收錄圖像，請於頁面標示「原題附圖」。"
+    "imageNote": "原題附圖",
+    "imagePath": "assets/question-images/2012_PP_Q3.png",
+    "imageAlt": "2012 Pilot Paper 中文科寫作 Q3「紛爭源於不自知」原題附圖"
   },
   {
     "year": "文學2020",
@@ -496,11 +500,13 @@
     "genre": "topic",
     "questionFull": "試就下圖對你的啟發，以「得不償失」為題，寫一篇文章。",
     "hasImage": true,
-    "imageNote": "原題附圖，請保留題目圖片或於頁面標示「原題附圖」。",
+    "imageNote": "原題附圖",
     "relatedArticleIds": [
       64,
       65
-    ]
+    ],
+    "imagePath": "assets/question-images/2022_Q2.png",
+    "imageAlt": "2022 DSE 中文科寫作 Q2「得不償失」原題附圖"
   },
   {
     "year": "2022",
