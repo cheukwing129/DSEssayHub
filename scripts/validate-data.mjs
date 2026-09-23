@@ -67,7 +67,7 @@ for (const article of articles) {
   for (const themeId of article.themeConceptIds || []) {
     if (!themeIds.has(themeId)) fail(`篇章 ${article.id} 參照不存在的立意向度：${themeId}`);
   }
-  for (const ref of article.relatedQuestions || []) {
+  for (const ref of (Array.isArray(article.relatedQuestions) ? article.relatedQuestions : [])) {
     const key = `${ref.year}_${ref.questionNumber}`;
     if (!questionKeys.has(key)) fail(`篇章 ${article.id} 參照不存在的試題：${key}`);
     else derivedLinks.get(key).push(article.id);
@@ -135,7 +135,7 @@ for (const question of questions) {
     fail(`試題 ${key} 的 relatedArticleIds 出現重複篇章。`);
   }
   const expected = [...new Set(derivedLinks.get(key))];
-  const actual = question.relatedArticleIds || [];
+  const actual = Array.isArray(question.relatedArticleIds) ? question.relatedArticleIds : [];
   if (JSON.stringify(actual) !== JSON.stringify(expected)) {
     fail(`試題 ${key} 的 relatedArticleIds 未與 articles.json 同步。`);
   }
