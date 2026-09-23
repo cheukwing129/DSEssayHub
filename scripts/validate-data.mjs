@@ -125,7 +125,10 @@ for (const question of questions) {
   if (!year) fail('試題缺少年份。');
   if (!/^Q\d+$/.test(questionNumber)) fail(`試題 ${key} 的 questionNumber 無效：${question.questionNumber}`);
   if (!String(question.questionFull ?? '').trim()) fail(`試題 ${key} 缺少 questionFull。`);
-  if (!String(question.questionType ?? '').trim()) fail(`試題 ${key} 缺少 questionType。`);
+  const hasQuestionType = String(question.questionType ?? '').trim().length > 0;
+  const hasGenre = String(question.genre ?? '').trim().length > 0;
+  if (!hasQuestionType && !hasGenre) fail(`試題 ${key} 缺少題型分類（questionType 或 genre）。`);
+  if (question.questionType !== undefined && !hasQuestionType) fail(`試題 ${key} 的 questionType 不可為空。`);
   if (question.subject !== undefined && !String(question.subject ?? '').trim()) fail(`試題 ${key} 的 subject 不可為空。`);
   if (question.title !== undefined && !String(question.title ?? '').trim()) fail(`試題 ${key} 的 title 不可為空。`);
   if (question.genre !== undefined && !allowedGenres.has(question.genre)) fail(`試題 ${key} 的 genre 無效：${question.genre}`);
