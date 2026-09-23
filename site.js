@@ -48,9 +48,37 @@
 
   if (!navToggle || !mainNav) return;
 
+  const closeNav = ({ restoreFocus = false } = {}) => {
+    navToggle.setAttribute('aria-expanded', 'false');
+    mainNav.classList.remove('is-open');
+    if (restoreFocus) navToggle.focus();
+  };
+
   navToggle.addEventListener('click', () => {
     const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', String(!isOpen));
-    mainNav.classList.toggle('is-open', !isOpen);
+    if (isOpen) closeNav();
+    else {
+      navToggle.setAttribute('aria-expanded', 'true');
+      mainNav.classList.add('is-open');
+    }
+  });
+
+  const currentPage = global.location?.pathname?.split('/').pop() || 'index.html';
+  mainNav.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+    try {
+      const linkPage = new URL(href, global.location.href).pathname.split('/').pop();
+      if (linkPage === currentPage) link.setAttribute('aria-current', 'page');
+    } catch {
+      // 非標準 href 不影響主導覽。
+    }
+    link.addEventListener('click', () => closeNav());
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+      closeNav({ restoreFocus: true });
+    }
   });
 })(globalThis);
