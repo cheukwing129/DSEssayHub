@@ -34,10 +34,124 @@
 <main class="genre-page"><div class="container"><div class="genre-head"><h1 id="title">文體分類</h1><p id="desc">資料載入中……</p></div><div class="structure" id="structure" aria-label="寫作框架"></div><div class="filter"><label for="theme">依立意向度：</label><select id="theme"><option value="">全部文章</option></select><button type="button" class="filter-reset" id="resetFilter" hidden>清除篩選</button><span class="filter-result" id="resultCount" aria-live="polite"></span></div><div class="article-grid" id="grid"></div><p class="status" id="status">正在載入文章索引……</p><div id="errorBox"></div></div></main><footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
 <script src="site.js"></script>
 <script>
+const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式'};
+const descriptions={narrative:'以事件為骨架、抒情為血肉，掌握起承轉合。',argumentative:'由個人到社會、哲理，層層推進論證。',descriptive:'細膩描寫人物與景物，營造鮮明畫面。',topic:'掌握圖畫寓意或限定格式，發展合適的取材角度。'};
+const flows={narrative:[['起','景物／伏筆'],['承','衝突與覺醒前'],['轉','關鍵人物／覺醒'],['合','立意與人生道理']],argumentative:[['引入','中心論點'],['定義','解釋關鍵詞'],['角度一','個人層面'],['角度二','社會層面'],['駁論','回應反方'],['總結','呼應論點']],descriptive:[['外觀','人物／景物'],['動靜','動態與靜態'],['對比','突顯特點'],['側寫','間接呈現']],topic:[['審題','解讀要求'],['取材','選取材料'],['立意','扣連寓意'],['扣題','完整收結']]};
+const pageParams=new URLSearchParams(location.search);
+const type=pageParams.get('type')||'narrative';
+document.getElementById('title').textContent=labels[type]||'文體分類';
+document.getElementById('desc').textContent=descriptions[type]||'';
+const flow=flows[type]||[];
+document.getElementById('structure').innerHTML=flow.map((x,i)=>`<div class="step"><b>${x[0]}</b><small>${x[1]}</small></div>${i<flow.length-1?'<span class="arrow">→</span>':''}`).join('');
 
-const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式'},descriptions={narrative:'以事件為骨架、抒情為血肉，掌握起承轉合。',argumentative:'由個人到社會、哲理，層層推進論證。',descriptive:'細膩描寫人物與景物，營造鮮明畫面。',topic:'掌握圖畫寓意或限定格式，發展合適的取材角度。'},flows={narrative:[['起','景物／伏筆'],['承','衝突與覺醒前'],['轉','關鍵人物／覺醒'],['合','立意與人生道理']],argumentative:[['引入','中心論點'],['定義','解釋關鍵詞'],['角度一','個人層面'],['角度二','社會層面'],['駁論','回應反方'],['總結','呼應論點']],descriptive:[['外觀','人物／景物'],['動靜','動態與靜態'],['對比','突顯特點'],['側寫','間接呈現']],topic:[['審題','解讀要求'],['取材','選取材料'],['立意','扣連寓意'],['扣題','完整收結']]};
-const type=new URLSearchParams(location.search).get('type')||'narrative';document.getElementById('title').textContent=labels[type]||'文體分類';document.getElementById('desc').textContent=descriptions[type]||'';const flow=flows[type]||[];document.getElementById('structure').innerHTML=flow.map((x,i)=>`<div class="step"><b>${x[0]}</b><small>${x[1]}</small></div>${i<flow.length-1?'<span class="arrow">→</span>':''}`).join('');
-const grid=document.getElementById('grid'),status=document.getElementById('status'),filter=document.getElementById('theme'),resetFilter=document.getElementById('resetFilter'),resultCount=document.getElementById('resultCount'),errorBox=document.getElementById('errorBox');let all=[],themeNames={},questionNames={};const esc=DSEHub.escapeHtml;
-function render(list){const filtered=filter.value!=='';resultCount.textContent=filtered?`顯示 ${list.length}／${all.length} 篇`:`共 ${all.length} 篇`;resetFilter.hidden=!filtered;if(!list.length){grid.innerHTML='';status.textContent='此文體目前沒有符合這個立意向度的範文。';status.style.display='';return}status.style.display='none';grid.innerHTML=list.map(a=>{const q=(a.relatedQuestions||[])[0],meta=q?`${DSEHub.formatQuestionSourceYear(q.year)} ${q.questionNumber}`:'年份／題號待補',title=q?(questionNames[`${q.year}_${q.questionNumber}`]||'題目待補'):'題目待補',tags=(a.themeConceptIds||[]).map(id=>`<span class="tag">${esc(themeNames[id]||id)}</span>`).join(''),level=a.contentLabel?`<span class="article-level-tag">${esc(a.contentLabel)}</span>`:'';return `<a class="article-card" href="article.html?id=${encodeURIComponent(a.id)}"><div class="article-card-head"><span class="article-id">篇章 ${String(a.id).padStart(2,'0')}</span><span class="article-genre-tag">${esc(labels[a.genre]||a.genre)}</span></div><p class="article-meta">${esc(meta)}</p><p class="article-question">${esc(title)}</p><p class="article-summary">${esc(a.summary||'內容簡介待補')}</p>${level}<div class="article-tags">${tags}</div><span class="article-card-link">閱讀範文 →</span></a>`}).join('')}
-(async()=>{try{const [ir,tr,qr]=await Promise.all([fetch('data/articles.json',{cache:'no-store'}),fetch('data/themes.json',{cache:'no-store'}),fetch('data/questions.json',{cache:'no-store'})]);if(!ir.ok)throw Error(`找不到 data/articles.json（HTTP ${ir.status}）`);if(!tr.ok)throw Error(`找不到 data/themes.json（HTTP ${tr.status}）`);if(!qr.ok)throw Error(`找不到 data/questions.json（HTTP ${qr.status}）`);const index=await ir.json(),themes=await tr.json(),questions=await qr.json();if(!Array.isArray(index))throw Error('data/articles.json 必須是陣列');themeNames=DSEHub.nameById(themes);questionNames=DSEHub.questionTextByKey(questions);all=index.filter(x=>x.genre===type).sort((a,b)=>Number(a.id)-Number(b.id));const ids=[...new Set(all.flatMap(x=>x.themeConceptIds||[]))];filter.innerHTML='<option value="">全部文章</option>'+ids.map(id=>`<option value="${esc(id)}">${esc(themeNames[id]||id)}</option>`).join('');render(all)}catch(e){console.error(e);status.textContent='文章索引載入失敗。';errorBox.innerHTML=`<div class="error-box"><strong>除錯訊息：</strong>${esc(e.message)}</div>`}})();function renderFiltered(){render(filter.value?all.filter(a=>(a.themeConceptIds||[]).includes(filter.value)):all)}filter.addEventListener('change',renderFiltered);resetFilter.addEventListener('click',()=>{filter.value='';renderFiltered();filter.focus()});
+const grid=document.getElementById('grid');
+const status=document.getElementById('status');
+const filter=document.getElementById('theme');
+const resetFilter=document.getElementById('resetFilter');
+const resultCount=document.getElementById('resultCount');
+const errorBox=document.getElementById('errorBox');
+let all=[],themeNames={},questionNames={};
+const esc=DSEHub.escapeHtml;
+
+function listUrl({restore=false}={}){
+  const params=new URLSearchParams();
+  params.set('type',type);
+  if(filter.value) params.set('theme',filter.value);
+  if(restore) params.set('restore','1');
+  return `genre.html?${params.toString()}`;
+}
+
+function syncUrl(){
+  history.replaceState(null,'',listUrl());
+}
+
+function scrollStateKey(){
+  return `dse-genre-scroll:${type}:${filter.value||'all'}`;
+}
+
+function saveScrollPosition(){
+  try{sessionStorage.setItem(scrollStateKey(),String(Math.max(0,Math.round(scrollY))))}catch{}
+}
+
+function restoreScrollIfNeeded(){
+  const navigationType=performance.getEntriesByType?.('navigation')?.[0]?.type;
+  const shouldRestore=pageParams.get('restore')==='1'||navigationType==='back_forward';
+  if(!shouldRestore)return;
+  let saved=0;
+  try{saved=Number(sessionStorage.getItem(scrollStateKey())||0)}catch{}
+  requestAnimationFrame(()=>requestAnimationFrame(()=>scrollTo({top:Number.isFinite(saved)?saved:0,behavior:'auto'})));
+  if(pageParams.has('restore')) history.replaceState(null,'',listUrl());
+}
+
+function articleHref(id){
+  return `article.html?id=${encodeURIComponent(id)}&returnTo=${encodeURIComponent(listUrl())}`;
+}
+
+function render(list){
+  const filtered=filter.value!=='';
+  resultCount.textContent=filtered?`顯示 ${list.length}／${all.length} 篇`:`共 ${all.length} 篇`;
+  resetFilter.hidden=!filtered;
+  if(!list.length){
+    grid.innerHTML='';
+    status.textContent='此文體目前沒有符合這個立意向度的範文。';
+    status.style.display='';
+    return;
+  }
+  status.style.display='none';
+  grid.innerHTML=list.map(a=>{
+    const q=(a.relatedQuestions||[])[0];
+    const meta=q?`${DSEHub.formatQuestionSourceYear(q.year)} ${q.questionNumber}`:'年份／題號待補';
+    const title=q?(questionNames[`${q.year}_${q.questionNumber}`]||'題目待補'):'題目待補';
+    const tags=(a.themeConceptIds||[]).map(id=>`<span class="tag">${esc(themeNames[id]||id)}</span>`).join('');
+    const level=a.contentLabel?`<span class="article-level-tag">${esc(a.contentLabel)}</span>`:'';
+    return `<a class="article-card" href="${articleHref(a.id)}"><div class="article-card-head"><span class="article-id">篇章 ${String(a.id).padStart(2,'0')}</span><span class="article-genre-tag">${esc(labels[a.genre]||a.genre)}</span></div><p class="article-meta">${esc(meta)}</p><p class="article-question">${esc(title)}</p><p class="article-summary">${esc(a.summary||'內容簡介待補')}</p>${level}<div class="article-tags">${tags}</div><span class="article-card-link">閱讀範文 →</span></a>`;
+  }).join('');
+}
+
+function renderFiltered(){
+  render(filter.value?all.filter(a=>(a.themeConceptIds||[]).includes(filter.value)):all);
+}
+
+(async()=>{
+  try{
+    const [ir,tr,qr]=await Promise.all([
+      fetch('data/articles.json',{cache:'no-store'}),
+      fetch('data/themes.json',{cache:'no-store'}),
+      fetch('data/questions.json',{cache:'no-store'})
+    ]);
+    if(!ir.ok)throw Error(`找不到 data/articles.json（HTTP ${ir.status}）`);
+    if(!tr.ok)throw Error(`找不到 data/themes.json（HTTP ${tr.status}）`);
+    if(!qr.ok)throw Error(`找不到 data/questions.json（HTTP ${qr.status}）`);
+    const index=await ir.json(),themes=await tr.json(),questions=await qr.json();
+    if(!Array.isArray(index))throw Error('data/articles.json 必須是陣列');
+    themeNames=DSEHub.nameById(themes);
+    questionNames=DSEHub.questionTextByKey(questions);
+    all=index.filter(x=>x.genre===type).sort((a,b)=>Number(a.id)-Number(b.id));
+    const ids=[...new Set(all.flatMap(x=>x.themeConceptIds||[]))];
+    filter.innerHTML='<option value="">全部文章</option>'+ids.map(id=>`<option value="${esc(id)}">${esc(themeNames[id]||id)}</option>`).join('');
+    const requestedTheme=pageParams.get('theme')||'';
+    filter.value=ids.includes(requestedTheme)?requestedTheme:'';
+    renderFiltered();
+    restoreScrollIfNeeded();
+  }catch(e){
+    console.error(e);
+    status.textContent='文章索引載入失敗。';
+    errorBox.innerHTML=`<div class="error-box"><strong>除錯訊息：</strong>${esc(e.message)}</div>`;
+  }
+})();
+
+filter.addEventListener('change',()=>{
+  syncUrl();
+  renderFiltered();
+});
+resetFilter.addEventListener('click',()=>{
+  filter.value='';
+  syncUrl();
+  renderFiltered();
+  filter.focus();
+});
+grid.addEventListener('click',event=>{
+  if(event.target.closest('.article-card')) saveScrollPosition();
+});
+addEventListener('pagehide',saveScrollPosition);
 </script></body></html>
