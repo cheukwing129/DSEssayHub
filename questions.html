@@ -25,6 +25,9 @@
     .question-type-tag { font-size: .72rem; color: var(--color-ink-soft, #5c6b5f); background: var(--color-bg-alt, #eef0e8); padding: 3px 10px; border-radius: 999px; }
     .question-full { font-size: 1rem; color: var(--color-ink, #23322b); line-height: 1.85; }
     .question-image-note { margin: 0; font-size: .82rem; color: var(--color-ink-soft, #5c6b5f); }
+    .question-image-wrap { margin: 2px 0 0; max-width: 720px; }
+    .question-image { display: block; max-width: 100%; height: auto; border: 1px solid var(--color-border, #ddd6c4); border-radius: var(--radius-sm, 8px); background: #fff; }
+    .question-image-wrap figcaption { margin-top: 7px; font-size: .78rem; color: var(--color-ink-faint, #8b988e); }
     .question-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
     .question-links a { font-size: .82rem; color: var(--color-primary, #1f3a5f); background: var(--color-primary-soft, #e7edf3); padding: 5px 12px; border-radius: 999px; }
     .question-links a:hover { opacity: .85; }
@@ -110,8 +113,8 @@ function articleHref(id){
 function buildCard(q){
   const ids=relatedArticleIds(q);
   const links=ids.length?ids.map(id=>`<a href="${articleHref(id)}">查看篇章 ${String(id).padStart(2,'0')}</a>`).join(''):'<span class="no-article">暫未有對應範文</span>';
-  const imageNote=q.hasImage?`<p class="question-image-note">${esc(q.imageNote||'原題附圖；目前未收錄圖像。')}</p>`:'';
-  return `<article class="question-card"><div class="question-card-head"><span class="question-year">${esc(DSEHub.formatQuestionSourceYear(q.year))}</span><span class="question-number">${esc(q.questionNumber)}</span><span class="question-type-tag">${esc(labels[q.genre]||q.questionType||'題目')}</span></div><p class="question-full">${esc(q.questionFull||q.question||'題目內容待補')}</p>${imageNote}<div class="question-links">${links}</div></article>`;
+  const imageBlock=q.hasImage&&q.imagePath?`<figure class="question-image-wrap"><img class="question-image" src="${esc(q.imagePath)}" alt="${esc(q.imageAlt||'原題附圖')}" loading="lazy" decoding="async"><figcaption>${esc(q.imageNote||'原題附圖')}</figcaption></figure>`:q.hasImage?`<p class="question-image-note">${esc(q.imageNote||'原題附圖；目前未收錄圖像。')}</p>`:'';
+  return `<article class="question-card"><div class="question-card-head"><span class="question-year">${esc(DSEHub.formatQuestionSourceYear(q.year))}</span><span class="question-number">${esc(q.questionNumber)}</span><span class="question-type-tag">${esc(labels[q.genre]||q.questionType||'題目')}</span></div><p class="question-full">${esc(q.questionFull||q.question||'題目內容待補')}</p>${imageBlock}<div class="question-links">${links}</div></article>`;
 }
 function populateFilters(){
   const years=[...new Set(allQuestions.map(q=>q.year))].sort((a,b)=>yearValue(b)-yearValue(a));
