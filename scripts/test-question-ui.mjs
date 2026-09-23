@@ -29,6 +29,9 @@ function assertInlineScriptsParse(relative) {
 const questionsHtml = assertInlineScriptsParse('questions.html');
 const articleHtml = assertInlineScriptsParse('article.html');
 const genreHtml = assertInlineScriptsParse('genre.html');
+const searchHtml = read('search.html');
+const notesHtml = read('notes.html');
+const globalCss = read('style.css');
 const siteJs = read('site.js');
 const questions = JSON.parse(read('data/questions.json'));
 for (const question of questions.filter(item => item.hasImage)) {
@@ -45,6 +48,16 @@ assert.ok(questionsHtml.includes('2012 Pilot Paper 及文學題'));
 assert.ok(questionsHtml.includes('coverageFilter'));
 assert.ok(questionsHtml.includes('有範文'));
 assert.ok(questionsHtml.includes('未有範文'));
+assert.match(globalCss, /\.nav-toggle\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px;/s);
+assert.match(questionsHtml, /\.q-filter select\s*\{[^}]*min-height:\s*44px;/);
+assert.match(questionsHtml, /\.q-filter-reset\s*\{[^}]*min-height:\s*44px;/);
+assert.match(questionsHtml, /\.question-links a\s*\{[^}]*min-height:\s*44px;/);
+assert.match(genreHtml, /\.genre-filter select\s*\{[^}]*min-height:\s*44px;/);
+assert.match(searchHtml, /\.search-jump-link\s*\{[^}]*min-height:\s*44px;/);
+assert.match(notesHtml, /\.btn-notes-action\s*\{[^}]*min-height:\s*44px;/);
+assert.match(notesHtml, /\.notes-type-filter\s*\{[^}]*min-height:\s*44px;/);
+assert.match(articleHtml, /\.paragraph-actions\s*\{[^}]*min-height:\s*44px;/s);
+assert.match(articleHtml, /\.highlight-option\s*\{[^}]*min-height:\s*44px;/s);
 assert.match(questionsHtml, /id="countNote" aria-live="polite" aria-atomic="true"/);
 assert.ok(questionsHtml.includes('目前條件：${activeFilters.join'));
 assert.ok(questionsHtml.includes('來源／年份：${yearFilterEl.selectedOptions'));
