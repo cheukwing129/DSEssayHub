@@ -37,7 +37,10 @@ async function search(query) {
   new vm.Script(script, { filename: 'search-inline.js' }).runInContext(context);
   await new Promise(resolve => setTimeout(resolve, 0));
   if (elements.errorBox.innerHTML) throw new Error(elements.errorBox.innerHTML);
-  return elements.searchResults.innerHTML;
+  return {
+    results: elements.searchResults.innerHTML,
+    summary: elements.searchSummary.textContent
+  };
 }
 
 const cases = [
@@ -49,13 +52,22 @@ const cases = [
 ];
 
 for (const [query, expectedLink, expectedLabel] of cases) {
-  const result = await search(query);
+  const { results, summary } = await search(query);
   const highlighted = query.split(/\s+/).every(term =>
-    result.toLowerCase().includes(`<mark>${term.toLowerCase()}</mark>`)
+    results.toLowerCase().includes(`<mark>${term.toLowerCase()}</mark>`)
   );
-  if (!result.includes(expectedLink) || !result.includes(expectedLabel) || !highlighted) {
+  if (!results.includes(expectedLink) || !results.includes(expectedLabel) || !highlighted || !summary.startsWith('共找到 ')) {
     throw new Error(`搜尋「${query}」未產生預期結果。`);
   }
+}
+
+const emptySearch = await search('');
+if (!emptySearch.summary.includes('輸入關鍵字')) {
+  throw new Error('空白搜尋未公告如何開始搜尋。');
+}
+const noResults = await search('此關鍵字不應出現在任何內容中XYZ');
+if (!noResults.summary.startsWith('共找到 0 項結果') || !noResults.results.includes('沒有找到')) {
+  throw new Error('無結果搜尋未公告結果狀態。');
 }
 
 console.log(`搜尋測試通過：${cases.length} 個正文／段旨／分析／資料／手法案例。`);

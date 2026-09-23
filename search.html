@@ -106,7 +106,7 @@
       <p class="search-hint">可以搜尋篇章全文、段旨、題目分析、篇章編號、年份、立意向度（例如「個人成長」），或寫作手法（例如「駁論法」）。</p>
     </div>
 
-    <p class="search-summary" id="searchSummary"></p>
+    <p class="search-summary" id="searchSummary" aria-live="polite" aria-atomic="true"></p>
     <nav class="search-jump-links" id="searchResultNav" aria-label="跳至搜尋結果類別" hidden></nav>
 
     <div id="searchResults">
@@ -338,7 +338,7 @@
     headingEl.textContent = trimmedQuery ? `「${trimmedQuery}」的搜尋結果` : '搜尋';
 
     if (!trimmedQuery) {
-      summaryEl.textContent = '';
+      summaryEl.textContent = '請輸入關鍵字以開始搜尋。';
       if (resultNavEl) {
         resultNavEl.hidden = true;
         resultNavEl.innerHTML = '';
@@ -468,7 +468,7 @@
 
     } catch (error) {
       console.error(error);
-      summaryEl.textContent = '';
+      summaryEl.textContent = '搜尋資料載入失敗。';
       if (resultNavEl) {
         resultNavEl.hidden = true;
         resultNavEl.innerHTML = '';
