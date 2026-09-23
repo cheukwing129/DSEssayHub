@@ -128,9 +128,12 @@
   <!-- ========== 熱門範文（動態載入） ========== -->
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <h2>精選範文</h2>
-        <p class="section-desc">隨機展示不同文體的合適篇章，感受範文拆解後的樣子。</p>
+      <div class="section-head featured-section-head">
+        <div class="featured-section-copy">
+          <h2>精選範文</h2>
+          <p class="section-desc">隨機展示不同文體的合適篇章，感受範文拆解後的樣子。</p>
+        </div>
+        <button class="btn btn-secondary featured-refresh" id="refreshFeaturedArticles" type="button" aria-controls="articleGrid" hidden>換一批範文</button>
       </div>
 
       <!-- 這裡的卡片內容由 main.js 讀取 articles.json 後動態插入 -->
