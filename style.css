@@ -363,6 +363,27 @@ button {
   font-size: 0.95rem;
 }
 
+.featured-section-head {
+  max-width: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.featured-section-copy {
+  max-width: 60ch;
+}
+
+.featured-refresh {
+  flex: 0 0 auto;
+  min-height: 44px;
+}
+
+.featured-refresh[hidden] {
+  display: none;
+}
+
 .status-text {
   color: var(--color-ink-faint);
   font-size: 0.9rem;
@@ -667,6 +688,13 @@ button {
 
   .section {
     padding: 48px 0;
+  }
+
+  .featured-section-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
   }
 }
 
