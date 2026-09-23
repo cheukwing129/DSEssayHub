@@ -91,6 +91,32 @@ button {
   outline-offset: 2px;
 }
 
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  padding: 10px 16px;
+  transform: translateY(calc(-100% - 16px));
+  border-radius: 8px;
+  background: var(--color-primary-dark);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: var(--shadow-card);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+#mainContent {
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+
+#mainContent:focus {
+  outline: none;
+}
+
 .container {
   width: 100%;
   max-width: var(--container-width);
