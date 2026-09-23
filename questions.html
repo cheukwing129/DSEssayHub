@@ -48,21 +48,140 @@
   <footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
   <script src="site.js"></script>
 <script>
-    
-    const listEl=document.getElementById('questionList'),countNoteEl=document.getElementById('countNote'),errorBoxEl=document.getElementById('errorBox'),yearFilterEl=document.getElementById('yearFilter'),typeFilterEl=document.getElementById('typeFilter'),coverageFilterEl=document.getElementById('coverageFilter'),clearFiltersEl=document.getElementById('clearFilters');let allQuestions=[];
-    const esc=DSEHub.escapeHtml;
-    const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式',practical:'實用寫作'};
-    function yearValue(year){const match=String(year??'').match(/(\d{4})/);return match?Number(match[1]):-Infinity}
-    function questionValue(number){const match=String(number??'').match(/(\d+)/);return match?Number(match[1]):999}
-    function sortQuestions(a,b){return yearValue(b.year)-yearValue(a.year)||questionValue(a.questionNumber)-questionValue(b.questionNumber)}
-    function relatedArticleIds(q){return [...new Set(allArticles.filter(a=>(a.relatedQuestions||[]).some(r=>String(r.year)===String(q.year)&&String(r.questionNumber)===String(q.questionNumber))).map(a=>a.id))]}
-    let allArticles=[];
-    function buildCard(q){const ids=relatedArticleIds(q);const links=ids.length?ids.map(id=>`<a href="article.html?id=${encodeURIComponent(id)}">查看篇章 ${String(id).padStart(2,'0')}</a>`).join(''):'<span class="no-article">暫未有對應範文</span>';const imageNote=q.hasImage?`<p class="question-image-note">${esc(q.imageNote||'原題附圖；目前未收錄圖像。')}</p>`:'';return `<article class="question-card"><div class="question-card-head"><span class="question-year">${esc(DSEHub.formatQuestionSourceYear(q.year))}</span><span class="question-number">${esc(q.questionNumber)}</span><span class="question-type-tag">${esc(labels[q.genre]||q.questionType||'題目')}</span></div><p class="question-full">${esc(q.questionFull||q.question||'題目內容待補')}</p>${imageNote}<div class="question-links">${links}</div></article>`}
-    function parseType(q){return q.genre||q.questionType||''}
-    function populateFilters(){const years=[...new Set(allQuestions.map(q=>q.year))].sort((a,b)=>yearValue(b)-yearValue(a));const types=[...new Set(allQuestions.map(parseType).filter(Boolean))];yearFilterEl.innerHTML='<option value="">全部來源／年份</option>'+years.map(y=>`<option value="${esc(y)}">${esc(DSEHub.formatQuestionSourceYear(y))}</option>`).join('');typeFilterEl.innerHTML='<option value="">全部題型</option>'+types.map(t=>`<option value="${esc(t)}">${esc(labels[t]||t)}</option>`).join('')}
-    function render(){const year=yearFilterEl.value,type=typeFilterEl.value,coverage=coverageFilterEl.value,hasFilters=Boolean(year||type||coverage);const filtered=allQuestions.filter(q=>{const ids=relatedArticleIds(q),coverageMatches=!coverage||(coverage==='with'?ids.length>0:ids.length===0);return(!year||String(q.year)===year)&&(!type||parseType(q)===type)&&coverageMatches}).sort(sortQuestions);countNoteEl.hidden=false;countNoteEl.textContent=hasFilters?`顯示 ${filtered.length}／${allQuestions.length} 題`:`共 ${allQuestions.length} 題`;clearFiltersEl.hidden=!hasFilters;listEl.innerHTML=filtered.length?filtered.map(buildCard).join(''):'<p class="status-text">沒有符合目前篩選條件的試題。</p>'}
-    async function load(){try{const [qr,ar]=await Promise.all([fetch('data/questions.json',{cache:'no-store'}),fetch('data/articles.json',{cache:'no-store'})]);if(!qr.ok)throw Error(`data/questions.json HTTP ${qr.status}`);if(!ar.ok)throw Error(`data/articles.json HTTP ${ar.status}`);allQuestions=await qr.json();allArticles=await ar.json();if(!Array.isArray(allQuestions))throw Error('data/questions.json 格式必須是陣列');if(!Array.isArray(allArticles))throw Error('data/articles.json 格式必須是陣列');populateFilters();render()}catch(e){countNoteEl.hidden=true;listEl.innerHTML='<p class="status-text">試題載入失敗。</p>';errorBoxEl.innerHTML=`<div class="error-box"><strong>資料載入失敗</strong><br>${esc(e.message)}<br>請確認資料檔案已上傳，而且網站是透過伺服器開啟。</div>`;console.error(e)}}
-    yearFilterEl.addEventListener('change',render);typeFilterEl.addEventListener('change',render);coverageFilterEl.addEventListener('change',render);clearFiltersEl.addEventListener('click',()=>{yearFilterEl.value='';typeFilterEl.value='';coverageFilterEl.value='';render();yearFilterEl.focus()});load();
-  </script>
+const listEl=document.getElementById('questionList');
+const countNoteEl=document.getElementById('countNote');
+const errorBoxEl=document.getElementById('errorBox');
+const yearFilterEl=document.getElementById('yearFilter');
+const typeFilterEl=document.getElementById('typeFilter');
+const coverageFilterEl=document.getElementById('coverageFilter');
+const clearFiltersEl=document.getElementById('clearFilters');
+const pageParams=new URLSearchParams(location.search);
+let allQuestions=[],allArticles=[];
+const esc=DSEHub.escapeHtml;
+const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式',practical:'實用寫作'};
+
+function yearValue(year){
+  const match=String(year??'').match(/(\d{4})/);
+  return match?Number(match[1]):-Infinity;
+}
+function questionValue(number){
+  const match=String(number??'').match(/(\d+)/);
+  return match?Number(match[1]):999;
+}
+function sortQuestions(a,b){
+  return yearValue(b.year)-yearValue(a.year)||questionValue(a.questionNumber)-questionValue(b.questionNumber);
+}
+function relatedArticleIds(q){
+  return [...new Set(allArticles.filter(a=>(a.relatedQuestions||[]).some(r=>String(r.year)===String(q.year)&&String(r.questionNumber)===String(q.questionNumber))).map(a=>a.id))];
+}
+function parseType(q){
+  return q.genre||q.questionType||'';
+}
+function listUrl({restore=false}={}){
+  const params=new URLSearchParams();
+  if(yearFilterEl.value) params.set('year',yearFilterEl.value);
+  if(typeFilterEl.value) params.set('qtype',typeFilterEl.value);
+  if(coverageFilterEl.value) params.set('coverage',coverageFilterEl.value);
+  if(restore) params.set('restore','1');
+  const query=params.toString();
+  return query?`questions.html?${query}`:'questions.html';
+}
+function syncUrl(){
+  history.replaceState(null,'',listUrl());
+}
+function scrollStateKey(){
+  return `dse-questions-scroll:${yearFilterEl.value||'all'}:${typeFilterEl.value||'all'}:${coverageFilterEl.value||'all'}`;
+}
+function saveScrollPosition(){
+  try{sessionStorage.setItem(scrollStateKey(),String(Math.max(0,Math.round(scrollY))))}catch{}
+}
+function restoreScrollIfNeeded(){
+  const navigationType=performance.getEntriesByType?.('navigation')?.[0]?.type;
+  const shouldRestore=pageParams.get('restore')==='1'||navigationType==='back_forward';
+  if(!shouldRestore)return;
+  let saved=0;
+  try{saved=Number(sessionStorage.getItem(scrollStateKey())||0)}catch{}
+  requestAnimationFrame(()=>requestAnimationFrame(()=>scrollTo({top:Number.isFinite(saved)?saved:0,behavior:'auto'})));
+  if(pageParams.has('restore')) history.replaceState(null,'',listUrl());
+}
+function articleHref(id){
+  return `article.html?id=${encodeURIComponent(id)}&returnTo=${encodeURIComponent(listUrl())}`;
+}
+function buildCard(q){
+  const ids=relatedArticleIds(q);
+  const links=ids.length?ids.map(id=>`<a href="${articleHref(id)}">查看篇章 ${String(id).padStart(2,'0')}</a>`).join(''):'<span class="no-article">暫未有對應範文</span>';
+  const imageNote=q.hasImage?`<p class="question-image-note">${esc(q.imageNote||'原題附圖；目前未收錄圖像。')}</p>`:'';
+  return `<article class="question-card"><div class="question-card-head"><span class="question-year">${esc(DSEHub.formatQuestionSourceYear(q.year))}</span><span class="question-number">${esc(q.questionNumber)}</span><span class="question-type-tag">${esc(labels[q.genre]||q.questionType||'題目')}</span></div><p class="question-full">${esc(q.questionFull||q.question||'題目內容待補')}</p>${imageNote}<div class="question-links">${links}</div></article>`;
+}
+function populateFilters(){
+  const years=[...new Set(allQuestions.map(q=>q.year))].sort((a,b)=>yearValue(b)-yearValue(a));
+  const types=[...new Set(allQuestions.map(parseType).filter(Boolean))];
+  yearFilterEl.innerHTML='<option value="">全部來源／年份</option>'+years.map(y=>`<option value="${esc(y)}">${esc(DSEHub.formatQuestionSourceYear(y))}</option>`).join('');
+  typeFilterEl.innerHTML='<option value="">全部題型</option>'+types.map(t=>`<option value="${esc(t)}">${esc(labels[t]||t)}</option>`).join('');
+  const requestedYear=pageParams.get('year')||'';
+  const requestedType=pageParams.get('qtype')||'';
+  const requestedCoverage=pageParams.get('coverage')||'';
+  yearFilterEl.value=years.some(y=>String(y)===requestedYear)?requestedYear:'';
+  typeFilterEl.value=types.includes(requestedType)?requestedType:'';
+  coverageFilterEl.value=['with','without'].includes(requestedCoverage)?requestedCoverage:'';
+}
+function render(){
+  const year=yearFilterEl.value;
+  const type=typeFilterEl.value;
+  const coverage=coverageFilterEl.value;
+  const hasFilters=Boolean(year||type||coverage);
+  const filtered=allQuestions.filter(q=>{
+    const ids=relatedArticleIds(q);
+    const coverageMatches=!coverage||(coverage==='with'?ids.length>0:ids.length===0);
+    return(!year||String(q.year)===year)&&(!type||parseType(q)===type)&&coverageMatches;
+  }).sort(sortQuestions);
+  countNoteEl.hidden=false;
+  countNoteEl.textContent=hasFilters?`顯示 ${filtered.length}／${allQuestions.length} 題`:`共 ${allQuestions.length} 題`;
+  clearFiltersEl.hidden=!hasFilters;
+  listEl.innerHTML=filtered.length?filtered.map(buildCard).join(''):'<p class="status-text">沒有符合目前篩選條件的試題。</p>';
+}
+async function load(){
+  try{
+    const [qr,ar]=await Promise.all([
+      fetch('data/questions.json',{cache:'no-store'}),
+      fetch('data/articles.json',{cache:'no-store'})
+    ]);
+    if(!qr.ok)throw Error(`data/questions.json HTTP ${qr.status}`);
+    if(!ar.ok)throw Error(`data/articles.json HTTP ${ar.status}`);
+    allQuestions=await qr.json();
+    allArticles=await ar.json();
+    if(!Array.isArray(allQuestions))throw Error('data/questions.json 格式必須是陣列');
+    if(!Array.isArray(allArticles))throw Error('data/articles.json 格式必須是陣列');
+    populateFilters();
+    render();
+    restoreScrollIfNeeded();
+  }catch(e){
+    countNoteEl.hidden=true;
+    listEl.innerHTML='<p class="status-text">試題載入失敗。</p>';
+    errorBoxEl.innerHTML=`<div class="error-box"><strong>資料載入失敗</strong><br>${esc(e.message)}<br>請確認資料檔案已上傳，而且網站是透過伺服器開啟。</div>`;
+    console.error(e);
+  }
+}
+function applyFilters(){
+  syncUrl();
+  render();
+}
+yearFilterEl.addEventListener('change',applyFilters);
+typeFilterEl.addEventListener('change',applyFilters);
+coverageFilterEl.addEventListener('change',applyFilters);
+clearFiltersEl.addEventListener('click',()=>{
+  yearFilterEl.value='';
+  typeFilterEl.value='';
+  coverageFilterEl.value='';
+  syncUrl();
+  render();
+  yearFilterEl.focus();
+});
+listEl.addEventListener('click',event=>{
+  if(event.target.closest('.question-links a')) saveScrollPosition();
+});
+addEventListener('pagehide',saveScrollPosition);
+load();
+</script>
 </body>
 </html>
