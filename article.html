@@ -711,7 +711,9 @@ function articleUrl(articleId,returnTarget){
 }
 
 function scrollToRequestedParagraph(){
-  const paragraphIndex = Number(articleParams.get('paragraph'));
+  const rawParagraph = articleParams.get('paragraph');
+  if (rawParagraph === null || rawParagraph === '') return;
+  const paragraphIndex = Number(rawParagraph);
   if (!Number.isInteger(paragraphIndex) || paragraphIndex < 0) return;
   const target = document.querySelector(`.paragraph[data-paragraph-index="${paragraphIndex}"]`);
   if (!target) return;
