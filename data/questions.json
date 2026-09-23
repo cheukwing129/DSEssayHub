@@ -230,7 +230,9 @@
     "relatedArticleIds": [
       60,
       61
-    ]
+    ],
+    "hasImage": true,
+    "imageNote": "題目提及原題附圖；目前資料未收錄圖像，請於頁面標示「原題附圖」。"
   },
   {
     "year": "2013",
@@ -308,7 +310,9 @@
     "questionNumber": "Q3",
     "questionFull": "試根據下圖的寓意寫作一篇文章。——「紛爭源於不自知」",
     "questionType": "開放式",
-    "relatedArticleIds": []
+    "relatedArticleIds": [],
+    "hasImage": true,
+    "imageNote": "題目提及原題附圖；目前資料未收錄圖像，請於頁面標示「原題附圖」。"
   },
   {
     "year": "文學2020",
