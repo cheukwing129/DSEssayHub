@@ -46,6 +46,19 @@ let taggedCount = 0;
 
 for (const article of articles) {
   if (!Number.isInteger(article.id) || article.id < 1) fail(`文章 ID 無效：${article.id}`);
+  if (!Array.isArray(article.relatedQuestions)) {
+    fail(`篇章 ${article.id} 的 relatedQuestions 必須是陣列。`);
+  } else {
+    const seenQuestionRefs = new Set();
+    for (const ref of article.relatedQuestions) {
+      const year = String(ref?.year ?? '').trim();
+      const questionNumber = String(ref?.questionNumber ?? '').trim();
+      const key = `${year}_${questionNumber}`;
+      if (!year || !questionNumber) fail(`篇章 ${article.id} 有不完整的 relatedQuestions 項目。`);
+      else if (seenQuestionRefs.has(key)) fail(`篇章 ${article.id} 重複參照試題：${key}`);
+      else seenQuestionRefs.add(key);
+    }
+  }
   if (!allowedGenres.has(article.genre)) fail(`篇章 ${article.id} 的文體無效：${article.genre}`);
   if (!article.file || !fs.existsSync(path.join(root, article.file))) {
     fail(`篇章 ${article.id} 的內容檔不存在：${article.file}`);
@@ -54,7 +67,7 @@ for (const article of articles) {
   for (const themeId of article.themeConceptIds || []) {
     if (!themeIds.has(themeId)) fail(`篇章 ${article.id} 參照不存在的立意向度：${themeId}`);
   }
-  for (const ref of article.relatedQuestions || []) {
+  for (const ref of (Array.isArray(article.relatedQuestions) ? article.relatedQuestions : [])) {
     const key = `${ref.year}_${ref.questionNumber}`;
     if (!questionKeys.has(key)) fail(`篇章 ${article.id} 參照不存在的試題：${key}`);
     else derivedLinks.get(key).push(article.id);
@@ -105,9 +118,27 @@ for (const article of articles) {
 }
 
 for (const question of questions) {
-  const key = `${question.year}_${question.questionNumber}`;
+  const year = String(question.year ?? '').trim();
+  const questionNumber = String(question.questionNumber ?? '').trim();
+  const key = `${year}_${questionNumber}`;
+
+  if (!year) fail('試題缺少年份。');
+  if (!/^Q\d+$/.test(questionNumber)) fail(`試題 ${key} 的 questionNumber 無效：${question.questionNumber}`);
+  if (!String(question.questionFull ?? '').trim()) fail(`試題 ${key} 缺少 questionFull。`);
+  const hasQuestionType = String(question.questionType ?? '').trim().length > 0;
+  const hasGenre = String(question.genre ?? '').trim().length > 0;
+  if (!hasQuestionType && !hasGenre) fail(`試題 ${key} 缺少題型分類（questionType 或 genre）。`);
+  if (question.questionType !== undefined && !hasQuestionType) fail(`試題 ${key} 的 questionType 不可為空。`);
+  if (question.subject !== undefined && !String(question.subject ?? '').trim()) fail(`試題 ${key} 的 subject 不可為空。`);
+  if (question.title !== undefined && !String(question.title ?? '').trim()) fail(`試題 ${key} 的 title 不可為空。`);
+  if (question.genre !== undefined && !allowedGenres.has(question.genre)) fail(`試題 ${key} 的 genre 無效：${question.genre}`);
+  if (!Array.isArray(question.relatedArticleIds)) {
+    fail(`試題 ${key} 的 relatedArticleIds 必須是陣列。`);
+  } else if (new Set(question.relatedArticleIds).size !== question.relatedArticleIds.length) {
+    fail(`試題 ${key} 的 relatedArticleIds 出現重複篇章。`);
+  }
   const expected = [...new Set(derivedLinks.get(key))];
-  const actual = question.relatedArticleIds || [];
+  const actual = Array.isArray(question.relatedArticleIds) ? question.relatedArticleIds : [];
   if (JSON.stringify(actual) !== JSON.stringify(expected)) {
     fail(`試題 ${key} 的 relatedArticleIds 未與 articles.json 同步。`);
   }
