@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import '../site.js';
 
-const { escapeHtml, nameById, questionTextByKey, itemById } = globalThis.DSEHub || {};
+const { escapeHtml, nameById, questionTextByKey, itemById, formatQuestionSourceYear } = globalThis.DSEHub || {};
 
 assert.equal(typeof escapeHtml, 'function');
 assert.equal(escapeHtml('&<>"\''), '&amp;&lt;&gt;&quot;&#039;');
@@ -27,5 +27,9 @@ assert.deepEqual(itemById([{ id: 1, value: '甲' }, { id: 2, value: '乙' }]), {
   1: { id: 1, value: '甲' },
   2: { id: 2, value: '乙' }
 });
+
+assert.equal(formatQuestionSourceYear('2026'), '2026年');
+assert.equal(formatQuestionSourceYear('2012pp'), '2012 Pilot Paper');
+assert.equal(formatQuestionSourceYear('文學2020'), '文學2020');
 
 console.log('site utils tests passed');
