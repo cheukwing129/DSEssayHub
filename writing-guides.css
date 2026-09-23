@@ -39,6 +39,14 @@
     .guide-compare p { font-size: .9rem; }
     .guide-compare .weak { background: #f3eee7; }
     .guide-compare .strong { background: #eaf0eb; }
+    .guide-compare--quality article { position: relative; padding-top: 48px; border: 1px solid var(--color-border); }
+    .guide-compare--quality .weak { border-left: 4px solid #966149; }
+    .guide-compare--quality .strong { border-left: 4px solid #52745d; }
+    .guide-compare-label { position: absolute; top: 11px; left: 13px; display: inline-flex; align-items: center; gap: 7px; padding: 4px 9px 4px 5px; border: 1px solid currentColor; border-radius: 999px; font-size: .75rem; font-weight: 700; line-height: 1.2; }
+    .guide-compare-label > span { display: inline-grid; place-items: center; width: 19px; height: 19px; border: 1px solid currentColor; border-radius: 50%; font-size: .85rem; line-height: 1; }
+    .guide-compare--quality .weak .guide-compare-label { color: #744a37; }
+    .guide-compare--quality .strong .guide-compare-label { color: #3f654b; }
+    .guide-compare--options article { background: var(--color-surface); border: 1px solid var(--color-border); border-top: 3px solid var(--color-primary); }
     .guide-checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 18px; list-style: none; padding: 0; margin: 16px 0 0; }
     .guide-checklist li { position: relative; padding-left: 25px; color: var(--color-ink-soft); font-size: .9rem; }
     .guide-checklist li::before { content: "✓"; position: absolute; left: 0; color: var(--color-jade); font-weight: 700; }
@@ -137,6 +145,7 @@
 .narrative-guide .guide-technique-card .guide-compare article { padding: 13px 15px; }
 .narrative-guide .guide-technique-card .guide-compare h3 { margin: 0 0 4px; }
 .narrative-guide .guide-technique-card .guide-compare p { font-size: .86rem; }
+.narrative-guide .guide-technique-card .guide-compare--quality article { padding-top: 43px; }
 .narrative-guide .guide-technique-card .guide-model { padding: 14px 16px; }
 .narrative-guide .guide-steps { gap: 9px; }
 .narrative-guide .guide-step { grid-template-columns: 32px 1fr; gap: 12px; padding: 16px; background: var(--color-bg-alt); }
