@@ -11,14 +11,18 @@
     .genre-head { margin-bottom: 28px; }
     .genre-head h1 { font-size: 2rem; margin-bottom: 8px; }
     .genre-head p { color: var(--color-ink-soft, #5c6b5f); }
-    .structure { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
+    .structure-disclosure { margin-bottom: 34px; }
+    .structure-summary { display: none; }
+    .structure { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 0; }
     .step { flex: 1; min-width: 145px; padding: 14px; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #ddd6c4); border-radius: var(--radius-md, 10px); }
     .step b { color: var(--color-primary, #1f3a5f); }
     .step small { display: block; margin-top: 4px; color: var(--color-ink-soft, #5c6b5f); }
     .arrow { align-self: center; color: var(--color-ink-faint, #8b988e); font-size: 1.2rem; }
-    .filter { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 20px; }
-    .filter select { padding: 8px 12px; border: 1px solid var(--color-border, #ddd6c4); border-radius: 999px; background: #fff; font: inherit; }
-    .filter-reset { border: 0; background: none; color: var(--color-primary, #1f3a5f); padding: 7px 4px; font-size: .82rem; }
+    .genre-filter { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-bottom: 24px; padding: 15px 18px; background: var(--color-bg-alt, #eef0e8); border: 1px solid var(--color-border, #ddd6c4); border-radius: 14px; }
+    .genre-filter-group { display: flex; align-items: center; gap: 8px; }
+    .genre-filter label { font-size: .88rem; color: var(--color-ink-soft, #5c6b5f); }
+    .genre-filter select { min-height: 40px; padding: 8px 14px; border: 1px solid var(--color-border, #ddd6c4); border-radius: 999px; background: #fff; font: inherit; font-size: .88rem; color: var(--color-ink, #23322b); }
+    .filter-reset { border: 0; background: none; color: var(--color-primary, #1f3a5f); padding: 7px 4px; font-size: .82rem; cursor: pointer; }
     .filter-result { margin-left: auto; color: var(--color-ink-faint, #8b988e); font-size: .82rem; }
     .article-card { display: flex !important; flex-direction: column !important; gap: 10px !important; }
     .article-summary { color: var(--color-ink-soft, #5c6b5f); font-size: .9rem; line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
@@ -26,12 +30,26 @@
     .article-card-link { margin-top: auto; color: var(--color-primary, #1f3a5f); font-size: .85rem; }
     .status { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); }
     
-    @media (max-width: 720px) { .genre-page { padding-top: calc(var(--header-height, 72px) + 30px); } .structure { flex-direction: column; } .arrow { transform: rotate(90deg); text-align: center; } .filter-result { width: 100%; margin-left: 0; } }
+    @media (max-width: 720px) {
+      .genre-page { padding-top: calc(var(--header-height, 72px) + 30px); }
+      .structure-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding: 10px 14px; border: 1px solid var(--color-border, #ddd6c4); border-radius: 12px; background: var(--color-surface, #fff); color: var(--color-primary, #1f3a5f); font-size: .92rem; font-weight: 700; cursor: pointer; list-style: none; }
+      .structure-summary::-webkit-details-marker { display: none; }
+      .structure-summary::after { content: '＋'; font-size: 1.05rem; font-weight: 400; }
+      .structure-disclosure[open] .structure-summary { margin-bottom: 12px; }
+      .structure-disclosure[open] .structure-summary::after { content: '−'; }
+      .structure { flex-direction: column; }
+      .arrow { transform: rotate(90deg); text-align: center; }
+      .genre-filter { flex-direction: column; align-items: stretch; gap: 10px; padding: 14px; }
+      .genre-filter-group { width: 100%; justify-content: space-between; }
+      .genre-filter select { min-width: 0; flex: 1; }
+      .filter-reset { align-self: flex-start; }
+      .filter-result { width: 100%; margin-left: 0; }
+    }
   </style>
 </head>
 <body>
 <header class="site-header"><div class="container nav-inner"><a href="index.html" class="logo"><span class="logo-mark">範文自學</span><span class="logo-sub">DSE 中文寫作</span></a><button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button><div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="genre-list.html">文體分類</a><a href="questions.html">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="搜尋關鍵字" aria-label="搜尋"></form></div></div></header>
-<main class="genre-page"><div class="container"><div class="genre-head"><h1 id="title">文體分類</h1><p id="desc">資料載入中……</p></div><div class="structure" id="structure" aria-label="寫作框架"></div><div class="filter"><label for="theme">依立意向度：</label><select id="theme"><option value="">全部文章</option></select><button type="button" class="filter-reset" id="resetFilter" hidden>清除篩選</button><span class="filter-result" id="resultCount" aria-live="polite"></span></div><div class="article-grid" id="grid"></div><p class="status" id="status">正在載入文章索引……</p><div id="errorBox"></div></div></main><footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
+<main class="genre-page"><div class="container"><div class="genre-head"><h1 id="title">文體分類</h1><p id="desc">資料載入中……</p></div><details class="structure-disclosure" id="structureDisclosure" open><summary class="structure-summary">寫作框架</summary><div class="structure" id="structure" aria-label="寫作框架"></div></details><div class="genre-filter" role="group" aria-label="範文篩選"><div class="genre-filter-group"><label for="theme">立意向度：</label><select id="theme"><option value="">全部文章</option></select></div><button type="button" class="filter-reset" id="resetFilter" hidden>清除篩選</button><span class="filter-result" id="resultCount" aria-live="polite"></span></div><div class="article-grid" id="grid"></div><p class="status" id="status">正在載入文章索引……</p><div id="errorBox"></div></div></main><footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
 <script src="site.js"></script>
 <script>
 const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式'};
@@ -42,6 +60,12 @@ const type=pageParams.get('type')||'narrative';
 document.getElementById('title').textContent=labels[type]||'文體分類';
 document.getElementById('desc').textContent=descriptions[type]||'';
 const flow=flows[type]||[];
+const structureDisclosure=document.getElementById('structureDisclosure');
+const structureMobileQuery=window.matchMedia('(max-width: 720px)');
+const syncStructureDisclosure=()=>{structureDisclosure.open=!structureMobileQuery.matches;};
+syncStructureDisclosure();
+if(structureMobileQuery.addEventListener) structureMobileQuery.addEventListener('change',syncStructureDisclosure);
+else structureMobileQuery.addListener(syncStructureDisclosure);
 document.getElementById('structure').innerHTML=flow.map((x,i)=>`<div class="step"><b>${x[0]}</b><small>${x[1]}</small></div>${i<flow.length-1?'<span class="arrow">→</span>':''}`).join('');
 
 const grid=document.getElementById('grid');
