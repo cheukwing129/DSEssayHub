@@ -8,65 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    .guide-page { padding: calc(var(--header-height) + 48px) 0 72px; }
-    .guide-hero { max-width: 790px; margin: 0 auto 38px; }
-    .guide-eyebrow { color: var(--color-primary); font-size: .82rem; font-weight: 700; letter-spacing: .08em; margin-bottom: 10px; }
-    .guide-hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 14px; }
-    .guide-lede { color: var(--color-ink-soft); font-size: 1.04rem; line-height: 1.9; }
-    .guide-note { border-left: 3px solid var(--color-primary); padding: 10px 16px; margin-top: 20px; background: var(--color-primary-soft); border-radius: 0 var(--radius-md) var(--radius-md) 0; color: var(--color-ink); font-size: .9rem; }
-    .guide-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 38px; align-items: start; }
-    .guide-content { min-width: 0; }
-    .guide-toc { position: sticky; top: calc(var(--header-height) + 24px); padding: 20px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
-    .guide-toc h2 { font-family: var(--font-sans); font-size: .95rem; margin-bottom: 10px; }
-    .guide-toc ol { margin: 0; padding-left: 20px; color: var(--color-ink-soft); font-size: .84rem; }
-    .guide-toc li + li { margin-top: 7px; }
-    .guide-toc a:hover { color: var(--color-primary); text-decoration: underline; }
-    .guide-section { scroll-margin-top: calc(var(--header-height) + 20px); padding: 30px 0; border-bottom: 1px solid var(--color-border); }
-    .guide-section:first-child { padding-top: 0; }
-    .guide-section h2 { font-size: 1.5rem; margin-bottom: 12px; }
-    .guide-section h3 { font-size: 1.05rem; margin-bottom: 7px; }
-    .guide-section p { color: var(--color-ink-soft); line-height: 1.9; }
-    .guide-section p + p { margin-top: 10px; }
-    .guide-steps { display: grid; gap: 12px; margin: 20px 0 0; padding: 0; list-style: none; counter-reset: guide-step; }
-    .guide-step { display: grid; grid-template-columns: 42px 1fr; gap: 14px; padding: 18px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
-    .guide-step::before { counter-increment: guide-step; content: counter(guide-step, decimal-leading-zero); font-family: var(--font-serif); font-weight: 700; color: var(--color-primary); font-size: 1.05rem; }
-    .guide-step h3 { margin: 0 0 5px; }
-    .guide-step p { font-size: .9rem; }
-    .guide-prompt { margin-top: 14px; padding: 16px 18px; background: var(--color-bg-alt); border-radius: var(--radius-md); }
-    .guide-prompt strong { display: block; margin-bottom: 4px; color: var(--color-jade); font-size: .9rem; }
-    .guide-prompt p { font-size: .9rem; }
-    .guide-model { margin-top: 16px; padding: 18px 20px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
-    .guide-model-label { display: block; color: var(--color-ink-faint); font-size: .75rem; font-weight: 700; margin-bottom: 6px; }
-    .guide-model p { color: var(--color-ink); font-family: var(--font-serif); }
-    .guide-flow { display: flex; align-items: stretch; gap: 10px; margin-top: 18px; }
-    .guide-flow div { flex: 1; padding: 15px; text-align: center; background: var(--color-primary-soft); border-radius: var(--radius-md); }
-    .guide-flow strong { display: block; color: var(--color-primary); font-family: var(--font-serif); margin-bottom: 3px; }
-    .guide-flow span { color: var(--color-ink-soft); font-size: .82rem; }
-    .guide-flow-arrow { flex: 0 0 auto !important; align-self: center; padding: 0 !important; background: transparent !important; color: var(--color-ink-faint); }
-    .guide-compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
-    .guide-compare article { padding: 17px; border-radius: var(--radius-md); }
-    .guide-compare h3 { font-family: var(--font-sans); font-size: .88rem; margin-bottom: 6px; }
-    .guide-compare p { font-size: .9rem; }
-    .guide-compare .weak { background: #f3eee7; }
-    .guide-compare .strong { background: #eaf0eb; }
-    .guide-checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 18px; list-style: none; padding: 0; margin: 16px 0 0; }
-    .guide-checklist li { position: relative; padding-left: 25px; color: var(--color-ink-soft); font-size: .9rem; }
-    .guide-checklist li::before { content: "✓"; position: absolute; left: 0; color: var(--color-jade); font-weight: 700; }
-    .guide-further { margin-top: 28px; padding-top: 18px; }
-    .guide-further a { color: var(--color-primary); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-    @media (max-width: 800px) {
-      .guide-layout { grid-template-columns: 1fr; gap: 20px; }
-      .guide-toc { position: static; }
-      .guide-toc ol { columns: 2; }
-    }
-    @media (max-width: 560px) {
-      .guide-page { padding-top: calc(var(--header-height) + 30px); }
-      .guide-flow { flex-direction: column; }
-      .guide-flow-arrow { transform: rotate(90deg); }
-      .guide-compare, .guide-checklist { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="writing-guides.css">
 </head>
 <body>
   <header class="site-header">
@@ -87,6 +29,7 @@
 
   <main class="guide-page">
     <div class="container">
+      <p class="guide-breadcrumb"><a href="writing-guides.html">寫作指引總覽</a> ／ 記敘文</p>
       <header class="guide-hero">
         <p class="guide-eyebrow">寫作指引・記敘文</p>
         <h1>由一件事，寫出想法的轉變</h1>
@@ -174,7 +117,7 @@
             </ul>
           </section>
 
-          <div class="guide-further"><p>想查閱內心獨白、比喻或結構手法的說明？前往<a href="techniques.html">寫作技巧</a>。</p></div>
+          <div class="guide-further"><p><a href="writing-guides.html">← 返回寫作指引總覽</a></p><p>想查閱內心獨白、比喻或結構手法的說明？前往<a href="techniques.html">寫作技巧</a>。</p></div>
         </article>
 
         <nav class="guide-toc" aria-label="本頁內容">
