@@ -7,14 +7,14 @@
   <meta name="description" content="按年份及題型瀏覽 DSE 中文科寫作卷歷屆試題與對應範文。">
   <link rel="stylesheet" href="style.css">
   <style>
-    .questions-page { padding: calc(var(--header-height, 72px) + 48px) 48px 0 64px; }
+    .questions-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
     .questions-head { max-width: 640px; margin-bottom: 28px; }
     .questions-head h1 { font-size: 2rem; margin-bottom: 10px; }
     .questions-head p { color: var(--color-ink-soft, #5c6b5f); line-height: 1.8; }
-    .q-filter { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; margin-bottom: 24px; }
+    .q-filter { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-bottom: 24px; padding: 15px 18px; background: var(--color-bg-alt, #eef0e8); border: 1px solid var(--color-border, #ddd6c4); border-radius: 14px; }
     .q-filter-group { display: flex; align-items: center; gap: 8px; }
     .q-filter label { font-size: .88rem; color: var(--color-ink-soft, #5c6b5f); }
-    .q-filter select { padding: 8px 14px; border: 1px solid var(--color-border, #ddd6c4); border-radius: 999px; background: #fff; font: inherit; font-size: .88rem; color: var(--color-ink, #23322b); }
+    .q-filter select { min-height: 40px; padding: 8px 14px; border: 1px solid var(--color-border, #ddd6c4); border-radius: 999px; background: #fff; font: inherit; font-size: .88rem; color: var(--color-ink, #23322b); }
     .q-filter-reset { border: 0; background: none; color: var(--color-primary, #1f3a5f); padding: 7px 4px; font-size: .82rem; }
     .question-count-note { font-size: .82rem; color: var(--color-ink-faint, #8b988e); margin-bottom: 20px; }
     .question-list { display: flex; flex-direction: column; gap: 14px; }
@@ -34,14 +34,21 @@
     .no-article { font-size: .82rem; color: var(--color-ink-faint, #8b988e); }
     .status-text { padding: 20px 0; color: var(--color-ink-soft, #5c6b5f); }
     
-    @media (max-width: 720px) { .questions-page { padding-top: calc(var(--header-height, 72px) + 30px); padding-left: 30px; padding-right: 30px; } .q-filter { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 720px) {
+      .questions-page { padding-top: calc(var(--header-height, 72px) + 30px); }
+      .q-filter { flex-direction: column; align-items: stretch; gap: 10px; padding: 14px; }
+      .q-filter-group { width: 100%; justify-content: space-between; }
+      .q-filter select { min-width: 0; flex: 1; }
+      .q-filter-reset { align-self: flex-start; }
+      .question-card { padding: 17px 16px; }
+    }
   </style>
 </head>
 <body>
   <header class="site-header"><div class="container nav-inner">
-    <a href="index.html" class="logo"><span class="logo-mark">文</span><span class="logo-sub">DSE 中文科</span></a>
+    <a href="index.html" class="logo"><span class="logo-mark">範文自學</span><span class="logo-sub">DSE 中文寫作</span></a>
     <button class="nav-toggle" id="navToggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
-    <div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主要導覽"><a href="genre-list.html">範文分類</a><a href="questions.html" aria-current="page">歷屆試題</a><a href="techniques.html">寫作手法</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="搜尋關鍵字" aria-label="搜尋"></form></div>
+    <div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="genre-list.html">文體分類</a><a href="questions.html" aria-current="page">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="搜尋範文、題目或年份…" aria-label="搜尋範文"></form></div>
   </div></header>
   <main class="questions-page"><div class="container">
     <div class="questions-head"><h1>歷屆試題</h1><p>收錄 2012 至 2026 年 DSE 中文科寫作題目，另收錄 2012 Pilot Paper 及文學題；可依來源／年份或題型篩選，並直接連結到對應的範文拆解。</p></div>
