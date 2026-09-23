@@ -28,11 +28,22 @@ function assertInlineScriptsParse(relative) {
 
 const questionsHtml = assertInlineScriptsParse('questions.html');
 const articleHtml = assertInlineScriptsParse('article.html');
+const genreHtml = assertInlineScriptsParse('genre.html');
+const siteJs = read('site.js');
 
 assert.ok(questionsHtml.includes('formatQuestionSourceYear(q.year)'));
 assert.ok(questionsHtml.includes('question-image-note'));
 assert.ok(questionsHtml.includes('2012 Pilot Paper 及文學題'));
+assert.ok(questionsHtml.includes('coverageFilter'));
+assert.ok(questionsHtml.includes('有範文'));
+assert.ok(questionsHtml.includes('未有範文'));
 assert.ok(articleHtml.includes('question?.hasImage'));
 assert.ok(articleHtml.includes('formatQuestionSourceYear(first.year)'));
+assert.ok(articleHtml.includes('article-sequence-nav'));
+assert.ok(articleHtml.includes('同文體上一篇及下一篇'));
+assert.ok(genreHtml.includes('resultCount'));
+assert.ok(genreHtml.includes('resetFilter'));
+assert.ok(siteJs.includes("event.key === 'Escape'"));
+assert.ok(siteJs.includes("link.setAttribute('aria-current', 'page')"));
 
-console.log('question UI tests passed');
+console.log('question and study-flow UI tests passed');
