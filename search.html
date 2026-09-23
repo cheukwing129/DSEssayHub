@@ -13,9 +13,13 @@
     .search-head h1 { font-size: 1.7rem; margin-bottom: 6px; word-break: break-word; }
     .search-hint { color: var(--color-ink-soft, #5c6b5f); font-size: .92rem; }
 
-    .search-summary { font-size: .85rem; color: var(--color-ink-faint, #8b988e); margin: 14px 0 28px; }
+    .search-summary { font-size: .85rem; color: var(--color-ink-faint, #8b988e); margin: 14px 0 12px; }
+    .search-jump-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .search-jump-links[hidden] { display: none; }
+    .search-jump-link { display: inline-flex; align-items: center; min-height: 38px; padding: 7px 13px; border: 1px solid var(--color-border, #ddd6c4); border-radius: 999px; background: var(--color-surface, #fff); color: var(--color-primary, #1f3a5f); font-size: .82rem; text-decoration: none; }
+    .search-jump-link:hover,.search-jump-link:focus-visible { border-color: var(--color-primary, #1f3a5f); background: var(--color-primary-soft, #e7edf3); }
 
-    .result-section { margin-bottom: 40px; }
+    .result-section { margin-bottom: 40px; scroll-margin-top: calc(var(--header-height, 72px) + 20px); }
     .result-section h2 { font-size: 1.1rem; margin-bottom: 14px; color: var(--color-ink, #23322b); }
 
     /* 範文結果卡片：跟 genre.html 的範文卡片共用同一套外觀 */
@@ -102,6 +106,7 @@
     </div>
 
     <p class="search-summary" id="searchSummary"></p>
+    <nav class="search-jump-links" id="searchResultNav" aria-label="跳至搜尋結果類別" hidden></nav>
 
     <div id="searchResults">
       <p class="status-text" id="searchStatus">搜尋中…</p>
@@ -123,6 +128,7 @@
 
   const headingEl = document.getElementById('searchHeading');
   const summaryEl = document.getElementById('searchSummary');
+  const resultNavEl = document.getElementById('searchResultNav');
   const resultsEl = document.getElementById('searchResults');
   const errorBoxEl = document.getElementById('errorBox');
   const navSearchInput = document.querySelector('.nav-search input[name="q"]');
@@ -332,6 +338,10 @@
 
     if (!trimmedQuery) {
       summaryEl.textContent = '';
+      if (resultNavEl) {
+        resultNavEl.hidden = true;
+        resultNavEl.innerHTML = '';
+      }
       resultsEl.innerHTML = '<p class="status-text">請在上方輸入關鍵字，例如篇章編號、題目文字、年份，或立意向度。</p>';
       return;
     }
@@ -358,15 +368,31 @@
     summaryEl.textContent = `共找到 ${totalCount} 項結果（範文 ${matchedArticles.length} 篇・試題 ${matchedQuestions.length} 條・寫作手法 ${matchedTechniques.length} 個）`;
 
     if (totalCount === 0) {
+      if (resultNavEl) {
+        resultNavEl.hidden = true;
+        resultNavEl.innerHTML = '';
+      }
       resultsEl.innerHTML = `<p class="status-text">沒有找到與「${esc(trimmedQuery)}」相關的內容，換個關鍵字試試——可以搜尋正文句子、段旨、年份、立意向度如「個人成長」，或寫作手法如「駁論法」。</p>`;
       return;
+    }
+
+    const jumpItems = [
+      ['search-articles', '範文', matchedArticles.length],
+      ['search-techniques', '寫作手法', matchedTechniques.length],
+      ['search-questions', '試題', matchedQuestions.length]
+    ].filter(([, , count]) => count > 0);
+    if (resultNavEl) {
+      resultNavEl.innerHTML = jumpItems.map(([target, label, count]) =>
+        `<a class="search-jump-link" href="#${target}">${label} ${count}</a>`
+      ).join('');
+      resultNavEl.hidden = false;
     }
 
     let html = '';
 
     if (matchedArticles.length) {
       html += `
-        <section class="result-section">
+        <section class="result-section" id="search-articles">
           <h2>符合的範文（${matchedArticles.length}）</h2>
           <div class="article-grid">
             ${matchedArticles.map(a => buildArticleCardHtml(a, themeNameById, questionFullByKey, terms)).join('')}
@@ -377,7 +403,7 @@
 
     if (matchedTechniques.length) {
       html += `
-        <section class="result-section">
+        <section class="result-section" id="search-techniques">
           <h2>符合的寫作手法（${matchedTechniques.length}）</h2>
           <div class="technique-grid">
             ${matchedTechniques.map(t => buildTechniqueCardHtml(t, terms)).join('')}
@@ -388,7 +414,7 @@
 
     if (matchedQuestions.length) {
       html += `
-        <section class="result-section">
+        <section class="result-section" id="search-questions">
           <h2>符合的試題（${matchedQuestions.length}）</h2>
           <div class="question-list">
             ${matchedQuestions.map(q => buildQuestionCardHtml(q, articles, terms)).join('')}
@@ -442,6 +468,10 @@
     } catch (error) {
       console.error(error);
       summaryEl.textContent = '';
+      if (resultNavEl) {
+        resultNavEl.hidden = true;
+        resultNavEl.innerHTML = '';
+      }
       resultsEl.innerHTML = '<p class="status-text">搜尋資料載入失敗。</p>';
       errorBoxEl.innerHTML = `<div class="error-box"><strong>資料載入失敗</strong><br>${esc(error.message)}<br>請確認資料檔案已上傳，而且網站是透過伺服器開啟。</div>`;
     }
