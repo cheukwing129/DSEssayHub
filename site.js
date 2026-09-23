@@ -27,11 +27,19 @@
   );
   const itemById = items => indexBy(items, item => item?.id);
 
+  const formatQuestionSourceYear = year => {
+    const value = String(year ?? '').trim();
+    if (value === '2012pp') return '2012 Pilot Paper';
+    if (value.startsWith('文學')) return value;
+    return /^\d{4}$/.test(value) ? `${value}年` : value;
+  };
+
   global.DSEHub = global.DSEHub || {};
   global.DSEHub.escapeHtml = escapeHtml;
   global.DSEHub.nameById = nameById;
   global.DSEHub.questionTextByKey = questionTextByKey;
   global.DSEHub.itemById = itemById;
+  global.DSEHub.formatQuestionSourceYear = formatQuestionSourceYear;
 
   if (typeof document === 'undefined') return;
 
