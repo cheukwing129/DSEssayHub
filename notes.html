@@ -49,7 +49,52 @@
     .import-status-ok { background: var(--color-primary-soft, #e7edf3); color: var(--color-primary, #1f3a5f); }
     .import-status-error { background: #fff3f3; color: #a33; border-left: 4px solid #a33; }
 
-    .notes-summary { font-size: .85rem; color: var(--color-ink-faint, #8b988e); margin-bottom: 28px; }
+    .notes-summary { font-size: .85rem; color: var(--color-ink-faint, #8b988e); margin-bottom: 16px; }
+
+    .notes-filter-bar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 24px;
+      padding: 12px;
+      background: var(--color-bg-alt, #eef0e8);
+      border-radius: 10px;
+    }
+    .notes-search {
+      flex: 1 1 260px;
+      min-width: 0;
+      border: 1px solid var(--color-border, #ddd6c4);
+      border-radius: 999px;
+      background: #fff;
+      padding: 9px 14px;
+      font: inherit;
+      font-size: .88rem;
+      color: var(--color-ink, #23322b);
+    }
+    .notes-type-filter {
+      border: 1px solid var(--color-border, #ddd6c4);
+      border-radius: 999px;
+      background: #fff;
+      padding: 9px 12px;
+      font: inherit;
+      font-size: .84rem;
+      color: var(--color-ink, #23322b);
+    }
+    .notes-filter-clear {
+      border: 0;
+      background: none;
+      color: var(--color-primary, #1f3a5f);
+      padding: 8px 4px;
+      font-size: .82rem;
+      cursor: pointer;
+    }
+    .notes-filter-result {
+      margin-left: auto;
+      font-size: .8rem;
+      color: var(--color-ink-faint, #8b988e);
+      white-space: nowrap;
+    }
 
     .note-article-group {
       margin-bottom: 28px;
@@ -116,6 +161,22 @@
     }
 
     .note-item-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0; }
+    .note-item-jump, .note-progress-link {
+      color: var(--color-primary, #1f3a5f);
+      font-size: .78rem;
+      white-space: nowrap;
+    }
+    .note-item-jump:hover, .note-progress-link:hover { text-decoration: underline; }
+    .note-progress-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: var(--color-bg-alt, #eef0e8);
+    }
+    .note-progress-text { margin: 0; font-size: .88rem; color: var(--color-ink-soft, #5c6b5f); line-height: 1.65; }
 
     .note-item-copy {
       background: none;
@@ -148,6 +209,13 @@
       .notes-page { padding-top: calc(var(--header-height, 72px) + 30px); }
       .notes-head { flex-direction: column; }
       .note-article-link { margin-left: 0; }
+      .notes-filter-bar { align-items: stretch; }
+      .notes-search { flex-basis: 100%; }
+      .notes-type-filter { flex: 1; }
+      .notes-filter-result { width: 100%; margin-left: 0; }
+      .note-item { flex-wrap: wrap; }
+      .note-item-actions { width: 100%; flex-direction: row; justify-content: flex-end; }
+      .note-progress-summary { align-items: flex-start; flex-direction: column; }
     }
   </style>
 </head>
@@ -182,7 +250,7 @@
     <div class="notes-head">
       <div class="notes-head-text">
         <h1>我的筆記</h1>
-        <p>這裡整理你在各篇範文裡標記的好詞好句、修辭手法、立意轉折點，收藏進素材庫的段落，以及寫下的段落註解。</p>
+        <p>這裡整理你的段落高亮、註解、素材，以及結構分析、個人反思與審題訓練紀錄。</p>
       </div>
       <div class="notes-actions">
         <button type="button" class="btn-notes-action" id="exportBtn">匯出備份</button>
@@ -197,6 +265,19 @@
     <p class="import-status-box" id="importStatus" hidden></p>
 
     <p class="notes-summary" id="notesSummary" hidden></p>
+
+    <div class="notes-filter-bar" id="notesFilterBar" hidden>
+      <input type="search" class="notes-search" id="notesSearch" placeholder="搜尋篇章、題目、筆記或素材…" aria-label="搜尋我的筆記">
+      <select class="notes-type-filter" id="notesTypeFilter" aria-label="依筆記類型篩選">
+        <option value="">全部類型</option>
+        <option value="highlight">高亮段落</option>
+        <option value="comment">段落註解</option>
+        <option value="material">收藏素材</option>
+        <option value="progress">文章學習紀錄</option>
+      </select>
+      <button type="button" class="notes-filter-clear" id="notesFilterClear" hidden>清除篩選</button>
+      <span class="notes-filter-result" id="notesFilterResult" aria-live="polite"></span>
+    </div>
 
     <div id="notesContent">
       <p class="status-text" id="notesStatus">筆記載入中…</p>
@@ -230,6 +311,12 @@
   const importBtn = document.getElementById('importBtn');
   const importFileInput = document.getElementById('importFileInput');
   const importStatusEl = document.getElementById('importStatus');
+  const filterBarEl = document.getElementById('notesFilterBar');
+  const searchEl = document.getElementById('notesSearch');
+  const typeFilterEl = document.getElementById('notesTypeFilter');
+  const filterClearEl = document.getElementById('notesFilterClear');
+  const filterResultEl = document.getElementById('notesFilterResult');
+  const pageParams = new URLSearchParams(location.search);
 
   const GENRE_LABELS = {
     narrative: '記敘抒情文',
@@ -328,13 +415,13 @@
    * 把「筆記」（高亮／註解）跟「素材庫」兩份不同來源的資料，合併成同一份「依文章分組」的結構，
    * 並算出每篇文章「最後更新時間」（組內最新的 timestamp），讓最近有動作的文章排前面。
    */
-  function buildGroups(notes, materials) {
+  function buildGroups(notes, materials, articleProgress) {
     const groups = {};
 
     function ensureGroup(articleId) {
       const key = String(articleId);
       if (!groups[key]) {
-        groups[key] = { articleId: key, highlights: [], comments: [], materials: [], lastTimestamp: 0 };
+        groups[key] = { articleId: key, highlights: [], comments: [], materials: [], progress: null, lastTimestamp: 0 };
       }
       return groups[key];
     }
@@ -350,6 +437,12 @@
       const group = ensureGroup(material.articleId);
       group.materials.push(material);
       group.lastTimestamp = Math.max(group.lastTimestamp, material.timestamp || 0);
+    });
+
+    Object.entries(articleProgress || {}).forEach(([articleId, progress]) => {
+      const group = ensureGroup(articleId);
+      group.progress = progress;
+      group.lastTimestamp = Math.max(group.lastTimestamp, progress?.updatedAt || 0);
     });
 
     Object.values(groups).forEach(group => {
@@ -368,6 +461,93 @@
     return questionFullByKey[`${firstQuestion.year}_${firstQuestion.questionNumber}`] || '';
   }
 
+  function notesListUrl({ restore = false } = {}) {
+    const params = new URLSearchParams();
+    const query = searchEl.value.trim();
+    const type = typeFilterEl.value;
+    if (query) params.set('q', query);
+    if (type) params.set('type', type);
+    if (restore) params.set('restore', '1');
+    const qs = params.toString();
+    return qs ? `notes.html?${qs}` : 'notes.html';
+  }
+
+  function syncFilterUrl() {
+    history.replaceState(null, '', notesListUrl());
+  }
+
+  function scrollStateKey() {
+    return `dse-notes-scroll:${searchEl.value.trim().toLowerCase() || 'all'}:${typeFilterEl.value || 'all'}`;
+  }
+
+  function saveScrollPosition() {
+    try { sessionStorage.setItem(scrollStateKey(), String(Math.max(0, Math.round(scrollY)))); } catch {}
+  }
+
+  function restoreScrollIfNeeded() {
+    const navigationType = performance.getEntriesByType?.('navigation')?.[0]?.type;
+    if (pageParams.get('restore') !== '1' && navigationType !== 'back_forward') return;
+    let saved = 0;
+    try { saved = Number(sessionStorage.getItem(scrollStateKey()) || 0); } catch {}
+    requestAnimationFrame(() => requestAnimationFrame(() => scrollTo({ top: Number.isFinite(saved) ? saved : 0, behavior: 'auto' })));
+    if (pageParams.has('restore')) history.replaceState(null, '', notesListUrl());
+  }
+
+  function articleHref(articleId, paragraphIndex = null) {
+    const params = new URLSearchParams({ id: String(articleId), returnTo: notesListUrl() });
+    if (Number.isInteger(paragraphIndex) && paragraphIndex >= 0) params.set('paragraph', String(paragraphIndex));
+    return `article.html?${params.toString()}`;
+  }
+
+  function buildItemActionsHtml(articleId, paragraphIndex, extraHtml = '') {
+    return `<div class="note-item-actions"><a class="note-item-jump" href="${esc(articleHref(articleId, paragraphIndex))}">回到原段落</a>${extraHtml}</div>`;
+  }
+
+  function progressLabels(progress) {
+    if (!progress) return [];
+    const labels = [];
+    if (String(progress.structureNote || '').trim()) labels.push('結構分析');
+    if (String(progress.reflectionNote || '').trim()) labels.push('個人反思');
+    if (String(progress.trainingModeAnswer || '').trim() || progress.trainingModeRevealed) labels.push('審題訓練');
+    return labels;
+  }
+
+  function cloneGroupForFilter(group, articleById, questionFullByKey, query, type) {
+    const articleMeta = articleById[group.articleId];
+    const title = buildArticleTitle(articleMeta, questionFullByKey);
+    const metadataText = [
+      group.articleId,
+      `篇章 ${String(group.articleId).padStart(2, '0')}`,
+      title,
+      articleMeta?.genre || '',
+      articleMeta ? (GENRE_LABELS[articleMeta.genre] || '') : ''
+    ].join(' ').toLowerCase();
+    const q = query.toLowerCase();
+    const metadataMatches = !q || metadataText.includes(q);
+    const matchesText = value => !q || String(value || '').toLowerCase().includes(q);
+
+    const filtered = {
+      ...group,
+      highlights: type && type !== 'highlight' ? [] : group.highlights.filter(item => metadataMatches || matchesText(item.text) || matchesText(HIGHLIGHT_LABELS[item.color])),
+      comments: type && type !== 'comment' ? [] : group.comments.filter(item => metadataMatches || matchesText(item.text) || matchesText(item.noteContent)),
+      materials: type && type !== 'material' ? [] : group.materials.filter(item => metadataMatches || matchesText(item.text)),
+      progress: type && type !== 'progress' ? null : group.progress
+    };
+
+    if (filtered.progress && q && !metadataMatches) {
+      const progressText = [
+        filtered.progress.structureNote,
+        filtered.progress.reflectionNote,
+        filtered.progress.trainingModeAnswer,
+        ...progressLabels(filtered.progress)
+      ].join(' ').toLowerCase();
+      if (!progressText.includes(q)) filtered.progress = null;
+    }
+
+    const hasContent = filtered.highlights.length || filtered.comments.length || filtered.materials.length || filtered.progress;
+    return hasContent ? filtered : null;
+  }
+
   function buildHighlightItemHtml(note) {
     const dotClass = `dot-${note.color}`;
     const label = HIGHLIGHT_LABELS[note.color] || note.color;
@@ -378,7 +558,7 @@
           <p class="note-item-label">第 ${note.paragraphIndex + 1} 段・${esc(label)}</p>
           <p class="note-item-text">${esc(note.text || '')}</p>
         </div>
-        <button type="button" class="note-item-delete" data-action="delete-highlight">移除</button>
+        ${buildItemActionsHtml(note.articleId, note.paragraphIndex, '<button type="button" class="note-item-delete" data-action="delete-highlight">移除</button>')}
       </div>
     `;
   }
@@ -392,7 +572,7 @@
           <p class="note-item-text">${esc(note.text || '')}</p>
           <p class="note-item-content">${esc(note.noteContent || '')}</p>
         </div>
-        <button type="button" class="note-item-delete" data-action="delete-comment">刪除</button>
+        ${buildItemActionsHtml(note.articleId, note.paragraphIndex, '<button type="button" class="note-item-delete" data-action="delete-comment">刪除</button>')}
       </div>
     `;
   }
@@ -405,10 +585,7 @@
           <p class="note-item-label">第 ${material.paragraphIndex + 1} 段</p>
           <p class="note-item-text">${esc(material.text || '')}</p>
         </div>
-        <div class="note-item-actions">
-          <button type="button" class="note-item-copy" data-action="copy-material">複製</button>
-          <button type="button" class="note-item-delete" data-action="delete-material">移除</button>
-        </div>
+        ${buildItemActionsHtml(material.articleId, material.paragraphIndex, '<button type="button" class="note-item-copy" data-action="copy-material">複製</button><button type="button" class="note-item-delete" data-action="delete-material">移除</button>')}
       </div>
     `;
   }
@@ -431,17 +608,23 @@
       ? `<div class="note-subsection"><h3>段落註解（${group.comments.length}）</h3>${group.comments.map(buildCommentItemHtml).join('')}</div>`
       : '';
 
+    const progressTypes = progressLabels(group.progress);
+    const progressHtml = group.progress
+      ? `<div class="note-subsection"><h3>文章學習紀錄</h3><div class="note-progress-summary"><p class="note-progress-text">${progressTypes.length ? `已保存：${esc(progressTypes.join('、'))}` : '已保存文章學習進度。'}</p><a class="note-progress-link" href="${esc(articleHref(group.articleId))}">查看／繼續 →</a></div></div>`
+      : '';
+
     return `
       <section class="note-article-group">
         <div class="note-article-head">
           <span class="article-id">篇章 ${esc(paddedId)}</span>
           ${genreLabel ? `<span class="article-genre-tag">${esc(genreLabel)}</span>` : ''}
-          <a class="note-article-link" href="article.html?id=${encodeURIComponent(group.articleId)}">前往範文 →</a>
+          <a class="note-article-link" href="${esc(articleHref(group.articleId))}">前往範文 →</a>
         </div>
         ${title ? `<p class="note-article-title">${esc(title)}</p>` : ''}
         ${highlightsHtml}
         ${materialsHtml}
         ${commentsHtml}
+        ${progressHtml}
       </section>
     `;
   }
@@ -628,35 +811,56 @@
 
     if (notes.length === 0 && materials.length === 0 && progressCount === 0) {
       summaryEl.hidden = true;
+      filterBarEl.hidden = true;
       clearAllBtn.hidden = true;
       renderEmptyState();
       return;
     }
 
-    const groups = buildGroups(notes, materials);
+    const groups = buildGroups(notes, materials, articleProgress);
     const highlightCount = notes.filter(n => n.type === 'highlight').length;
     const commentCount = notes.filter(n => n.type === 'comment').length;
     const materialCount = materials.length;
+    const query = searchEl.value.trim();
+    const type = typeFilterEl.value;
+    const filteredGroups = groups.map(group => cloneGroupForFilter(group, articleById, questionFullByKey, query, type)).filter(Boolean);
+    const hasFilters = Boolean(query || type);
 
     summaryEl.hidden = false;
-    summaryEl.textContent = `共 ${groups.length} 篇有段落紀錄・高亮 ${highlightCount} 段・註解 ${commentCount} 則・素材 ${materialCount} 則・文章學習紀錄 ${progressCount} 篇`;
+    summaryEl.textContent = `共 ${groups.length} 篇有學習紀錄・高亮 ${highlightCount} 段・註解 ${commentCount} 則・素材 ${materialCount} 則・文章學習紀錄 ${progressCount} 篇`;
+    filterBarEl.hidden = false;
+    filterClearEl.hidden = !hasFilters;
+    filterResultEl.textContent = hasFilters ? `顯示 ${filteredGroups.length}／${groups.length} 篇` : `共 ${groups.length} 篇`;
     clearAllBtn.hidden = false;
 
-    if (groups.length === 0) {
+    if (filteredGroups.length === 0) {
       contentEl.innerHTML = `
         <div class="empty-state">
-          <p>目前沒有高亮、段落註解或素材，但仍有 ${progressCount} 篇範文保存了結構分析、個人反思或審題訓練紀錄。這些內容可回到相應範文查看，並會包含在匯出備份中。</p>
-          <a class="btn btn-primary" href="genre-list.html">去瀏覽範文</a>
+          <p>沒有符合目前搜尋或類型篩選的筆記。</p>
+          <button type="button" class="btn btn-primary" data-action="clear-note-filters">清除篩選</button>
         </div>
       `;
       return;
     }
 
-    contentEl.innerHTML = groups.map(g => buildArticleGroupHtml(g, articleById, questionFullByKey)).join('');
+    contentEl.innerHTML = filteredGroups.map(g => buildArticleGroupHtml(g, articleById, questionFullByKey)).join('');
   }
 
   function wireContentInteractions(articleById, questionFullByKey) {
     contentEl.addEventListener('click', (event) => {
+      const clearFiltersBtn = event.target.closest('[data-action="clear-note-filters"]');
+      if (clearFiltersBtn) {
+        searchEl.value = '';
+        typeFilterEl.value = '';
+        syncFilterUrl();
+        render(articleById, questionFullByKey);
+        searchEl.focus();
+        return;
+      }
+
+      const outboundLink = event.target.closest('.note-item-jump, .note-article-link, .note-progress-link');
+      if (outboundLink) saveScrollPosition();
+
       // 複製素材文字：純粹讀取，不改資料，不用重新整理列表
       const copyBtn = event.target.closest('.note-item-copy');
       if (copyBtn) {
@@ -710,6 +914,27 @@
 
     importBtn.addEventListener('click', () => importFileInput.click());
     importFileInput.addEventListener('change', (event) => handleImportFile(event, articleById, questionFullByKey));
+
+    let searchTimer = null;
+    searchEl.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        syncFilterUrl();
+        render(articleById, questionFullByKey);
+      }, 120);
+    });
+    typeFilterEl.addEventListener('change', () => {
+      syncFilterUrl();
+      render(articleById, questionFullByKey);
+    });
+    filterClearEl.addEventListener('click', () => {
+      searchEl.value = '';
+      typeFilterEl.value = '';
+      syncFilterUrl();
+      render(articleById, questionFullByKey);
+      searchEl.focus();
+    });
+    addEventListener('pagehide', saveScrollPosition);
   }
 
   (async () => {
@@ -731,15 +956,24 @@
       const articleById = DSEHub.itemById(articles);
       const questionFullByKey = DSEHub.questionTextByKey(questions);
 
+      const requestedType = pageParams.get('type') || '';
+      searchEl.value = pageParams.get('q') || '';
+      typeFilterEl.value = ['highlight', 'comment', 'material', 'progress'].includes(requestedType) ? requestedType : '';
+
       wireContentInteractions(articleById, questionFullByKey);
       render(articleById, questionFullByKey);
+      restoreScrollIfNeeded();
 
     } catch (error) {
       console.error(error);
       // 就算文章資料讀取失敗，筆記本身還是存在 LocalStorage 裡，
       // 所以這裡退而求其次：article/question 資料查不到時，就不顯示文體與題目，只顯示篇章編號跟筆記內容
+      const requestedType = pageParams.get('type') || '';
+      searchEl.value = pageParams.get('q') || '';
+      typeFilterEl.value = ['highlight', 'comment', 'material', 'progress'].includes(requestedType) ? requestedType : '';
       wireContentInteractions({}, {});
       render({}, {});
+      restoreScrollIfNeeded();
       errorBoxEl.innerHTML = `<div class="error-box"><strong>提醒：</strong>文章資訊（文體、題目）載入失敗，以下筆記僅顯示篇章編號。<br>${esc(error.message)}</div>`;
     }
   })();
