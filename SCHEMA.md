@@ -91,8 +91,12 @@
 | `questionFull` | string | 題目完整文字 |
 | `questionType` | string（舊資料） | 2012–2021 等較早資料主要使用的題型標籤，現有值包括「記敘」「議論」「人物描寫」「景物描寫」「開放式」「圖畫題」「談論類」等；暫未強制正規化 |
 | `relatedArticleIds` | array of number | 對應 `articles.json` 的 `id`；由同步腳本產生，不應手動修改 |
+| `hasImage` | boolean（可選） | 原題是否包含必須配合閱讀的圖片 |
+| `imagePath` | string（可選） | 已收錄原題圖片時的站內相對路徑，例如 `assets/question-images/2022_Q2.png` |
+| `imageAlt` | string（可選） | 原題圖片的無障礙替代文字；有 `imagePath` 時應一併提供 |
+| `imageNote` | string（可選） | 圖片來源／性質的簡短說明；目前使用「原題附圖」 |
 
-2022–2026 等較新的試題資料主要以 `genre`（`narrative` / `argumentative` / `descriptive` / `topic`）表示文體分類，並可包含 `subject`、`title`、`hasImage`、`imageNote` 等欄位；舊題則主要使用 `questionType`。每道題至少應有 `questionType` 或合法 `genre` 其中一種分類。現階段不應僅為格式一致而批量補寫另一套 metadata，待完成全庫題型語義審核後再決定是否統一 schema。
+2022–2026 等較新的試題資料主要以 `genre`（`narrative` / `argumentative` / `descriptive` / `topic`）表示文體分類，並可包含 `subject`、`title`、`hasImage`、`imagePath`、`imageAlt`、`imageNote` 等欄位；舊題則主要使用 `questionType`。每道題至少應有 `questionType` 或合法 `genre` 其中一種分類。現階段不應僅為格式一致而批量補寫另一套 metadata，待完成全庫題型語義審核後再決定是否統一 schema。
 
 `articles.json.relatedQuestions` 是關聯的唯一人工維護來源。執行 `npm run sync:data` 會重建 `questions.json.relatedArticleIds`，`npm run check` 會阻止未同步資料進入主分支。
 
