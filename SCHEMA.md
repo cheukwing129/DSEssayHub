@@ -89,8 +89,10 @@
 | `year` | string | 年份，pilot paper 用 `"2012pp"` 這種格式 |
 | `questionNumber` | string | 題號，如 `"Q1"` |
 | `questionFull` | string | 題目完整文字 |
-| `questionType` | string | `"續寫"` / `"題旨"` / `"談論類"` / `"圖畫題"` 之一 |
+| `questionType` | string | 題型標籤。現有歷史資料沿用多種標籤（如「記敘」「議論」「人物描寫」「景物描寫」「開放式」「圖畫題」「談論類」）；暫未強制正規化，修改時應保留既有語意，待完成全庫題型審核後再決定是否統一 |
 | `relatedArticleIds` | array of number | 對應 `articles.json` 的 `id`；由同步腳本產生，不應手動修改 |
+
+較新的試題資料另可包含 `subject`、`title`、`genre`、`hasImage`、`imageNote` 等欄位；舊題未必具備。現階段不應僅為格式一致而補寫舊題 metadata，除非已核對可靠題目來源。
 
 `articles.json.relatedQuestions` 是關聯的唯一人工維護來源。執行 `npm run sync:data` 會重建 `questions.json.relatedArticleIds`，`npm run check` 會阻止未同步資料進入主分支。
 
