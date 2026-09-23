@@ -54,7 +54,7 @@
   <main id="mainContent" tabindex="-1" class="questions-page"><div class="container">
     <div class="questions-head"><h1>歷屆試題</h1><p>收錄 2012 至 2026 年 DSE 中文科寫作題目，另收錄 2012 Pilot Paper 及文學題；可依來源／年份或題型篩選，並直接連結到對應的範文拆解。</p></div>
     <div class="q-filter"><div class="q-filter-group"><label for="yearFilter">來源／年份：</label><select id="yearFilter"><option value="">全部來源／年份</option></select></div><div class="q-filter-group"><label for="typeFilter">題型：</label><select id="typeFilter"><option value="">全部題型</option></select></div><div class="q-filter-group"><label for="coverageFilter">範文：</label><select id="coverageFilter"><option value="">全部</option><option value="with">有範文</option><option value="without">未有範文</option></select></div><button type="button" class="q-filter-reset" id="clearFilters" hidden>清除篩選</button></div>
-    <p class="question-count-note" id="countNote" hidden></p><div class="question-list" id="questionList"><p class="status-text" id="questionStatus">試題載入中…</p></div><div id="errorBox"></div>
+    <p class="question-count-note" id="countNote" aria-live="polite" aria-atomic="true" hidden></p><div class="question-list" id="questionList"><p class="status-text" id="questionStatus">試題載入中…</p></div><div id="errorBox"></div>
   </div></main>
   <footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
   <script src="site.js"></script>
@@ -146,8 +146,12 @@ function render(){
     const coverageMatches=!coverage||(coverage==='with'?ids.length>0:ids.length===0);
     return(!year||String(q.year)===year)&&(!type||parseType(q)===type)&&coverageMatches;
   }).sort(sortQuestions);
+  const activeFilters=[];
+  if(year) activeFilters.push(`來源／年份：${yearFilterEl.selectedOptions[0]?.textContent||year}`);
+  if(type) activeFilters.push(`題型：${typeFilterEl.selectedOptions[0]?.textContent||labels[type]||type}`);
+  if(coverage) activeFilters.push(`範文：${coverageFilterEl.selectedOptions[0]?.textContent||coverage}`);
   countNoteEl.hidden=false;
-  countNoteEl.textContent=hasFilters?`顯示 ${filtered.length}／${allQuestions.length} 題`:`共 ${allQuestions.length} 題`;
+  countNoteEl.textContent=hasFilters?`顯示 ${filtered.length}／${allQuestions.length} 題；目前條件：${activeFilters.join('、')}`:`共 ${allQuestions.length} 題`;
   clearFiltersEl.hidden=!hasFilters;
   listEl.innerHTML=filtered.length?filtered.map(buildCard).join(''):'<p class="status-text">沒有符合目前篩選條件的試題。</p>';
 }
