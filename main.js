@@ -24,6 +24,14 @@ const GENRE_LABELS = {
 // 抓取要放卡片的容器，以及一開始顯示「載入中」的提示文字
 const articleGrid = document.getElementById('articleGrid');
 const articleStatus = document.getElementById('articleStatus');
+const refreshFeaturedButton = document.getElementById('refreshFeaturedArticles');
+let featuredArticleData = null;
+
+refreshFeaturedButton?.addEventListener('click', () => {
+  if (featuredArticleData) {
+    renderArticleCards(...featuredArticleData);
+  }
+});
 
 // 進入頁面就開始載入資料
 loadFeaturedArticles();
@@ -57,7 +65,9 @@ async function loadFeaturedArticles() {
     const themeNameById = DSEHub.nameById(themes);
     const questionFullByKey = DSEHub.questionTextByKey(questions);
 
+    featuredArticleData = [articles, themeNameById, questionFullByKey];
     renderArticleCards(articles, themeNameById, questionFullByKey);
+    if (refreshFeaturedButton) refreshFeaturedButton.hidden = false;
 
   } catch (error) {
     // 常見原因：直接用瀏覽器打開 index.html（file:// 協定）時，
