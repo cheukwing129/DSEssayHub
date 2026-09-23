@@ -30,14 +30,24 @@ const questionsHtml = assertInlineScriptsParse('questions.html');
 const articleHtml = assertInlineScriptsParse('article.html');
 const genreHtml = assertInlineScriptsParse('genre.html');
 const siteJs = read('site.js');
+const questions = JSON.parse(read('data/questions.json'));
+for (const question of questions.filter(item => item.hasImage)) {
+  assert.ok(question.imagePath, `${question.year} ${question.questionNumber} 應提供 imagePath`);
+  assert.ok(question.imageAlt, `${question.year} ${question.questionNumber} 應提供 imageAlt`);
+  assert.ok(fs.existsSync(path.join(root, question.imagePath)), `${question.year} ${question.questionNumber} 圖片檔案不存在：${question.imagePath}`);
+}
 
 assert.ok(questionsHtml.includes('formatQuestionSourceYear(q.year)'));
 assert.ok(questionsHtml.includes('question-image-note'));
+assert.ok(questionsHtml.includes('question-image-wrap'));
+assert.ok(questionsHtml.includes('q.imagePath'));
 assert.ok(questionsHtml.includes('2012 Pilot Paper 及文學題'));
 assert.ok(questionsHtml.includes('coverageFilter'));
 assert.ok(questionsHtml.includes('有範文'));
 assert.ok(questionsHtml.includes('未有範文'));
 assert.ok(articleHtml.includes('question?.hasImage'));
+assert.ok(articleHtml.includes('article-question-image-wrap'));
+assert.ok(articleHtml.includes('question?.imagePath'));
 assert.ok(articleHtml.includes('formatQuestionSourceYear(first.year)'));
 assert.ok(articleHtml.includes('article-sequence-nav'));
 assert.ok(articleHtml.includes('同文體上一篇及下一篇'));
