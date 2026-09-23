@@ -165,10 +165,12 @@ button {
 }
 
 .nav-links a:hover,
-.nav-links a:focus-visible {
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] {
   color: var(--color-primary);
   border-bottom-color: var(--color-primary);
 }
+.nav-links a[aria-current="page"] { font-weight: 700; }
 
 .nav-search {
   display: flex;
@@ -611,6 +613,13 @@ button {
   .nav-links a {
     padding: 10px 4px;
     border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  .nav-links a[aria-current="page"] {
+    border-bottom-color: var(--color-primary);
+    background: var(--color-primary-soft);
+    border-radius: 8px 8px 0 0;
+    padding-left: 10px;
   }
 
   .nav-search {
