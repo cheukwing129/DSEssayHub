@@ -11,7 +11,10 @@ function read(relative) {
 
 function assertInlineScriptsParse(relative) {
   const html = read(relative);
-  const scripts = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)].map(match => match[1]);
+  const withoutComments = html.replace(/<!--[\s\S]*?-->/g, '');
+  const scripts = [...withoutComments.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)]
+    .filter(match => !/\bsrc\s*=/.test(match[1]))
+    .map(match => match[2]);
   assert.ok(scripts.length > 0, relative + ' 應至少有一段 inline script');
   scripts.forEach((script, index) => {
     try {
