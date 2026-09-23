@@ -75,17 +75,7 @@ async function loadFeaturedArticles() {
  * @param {Object} questionFullByKey - 「年份_題號 -> 題目全文」對照表
  */
 function renderArticleCards(articles, themeNameById, questionFullByKey) {
-  // 先讓四種文體各有一篇代表作，再按索引次序補足餘額。
-  // 這比直接取前六篇更符合首頁「從不同文體挑選」的說明。
-  const featuredArticles = [];
-  Object.keys(GENRE_LABELS).forEach(genre => {
-    const representative = articles.find(article => article.genre === genre);
-    if (representative) featuredArticles.push(representative);
-  });
-  for (const article of articles) {
-    if (featuredArticles.length >= FEATURED_ARTICLE_COUNT) break;
-    if (!featuredArticles.some(featured => featured.id === article.id)) featuredArticles.push(article);
-  }
+  const featuredArticles = selectFeaturedArticles(articles);
 
   if (featuredArticles.length === 0) {
     articleStatus.textContent = '目前尚未有範文資料。';
@@ -101,6 +91,41 @@ function renderArticleCards(articles, themeNameById, questionFullByKey) {
     .join('');
 
   articleGrid.innerHTML = cardsHtml;
+}
+
+/**
+ * 隨機挑選首頁範文；先為每種文體隨機挑一篇，再從其餘合資格範文補足。
+ * 目前 contentLabel 以「中品示例」標記的文章不作首頁精選，並預先排除
+ * 任何明確標示為中品、下品或劣品的文章。沒有品級標籤的文章照常參選。
+ */
+function selectFeaturedArticles(articles, random = Math.random) {
+  const eligibleArticles = articles.filter(article =>
+    !/^(?:中品|下品|劣品)/u.test(String(article.contentLabel || '').trim())
+  );
+  const featuredArticles = [];
+
+  Object.keys(GENRE_LABELS).forEach(genre => {
+    const candidates = shuffleArticles(eligibleArticles.filter(article => article.genre === genre), random);
+    if (candidates.length && featuredArticles.length < FEATURED_ARTICLE_COUNT) {
+      featuredArticles.push(candidates[0]);
+    }
+  });
+
+  const remainingArticles = shuffleArticles(
+    eligibleArticles.filter(article => !featuredArticles.some(featured => featured.id === article.id)),
+    random
+  );
+  featuredArticles.push(...remainingArticles.slice(0, FEATURED_ARTICLE_COUNT - featuredArticles.length));
+  return featuredArticles;
+}
+
+function shuffleArticles(articles, random) {
+  const shuffled = [...articles];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
 }
 
 /**
