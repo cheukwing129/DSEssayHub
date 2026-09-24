@@ -32,4 +32,45 @@ assert.equal(formatQuestionSourceYear('2026'), '2026年');
 assert.equal(formatQuestionSourceYear('2012pp'), '2012 Pilot Paper');
 assert.equal(formatQuestionSourceYear('文學2020'), '文學2020');
 
+const listeners = new Map();
+const attributes = new Map([['aria-expanded', 'false']]);
+const openClasses = new Set();
+let menuButtonFocused = false;
+const navToggle = {
+  addEventListener(type, listener) { listeners.set(`button:${type}`, listener); },
+  contains(target) { return target?.insideToggle === true; },
+  focus() { menuButtonFocused = true; },
+  getAttribute(name) { return attributes.get(name) ?? null; },
+  setAttribute(name, value) { attributes.set(name, value); }
+};
+const mainNav = {
+  classList: {
+    add(value) { openClasses.add(value); },
+    remove(value) { openClasses.delete(value); }
+  },
+  contains(target) { return target?.insideMenu === true; },
+  querySelectorAll() { return []; }
+};
+globalThis.location = { pathname: '/index.html', href: 'https://example.test/index.html' };
+globalThis.document = {
+  addEventListener(type, listener) { listeners.set(`document:${type}`, listener); },
+  getElementById(id) { return id === 'navToggle' ? navToggle : id === 'mainNav' ? mainNav : null; }
+};
+await import('../site.js?nav-interaction-test');
+
+listeners.get('button:click')();
+assert.equal(attributes.get('aria-expanded'), 'true');
+assert.equal(openClasses.has('is-open'), true);
+listeners.get('document:click')({ target: { insideMenu: true } });
+assert.equal(attributes.get('aria-expanded'), 'true', 'clicks inside the menu should keep it open');
+listeners.get('document:click')({ target: {} });
+assert.equal(attributes.get('aria-expanded'), 'false', 'clicks outside the menu should close it');
+assert.equal(openClasses.has('is-open'), false);
+
+listeners.get('button:click')();
+menuButtonFocused = false;
+listeners.get('document:keydown')({ key: 'Escape' });
+assert.equal(attributes.get('aria-expanded'), 'false');
+assert.equal(menuButtonFocused, true, 'Escape should restore focus to the menu button');
+
 console.log('site utils tests passed');

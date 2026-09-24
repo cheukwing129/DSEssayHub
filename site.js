@@ -63,6 +63,12 @@
     }
   });
 
+  document.addEventListener('click', event => {
+    if (navToggle.getAttribute('aria-expanded') !== 'true') return;
+    if (navToggle.contains(event.target) || mainNav.contains(event.target)) return;
+    closeNav();
+  });
+
   const currentPage = global.location?.pathname?.split('/').pop() || 'index.html';
   mainNav.querySelectorAll('a[href]').forEach(link => {
     const href = link.getAttribute('href');
