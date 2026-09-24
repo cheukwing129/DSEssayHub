@@ -206,7 +206,8 @@
     const targetEl = document.getElementById(`technique-${targetId}`);
     if (!targetEl) return;
 
-    targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    targetEl.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
     targetEl.classList.add('is-target');
     targetEl.addEventListener('animationend', () => targetEl.classList.remove('is-target'), { once: true });
   }
