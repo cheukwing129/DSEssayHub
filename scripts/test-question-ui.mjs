@@ -53,6 +53,8 @@ assert.match(globalCss, /\.nav-toggle\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px
 assert.match(globalCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?scroll-behavior:\s*auto\s*!important;[\s\S]*?transition-duration:\s*0\.01ms\s*!important;/);
 assert.ok(techniquesHtml.includes("const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;"));
 assert.ok(techniquesHtml.includes("behavior: reducedMotion ? 'auto' : 'smooth'"));
+assert.ok(techniquesHtml.includes('id="countNote" aria-live="polite" aria-atomic="true"'));
+assert.ok(techniquesHtml.includes("${currentCategory ? `「${currentCategory}」類別：` : '全部類別：'}共 ${filtered.length} 個寫作手法`"));
 assert.match(questionsHtml, /\.q-filter select\s*\{[^}]*min-height:\s*44px;/);
 assert.match(questionsHtml, /\.q-filter-reset\s*\{[^}]*min-height:\s*44px;/);
 assert.match(questionsHtml, /\.question-links a\s*\{[^}]*min-height:\s*44px;/);
