@@ -32,6 +32,7 @@ const genreHtml = assertInlineScriptsParse('genre.html');
 const searchHtml = read('search.html');
 const notesHtml = read('notes.html');
 const globalCss = read('style.css');
+const techniquesHtml = assertInlineScriptsParse('techniques.html');
 const siteJs = read('site.js');
 const questions = JSON.parse(read('data/questions.json'));
 for (const question of questions.filter(item => item.hasImage)) {
@@ -49,6 +50,9 @@ assert.ok(questionsHtml.includes('coverageFilter'));
 assert.ok(questionsHtml.includes('有範文'));
 assert.ok(questionsHtml.includes('未有範文'));
 assert.match(globalCss, /\.nav-toggle\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px;/s);
+assert.match(globalCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?scroll-behavior:\s*auto\s*!important;[\s\S]*?transition-duration:\s*0\.01ms\s*!important;/);
+assert.ok(techniquesHtml.includes("const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;"));
+assert.ok(techniquesHtml.includes("behavior: reducedMotion ? 'auto' : 'smooth'"));
 assert.match(questionsHtml, /\.q-filter select\s*\{[^}]*min-height:\s*44px;/);
 assert.match(questionsHtml, /\.q-filter-reset\s*\{[^}]*min-height:\s*44px;/);
 assert.match(questionsHtml, /\.question-links a\s*\{[^}]*min-height:\s*44px;/);
