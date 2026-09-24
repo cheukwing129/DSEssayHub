@@ -127,7 +127,7 @@
       <button type="button" class="category-btn is-active" data-category="" aria-pressed="true">全部</button>
     </div>
 
-    <p class="technique-count-note" id="countNote" hidden></p>
+    <p class="technique-count-note" id="countNote" aria-live="polite" aria-atomic="true" hidden></p>
 
     <div class="technique-grid" id="techniqueGrid">
       <p class="status-text" id="techniqueStatus">技巧資料載入中…</p>
@@ -218,7 +218,7 @@
       : allTechniques;
 
     countNoteEl.hidden = false;
-    countNoteEl.textContent = `共 ${filtered.length} 個寫作手法`;
+    countNoteEl.textContent = `${currentCategory ? `「${currentCategory}」類別：` : '全部類別：'}共 ${filtered.length} 個寫作手法`;
 
     gridEl.innerHTML = filtered.length
       ? filtered.map(buildTechniqueCardHtml).join('')
