@@ -823,7 +823,7 @@ function applyEditorialLayout(index,first,question,paragraphs){
   const heading=header.querySelector("h1");
   const articleTitle=first?.title||question?.title;
   if(heading&&articleTitle)heading.textContent=articleTitle;
-  if(heading)document.title=heading.textContent+"｜篇章 "+String(index.id).padStart(2,"0")+"｜DSE 中文科範文自學平台";
+  if(heading)document.title=(articleTitle?heading.textContent+"｜":"")+"篇章 "+String(index.id).padStart(2,"0")+"｜DSE 中文科範文自學平台";
 
   const kicker=document.createElement("p");
   kicker.className="article-kicker";
