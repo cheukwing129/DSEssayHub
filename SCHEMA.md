@@ -37,14 +37,14 @@
 
 | 欄位 | 型別 | 說明 |
 |---|---|---|
-| `id` | number | 篇章編號，1–86，全站唯一 |
+| `id` | number | 篇章編號，1–87，全站唯一 |
 | `genre` | string | `"narrative"` / `"argumentative"` / `"descriptive"` / `"topic"` 之一 |
 | `relatedQuestions` | array of object | `{ year, questionNumber }`，一篇可能對應多年題目 |
 | `wordCount` | number | 全文字數 |
 | `themeConceptIds` | array of string | 參照 `themes.json` 的 `id` |
 | `summary` | string | 一兩句話的內容簡介，首頁／文體列表／搜尋結果／範文詳情頁都會用到 |
 
-**為什麼拆成索引 + 分檔**：86 篇全文全部塞進一個檔案，光是列表頁（只需要題目跟摘要）也要整份下載，太浪費。拆開之後，列表類頁面只讀輕量索引，點進單篇才抓完整內容。
+**為什麼拆成索引 + 分檔**：87 篇全文全部塞進一個檔案，光是列表頁（只需要題目跟摘要）也要整份下載，太浪費。拆開之後，列表類頁面只讀輕量索引，點進單篇才抓完整內容。
 
 ### 1.2 `articles/article_NN.json` — 單篇範文完整內容
 
@@ -121,7 +121,7 @@
 
 ### 1.6 `search-index.json` — 自動產生的全文搜尋索引
 
-搜尋索引由 `npm run build:search` 讀取 86 個文章分檔後產生，包含正文、段旨點評、題目分析及文章實際使用的寫作手法名稱。`search.html` 只需額外讀取這一個檔案，不會在每次搜尋時逐篇請求 86 個 JSON。
+搜尋索引由 `npm run build:search` 讀取 87 個文章分檔後產生，包含正文、段旨點評、題目分析及文章實際使用的寫作手法名稱。`search.html` 只需額外讀取這一個檔案，不會在每次搜尋時逐篇請求 87 個 JSON。
 
 這個檔案不可手動修改。新增或修改文章後應執行 `npm run sync`；`npm run check` 會檢查索引內容是否為最新版本及是否完整涵蓋全部篇章。
 
