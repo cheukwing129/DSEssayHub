@@ -23,7 +23,9 @@
     "questionNumber": "Q3",
     "questionFull": "有人認為：「富足的物質條件有利孩子成長。」你同意嗎？試撰文一篇，論述你的看法。",
     "questionType": "議論",
-    "relatedArticleIds": []
+    "relatedArticleIds": [
+      87
+    ]
   },
   {
     "year": "2020",
