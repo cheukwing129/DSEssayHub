@@ -75,7 +75,7 @@
     <div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="genre-list.html">文體分類</a><a href="questions.html" aria-current="page">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="搜尋範文、題目或年份…" aria-label="搜尋範文"></form></div>
   </div></header>
   <main id="mainContent" tabindex="-1" class="questions-page"><div class="container">
-    <div class="questions-head"><h1>歷屆試題</h1><p>收錄 2012 至 2026 年 DSE 中文科寫作題目，另收錄 2012 Pilot Paper 及文學題；可依來源／年份或題型篩選，並直接連結到對應的範文拆解。</p></div>
+    <div class="questions-head"><h1>歷屆試題</h1><p>收錄 2012 至 2026 年 DSE 中文科寫作題目，另收錄 2012 練習卷及文學題；可依來源／年份或題型篩選，並直接連結到對應的範文拆解。</p></div>
     <div class="q-filter"><div class="q-filter-group"><label for="yearFilter">來源／年份：</label><select id="yearFilter"><option value="">全部來源／年份</option></select></div><div class="q-filter-group"><label for="typeFilter">題型：</label><select id="typeFilter"><option value="">全部題型</option></select></div><div class="q-filter-group"><label for="coverageFilter">範文：</label><select id="coverageFilter"><option value="">全部</option><option value="with">有範文</option><option value="without">未有範文</option></select></div><button type="button" class="q-filter-reset" id="clearFilters" hidden>清除篩選</button></div>
     <p class="question-count-note" id="countNote" aria-live="polite" aria-atomic="true" hidden></p><div class="question-list" id="questionList"><p class="status-text" id="questionStatus">試題載入中…</p></div><div id="errorBox"></div>
   </div></main>
@@ -143,7 +143,7 @@ function articleHref(id){
 }
 function questionSourceKind(year){
   const value=String(year??'');
-  if(value==='2012pp')return 'Pilot Paper';
+  if(value==='2012pp')return '練習卷';
   if(value.startsWith('文學'))return '文學題';
   return 'DSE';
 }
