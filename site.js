@@ -29,7 +29,7 @@
 
   const formatQuestionSourceYear = year => {
     const value = String(year ?? '').trim();
-    if (value === '2012pp') return '2012 Pilot Paper';
+    if (value === '2012pp') return '2012 練習卷';
     if (value.startsWith('文學')) return value;
     return /^\d{4}$/.test(value) ? `${value}年` : value;
   };

@@ -29,7 +29,7 @@ assert.deepEqual(itemById([{ id: 1, value: '甲' }, { id: 2, value: '乙' }]), {
 });
 
 assert.equal(formatQuestionSourceYear('2026'), '2026年');
-assert.equal(formatQuestionSourceYear('2012pp'), '2012 Pilot Paper');
+assert.equal(formatQuestionSourceYear('2012pp'), '2012 練習卷');
 assert.equal(formatQuestionSourceYear('文學2020'), '文學2020');
 
 const listeners = new Map();

@@ -86,7 +86,7 @@
 
 | 欄位 | 型別 | 說明 |
 |---|---|---|
-| `year` | string | 年份，pilot paper 用 `"2012pp"` 這種格式 |
+| `year` | string | 年份或來源標識；2012 練習卷用 `"2012pp"` 這種格式 |
 | `questionNumber` | string | 題號，如 `"Q1"` |
 | `questionFull` | string | 題目完整文字 |
 | `questionType` | string（舊資料） | 2012–2021 等較早資料主要使用的題型標籤，現有值包括「記敘」「議論」「人物描寫」「景物描寫」「開放式」「圖畫題」「談論類」等；暫未強制正規化 |
