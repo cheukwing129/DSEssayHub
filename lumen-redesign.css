@@ -693,3 +693,14 @@ button { color: inherit; }
   html { scroll-behavior: auto !important; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* EssayHub brand identity: a single scalable wordmark with its Chinese descriptor. */
+.site-header .logo-lockup { gap: 0; }
+.site-header .brand-lockup-stack { position: relative; display: block; width: 206px; height: 62px; flex: 0 0 206px; }
+.site-header .brand-lockup-art { display: block; width: 206px; height: auto; max-width: 100%; }
+.site-header .brand-lockup-stack .logo-sub { position: absolute; left: 67px; bottom: 0; margin: 0; color: var(--color-ink-soft); font: 600 .65rem/1.15 var(--font-sans); letter-spacing: .06em; white-space: nowrap; }
+@media (max-width: 540px) {
+  .site-header .brand-lockup-stack { width: 182px; height: 57px; flex-basis: 182px; }
+  .site-header .brand-lockup-art { width: 182px; }
+  .site-header .brand-lockup-stack .logo-sub { left: 59px; bottom: 0; font-size: .61rem; }
+}
