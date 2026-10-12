@@ -202,8 +202,8 @@ body {
     visibility: visible;
     pointer-events: auto;
   }
-  .nav-links { flex-direction: column; gap: 3px; margin-bottom: 6px; }
-  .nav-links a {
+  .main-nav .nav-links { flex-direction: column; gap: 3px; margin-bottom: 6px; }
+  .main-nav .nav-links a {
     display: flex;
     align-items: center;
     min-height: 44px;
@@ -211,7 +211,9 @@ body {
     font-size: .95rem;
     border-radius: 10px;
   }
-  .nav-search { width: 100%; }
+  .main-nav .nav-search { width: 100%; }
+  /* The separate brand-preview masthead has no hamburger control. */
+  .site-header .nav-inner > .nav-links { display: none; }
 }
 
 /* Article priority: the DOM puts text before tools for keyboard and screen readers.
