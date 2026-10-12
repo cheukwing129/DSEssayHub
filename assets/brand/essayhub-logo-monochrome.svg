@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" fill="none" role="img" aria-labelledby="title">
+  <title id="title">EssayHub 單色標誌</title>
+  <g stroke="#30313B" stroke-linecap="round">
+    <path d="M49 12C41.3 8.6 31.2 8.1 23.5 10.2 15.7 12.4 11 18.4 11 26.1v11.8c0 7.6 4.7 13.7 12.5 15.9 7.7 2.1 17.8 1.6 25.5-1.8" stroke-width="8"/>
+    <path d="M17 32h25" stroke-width="7.5"/>
+  </g>
+  <text x="76" y="42" font-family="Inter, Avenir Next, Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="-1.1" fill="#30313B">EssayHub</text>
+</svg>
