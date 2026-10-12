@@ -1,0 +1,270 @@
+/* EssayHub UI refinement — 2026-10: editorial design, readable controls, mobile-first study flow.
+   Loaded after legacy styles to keep educational content and existing interactions intact. */
+:root {
+  --canvas: 36 60% 97%;
+  --surface-muted: 34 58% 97%;
+  --surface-strong: 33 39% 92%;
+  --line: 30 25% 86%;
+  --color-border-soft: hsl(30 22% 91%);
+  --shadow-card: 0 8px 24px hsl(235 10% 21% / .045), 0 1px 4px hsl(235 10% 21% / .025);
+  --shadow-raised: 0 16px 35px hsl(235 10% 21% / .075), 0 3px 8px hsl(235 10% 21% / .03);
+}
+body {
+  background-image: radial-gradient(ellipse at 94% 2%, hsl(247 69% 90% / .20), transparent 35rem);
+}
+.site-header { box-shadow: 0 3px 15px hsl(235 10% 21% / .035); }
+.nav-inner { gap: clamp(12px, 1.8vw, 24px); }
+.main-nav { gap: clamp(12px, 1.6vw, 22px); }
+.nav-links { gap: 3px; }
+.nav-links a { font-size: .88rem; padding-inline: 10px; }
+.nav-search { width: clamp(174px, 18vw, 218px); }
+:where(.btn, .nav-links a, .article-card, .genre-card, .guide-overview-card, .question-card) {
+  -webkit-tap-highlight-color: transparent;
+}
+:is(.article-card, .genre-card, .guide-overview-card, .question-card, .technique-card) {
+  box-shadow: 0 2px 11px hsl(235 10% 21% / .035);
+}
+:is(.article-card, .genre-card, .guide-overview-card, .question-card, .technique-card):hover {
+  box-shadow: var(--shadow-card);
+}
+
+/* Editorial homepage: shorter introduction; warm artwork-aligned accents. */
+.hero { padding-bottom: 8px; }
+.hero-inner {
+  min-height: 320px;
+  background:
+    radial-gradient(ellipse at 93% 15%, hsl(247 69% 86% / .17), transparent 45%),
+    linear-gradient(125deg, #fffdfa 0%, #fff8f1 63%, #fff3ec 100%);
+  border-color: hsl(30 25% 86%);
+  box-shadow: 0 10px 34px hsl(235 10% 21% / .045);
+}
+.hero-inner::before, .hero-inner::after { border-color: hsl(var(--brand) / .15); }
+.hero-motif { border-color: hsl(var(--accent) / .29); }
+.hero-motif::before { color: hsl(var(--brand) / .58); }
+.hero h1 { max-width: 15ch; font-size: clamp(2.4rem, 4.5vw, 3.5rem); letter-spacing: -.045em; }
+.hero-desc { max-width: 48ch; line-height: 1.86; }
+.hero-actions .btn { font-size: .96rem; font-weight: 700; }
+.section { padding-block: clamp(40px, 5vw, 64px); }
+.section-alt {
+  background: linear-gradient(105deg, #fff9f3 0%, #fbf7f6 100%);
+}
+.section-head { margin-bottom: 24px; }
+.genre-card { border-radius: 18px; }
+.genre-card p { line-height: 1.75; }
+
+/* Clear, consistent typography; avoid tiny pale labels on narrow screens. */
+:is(
+  .article-id, .article-meta, .article-genre-tag, .article-level-tag, .article-card-link,
+  .article-tags .tag, .technique-tag, .question-source-tag, .question-type-tag,
+  .question-group-count, .question-count-note, .question-links-label, .no-article,
+  .question-image-wrap figcaption, .filter-result, .notes-device-hint,
+  .notes-filter-result, .article-sidebar-copy, .article-sidebar-action,
+  .article-meta-details, .article-kicker, .reading-mode-hint,
+  .guide-eyebrow, .genre-progress-note, .technique-count-note
+) {
+  font-size: .82rem;
+}
+:is(.question-full, .article-question, .technique-card p, .guide-lede) { line-height: 1.9; }
+:is(.question-links a, .article-card-link, .category-btn, .filter-reset, .q-filter-reset) {
+  font-size: .86rem;
+}
+:is(.genre-list-head, .genre-head, .questions-head, .techniques-head, .notes-head, .search-head) {
+  margin-bottom: 25px;
+}
+:is(.genre-list-head, .genre-head, .questions-head, .techniques-head, .notes-head, .search-head) p {
+  max-width: 62ch;
+  line-height: 1.78;
+}
+:is(.q-filter, .genre-filter, .notes-filter-bar) {
+  padding: 13px 15px;
+  border-radius: 15px;
+  box-shadow: none;
+  background: hsl(var(--surface) / .94);
+}
+
+/* Question archive: one-tap year switch without losing other filters. */
+.year-quick-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  padding: 4px 0 12px;
+  margin-bottom: 9px;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--line)) transparent;
+}
+.year-quick-nav[hidden] { display: none; }
+.year-quick-chip {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  min-height: 44px;
+  padding: 8px 15px;
+  border: 1px solid hsl(var(--line));
+  border-radius: 999px;
+  background: #fff;
+  color: var(--color-ink-soft);
+  font: 650 .85rem/1.35 var(--font-sans);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .16s ease, border-color .16s ease, color .16s ease;
+}
+.year-quick-chip:hover { border-color: hsl(var(--brand) / .6); color: var(--color-primary-dark); }
+.year-quick-chip.is-active, .year-quick-chip[aria-pressed="true"] {
+  border-color: hsl(var(--brand-solid));
+  color: #fff;
+  background: var(--color-primary-dark);
+}
+.year-quick-chip:focus-visible { outline: 3px solid hsl(var(--brand) / .5); outline-offset: 2px; }
+.question-year-group { scroll-margin-top: calc(var(--header-height) + 18px); }
+.question-group-heading h2 { font-size: 1.48rem; }
+.question-card { border-radius: 16px; }
+.question-card-main .question-full { font-size: 1rem; line-height: 1.92; }
+.question-links-panel { padding-left: 17px; }
+.question-links a { min-height: 44px; text-align: center; padding-inline: 11px; }
+.question-count-note { line-height: 1.7; }
+
+/* Article reading: readable typography, subdued assistance and clear priorities. */
+.article-layout { gap: 18px 24px; }
+.article-layout .article-header { padding: 24px 28px 25px; }
+.article-layout .article-header h1 {
+  font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+  line-height: 1.45;
+  font-weight: 700;
+  letter-spacing: -.015em;
+}
+.article-layout .article-header .article-meta-line { font-size: .85rem; line-height: 1.65; }
+.article-layout .article-question-prompt p { font-size: .98rem; line-height: 1.85; }
+.article-sidebar-card h2 { font: 700 1rem/1.4 var(--font-sans); }
+.article-sidebar .article-sidebar-copy { font-size: .83rem; }
+.article-sidebar .article-sidebar-action { font-size: .86rem; }
+.article-main .essay {
+  border-color: hsl(var(--line) / .86);
+  background: #fffefd;
+}
+.article-main .paragraph-text {
+  font-size: clamp(1.07rem, 1.38vw, 1.16rem);
+  line-height: 2.03;
+  letter-spacing: .014em;
+}
+.article-main .paragraph { padding-block: 18px; }
+.article-main .training-card { border-color: hsl(var(--brand) / .18); }
+.article-main .training-summary { background: #fffbf7; }
+.article-main .article-summary { background: #fff9f2; }
+.article-main .reading-mode-hint { font-size: .82rem; }
+.article-main .comment-box > div { font-size: .94rem; }
+.article-main .technique-tag { font-size: .81rem; }
+.article-sequence-link, .article-sequence-back { font-weight: 650; }
+
+/* Support tools — calm secondary actions and distinct primary content. */
+.notes-head { gap: 18px; }
+.notes-actions { flex-wrap: wrap; justify-content: flex-start; }
+.notes-actions .btn-notes-action { font-size: .86rem; }
+.notes-device-hint { line-height: 1.8; }
+.notes-filter-bar { gap: 12px; }
+.technique-grid { align-items: stretch; }
+.category-btn { border-radius: 999px; }
+.guide-overview-card { min-height: 180px; }
+
+/* Tablet: switch the five main links to the mobile menu before they crowd the logo. */
+@media (max-width: 1080px) {
+  .nav-toggle { display: flex; }
+  .main-nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 14px clamp(18px, 4vw, 40px) 20px;
+    max-height: calc(100dvh - var(--header-height) - 12px);
+    overflow-y: auto;
+    border: 1px solid hsl(var(--line) / .9);
+    border-top: 0;
+    border-radius: 0 0 18px 18px;
+    background: #fffcf8;
+    box-shadow: var(--shadow-card);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  }
+  .main-nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .main-nav .nav-links { flex-direction: column; gap: 3px; margin-bottom: 6px; }
+  .main-nav .nav-links a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 9px 13px;
+    font-size: .95rem;
+    border-radius: 10px;
+  }
+  .main-nav .nav-search { width: 100%; }
+  /* The separate brand-preview masthead has no hamburger control. */
+  .site-header .nav-inner > .nav-links { display: none; }
+}
+
+/* Article priority: the DOM puts text before tools for keyboard and screen readers.
+   Below 960px the tools move visually below the essay as well. */
+@media (max-width: 960px) {
+  .article-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "header" "main" "sidebar";
+    row-gap: 14px;
+  }
+  .article-sidebar {
+    position: static;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .article-main { min-width: 0; }
+}
+
+/* Mobile: full-width readable text, balanced navigation, non-crowded controls. */
+@media (max-width: 720px) {
+  .hero { padding-bottom: 8px; }
+  .hero-inner { padding: 28px 22px; }
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.55rem); }
+  .hero-desc { font-size: 1rem; line-height: 1.8; }
+  .section { padding-block: 40px; }
+  .genre-card { min-height: 185px; }
+  .genre-card p { font-size: .91rem; }
+  .question-group-heading h2 { font-size: 1.32rem; }
+  .question-source-tag { font-size: .82rem; }
+  .question-card { padding: 16px; }
+  .question-card-main .question-full { font-size: 1rem; }
+  .question-links-panel { padding: 12px 0 0; }
+  .article-layout .article-header { padding: 20px 19px; }
+  .article-layout .article-header h1 { font-size: clamp(1.5rem, 6vw, 1.85rem); }
+  .article-layout .article-header .article-meta-line { font-size: .83rem; }
+  .article-main .essay { padding: 20px 17px; }
+  .article-main .paragraph { padding: 16px 0; }
+  .article-main .paragraph-text { font-size: 1.07rem; line-height: 2; }
+  .article-sidebar { grid-template-columns: minmax(0, 1fr); }
+  .reading-toolbar { flex-wrap: wrap; }
+  .reading-mode-hint { line-height: 1.55; }
+  .notes-actions { gap: 8px; }
+  :is(.article-card, .technique-card, .guide-overview-card) { padding: 20px; }
+}
+@media (max-width: 430px) {
+  .hero-inner { padding: 24px 20px; }
+  .article-main .essay { padding: 17px 13px; }
+  .article-main .paragraph-text { font-size: 1.06rem; }
+  .question-group-heading { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .year-quick-chip, .article-main .paragraph { transition: none; }
+}

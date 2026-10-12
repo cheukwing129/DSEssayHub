@@ -67,6 +67,7 @@
     }
   </style>
   <link rel="stylesheet" href="lumen-redesign.css">
+  <link rel="stylesheet" href="ui-refresh.css?v=20261012">
   <link rel="icon" type="image/png" href="/assets/brand/favicon.png?v=20261012-original">
   <meta name="theme-color" content="#FFF8EB">
 </head>
@@ -77,11 +78,12 @@
       <span class="brand-lockup-stack"><img class="brand-lockup-art" src="/assets/brand/essayhub-logo.png?v=20261012-original" alt="" aria-hidden="true"><span class="logo-sub">DSE 中文寫作</span></span>
     </a>
     <button class="nav-toggle" id="navToggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
-    <div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="genre-list.html">文體分類</a><a href="questions.html" aria-current="page">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="搜尋範文、題目或年份…" aria-label="搜尋範文"></form></div>
+    <div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="genre-list.html">文體分類</a><a href="questions.html" aria-current="page">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="writing-guides.html">寫作指引</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="搜尋範文、題目或年份…" aria-label="搜尋範文"></form></div>
   </div></header>
   <main id="mainContent" tabindex="-1" class="questions-page"><div class="container">
     <div class="questions-head"><h1>歷屆試題</h1><p>收錄 2012 至 2026 年 DSE 中文科寫作題目，另收錄 2012 練習卷及文學題；可依來源／年份或題型篩選，並直接連結到對應的範文拆解。</p></div>
     <div class="q-filter"><div class="q-filter-group"><label for="yearFilter">來源／年份：</label><select id="yearFilter"><option value="">全部來源／年份</option></select></div><div class="q-filter-group"><label for="typeFilter">題型：</label><select id="typeFilter"><option value="">全部題型</option></select></div><div class="q-filter-group"><label for="coverageFilter">範文：</label><select id="coverageFilter"><option value="">全部</option><option value="with">有範文</option><option value="without">未有範文</option></select></div><button type="button" class="q-filter-reset" id="clearFilters" hidden>清除篩選</button></div>
+    <nav class="year-quick-nav" id="yearQuickNav" aria-label="快速選擇試題年份" hidden></nav>
     <p class="question-count-note" id="countNote" aria-live="polite" aria-atomic="true" hidden></p><div class="question-list" id="questionList"><p class="status-text" id="questionStatus">試題載入中…</p></div><div id="errorBox"></div>
   </div></main>
   <footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
@@ -91,6 +93,7 @@ const listEl=document.getElementById('questionList');
 const countNoteEl=document.getElementById('countNote');
 const errorBoxEl=document.getElementById('errorBox');
 const yearFilterEl=document.getElementById('yearFilter');
+const yearQuickNavEl=document.getElementById('yearQuickNav');
 const typeFilterEl=document.getElementById('typeFilter');
 const coverageFilterEl=document.getElementById('coverageFilter');
 const clearFiltersEl=document.getElementById('clearFilters');
@@ -154,9 +157,32 @@ function questionSourceKind(year){
 }
 function buildCard(q){
   const ids=relatedArticleIds(q);
-  const links=ids.length?`<div class="question-links-label">對應範文 · ${ids.length} 篇</div><div class="question-links">${ids.map(id=>`<a href="${articleHref(id)}" aria-label="查看篇章 ${String(id).padStart(2,'0')}">篇章 ${String(id).padStart(2,'0')}</a>`).join('')}</div>`:`<div class="question-links-label">範文收錄</div><span class="no-article">暫未有對應範文</span>`;
+  const links=ids.length?`<div class="question-links-label">對應範文 · ${ids.length} 篇</div><div class="question-links">${ids.map(id=>`<a href="${articleHref(id)}" aria-label="閱讀範文 ${String(id).padStart(2,'0')}">範文 ${String(id).padStart(2,'0')} →</a>`).join('')}</div>`:`<div class="question-links-label">範文收錄</div><span class="no-article">暫未有對應範文</span>`;
   const imageBlock=q.hasImage&&q.imagePath?`<figure class="question-image-wrap"><img class="question-image" src="${esc(q.imagePath)}" alt="${esc(q.imageAlt||'原題附圖')}" loading="lazy" decoding="async"><figcaption>${esc(q.imageNote||'原題附圖')}</figcaption></figure>`:q.hasImage?`<p class="question-image-note">${esc(q.imageNote||'原題附圖；目前未收錄圖像。')}</p>`:'';
   return `<article class="question-card" aria-label="${esc(DSEHub.formatQuestionSourceYear(q.year))} ${esc(q.questionNumber)} ${esc(labels[q.genre]||q.questionType||'題目')}"><div class="question-card-head"><span class="question-number">${esc(q.questionNumber)}</span><span class="question-type-tag">${esc(labels[q.genre]||q.questionType||'題目')}</span></div><div class="question-card-main"><p class="question-full">${esc(q.questionFull||q.question||'題目內容待補')}</p>${imageBlock}</div><div class="question-links-panel">${links}</div></article>`;
+}
+function populateQuickYears(){
+  yearQuickNavEl.replaceChildren();
+  const years=[...new Set(allQuestions.map(q=>String(q.year??'')))].filter(Boolean).sort((a,b)=>yearValue(b)-yearValue(a));
+  const addChip=(value,label)=>{
+    const button=document.createElement('button');
+    button.type='button';
+    button.className='year-quick-chip';
+    button.dataset.year=value;
+    button.textContent=label;
+    button.setAttribute('aria-pressed',String(yearFilterEl.value===value));
+    yearQuickNavEl.append(button);
+  };
+  addChip('','全部年份');
+  for(const year of years) addChip(year,DSEHub.formatQuestionSourceYear(year));
+  yearQuickNavEl.hidden=false;
+}
+function syncQuickYears(){
+  yearQuickNavEl.querySelectorAll('button[data-year]').forEach(button=>{
+    const active=button.dataset.year===yearFilterEl.value;
+    button.classList.toggle('is-active',active);
+    button.setAttribute('aria-pressed',String(active));
+  });
 }
 function populateFilters(){
   const years=[...new Set(allQuestions.map(q=>q.year))].sort((a,b)=>yearValue(b)-yearValue(a));
@@ -187,6 +213,7 @@ function render(){
   countNoteEl.hidden=false;
   countNoteEl.textContent=hasFilters?`顯示 ${filtered.length}／${allQuestions.length} 題；目前條件：${activeFilters.join('、')}`:`共 ${allQuestions.length} 題`;
   clearFiltersEl.hidden=!hasFilters;
+  syncQuickYears();
   if(!filtered.length){
     listEl.innerHTML='<p class="status-text">沒有符合目前篩選條件的試題。</p>';
     return;
@@ -212,6 +239,7 @@ async function load(){
     if(!Array.isArray(allQuestions))throw Error('data/questions.json 格式必須是陣列');
     if(!Array.isArray(allArticles))throw Error('data/articles.json 格式必須是陣列');
     populateFilters();
+    populateQuickYears();
     render();
     restoreScrollIfNeeded();
   }catch(e){
@@ -225,6 +253,14 @@ function applyFilters(){
   syncUrl();
   render();
 }
+yearQuickNavEl.addEventListener('click',event=>{
+  const button=event.target.closest('button[data-year]');
+  if(!button||!yearQuickNavEl.contains(button))return;
+  const next=button.dataset.year;
+  yearFilterEl.value=yearFilterEl.value===next?'':next;
+  applyFilters();
+  // Preserve the current position when switching years; don't jump unexpectedly.
+});
 yearFilterEl.addEventListener('change',applyFilters);
 typeFilterEl.addEventListener('change',applyFilters);
 coverageFilterEl.addEventListener('change',applyFilters);
