@@ -2,18 +2,18 @@
    Uses semantic surface, ink, line, and brand roles while preserving the
    existing static HTML, page behavior, and student data. */
 :root {
-  --canvas: 150 18% 97%;
+  --canvas: 40 100% 96%;
   --surface: 0 0% 100%;
-  --surface-muted: 147 20% 94%;
-  --surface-strong: 150 16% 88%;
-  --line: 150 13% 85%;
-  --ink: 157 18% 17%;
-  --ink-soft: 156 11% 35%;
-  --ink-muted: 155 8% 50%;
-  --brand: 173 47% 34%;
-  --brand-solid: 173 49% 28%;
-  --brand-soft: 168 37% 92%;
-  --accent: 24 51% 56%;
+  --surface-muted: 40 100% 97%;
+  --surface-strong: 38 50% 90%;
+  --line: 35 27% 85%;
+  --ink: 235 10% 21%;
+  --ink-soft: 235 8% 36%;
+  --ink-muted: 235 6% 50%;
+  --brand: 11 100% 68%;
+  --brand-solid: 11 72% 42%;
+  --brand-soft: 15 100% 95%;
+  --accent: 247 69% 69%;
 
   --color-bg: hsl(var(--canvas));
   --color-bg-alt: hsl(var(--surface-muted));
@@ -26,10 +26,10 @@
   --color-primary: hsl(var(--brand));
   --color-primary-dark: hsl(var(--brand-solid));
   --color-primary-soft: hsl(var(--brand-soft));
-  --color-jade: hsl(164 34% 36%);
-  --color-narrative: hsl(174 43% 34%);
-  --color-argumentative: hsl(148 29% 38%);
-  --color-descriptive: hsl(30 47% 46%);
+  --color-jade: hsl(247 44% 55%);
+  --color-narrative: hsl(11 100% 68%);
+  --color-argumentative: hsl(247 48% 58%);
+  --color-descriptive: hsl(42 75% 47%);
   --color-topic: hsl(278 21% 48%);
 
   --font-serif: "Noto Serif TC", "Source Han Serif TC", "PMingLiU", serif;
@@ -50,7 +50,7 @@ body {
   font-size: 16px;
   line-height: 1.78;
   letter-spacing: .005em;
-  background-image: radial-gradient(ellipse at 92% 7%, hsl(168 38% 91% / .5), transparent 33rem);
+  background-image: radial-gradient(ellipse at 92% 7%, hsl(247 69% 92% / .38), transparent 33rem);
 }
 h1, h2, h3 { letter-spacing: -.018em; }
 p { text-wrap: pretty; }
@@ -64,14 +64,26 @@ p { text-wrap: pretty; }
 /* Quiet, persistent navigation */
 .site-header {
   height: var(--header-height);
-  background: rgba(249, 251, 249, .91);
+  background: rgba(255, 251, 244, .92);
   border-bottom: 1px solid hsl(var(--line) / .84);
   box-shadow: 0 2px 14px hsl(156 24% 16% / .025);
   backdrop-filter: blur(16px) saturate(1.12);
 }
 .nav-inner { gap: clamp(18px, 3vw, 42px); }
-.logo-mark { color: var(--color-ink); font-size: 1.12rem; letter-spacing: .025em; }
-.logo-sub { color: var(--color-ink-faint); letter-spacing: .075em; }
+.logo-lockup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+.logo-symbol { display: block; width: 42px; height: 42px; flex: 0 0 42px; }
+.logo-copy { display: flex; flex-direction: column; line-height: 1.08; }
+.brand-wordmark { display: flex; align-items: baseline; font: 750 1.16rem/1 var(--font-sans); letter-spacing: -.045em; white-space: nowrap; }
+.brand-wordmark > span { color: var(--color-ink); }
+.brand-wordmark > strong { color: var(--color-primary-dark); font-weight: 800; }
+.logo-sub { margin-top: 4px; color: var(--color-ink-faint); font: 500 .66rem/1.15 var(--font-sans); letter-spacing: .07em; }
 .main-nav { gap: clamp(16px, 2.5vw, 34px); }
 .nav-links { gap: 8px; }
 .nav-links a {
@@ -208,7 +220,7 @@ p { text-wrap: pretty; }
 .btn:hover { transform: translateY(-2px); }
 .btn-primary {
   color: hsl(0 0% 100%);
-  background: var(--color-primary);
+  background: var(--color-primary-dark);
   box-shadow: 0 7px 18px hsl(var(--brand) / .2);
 }
 .btn-primary:hover, .btn-primary:focus-visible { background: var(--color-primary-dark); box-shadow: 0 10px 22px hsl(var(--brand) / .25); }
@@ -354,7 +366,7 @@ button { color: inherit; }
   color: var(--color-primary-dark);
   transition: background .16s ease, transform .16s var(--ease-ui), box-shadow .16s ease;
 }
-.question-links a:hover { transform: translateY(-1px); background: hsl(168 38% 87%); box-shadow: 0 3px 8px hsl(var(--brand) / .1); }
+.question-links a:hover { transform: translateY(-1px); background: var(--color-primary-soft); box-shadow: 0 3px 8px hsl(var(--brand) / .1); }
 .question-image-wrap, .article-question-image-wrap { padding: 10px; border: 1px solid hsl(var(--line) / .8); border-radius: 14px; background: hsl(var(--surface-muted) / .55); }
 
 /* Article reading desk */
@@ -366,7 +378,7 @@ button { color: inherit; }
   font-weight: 650;
   transition: transform .16s var(--ease-ui), color .16s ease;
 }
-.back-link:hover { transform: translateX(-3px); color: var(--color-primary); }
+.back-link:hover { transform: translateX(-3px); color: var(--color-primary-dark); }
 .article-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
@@ -506,7 +518,7 @@ button { color: inherit; }
 }
 .paragraph:first-child { padding-top: 7px; }
 .paragraph:last-child { border-bottom: 0; }
-.paragraph-number { color: var(--color-primary); font: 700 .82rem/1.8 var(--font-sans); }
+.paragraph-number { color: var(--color-primary-dark); font: 700 .82rem/1.8 var(--font-sans); }
 .paragraph-text { color: var(--color-ink); font: 400 clamp(1.02rem, 1.35vw, 1.14rem)/2.05 var(--font-serif); }
 .paragraph.is-targeted { background: hsl(var(--brand) / .075); outline: 2px solid hsl(var(--brand) / .25); }
 .comment-box { margin-top: 13px; border-color: hsl(var(--brand) / .14); border-radius: 12px; background: hsl(var(--surface-muted) / .7); }
@@ -586,7 +598,7 @@ button { color: inherit; }
 }
 @media (max-width: 720px) {
   .container { padding-inline: 18px; }
-  .site-header { background: rgba(249, 251, 249, .97); }
+  .site-header { background: rgba(255, 251, 244, .97); }
   .main-nav {
     border: 1px solid hsl(var(--line) / .9);
     border-top: 0;
@@ -638,6 +650,42 @@ button { color: inherit; }
   .article-sequence-nav { gap: 8px; }
   .article-sequence-link, .article-sequence-back { padding-inline: 10px; font-size: .84rem; }
 }
+
+/* EssayHub brand lockup and logo review board */
+.logo-lockup:hover .logo-symbol { transform: rotate(-2deg) scale(1.03); }
+.logo-symbol { transition: transform .24s var(--ease-ui); }
+.brand-showcase-page { padding: calc(var(--header-height) + 40px) 0 76px; }
+.brand-showcase-head { max-width: 760px; margin: 0 auto 32px; text-align: center; }
+.brand-showcase-kicker { margin: 0 0 8px; color: var(--color-primary-dark); font-size: .76rem; font-weight: 750; letter-spacing: .16em; text-transform: uppercase; }
+.brand-showcase-head h1 { margin: 0 0 10px; font-size: clamp(2.1rem, 5vw, 3.5rem); letter-spacing: -.045em; }
+.brand-showcase-head p { margin: 0; color: var(--color-ink-soft); }
+.brand-showcase-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.brand-sample { min-height: 190px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid hsl(var(--line) / .85); border-radius: 20px; background: var(--color-surface); box-shadow: var(--shadow-card); }
+.brand-sample h2 { margin: 0; color: var(--color-ink-soft); font: 700 .78rem/1.35 var(--font-sans); letter-spacing: .06em; }
+.brand-sample img { display: block; width: min(100%, 300px); height: auto; margin: 20px auto 8px; }
+.brand-sample--dark { background: #30313B; border-color: #30313B; }
+.brand-sample--dark h2 { color: #FFF8EB; }
+.brand-sample--mark img { width: 92px; }
+.brand-sample--mono img { width: min(100%, 300px); }
+.brand-icon-sizes { display: flex; align-items: end; justify-content: center; gap: 28px; margin: auto; padding: 18px 0 8px; }
+.brand-icon-sizes figure { margin: 0; display: grid; justify-items: center; gap: 8px; color: var(--color-ink-soft); font-size: .75rem; }
+.brand-icon-sizes img { display: block; width: var(--icon-size); height: var(--icon-size); }
+.brand-nav-sample { margin-top: 24px; overflow: hidden; border: 1px solid hsl(var(--line) / .9); border-radius: 18px; background: rgba(255,255,255,.82); box-shadow: var(--shadow-card); }
+.brand-nav-sample .nav-inner { min-height: 78px; padding: 0 24px; }
+.brand-nav-sample .nav-links { display: flex; align-items: center; gap: 6px; }
+.brand-nav-sample .nav-links a { padding: 8px 11px; color: var(--color-ink-soft); font-size: .84rem; text-decoration: none; white-space: nowrap; }
+.brand-nav-sample .nav-links a:hover { color: var(--color-primary-dark); background: var(--color-primary-soft); border-radius: 999px; }
+.brand-palette { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.brand-swatch { flex: 1 1 120px; min-height: 0; padding: 0; display: grid; gap: 7px; border: 0; border-radius: 0; color: var(--color-ink); font: 600 .72rem/1.2 var(--font-sans); }
+.brand-swatch i { display: block; height: 48px; border: 1px solid hsl(var(--line) / .65); border-radius: 10px; }
+@media (max-width: 720px) {
+  .brand-showcase-page { padding-top: calc(var(--header-height) + 24px); }
+  .brand-showcase-grid { grid-template-columns: 1fr; gap: 12px; }
+  .brand-sample { min-height: 164px; padding: 22px; }
+  .brand-nav-sample .nav-inner { align-items: flex-start; flex-direction: column; padding-block: 15px; gap: 12px; }
+  .brand-nav-sample .nav-links { flex-wrap: wrap; }
+}
+
 @keyframes dse-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes dse-motif-in { from { opacity: 0; transform: scale(.96) rotate(-5deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
 @media (prefers-reduced-motion: reduce) {
