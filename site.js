@@ -75,7 +75,9 @@
     if (!href) return;
     try {
       const linkPage = new URL(href, global.location.href).pathname.split('/').pop();
-      if (linkPage === currentPage) link.setAttribute('aria-current', 'page');
+      if (linkPage === currentPage || (currentPage.startsWith('writing-guide-') && linkPage === 'writing-guides.html')) {
+        link.setAttribute('aria-current', 'page');
+      }
     } catch {
       // 非標準 href 不影響主導覽。
     }

@@ -682,13 +682,14 @@ body.focus-reading-mode .article-question-prompt{display:none}
   .article-main .article-summary{margin-bottom:17px}
 }
 </style>  <link rel="stylesheet" href="lumen-redesign.css">
+  <link rel="stylesheet" href="ui-refresh.css?v=20261012">
   <link rel="icon" type="image/png" href="/assets/brand/favicon.png?v=20261012-original">
   <meta name="theme-color" content="#FFF8EB">
 </head><body>
 <a class="skip-link" href="#mainContent">跳至主要內容</a>
 <header class="site-header"><div class="container nav-inner"><a href="index.html" class="logo logo-lockup" aria-label="EssayHub — DSE 中文寫作">
       <span class="brand-lockup-stack"><img class="brand-lockup-art" src="/assets/brand/essayhub-logo.png?v=20261012-original" alt="" aria-hidden="true"><span class="logo-sub">DSE 中文寫作</span></span>
-    </a><button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button><div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="genre-list.html">文體分類</a><a href="questions.html">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="搜尋關鍵字" aria-label="搜尋"></form></div></div></header>
+    </a><button class="nav-toggle" id="navToggle" type="button" aria-label="開關選單" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button><div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="genre-list.html">文體分類</a><a href="questions.html">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="writing-guides.html">寫作指引</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="搜尋關鍵字" aria-label="搜尋"></form></div></div></header>
 <main id="mainContent" tabindex="-1" class="article-page"><div class="container"><a class="back-link" id="backLink" href="genre.html?type=narrative">← 返回文體分類</a><div id="content"><p class="loading">正在載入範文……</p></div></div></main><footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
 
 <!-- 筆記面板開關按鈕：固定在右下角，桌面／手機通用 -->
@@ -855,6 +856,7 @@ function applyEditorialLayout(index,first,question,paragraphs){
   const sidebar=document.createElement("aside");
   sidebar.className="article-sidebar";
   sidebar.setAttribute("aria-label","篇章學習工具");
+  sidebar.id="articleTools";
 
   const navigationCard=document.createElement("section");
   navigationCard.className="article-sidebar-card";
@@ -908,7 +910,7 @@ function applyEditorialLayout(index,first,question,paragraphs){
   const mainColumn=document.createElement("div");
   mainColumn.className="article-main";
   [training,summary,toolbar,essay,sequence].filter(Boolean).forEach(element=>mainColumn.append(element));
-  layout.append(header,sidebar,mainColumn);
+  layout.append(header,mainColumn,sidebar);
   content.replaceChildren(layout);
 }
 
