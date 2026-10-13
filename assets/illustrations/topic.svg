@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">話題寫作：多角度發想</title><desc id="desc">中心的一枚靈感火花向三張不同顏色的思考卡片延伸，象徵從話題發掘多元角度與深層立意。</desc>
+<defs><linearGradient id="center" x1="93" y1="83" x2="152" y2="133" gradientUnits="userSpaceOnUse"><stop stop-color="#FFCD79"/><stop offset="1" stop-color="#FF9876"/></linearGradient></defs>
+<ellipse cx="122" cy="173" rx="84" ry="9" fill="#30313B" opacity=".055"/>
+<circle cx="122" cy="101" r="64" fill="#F5EEF7" opacity=".83"/>
+<path d="M112 83 76 57M137 84l35-34M121 122v27" stroke="#9A77A5" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="4 9"/>
+<g transform="rotate(-8 67 53)"><rect x="29" y="25" width="72" height="54" rx="12" fill="#FFFFFF" stroke="#CAA6D5" stroke-width="2.6"/><path d="M48 44h35M48 53h24" stroke="#A783BC" stroke-width="5" stroke-linecap="round"/><circle cx="80" cy="64" r="4.5" fill="#FF9B75"/></g>
+<g transform="rotate(8 175 53)"><rect x="143" y="22" width="71" height="54" rx="12" fill="#FFF8F0" stroke="#E3B78F" stroke-width="2.6"/><circle cx="185" cy="40" r="8" fill="#FFAF73"/><path d="m156 64 15-16 11 11 10-8 10 13" fill="#B9C5A5" stroke="#A0AD91" stroke-width="2.5" stroke-linejoin="round"/></g>
+<g><rect x="85" y="144" width="75" height="39" rx="12" fill="#F9F3FF" stroke="#B19DD0" stroke-width="2.6"/><path d="M103 157h39M109 168h27" stroke="#9E7AB5" stroke-width="4.5" stroke-linecap="round"/></g>
+<circle cx="122" cy="104" r="36" fill="#FFEDCA" stroke="#FFFFFF" stroke-width="5"/>
+<path d="M122 73c5 16 10 22 25 29-15 6-20 13-25 29-5-16-10-23-25-29 15-7 20-13 25-29Z" fill="url(#center)" stroke="#EE8C70" stroke-width="2"/>
+<circle cx="122" cy="102" r="5" fill="#FFFFFF"/>
+<circle cx="218" cy="116" r="5" fill="#FFAF73"/><circle cx="34" cy="122" r="6" fill="#CAB9EF"/>
+<path d="M195 141v13m-7-7h14" stroke="#D6A14F" stroke-width="3" stroke-linecap="round"/>
+</svg>

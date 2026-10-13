@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">記敘抒情：故事與轉變</title><desc id="desc">一張翻角的故事紙頁，沿蜿蜒路徑從起點走向閃亮的轉折，代表事件、心情與體悟。</desc>
+<defs><linearGradient id="pg" x1="73" y1="24" x2="175" y2="166" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#FFF0E8"/></linearGradient></defs>
+<ellipse cx="118" cy="170" rx="89" ry="9" fill="#30313B" opacity=".07"/>
+<circle cx="45" cy="58" r="19" fill="#FFE7D7"/><circle cx="188" cy="32" r="11" fill="#EAE4FF"/>
+<path d="M52 40q0-10 10-10h104l22 24v105q0 11-11 11H63q-11 0-11-11V40Z" fill="#FFD7CB" stroke="#D88972" stroke-width="2.4"/>
+<path d="M60 30h106l22 24v99q0 10-10 10H70q-10 0-10-10V30Z" fill="url(#pg)"/>
+<path d="M166 30v16q0 8 8 8h14" fill="#FFB392" stroke="#D88972" stroke-width="2"/>
+<path d="M80 61h49M80 74h31" stroke="#C8BAC0" stroke-width="5" stroke-linecap="round"/>
+<path d="M83 134c13-30 50-14 38-40-11-25 22-32 42-18" stroke="#FF8C72" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 12"/>
+<circle cx="84" cy="134" r="10" fill="#8276E8" stroke="#F7F3FF" stroke-width="4"/>
+<path d="M164 51c3 10 6 14 17 17-11 3-14 7-17 17-3-10-6-14-17-17 11-3 14-7 17-17Z" fill="#FFC857"/>
+<path d="M98 147h46" stroke="#E9A493" stroke-width="4" stroke-linecap="round"/>
+<path d="M38 111l-4 7m15-1-7 5" stroke="#A18DF4" stroke-width="3" stroke-linecap="round"/><circle cx="195" cy="111" r="5" fill="#FFB87F"/>
+</svg>

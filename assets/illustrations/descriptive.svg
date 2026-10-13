@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">描寫：捕捉景物細節</title><desc id="desc">暖金色畫框中有群山、夕陽、草木與飛鳥，代表觀察景物及以感官細節描繪畫面。</desc>
+<defs><linearGradient id="sky" x1="91" y1="47" x2="143" y2="161" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF5D2"/><stop offset="1" stop-color="#F5E2C4"/></linearGradient></defs>
+<ellipse cx="119" cy="172" rx="88" ry="8" fill="#30313B" opacity=".065"/>
+<rect x="30" y="32" width="180" height="132" rx="19" fill="#E8C17B"/>
+<rect x="36" y="28" width="168" height="128" rx="16" fill="url(#sky)" stroke="#CCA359" stroke-width="2.4"/>
+<circle cx="165" cy="63" r="19" fill="#FFA453"/>
+<path d="M36 126 78 83l32 35 28-30 66 50v3q0 15-15 15H51q-15 0-15-15v-15Z" fill="#B0A6DD"/>
+<path d="M36 145 86 111l37 25 37-21 44 30v1q0 10-10 10H46q-10 0-10-10v-1Z" fill="#83B6A5"/>
+<path d="M36 150c26-18 56-22 91-9 28-22 54-20 77-3v7q0 11-11 11H47q-11 0-11-6Z" fill="#60978A"/>
+<path d="M78 113c11 0 12 10 22 10M137 120c13-12 22-8 27-7" stroke="#D9EEE4" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+<path d="M72 153v-36" stroke="#82675E" stroke-width="5" stroke-linecap="round"/>
+<path d="M72 124c-20 0-24-14-18-23 10-14 25-9 30 3 13-8 28 2 24 15-3 12-18 19-36 5Z" fill="#91BC85" stroke="#6A9E7D" stroke-width="2.5"/>
+<path d="m116 59 7-4 7 4m4-12 5-4 5 4" stroke="#8B7C8F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24 71c-3 1-7 4-9 8M211 102c6-2 9-7 11-11" stroke="#FFAE75" stroke-width="3" stroke-linecap="round"/>
+<circle cx="206" cy="37" r="6" fill="#C1B3F2"/>
+</svg>
