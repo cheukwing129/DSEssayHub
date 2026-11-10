@@ -1927,5 +1927,27 @@
     ],
     "summary": "「我」兒時迷上蜻蜓，將捕捉和製作標本當成追求戰績的遊戲。表哥教「我」改以相機平視蜻蜓。後來「我」連相機也放下，親眼見牠們捕食，才看出牠們求生與自己求名的分別，主動結束這場單方面的遊戲。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2024-Sample-CLIT-Level5-236L.pdf#page=24"
+  },
+  {
+    "id": 115,
+    "file": "data/articles/article_115.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2023",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "快樂的形狀"
+      }
+    ],
+    "wordCount": 1335,
+    "themeConceptIds": [
+      "th07",
+      "th13"
+    ],
+    "summary": "「我」與母親回到十年未返的屋子，牆上褪色的煙花勾起一家人同看維港煙花、為塗鴉大笑的往事。成年後在辦公室再次看見煙花，「我」才察覺當年相聚的快樂有多珍貴。母親重見塗鴉時的一句玩笑，讓那份快樂在眼前重現。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2023-Sample-CLIT-Level5-9162.pdf#page=2"
   }
 ]
