@@ -1678,5 +1678,28 @@
     ],
     "summary": "父親離世後，立志成為攝影師的主角每次取景，都像聽到父親的叮囑，因追求完美而遲遲按不下快門。主角看見父親留下的照片也有失焦與構圖上的缺憾，卻保存了童年的情感，終於辨明那陣聲音源於自己的執着，重新舉起相機。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2026-Sample-CLIT-Level5-16BK.pdf#page=2"
+  },
+  {
+    "id": 104,
+    "file": "data/articles/article_104.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2026",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "從前的約定"
+      }
+    ],
+    "wordCount": 1355,
+    "themeConceptIds": [
+      "th06",
+      "th07",
+      "th12"
+    ],
+    "summary": "祖孫以雙黃月餅為約，答應每個中秋都相聚。「我」身在溫哥華，只能隔着螢幕與奶奶過節，原想回鄉補約，奶奶卻先一步離世。再逢月圓，「我」把半塊月餅留給天上的月，從秋風月色中重新感到奶奶的陪伴。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2026-Sample-CLIT-Level5-16BK.pdf#page=21"
   }
 ]
