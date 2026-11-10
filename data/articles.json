@@ -1838,5 +1838,27 @@
     ],
     "summary": "「我」翻出與一心在中學時合畫的蘭花，想起一起當設計師、成立工作室的約定。兩人在熟悉的糖水舖重聚，一心卻把舊約當成玩笑。蘭花的根莖已褪去，兩碗照舊點的綠豆沙也嘗不回原來的味道。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2026-Sample-CLIT-Level5-16BK.pdf#page=14"
+  },
+  {
+    "id": 111,
+    "file": "data/articles/article_111.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2024",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "最後一班車"
+      }
+    ],
+    "wordCount": 2109,
+    "themeConceptIds": [
+      "th07",
+      "th12"
+    ],
+    "summary": "王婆每天到車站等孩子乘末班車回家，司機向華多年開着這班別人不願開的車。兩人的關係直到醫院一節才揭開。母親的記憶仍停在兒子十歲那一晚，向華便用每天仍會到站的末班車，陪她等一個就在眼前卻認不得的人。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2024-Sample-CLIT-Level5-236L.pdf#page=2"
   }
 ]
