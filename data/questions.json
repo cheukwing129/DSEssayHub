@@ -568,7 +568,10 @@
     "title": "如果只有一個季節",
     "questionFull": "如果只有一個季節",
     "questionType": "開放式",
-    "relatedArticleIds": [],
+    "relatedArticleIds": [
+      123,
+      124
+    ],
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/CLIT-BS-2021-1.pdf#page=4",
     "sourceLabel": "考評局教師會議簡報",
     "sampleLinks": [
