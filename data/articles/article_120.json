@@ -1,0 +1,281 @@
+{
+  "id": 120,
+  "collection": "extended",
+  "sourceType": "文學DSE",
+  "genre": "narrative",
+  "relatedQuestions": [
+    {
+      "year": "文學2022",
+      "subject": "文學",
+      "questionNumber": "Q1",
+      "title": "兩張戲票"
+    }
+  ],
+  "wordCount": 1309,
+  "themeConceptIds": [
+    "th07",
+    "th13"
+  ],
+  "summary": "女兒把兩張學校戲劇表演的門票留給父母，卻因母親拒絕、父親沉默，以為演出當晚會看見兩個空座。父母私下分別請假、換班，換上衣服趕去。布幕拉開，女兒看見他們揮着票根，才知道兩人都來了。",
+  "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=2",
+  "reviewStatus": "pending-human-review",
+  "topicAnalysis": {
+    "analysisType": "keyword",
+    "keywordExplanation": "「兩張」對應女兒想邀請的兩位觀眾。戲票先是她留在餐桌上的邀請，繼而成為她以為父母不會赴約的證據。兩張票最後以剪過的票根再出現，顯示父母已各自克服工作和衣着上的顧慮，來到演出現場。",
+    "imageryDescription": "",
+    "directionSuggestion": "可把兩張戲票安排在不同場景出現，每次交代它在誰手上、對那個人意味着甚麼。若寫誤會與轉折，可讓人物先按所見下判斷，再切到另一場景交代對方做了甚麼，最後用票根或座位等具體細節揭曉結果。",
+    "referenceAnswerPoints": [
+      "母親用看不懂、怕丟女兒面子作解釋，父親只夾餸。女兒從兩人的反應以及仍在餐桌上的戲票，推斷他們不會來。",
+      "女兒在化妝間想像空席後，敘事切到父母各自請假、換班，讓讀者先知道她看不見的努力。兩聲道謝把兩條敘事接在一起。",
+      "台上演的戲名為《人生》。父母揚起剪過的票根，讓女兒在台上經歷意想不到的轉折，回應開首咖啡的苦澀和茶的回甘。"
+    ],
+    "openEndedAngles": []
+  },
+  "paragraphs": [
+    {
+      "text": "都說人生如戲，而戲也如人生一般充滿衝突、千變萬化、令人意料不及。驚喜、失落、意外，錘鍊成獨一無二、精彩莫及的每一齣名為人生的戲。",
+      "comment": "由「人生如戲」反轉到「戲也如人生」，以驚喜、失落和意外點出下文將出現的情緒變化。",
+      "techniqueTagIds": [
+        "tag_thesis",
+        "tag_metaphor",
+        "tag_foreshadowing"
+      ]
+    },
+    {
+      "text": "如果人生都像戲，我想，你們的戲一定會如咖啡一般苦澀，但又散發香味，或許又如茶一般能回甘。這就是人生的魅力嗎？",
+      "comment": "用咖啡的苦香和茶的回甘比喻「你們」的經歷，預示苦澀之後仍可能有轉折。此處尚未交代「你們」是誰，讀到後來才明白指向父母。",
+      "techniqueTagIds": [
+        "tag_metaphor",
+        "tag_question",
+        "tag_foreshadowing"
+      ]
+    },
+    {
+      "text": "「媽，下個月十二號是學校的戲劇表演，今次是在文化中心舉行的。你會和爸爸一起來看你寶貝女兒在舞台上表演的，對吧！」我倚在廚房的門框旁，看着那佈着青筋、因長年舉着鍋鏟而被鍛鍊得粗壯、不復纖幼的手臂，正熟練地用那在我眼中看來重得要命的鍋鏟，翻拌着幾根綠油油的菜芯。",
+      "comment": "女兒以親暱的口吻邀請父母來看戲，緊接着寫母親滿佈青筋的手臂和重鍋鏟。舞台上的期待與廚房裏長年的勞動，在同一段相遇。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_detail",
+        "tag_action"
+      ]
+    },
+    {
+      "text": "她沒有回應我。",
+      "comment": "獨立一句寫母親沉默，讓女兒熱切的邀請頓住。",
+      "techniqueTagIds": [
+        "tag_contrast",
+        "tag_suspense"
+      ]
+    },
+    {
+      "text": "「媽——你聽到了嗎？這兩張戲票我就放在餐桌上面，你記得一定要和爸一起來喔！」",
+      "comment": "女兒再開口，交代兩張票留在餐桌上，也明說兩張票分別留給爸爸和媽媽。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_repetition"
+      ]
+    },
+    {
+      "text": "她依舊沒有回應我。",
+      "comment": "在前一句的「沒有回應」上加上「依舊」，用相近的短句把等待拉長。",
+      "techniqueTagIds": [
+        "tag_repetition",
+        "tag_suspense"
+      ]
+    },
+    {
+      "text": "我吸了口氣，走離了廚房，把那兩張彩印的、同學精心設計的、巴掌大的票放到餐桌上，再用遙控器壓着。",
+      "comment": "寫女兒吸氣、離開，再用遙控器壓好兩張票。票的大小和彩印寫得具體，餐桌也成為她後來再看票的位置。",
+      "techniqueTagIds": [
+        "tag_action",
+        "tag_detail",
+        "tag_foreshadowing"
+      ]
+    },
+    {
+      "text": "良久，我聽到廚房的熄火聲。媽媽用那把長期被油煙薰啞了的嗓音，緩緩地拒絕了我：「囡啊！爸爸媽媽都不是甚麼有文化的人，看不懂你演的那些甚麼話劇啊、電影啊的東西。看不懂，又沒有很貴的衣服穿去，只會鬧笑話。要是不小心落了你的面子，媽會心痛的！」",
+      "comment": "由熄火聲接到被油煙薰啞的嗓音，延續廚房裏的勞動細節。母親提到看不懂、衣服和女兒的面子，說出她拒絕背後的顧慮。",
+      "techniqueTagIds": [
+        "tag_sound",
+        "tag_dialogue",
+        "tag_characterization"
+      ]
+    },
+    {
+      "text": "「甚麼面子、甚麼文化的！」我氣沖沖地跑到了廚房，用瞪得老圓的眼睛望着她。",
+      "comment": "女兒立即反駁母親提到的「面子」和「文化」，跑回廚房和瞪眼的動作把委屈與着急寫出來。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_action"
+      ]
+    },
+    {
+      "text": "「媽，你真是的！我、我——」根本不介意！",
+      "comment": "重複的「我」和破折號寫話說到一半便停下，只有引號外的「根本不介意」把女兒沒能說完的意思補出來。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_inner_thought"
+      ]
+    },
+    {
+      "text": "「啪！」的一聲，她把廚房門關上了。隔着那扇門，我隱約聽見那把悶悶的聲音低低地吸了一口氣。",
+      "comment": "一聲關門截住對話，門後低低的吸氣聲卻仍讓女兒聽到一點。兩種聲音並列，讓讀者察覺母親也有未說出口的情緒。",
+      "techniqueTagIds": [
+        "tag_sound",
+        "tag_action",
+        "tag_contrast"
+      ]
+    },
+    {
+      "text": "「爸爸，你會勸媽媽和你一起來的，對吧！」我努力地睜着圓滾滾的眼睛看他，手裏舉着兩張在昏黃的燈光下仍能反光、閃亮的戲票。他這才從手上那碗白米飯抬起視線，望向了我。那個膠碗缺了一個小口。他的嘴唇開合了幾下，像是要說些甚麼，卻沒有吐出任何音節，只是往我碗裏不停夾餸，又繼續低頭扒起了白米飯。",
+      "comment": "女兒改向父親求助，亮票與缺口膠碗同時入畫。父親欲言又止，最後只往她碗裏夾餸，讓關心和沉默同時出現。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_detail",
+        "tag_action",
+        "tag_side_description"
+      ]
+    },
+    {
+      "text": "「吃飯吧你！」媽用手指彈了下我的額頭，「是嫌爸媽平日上班不夠忙嗎？」媽媽的唇不斷開合，帶動着嘴角邊、額上的皺紋，連魚尾紋都動了幾下。",
+      "comment": "母親用上班忙打斷女兒的請求，女兒把注意力落在母親說話時牽動的皺紋。父母工作的辛勞有了可見的痕跡。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_detail"
+      ]
+    },
+    {
+      "text": "我這時才驚覺，手上的兩張戲票應是吸收了太多熱能，不然怎會如此燙手？經過多道工序製成的精美戲票放在簡陋而有缺口的舊木桌上，太過耀眼，太過格格不入。我的內心中不知為何湧出了一股苦味，直上喉頭，染得口中含着的、本應香甜的米飯都索然無味，甚至泛上苦澀。",
+      "comment": "把戲票的燙手、舊木桌上的刺眼和米飯的苦澀連在一起，寫女兒覺得自己的請求使家人為難。此處的苦味也接回開首的咖啡比喻。",
+      "techniqueTagIds": [
+        "tag_sensory",
+        "tag_contrast",
+        "tag_echo"
+      ]
+    },
+    {
+      "text": "「我、我懂的，你們不要生氣……」",
+      "comment": "女兒由反駁轉為退讓，以重複和省略號寫她壓下了想父母到場的期待。",
+      "techniqueTagIds": [
+        "tag_dialogue",
+        "tag_psychological"
+      ]
+    },
+    {
+      "text": "今天就是表演日，他們那麼忙，一定會不來。離開家前，我特意往餐桌的方向一瞥，那兩張票還靜靜地躺在褪色而陳舊的木桌上。",
+      "comment": "女兒口中認定父母不會來，出門前卻特意看票是否還在。她把票仍在桌上當成缺席的證據，為後面的改變設下預期。",
+      "techniqueTagIds": [
+        "tag_transition",
+        "tag_action",
+        "tag_foreshadowing"
+      ]
+    },
+    {
+      "text": "舞台的化妝間裏，同學們全在討論父母今晚會怎樣打扮，謝幕時會送上訂製的花束、鼓勵、讚美、合影……只有我，只有我的家長座位會是空的，沒有花束，沒有稱讚，沒有來自父母的支持和欣賞。",
+      "comment": "將同學期待的花束、合照與女兒想像的空座並置。「只有我」和幾次「沒有」寫出她在熱鬧的化妝間裏預先感到的孤單。",
+      "techniqueTagIds": [
+        "tag_contrast",
+        "tag_repetition",
+        "tag_parallel"
+      ]
+    },
+    {
+      "text": "「老闆，抱歉我今天一定要請假……今天很重要，真的很重要！是要去看我女兒的表演——」中年男人手中緊握着本該在餐桌上的戲票，身上套着剪裁老舊的西裝，微微顫抖的聲線訴說着他心中的緊張和忐忑。",
+      "comment": "敘事暫離女兒，讓讀者先看見父親穿上舊西裝，拿了票向老闆請假。他一再說表演很重要，補出了飯桌上沒能說出口的態度。",
+      "techniqueTagIds": [
+        "tag_perspective",
+        "tag_dialogue",
+        "tag_echo",
+        "tag_contrast"
+      ]
+    },
+    {
+      "text": "「店長，想您通容一下，讓我換班……啊！不是的，沒有生病。只是女兒的畢業班戲劇在晚上表演，想去現場支持那做女主角的小妮子而已。」中年婦女在全身鏡前比試着從衣櫃底找出來的裙裝和高跟鞋，和電話另一端的人交談着。目光緊盯着那放在床上的戲票，嘴角不由得微微勾起，露出欣慰的笑容。",
+      "comment": "另一通電話寫母親爭取換班，找出收藏的裙裝和高跟鞋。她先前說怕衣着失禮，此刻卻看着戲票微笑，讓讀者看見拒絕與行動之間的落差。",
+      "techniqueTagIds": [
+        "tag_perspective",
+        "tag_dialogue",
+        "tag_detail",
+        "tag_contrast"
+      ]
+    },
+    {
+      "text": "「謝謝您！」男聲和女聲在這一刻重疊了。",
+      "comment": "用同一句道謝把兩個場景接在一起，讓父母各自為赴約所作的準備在此會合。",
+      "techniqueTagIds": [
+        "tag_sound",
+        "tag_parallel",
+        "tag_transition"
+      ]
+    },
+    {
+      "text": "「接下來有請我們的中六級同學為大家獻上他們精心準備的戲劇——《人生》。」司儀激昂的語調帶起了觀眾的歡呼聲，紅幕未被拉開，已能感受到來自對面的熱情和期待。",
+      "comment": "司儀報出戲名《人生》，扣回開首的「人生如戲」。觀眾的歡呼把場景帶回舞台，也拉長揭幕前的等待。",
+      "techniqueTagIds": [
+        "tag_echo",
+        "tag_sound",
+        "tag_scene"
+      ]
+    },
+    {
+      "text": "他們會在那裏嗎？他們會是其中一員嗎？",
+      "comment": "兩個接連的問句讓視角回到女兒。讀者已看見父母的準備，女兒仍不知道他們是否到場。",
+      "techniqueTagIds": [
+        "tag_question",
+        "tag_inner_thought",
+        "tag_suspense"
+      ]
+    },
+    {
+      "text": "不會吧？",
+      "comment": "用單獨一句把她的希望壓下去，讓揭幕前的猶疑有一個停頓。",
+      "techniqueTagIds": [
+        "tag_inner_thought",
+        "tag_suspense"
+      ]
+    },
+    {
+      "text": "布幕徐徐拉開，我睜開了眼，望向那個地方。",
+      "comment": "「徐徐」放慢揭幕的速度，眼睛望向預留座位，先寫她的動作，下一段才揭曉她看到甚麼。",
+      "techniqueTagIds": [
+        "tag_action",
+        "tag_suspense"
+      ]
+    },
+    {
+      "text": "都說了，他們不會——咦！",
+      "comment": "破折號截斷「他們不會」，一聲「咦」讓先前反覆想像的空席在同一句裏翻轉。",
+      "techniqueTagIds": [
+        "tag_inner_thought",
+        "tag_reversal"
+      ]
+    },
+    {
+      "text": "只見預期中的空席沒有出現，他們揮了揮手，向我揚着剪票後剩下的票根。",
+      "comment": "以揮手和票根確認父母已到場。原先留在舊餐桌上的兩張票變成眼前的票根，完成從邀請到赴約的情節。",
+      "techniqueTagIds": [
+        "tag_action",
+        "tag_detail",
+        "tag_echo"
+      ]
+    },
+    {
+      "text": "這兩張戲票，也為我的人生帶來了一齣短短的、峰迴路轉的戲。",
+      "comment": "把父母赴約帶來的意外比作一齣戲，讓戲票同時連上台上的表演和女兒親歷的轉折。",
+      "techniqueTagIds": [
+        "tag_metaphor",
+        "tag_echo",
+        "tag_conclusion"
+      ]
+    },
+    {
+      "text": "或許，這就是戲的魅力。或許，這就是人生。",
+      "comment": "把開首對人生魅力的提問化為結尾兩個「或許」，讓戲劇的驚喜與生活中的回甘互相照應。",
+      "techniqueTagIds": [
+        "tag_repetition",
+        "tag_echo",
+        "tag_conclusion"
+      ]
+    }
+  ]
+}
