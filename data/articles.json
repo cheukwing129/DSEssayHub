@@ -1993,5 +1993,27 @@
     ],
     "summary": "「我」在雨中重遇舊情人允行，得知他即將結婚，手裏只剩他留下的一封紅色請柬。這次偶遇讓「我」看見自己一直困在舊日回憶裏，最後撕碎請柬，決心放下這段感情，找回原來的自己。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2023-Sample-CLIT-Level5-9162.pdf#page=12"
+  },
+  {
+    "id": 118,
+    "file": "data/articles/article_118.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2023",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "那一天，我遇見"
+      }
+    ],
+    "wordCount": 2215,
+    "themeConceptIds": [
+      "th07",
+      "th13"
+    ],
+    "summary": "父親節，一對久別的父女在旺角西裝店外重逢。父親想起自己離家後錯過女兒的成長，女兒則回想父親曾給她的保護與缺席後的怨恨。兩人交替敘述，重回同一場相遇，最後相視微笑，互相點頭。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2023-Sample-CLIT-Level5-9162.pdf#page=17"
   }
 ]
