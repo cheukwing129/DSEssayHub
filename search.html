@@ -243,7 +243,8 @@
       `${question.year}年`,
       question.questionNumber,
       question.questionFull || '',
-      question.questionType || ''
+      question.questionType || '',
+      String(question.year).startsWith('文學') ? '中國文學科 文學創作' : ''
     ].join(' '));
   }
 
@@ -306,14 +307,17 @@
 
   function buildQuestionCardHtml(question, articles, terms) {
     const articleIds = relatedArticleIdsFor(question, articles);
-    const linksHtml = articleIds.length
-      ? articleIds.map(id => `<a href="article.html?id=${encodeURIComponent(id)}">查看篇章 ${String(id).padStart(2, '0')}</a>`).join('')
-      : '<span class="no-article">暫未有對應範文</span>';
+    const isLiterature = String(question.year).startsWith('文學');
+    const links = articleIds.map(id => `<a href="article.html?id=${encodeURIComponent(id)}">查看篇章 ${String(id).padStart(2, '0')}</a>`);
+    if (isLiterature) {
+      links.push(`<a href="questions.html?subject=literature&amp;year=${encodeURIComponent(question.year)}">${question.sampleLinks?.length ? '查看題目及考生示例' : '查看該年文學創作題目'}</a>`);
+    }
+    const linksHtml = links.join('') || '<span class="no-article">暫未有對應範文</span>';
 
     return `
       <article class="question-card">
         <div class="question-card-head">
-          <span class="question-year">${esc(question.year)}年</span>
+          <span class="question-year">${esc(DSEHub.formatQuestionSourceYear(question.year))}</span>
           <span class="question-number">${esc(question.questionNumber)}</span>
           <span class="question-type-tag">${esc(question.questionType || '題目')}</span>
         </div>

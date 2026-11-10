@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>歷屆試題｜DSE 中文科範文</title>
-  <meta name="description" content="按年份及題型瀏覽 DSE 中文科寫作卷歷屆試題與對應範文。">
+  <meta name="description" content="按年份及題型瀏覽 DSE 中國語文科寫作及中國文學科文學創作的歷屆試題與對應範文。">
   <link rel="stylesheet" href="style.css">
   <style>
     .questions-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
     .questions-head { max-width: 760px; margin-bottom: 28px; }
     .questions-head h1 { font-size: 2rem; margin-bottom: 10px; }
     .questions-head p { color: var(--color-ink-soft, #5c6b5f); line-height: 1.8; }
+    .question-subjects { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .question-source-link { width: fit-content; font-size: .82rem; text-decoration: underline; }
     .q-filter { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-bottom: 24px; padding: 15px 18px; background: var(--color-bg-alt, #eef0e8); border: 1px solid var(--color-border, #ddd6c4); border-radius: 14px; }
     .q-filter-group { display: flex; align-items: center; gap: 8px; }
     .q-filter label { font-size: .88rem; color: var(--color-ink-soft, #5c6b5f); }
@@ -81,7 +83,11 @@
     <div class="main-nav" id="mainNav"><nav class="nav-links" aria-label="主導航"><a href="genre-list.html">文體分類</a><a href="questions.html" aria-current="page">歷屆試題</a><a href="techniques.html">寫作技巧</a><a href="writing-guides.html">寫作指引</a><a href="notes.html">我的筆記</a></nav><form class="nav-search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="搜尋範文、題目或年份…" aria-label="搜尋範文"></form></div>
   </div></header>
   <main id="mainContent" tabindex="-1" class="questions-page"><div class="container">
-    <div class="questions-head"><h1>歷屆試題</h1><p>收錄 2012 至 2026 年 DSE 中文科寫作題目，另收錄 2012 練習卷及文學題；可依來源／年份或題型篩選，並直接連結到對應的範文拆解。</p></div>
+    <div class="questions-head"><h1 id="questionHeading">歷屆試題</h1><p id="questionIntro">收錄 2012 至 2026 年 DSE 中國語文科寫作題目及 2012 練習卷，可按年份或題型查找對應範文。</p></div>
+    <nav class="question-subjects" aria-label="選擇試題科目">
+      <a class="btn btn-primary" href="questions.html" id="languageQuestions" aria-current="page">中國語文科</a>
+      <a class="btn btn-secondary" href="questions.html?subject=literature" id="literatureQuestions">中國文學科</a>
+    </nav>
     <div class="q-filter"><div class="q-filter-group"><label for="yearFilter">來源／年份：</label><select id="yearFilter"><option value="">全部來源／年份</option></select></div><div class="q-filter-group"><label for="typeFilter">題型：</label><select id="typeFilter"><option value="">全部題型</option></select></div><div class="q-filter-group"><label for="coverageFilter">範文：</label><select id="coverageFilter"><option value="">全部</option><option value="with">有範文</option><option value="without">未有範文</option></select></div><button type="button" class="q-filter-reset" id="clearFilters" hidden>清除篩選</button></div>
     <nav class="year-quick-nav" id="yearQuickNav" aria-label="快速選擇試題年份" hidden></nav>
     <p class="question-count-note" id="countNote" aria-live="polite" aria-atomic="true" hidden></p><div class="question-list" id="questionList"><p class="status-text" id="questionStatus">試題載入中…</p></div><div id="errorBox"></div>
@@ -98,9 +104,22 @@ const typeFilterEl=document.getElementById('typeFilter');
 const coverageFilterEl=document.getElementById('coverageFilter');
 const clearFiltersEl=document.getElementById('clearFilters');
 const pageParams=new URLSearchParams(location.search);
+const isLiterature=pageParams.get('subject')==='literature'||String(pageParams.get('year')??'').startsWith('文學');
 let allQuestions=[],allArticles=[];
 const esc=DSEHub.escapeHtml;
 const labels={narrative:'記敘抒情文',argumentative:'論說文',descriptive:'描寫文',topic:'話題式／開放式',practical:'實用寫作'};
+
+if(isLiterature){
+  const languageLink=document.getElementById('languageQuestions');
+  const literatureLink=document.getElementById('literatureQuestions');
+  languageLink.classList.replace('btn-primary','btn-secondary');
+  languageLink.removeAttribute('aria-current');
+  literatureLink.classList.replace('btn-secondary','btn-primary');
+  literatureLink.setAttribute('aria-current','page');
+  document.title='中國文學科歷屆試題｜EssayHub';
+  document.getElementById('questionHeading').textContent='中國文學科歷屆試題';
+  document.getElementById('questionIntro').textContent='中國文學科試卷一「文學創作」，2012 至 2026 年每年兩題。可按年份查找題名及考評局考生示例。';
+}
 
 function yearValue(year){
   const match=String(year??'').match(/(\d{4})/);
@@ -121,6 +140,7 @@ function parseType(q){
 }
 function listUrl({restore=false}={}){
   const params=new URLSearchParams();
+  if(isLiterature) params.set('subject','literature');
   if(yearFilterEl.value) params.set('year',yearFilterEl.value);
   if(typeFilterEl.value) params.set('qtype',typeFilterEl.value);
   if(coverageFilterEl.value) params.set('coverage',coverageFilterEl.value);
@@ -132,7 +152,8 @@ function syncUrl(){
   history.replaceState(null,'',listUrl());
 }
 function scrollStateKey(){
-  return `dse-questions-scroll:${yearFilterEl.value||'all'}:${typeFilterEl.value||'all'}:${coverageFilterEl.value||'all'}`;
+  const subjectPrefix=isLiterature?'literature:':'';
+  return `dse-questions-scroll:${subjectPrefix}${yearFilterEl.value||'all'}:${typeFilterEl.value||'all'}:${coverageFilterEl.value||'all'}`;
 }
 function saveScrollPosition(){
   try{sessionStorage.setItem(scrollStateKey(),String(Math.max(0,Math.round(scrollY))))}catch{}
@@ -152,14 +173,19 @@ function articleHref(id){
 function questionSourceKind(year){
   const value=String(year??'');
   if(value==='2012pp')return '練習卷';
-  if(value.startsWith('文學'))return '文學題';
+  if(value.startsWith('文學'))return '試卷一 · 文學創作';
   return 'DSE';
 }
 function buildCard(q){
   const ids=relatedArticleIds(q);
-  const links=ids.length?`<div class="question-links-label">對應範文 · ${ids.length} 篇</div><div class="question-links">${ids.map(id=>`<a href="${articleHref(id)}" aria-label="閱讀範文 ${String(id).padStart(2,'0')}">範文 ${String(id).padStart(2,'0')} →</a>`).join('')}</div>`:`<div class="question-links-label">範文收錄</div><span class="no-article">暫未有對應範文</span>`;
+  const examples=q.sampleLinks||[];
+  const articleLinks=ids.map(id=>`<a href="${articleHref(id)}" aria-label="閱讀範文 ${String(id).padStart(2,'0')}">範文 ${String(id).padStart(2,'0')} →</a>`);
+  const sampleLinks=examples.map(sample=>`<a href="${esc(sample.url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(sample.label)}，考評局 PDF（另開分頁）">${esc(sample.label)} ↗</a>`);
+  const count=articleLinks.length+sampleLinks.length;
+  const links=count?`<div class="question-links-label">對應範文 · ${count} 篇</div><div class="question-links">${[...articleLinks,...sampleLinks].join('')}</div>`:`<div class="question-links-label">範文收錄</div><span class="no-article">暫未有對應範文</span>`;
   const imageBlock=q.hasImage&&q.imagePath?`<figure class="question-image-wrap"><img class="question-image" src="${esc(q.imagePath)}" alt="${esc(q.imageAlt||'原題附圖')}" loading="lazy" decoding="async"><figcaption>${esc(q.imageNote||'原題附圖')}</figcaption></figure>`:q.hasImage?`<p class="question-image-note">${esc(q.imageNote||'原題附圖；目前未收錄圖像。')}</p>`:'';
-  return `<article class="question-card" aria-label="${esc(DSEHub.formatQuestionSourceYear(q.year))} ${esc(q.questionNumber)} ${esc(labels[q.genre]||q.questionType||'題目')}"><div class="question-card-head"><span class="question-number">${esc(q.questionNumber)}</span><span class="question-type-tag">${esc(labels[q.genre]||q.questionType||'題目')}</span></div><div class="question-card-main"><p class="question-full">${esc(q.questionFull||q.question||'題目內容待補')}</p>${imageBlock}</div><div class="question-links-panel">${links}</div></article>`;
+  const sourceLink=q.sourceUrl?`<a class="question-source-link" href="${esc(q.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(q.sourceLabel||'查閱題目來源')} ↗</a>`:'';
+  return `<article class="question-card" aria-label="${esc(DSEHub.formatQuestionSourceYear(q.year))} ${esc(q.questionNumber)} ${esc(labels[q.genre]||q.questionType||'題目')}"><div class="question-card-head"><span class="question-number">${esc(q.questionNumber)}</span><span class="question-type-tag">${esc(labels[q.genre]||q.questionType||'題目')}</span></div><div class="question-card-main"><p class="question-full">${esc(q.questionFull||q.question||'題目內容待補')}</p>${imageBlock}${sourceLink}</div><div class="question-links-panel">${links}</div></article>`;
 }
 function populateQuickYears(){
   yearQuickNavEl.replaceChildren();
@@ -185,7 +211,7 @@ function syncQuickYears(){
   });
 }
 function populateFilters(){
-  const years=[...new Set(allQuestions.map(q=>q.year))].sort((a,b)=>yearValue(b)-yearValue(a));
+  const years=[...new Set(allQuestions.map(q=>String(q.year)))].sort((a,b)=>yearValue(b)-yearValue(a));
   const types=[...new Set(allQuestions.map(parseType).filter(Boolean))];
   yearFilterEl.innerHTML='<option value="">全部來源／年份</option>'+years.map(y=>`<option value="${esc(y)}">${esc(DSEHub.formatQuestionSourceYear(y))}</option>`).join('');
   typeFilterEl.innerHTML='<option value="">全部題型</option>'+types.map(t=>`<option value="${esc(t)}">${esc(labels[t]||t)}</option>`).join('');
@@ -202,8 +228,8 @@ function render(){
   const coverage=coverageFilterEl.value;
   const hasFilters=Boolean(year||type||coverage);
   const filtered=allQuestions.filter(q=>{
-    const ids=relatedArticleIds(q);
-    const coverageMatches=!coverage||(coverage==='with'?ids.length>0:ids.length===0);
+    const hasSamples=Boolean(q.sampleLinks?.length||relatedArticleIds(q).length);
+    const coverageMatches=!coverage||(coverage==='with'?hasSamples:!hasSamples);
     return(!year||String(q.year)===year)&&(!type||parseType(q)===type)&&coverageMatches;
   }).sort(sortQuestions);
   const activeFilters=[];
@@ -238,6 +264,7 @@ async function load(){
     allArticles=await ar.json();
     if(!Array.isArray(allQuestions))throw Error('data/questions.json 格式必須是陣列');
     if(!Array.isArray(allArticles))throw Error('data/articles.json 格式必須是陣列');
+    allQuestions=allQuestions.filter(q=>String(q.year).startsWith('文學')===isLiterature);
     populateFilters();
     populateQuickYears();
     render();
