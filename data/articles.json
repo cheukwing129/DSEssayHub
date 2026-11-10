@@ -1815,5 +1815,28 @@
     ],
     "summary": "沉迷遊戲的「我」遲知父親病倒，在病房仍以輕慢態度回應母親。離開時，母親無言的一眼令他開始反省。窗外由暴雨轉晴，眼前的蝴蝶也讓他想到自己能否破繭成長。他最後主動握住母親的手，回應那道難忘的目光。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2025-Sample-CLIT-Level5-M307.pdf#page=23"
+  },
+  {
+    "id": 110,
+    "file": "data/articles/article_110.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2026",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "從前的約定"
+      }
+    ],
+    "wordCount": 1817,
+    "themeConceptIds": [
+      "th08",
+      "th11",
+      "th13"
+    ],
+    "summary": "「我」翻出與一心在中學時合畫的蘭花，想起一起當設計師、成立工作室的約定。兩人在熟悉的糖水舖重聚，一心卻把舊約當成玩笑。蘭花的根莖已褪去，兩碗照舊點的綠豆沙也嘗不回原來的味道。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2026-Sample-CLIT-Level5-16BK.pdf#page=14"
   }
 ]
