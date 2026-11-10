@@ -1746,5 +1746,28 @@
     ],
     "summary": "父親去看女兒英秀的首場演奏會，從車站的擦肩而過到獨坐觀眾席一角，都以為自己已成了她生活裏的配角。英秀致辭時說出琴弦如何讓大提琴發聲，呼應兒時把父親比作弦的話。父親終於從她的目光明白，自己在女兒心裏一直有位置。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2025-Sample-CLIT-Level5-M307.pdf#page=2"
+  },
+  {
+    "id": 107,
+    "file": "data/articles/article_107.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2025",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "主角與配角"
+      }
+    ],
+    "wordCount": 1927,
+    "themeConceptIds": [
+      "th01",
+      "th07",
+      "th13"
+    ],
+    "summary": "雙胞胎妹妹從戲劇節到跆拳道比賽總以些微差距輸給姐姐，漸漸把自己看成她的配角。一次清晨求助，姐姐卻記得她從小愛演戲，鼓勵她按自己的興趣走下去，還願意做她的配角。妹妹於是重新理解，自己也能決定生命的方向。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2025-Sample-CLIT-Level5-M307.pdf#page=8"
   }
 ]
