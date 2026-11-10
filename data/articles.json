@@ -2148,5 +2148,50 @@
     ],
     "summary": "孫女每逢春節回鄉，從前由外婆牽着到田間播種，如今外婆衰老，已不認得她。孫女陪外婆重到荒廢的田地，自己鬆土播種，外婆一度想起她的身分。她希望時間停在春天，好有更多日子陪伴外婆。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2021-Sample-CLIT-Level5A.pdf#page=2"
+  },
+  {
+    "id": 125,
+    "file": "data/articles/article_125.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2021",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "已讀不回的訊息"
+      }
+    ],
+    "wordCount": 1876,
+    "themeConceptIds": [
+      "th06",
+      "th07",
+      "th13"
+    ],
+    "summary": "「我」看見外國觀眾未能投入爺爺的京劇演出，發訊息提出同聲傳譯，爺爺已讀卻沒有回覆。「我」仍準備傳譯，並從爺爺沒有阻止和兩人的眼神交會，讀出另一種可能的回應。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2021-Sample-CLIT-Level5.pdf#page=8"
+  },
+  {
+    "id": 126,
+    "file": "data/articles/article_126.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2021",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "已讀不回的訊息"
+      }
+    ],
+    "wordCount": 1426,
+    "themeConceptIds": [
+      "th08",
+      "th13"
+    ],
+    "summary": "「我」與好友因專題研習意見不合，夜裏反覆查看手機，又傳訊道歉，始終只見「已讀」。隔天醒來仍無回覆，「我」在苦笑中關掉畫面，開始思考該怎樣面對友情裏無法強求的回應。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2021-Sample-CLIT-Level5A.pdf#page=9"
   }
 ]
