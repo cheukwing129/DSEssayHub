@@ -2037,5 +2037,27 @@
     ],
     "summary": "「我」小時候與父母一起看《蜘蛛俠》。後來戲院裏只剩母親與「我」，「我」還嫌母親問話、接電話擾了興致。長大後，工作電話同樣打斷「我」看戲，才想起母親的無奈。再次獨自入場後，「我」終於握着兩張新戲票，打電話邀請她一起看。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=8"
+  },
+  {
+    "id": 120,
+    "file": "data/articles/article_120.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2022",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "兩張戲票"
+      }
+    ],
+    "wordCount": 1309,
+    "themeConceptIds": [
+      "th07",
+      "th13"
+    ],
+    "summary": "女兒把兩張學校戲劇表演的門票留給父母，卻因母親拒絕、父親沉默，以為演出當晚會看見兩個空座。父母私下分別請假、換班，換上衣服趕去。布幕拉開，女兒看見他們揮着票根，才知道兩人都來了。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=2"
   }
 ]
