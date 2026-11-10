@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import vm from 'node:vm';
+import '../site.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -35,6 +37,51 @@ const globalCss = read('style.css');
 const techniquesHtml = assertInlineScriptsParse('techniques.html');
 const siteJs = read('site.js');
 const questions = JSON.parse(read('data/questions.json'));
+
+// Render the real article template with two different essays of the same question.
+// Their training reference must come from the question, while essay analysis remains separate.
+const articleRenderSource = articleHtml.slice(articleHtml.indexOf('function render(index,'), articleHtml.indexOf('\n(async()=>'));
+const articles = JSON.parse(read('data/articles.json'));
+const question = questions.find(item => item.year === '文學2025' && item.questionNumber === 'Q1');
+function renderTraining(articleId) {
+  const index = articles.find(item => item.id === articleId);
+  const content = { innerHTML: '' };
+  const context = {
+    document: {}, content, back: {}, labels: {}, DSEHub: globalThis.DSEHub,
+    esc: globalThis.DSEHub.escapeHtml,
+    getSafeReturnTarget: () => null,
+    withRestoreFlag: value => value,
+    articleUrl: id => `article.html?id=${id}`,
+    buildParagraphNavigation: () => '',
+    applyEditorialLayout: () => {},
+    index, body: JSON.parse(read(index.file)), questions, articles,
+    encodeURIComponent
+  };
+  vm.runInNewContext(`${articleRenderSource}\nrender(index,body,{}, {},questions,articles);`, context);
+  const reference = content.innerHTML.match(/id="trainingReference" hidden>([\s\S]*?)<\/div><\/div><\/details>/)?.[1];
+  assert.ok(reference, '文章須提供審題參考');
+  assert.ok(content.innerHTML.includes('這篇範文的寫法分析'));
+  assert.ok(reference.includes(question.writingGuidance.planning[0]));
+  assert.ok(!reference.includes(context.body.topicAnalysis.referenceAnswerPoints[0]), '範文情節分析不可當作審題參考');
+  return reference;
+}
+assert.equal(renderTraining(106), renderTraining(107), '同題範文必須共用試題層級的審題參考');
+
+// Questions without any essays still expose the same topic guidance through the question bank.
+const cardSource = questionsHtml.slice(questionsHtml.indexOf('function buildCard(q)'), questionsHtml.indexOf('function populateQuickYears()'));
+const noEssayQuestion = questions.find(item => item.year === '2026' && item.questionNumber === 'Q3');
+const cardContext = {
+  q: noEssayQuestion, DSEHub: globalThis.DSEHub, labels: {},
+  esc: globalThis.DSEHub.escapeHtml,
+  relatedArticleIds: () => [], articleHref: id => `article.html?id=${id}`
+};
+const questionCard = vm.runInNewContext(`${cardSource}\nbuildCard(q);`, cardContext);
+assert.ok(questionCard.includes(noEssayQuestion.writingGuidance.requirements[0]));
+assert.ok(questionCard.includes('暫未有對應範文'));
+
+for (const item of questions.filter(item => item.subject === '文學')) {
+  assert.ok(item.writingGuidance.requirements.join('').includes(item.questionFull), `${item.year} ${item.questionNumber} 的審題內容必須對應題名`);
+}
 for (const question of questions.filter(item => item.hasImage)) {
   assert.ok(question.imagePath, `${question.year} ${question.questionNumber} 應提供 imagePath`);
   assert.ok(question.imageAlt, `${question.year} ${question.questionNumber} 應提供 imageAlt`);

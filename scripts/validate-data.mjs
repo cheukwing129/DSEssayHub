@@ -132,6 +132,12 @@ for (const question of questions) {
   if (question.subject !== undefined && !String(question.subject ?? '').trim()) fail(`試題 ${key} 的 subject 不可為空。`);
   if (question.title !== undefined && !String(question.title ?? '').trim()) fail(`試題 ${key} 的 title 不可為空。`);
   if (question.genre !== undefined && !allowedGenres.has(question.genre)) fail(`試題 ${key} 的 genre 無效：${question.genre}`);
+  for (const field of ['requirements', 'keyPoints', 'pitfalls', 'planning']) {
+    const points = question.writingGuidance?.[field];
+    if (!Array.isArray(points) || !points.length || points.some(point => typeof point !== 'string' || !point.trim())) {
+      fail(`試題 ${key} 的 writingGuidance.${field} 必須是非空文字陣列。`);
+    }
+  }
   if (!Array.isArray(question.relatedArticleIds)) {
     fail(`試題 ${key} 的 relatedArticleIds 必須是陣列。`);
   } else if (new Set(question.relatedArticleIds).size !== question.relatedArticleIds.length) {

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>歷屆試題｜DSE 中文科範文</title>
   <meta name="description" content="按年份及題型瀏覽 DSE 中國語文科寫作及中國文學科文學創作的歷屆試題與對應範文。">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261111-guidance">
   <style>
     .questions-page { padding: calc(var(--header-height, 72px) + 48px) 0 64px; }
     .questions-head { max-width: 760px; margin-bottom: 28px; }
@@ -93,7 +93,7 @@
     <p class="question-count-note" id="countNote" aria-live="polite" aria-atomic="true" hidden></p><div class="question-list" id="questionList"><p class="status-text" id="questionStatus">試題載入中…</p></div><div id="errorBox"></div>
   </div></main>
   <footer class="site-footer"><div class="container footer-inner"><p>DSE 中文科範文自學平台</p></div></footer>
-  <script src="site.js"></script>
+  <script src="site.js?v=20261111-guidance"></script>
 <script>
 const listEl=document.getElementById('questionList');
 const countNoteEl=document.getElementById('countNote');
@@ -184,8 +184,9 @@ function buildCard(q){
   const count=articleLinks.length+sampleLinks.length;
   const links=count?`<div class="question-links-label">對應範文 · ${count} 篇</div><div class="question-links">${[...articleLinks,...sampleLinks].join('')}</div>`:`<div class="question-links-label">範文收錄</div><span class="no-article">暫未有對應範文</span>`;
   const imageBlock=q.hasImage&&q.imagePath?`<figure class="question-image-wrap"><img class="question-image" src="${esc(q.imagePath)}" alt="${esc(q.imageAlt||'原題附圖')}" loading="lazy" decoding="async"><figcaption>${esc(q.imageNote||'原題附圖')}</figcaption></figure>`:q.hasImage?`<p class="question-image-note">${esc(q.imageNote||'原題附圖；目前未收錄圖像。')}</p>`:'';
+  const guidance=q.writingGuidance?`<details class="question-guidance"><summary>審題要點與詳略安排</summary>${DSEHub.renderWritingGuidance(q.writingGuidance)}</details>`:'';
   const sourceLink=q.sourceUrl?`<a class="question-source-link" href="${esc(q.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(q.sourceLabel||'查閱題目來源')} ↗</a>`:'';
-  return `<article class="question-card" aria-label="${esc(DSEHub.formatQuestionSourceYear(q.year))} ${esc(q.questionNumber)} ${esc(labels[q.genre]||q.questionType||'題目')}"><div class="question-card-head"><span class="question-number">${esc(q.questionNumber)}</span><span class="question-type-tag">${esc(labels[q.genre]||q.questionType||'題目')}</span></div><div class="question-card-main"><p class="question-full">${esc(q.questionFull||q.question||'題目內容待補')}</p>${imageBlock}${sourceLink}</div><div class="question-links-panel">${links}</div></article>`;
+  return `<article class="question-card" aria-label="${esc(DSEHub.formatQuestionSourceYear(q.year))} ${esc(q.questionNumber)} ${esc(labels[q.genre]||q.questionType||'題目')}"><div class="question-card-head"><span class="question-number">${esc(q.questionNumber)}</span><span class="question-type-tag">${esc(labels[q.genre]||q.questionType||'題目')}</span></div><div class="question-card-main"><p class="question-full">${esc(q.questionFull||q.question||'題目內容待補')}</p>${imageBlock}${sourceLink}${guidance}</div><div class="question-links-panel">${links}</div></article>`;
 }
 function populateQuickYears(){
   yearQuickNavEl.replaceChildren();

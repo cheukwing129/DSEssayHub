@@ -34,12 +34,29 @@
     return /^\d{4}$/.test(value) ? `${value}年` : value;
   };
 
+  const renderWritingGuidance = guidance => {
+    const sections = [
+      ['requirements', '題目要求'],
+      ['keyPoints', '審題要點'],
+      ['pitfalls', '常見偏差與題目陷阱'],
+      ['planning', '詳略與組織安排']
+    ];
+    const content = sections.map(([key, title]) => {
+      const points = Array.isArray(guidance?.[key]) ? guidance[key] : [];
+      if (!points.length) return '';
+      return `<section class="writing-guidance-section"><h3>${title}</h3><ul>${points.map(point => `<li>${escapeHtml(point)}</li>`).join('')}</ul></section>`;
+    }).join('');
+    if (!content) return '<p>此題的審題參考尚待整理。</p>';
+    return `<div class="writing-guidance"><p class="writing-guidance-note">以下為教學參考，詳略與組織建議可按立意和文體調整。</p>${content}</div>`;
+  };
+
   global.DSEHub = global.DSEHub || {};
   global.DSEHub.escapeHtml = escapeHtml;
   global.DSEHub.nameById = nameById;
   global.DSEHub.questionTextByKey = questionTextByKey;
   global.DSEHub.itemById = itemById;
   global.DSEHub.formatQuestionSourceYear = formatQuestionSourceYear;
+  global.DSEHub.renderWritingGuidance = renderWritingGuidance;
 
   if (typeof document === 'undefined') return;
 
