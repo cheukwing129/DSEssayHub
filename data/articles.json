@@ -1311,5 +1311,348 @@
       "th07"
     ],
     "summary": "文章先論述物質充足能讓孩子接觸更多技能、教育及遊歷，再指出過度照顧可能削弱自理能力，物質享受也可能使人失去上進心。作者最後認為物質條件的影響取決於如何運用，若有長輩引導並建立良好品格和價值觀，富足資源仍有利孩子成長。"
+  },
+  {
+    "id": 88,
+    "file": "data/articles/article_88.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2012",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "難以下嚥的盛宴"
+      }
+    ],
+    "wordCount": 1949,
+    "themeConceptIds": [
+      "th02",
+      "th05",
+      "th13"
+    ],
+    "summary": "愛吃美食的少女隨母親出席煤礦老闆的豪宴，席間得知礦工因缺乏安全設備而喪生，老闆還辱罵索償的家屬。她再也吃不下眼前佳餚，離席後重新思考金錢與心安。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E9%9B%A3%E4%BB%A5%E4%B8%8B%E5%9A%A5%E7%9A%84%E7%9B%9B%E5%AE%B4"
+  },
+  {
+    "id": 89,
+    "file": "data/articles/article_89.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2012",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "再沒有限期"
+      }
+    ],
+    "wordCount": 1144,
+    "themeConceptIds": [
+      "th03",
+      "th05",
+      "th13"
+    ],
+    "summary": "敘事者在炎熱的城市尋找人情味，從屏風樓、街市和新聞所見反思貧富與冷漠，末段轉入洪水和倒行手錶的末日想像。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E5%86%8D%E6%B2%92%E6%9C%89%E9%99%90%E6%9C%9F"
+  },
+  {
+    "id": 90,
+    "file": "data/articles/article_90.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2013",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "我和我的書桌"
+      }
+    ],
+    "wordCount": 1576,
+    "themeConceptIds": [
+      "th01",
+      "th07",
+      "th13"
+    ],
+    "summary": "主角面對母親換上的新書桌，由桌腳、刻痕和貼紙想起用舊桌時的童年。新桌雖整潔穩固，她仍為舊桌留下的記憶突然消失而失落。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84%E6%9B%B8%E6%A1%8C"
+  },
+  {
+    "id": 91,
+    "file": "data/articles/article_91.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2013",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "過關了"
+      }
+    ],
+    "wordCount": 1496,
+    "themeConceptIds": [
+      "th01",
+      "th02",
+      "th04"
+    ],
+    "summary": "大學迎新營的新生受朋輩壓力，一度想依規則偷移老婦的紙皮。她從老婦眼中看見勞苦，想到《賣炭翁》，最後寧可承受噓聲也拒絕完成任務。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E9%81%8E%E9%97%9C%E4%BA%86"
+  },
+  {
+    "id": 92,
+    "file": "data/articles/article_92.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2014",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "終於到了這一刻"
+      }
+    ],
+    "wordCount": 1460,
+    "themeConceptIds": [
+      "th02",
+      "th05",
+      "th13"
+    ],
+    "summary": "未來世界的演講者歌頌整容、城市擴張和征服自然，將種種破壞包裝成人類成就。散場後的塵霧、保護衣和枯槁觀眾翻轉了慶典的意義。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E7%B5%82%E6%96%BC%E5%88%B0%E4%BA%86%E9%80%99%E4%B8%80%E5%88%BB"
+  },
+  {
+    "id": 93,
+    "file": "data/articles/article_93.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2014",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "昨夜的留言"
+      }
+    ],
+    "wordCount": 1819,
+    "themeConceptIds": [
+      "th07",
+      "th13"
+    ],
+    "summary": "文憑試前一夜，重考的女兒把母親反覆勸睡看成騷擾，終於出言斥責。翌晨她讀到母親留下的便條，才明白昨夜的勸說出於支持與關心。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E6%98%A8%E5%A4%9C%E7%9A%84%E7%95%99%E8%A8%80"
+  },
+  {
+    "id": 94,
+    "file": "data/articles/article_94.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2015",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "被盜走的儲物箱"
+      }
+    ],
+    "wordCount": 1732,
+    "themeConceptIds": [
+      "th02",
+      "th05",
+      "th07"
+    ],
+    "summary": "跟父親擺賣的孩子目睹儲物箱遭偷，當時難以理解父親待人的善意。多年後父親病重，失去的箱子重現，箱中線索顯示有人以替父親付清醫藥費回報舊恩。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E8%A2%AB%E7%9B%9C%E8%B5%B0%E7%9A%84%E5%84%B2%E7%89%A9%E7%AE%B1"
+  },
+  {
+    "id": 95,
+    "file": "data/articles/article_95.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2015",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "早晨，坐在大樹旁"
+      }
+    ],
+    "wordCount": 1498,
+    "themeConceptIds": [
+      "th01",
+      "th11",
+      "th13"
+    ],
+    "summary": "記錯文憑試日期的學生在清晨坐到一棵看似枯死的大樹旁，從螞蟻繞過枯葉和大樹隙中長出的嫩綠，重新衡量挫折，決定繼續努力。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E6%97%A9%E6%99%A8%E5%9D%90%E5%9C%A8%E5%A4%A7%E6%A8%B9%E6%97%81"
+  },
+  {
+    "id": 96,
+    "file": "data/articles/article_96.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2016",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "他們在旅途相遇"
+      }
+    ],
+    "wordCount": 1659,
+    "themeConceptIds": [
+      "th01",
+      "th07",
+      "th13"
+    ],
+    "summary": "獨自騎車環島的青年在台南遇見前往探望兒子的老人。兩人短暫同行，青年因老人的話想起自己的父親，也重新理解自由和牽掛。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E4%BB%96%E5%80%91%E5%9C%A8%E6%97%85%E9%80%94%E7%9B%B8%E9%81%87"
+  },
+  {
+    "id": 97,
+    "file": "data/articles/article_97.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2016",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "期待的節日"
+      }
+    ],
+    "wordCount": 1912,
+    "themeConceptIds": [
+      "th07",
+      "th12",
+      "th13"
+    ],
+    "summary": "父母分開後，女兒仍期待父親節與父親相聚。她由準備墨綠領結想起童年，重逢時看見父親已老，也感受到他的笑容一如往昔。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E6%9C%9F%E5%BE%85%E7%9A%84%E7%AF%80%E6%97%A5"
+  },
+  {
+    "id": 98,
+    "file": "data/articles/article_98.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2017",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "朋友，起來"
+      }
+    ],
+    "wordCount": 2487,
+    "themeConceptIds": [
+      "th02",
+      "th08",
+      "th12"
+    ],
+    "summary": "被圈養的棕熊與另一隻負傷的棕熊在馬戲團互相照顧。友熊公演時倒地，主角試圖救牠卻中槍，最後在星空下想像兩者重返草原。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E6%9C%8B%E5%8F%8B%E8%B5%B7%E4%BE%86"
+  },
+  {
+    "id": 99,
+    "file": "data/articles/article_99.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2017",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "遲來的驚喜"
+      }
+    ],
+    "wordCount": 1687,
+    "themeConceptIds": [
+      "th01",
+      "th07",
+      "th13"
+    ],
+    "summary": "姐姐長期盼望弟弟能叫自己一聲姐姐，一次幫他換衣時卻受傷，氣得躲進房間。弟弟其後拿著衣服走來，終於叫出了她等待多年的稱呼。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E9%81%B2%E4%BE%86%E7%9A%84%E9%A9%9A%E5%96%9C"
+  },
+  {
+    "id": 100,
+    "file": "data/articles/article_100.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "descriptive",
+    "relatedQuestions": [
+      {
+        "year": "文學2018",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "書店風景"
+      }
+    ],
+    "wordCount": 1555,
+    "themeConceptIds": [
+      "th03",
+      "th06"
+    ],
+    "summary": "文章引讀者走進藏於小巷的舊書店，依次描寫無聲的讀書互動、舊書流轉中的回憶，以及店主和讀者之間的人情。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E6%9B%B8%E5%BA%97%E9%A2%A8%E6%99%AF"
+  },
+  {
+    "id": 101,
+    "file": "data/articles/article_101.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2018",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "近在咫尺的陌生"
+      }
+    ],
+    "wordCount": 1542,
+    "themeConceptIds": [
+      "th01",
+      "th11",
+      "th13"
+    ],
+    "summary": "放下音樂多年的主角再次坐到鋼琴前，發現琴譜和琴鍵雖在手邊，技藝與熱情已漸遠。大學選科再次把音樂帶到眼前，她最後向昔日熟悉的世界道別。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E8%BF%91%E5%9C%A8%E5%92%AB%E5%B0%BA%E7%9A%84%E9%99%8C%E7%94%9F"
+  },
+  {
+    "id": 102,
+    "file": "data/articles/article_102.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2019",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "值得付出的代價"
+      }
+    ],
+    "wordCount": 2020,
+    "themeConceptIds": [
+      "th01",
+      "th07",
+      "th13"
+    ],
+    "summary": "懷孕的主角因孕吐、醫生提醒及丈夫的提議，反覆衡量繼續懷孕的代價。親身感到胎動後，她重新理解自己和孩子的關係，作出了選擇。",
+    "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E5%80%BC%E5%BE%97%E4%BB%98%E5%87%BA%E7%9A%84%E4%BB%A3%E5%83%B9"
   }
-  ]
+]
