@@ -838,6 +838,15 @@ function applyEditorialLayout(index,first,question,paragraphs){
 
   const metaLines=header.querySelectorAll(".article-meta-line");
   if(metaLines[0])metaLines[0].classList.add("article-meta-details");
+  if(index.sourceUrl?.startsWith("https://sites.google.com/qmss.edu.hk/chinesearticle/")){
+    const sourceLine=document.createElement("p");
+    sourceLine.className="article-meta-line article-meta-details";
+    const sourceLink=document.createElement("a");
+    sourceLink.href=index.sourceUrl;
+    sourceLink.textContent="原文來源 · 慕德中學「文學科佳作」";
+    sourceLine.append(sourceLink);
+    metaLines[0]?.after(sourceLine);
+  }
   if(metaLines[1]){
     const prompt=document.createElement("section");
     prompt.className="article-question-prompt";
