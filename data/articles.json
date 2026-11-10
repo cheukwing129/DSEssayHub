@@ -1769,5 +1769,28 @@
     ],
     "summary": "雙胞胎妹妹從戲劇節到跆拳道比賽總以些微差距輸給姐姐，漸漸把自己看成她的配角。一次清晨求助，姐姐卻記得她從小愛演戲，鼓勵她按自己的興趣走下去，還願意做她的配角。妹妹於是重新理解，自己也能決定生命的方向。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2025-Sample-CLIT-Level5-M307.pdf#page=8"
+  },
+  {
+    "id": 108,
+    "file": "data/articles/article_108.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2025",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "難忘的眼神"
+      }
+    ],
+    "wordCount": 1988,
+    "themeConceptIds": [
+      "th07",
+      "th11",
+      "th13"
+    ],
+    "summary": "「我」放棄高薪工作，決定學習紋身，上司、好友和父親的眼神卻令她不斷懷疑自己的選擇。母親在飯桌上開口支持，父親也默默夾菜。那些目光仍難以忘懷，「我」卻開始把它們看成提醒自己堅持所愛的紋身。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2025-Sample-CLIT-Level5-M307.pdf#page=16"
   }
 ]
