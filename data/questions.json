@@ -716,7 +716,9 @@
     "title": "主角與配角",
     "questionFull": "主角與配角",
     "questionType": "開放式",
-    "relatedArticleIds": [],
+    "relatedArticleIds": [
+      106
+    ],
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/PowerPoint-CLIT-2025-1.pdf#page=5",
     "sourceLabel": "考評局教師會議簡報"
   },
