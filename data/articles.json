@@ -1792,5 +1792,28 @@
     ],
     "summary": "「我」放棄高薪工作，決定學習紋身，上司、好友和父親的眼神卻令她不斷懷疑自己的選擇。母親在飯桌上開口支持，父親也默默夾菜。那些目光仍難以忘懷，「我」卻開始把它們看成提醒自己堅持所愛的紋身。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2025-Sample-CLIT-Level5-M307.pdf#page=16"
+  },
+  {
+    "id": 109,
+    "file": "data/articles/article_109.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2025",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "難忘的眼神"
+      }
+    ],
+    "wordCount": 2212,
+    "themeConceptIds": [
+      "th01",
+      "th07",
+      "th13"
+    ],
+    "summary": "沉迷遊戲的「我」遲知父親病倒，在病房仍以輕慢態度回應母親。離開時，母親無言的一眼令他開始反省。窗外由暴雨轉晴，眼前的蝴蝶也讓他想到自己能否破繭成長。他最後主動握住母親的手，回應那道難忘的目光。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2025-Sample-CLIT-Level5-M307.pdf#page=23"
   }
 ]
