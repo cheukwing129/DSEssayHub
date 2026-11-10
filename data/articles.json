@@ -1860,5 +1860,27 @@
     ],
     "summary": "王婆每天到車站等孩子乘末班車回家，司機向華多年開着這班別人不願開的車。兩人的關係直到醫院一節才揭開。母親的記憶仍停在兒子十歲那一晚，向華便用每天仍會到站的末班車，陪她等一個就在眼前卻認不得的人。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2024-Sample-CLIT-Level5-236L.pdf#page=2"
+  },
+  {
+    "id": 112,
+    "file": "data/articles/article_112.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2024",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "最後一班車"
+      }
+    ],
+    "wordCount": 2265,
+    "themeConceptIds": [
+      "th05",
+      "th13"
+    ],
+    "summary": "紅頂小巴停駛前，「我」坐上陳伯開的最後一班車，沿路想起童年遊車河和趕上學的往事。以往盼車開快，今夜卻希望紅燈多留一會。翌日，十一號站牌已拆去，出行改乘地鐵，「我」仍想記住與陳伯和小巴相處的日子。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2024-Sample-CLIT-Level5-236L.pdf#page=10"
   }
 ]
