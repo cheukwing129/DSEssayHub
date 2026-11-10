@@ -326,33 +326,402 @@
     "imageAlt": "2012 練習卷中文科寫作 Q3「紛爭源於不自知」原題附圖"
   },
   {
-    "year": "文學2020",
-    "questionNumber": "Q2",
-    "questionFull": "如釋重負",
+    "year": "文學2012",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "難以下嚥的盛宴",
+    "questionFull": "難以下嚥的盛宴",
     "questionType": "開放式",
-    "relatedArticleIds": [
-      26,
-      27
-    ]
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2012",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "再沒有限期",
+    "questionFull": "再沒有限期",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2013",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "我和我的書桌",
+    "questionFull": "我和我的書桌",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2013",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "過關了",
+    "questionFull": "過關了",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2014",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "終於到了這一刻",
+    "questionFull": "終於到了這一刻",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2014",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "昨夜的留言",
+    "questionFull": "昨夜的留言",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2015",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "被盜走的儲物箱",
+    "questionFull": "被盜走的儲物箱",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2015",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "早晨，坐在大樹旁",
+    "questionFull": "早晨，坐在大樹旁",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2016",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "他們在旅途相遇",
+    "questionFull": "他們在旅途相遇",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2016",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "期待的節日",
+    "questionFull": "期待的節日",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2017",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "朋友，起來",
+    "questionFull": "朋友，起來",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2017",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "遲來的驚喜",
+    "questionFull": "遲來的驚喜",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2018",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "書店風景",
+    "questionFull": "書店風景",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2018",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "近在咫尺的陌生",
+    "questionFull": "近在咫尺的陌生",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
   },
   {
     "year": "文學2019",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "值得付出的代價",
+    "questionFull": "值得付出的代價",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2019",
+    "subject": "文學",
     "questionNumber": "Q2",
+    "title": "再次嘗到的滋味",
     "questionFull": "再次嘗到的滋味",
     "questionType": "開放式",
     "relatedArticleIds": [
       28
-    ]
+    ],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
   },
   {
     "year": "文學2020",
+    "subject": "文學",
     "questionNumber": "Q1",
+    "title": "拼圖",
     "questionFull": "拼圖",
     "questionType": "開放式",
     "relatedArticleIds": [
       62,
       63
+    ],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2020",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "如釋重負",
+    "questionFull": "如釋重負",
+    "questionType": "開放式",
+    "relatedArticleIds": [
+      26,
+      27
+    ],
+    "sourceUrl": "https://dsetreasure.com/dse-clit-questions/",
+    "sourceLabel": "歷屆文學創作題目參考"
+  },
+  {
+    "year": "文學2021",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "如果只有一個季節",
+    "questionFull": "如果只有一個季節",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/CLIT-BS-2021-1.pdf#page=4",
+    "sourceLabel": "考評局教師會議簡報",
+    "sampleLinks": [
+      {
+        "label": "第五級示例 A",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2021-Sample-CLIT-Level5.pdf#page=2"
+      },
+      {
+        "label": "第五級示例 B",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2021-Sample-CLIT-Level5A.pdf#page=2"
+      }
     ]
+  },
+  {
+    "year": "文學2021",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "已讀不回的訊息",
+    "questionFull": "已讀不回的訊息",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/CLIT-BS-2021-1.pdf#page=4",
+    "sourceLabel": "考評局教師會議簡報",
+    "sampleLinks": [
+      {
+        "label": "第五級示例 A",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2021-Sample-CLIT-Level5.pdf#page=8"
+      },
+      {
+        "label": "第五級示例 B",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2021-Sample-CLIT-Level5A.pdf#page=9"
+      }
+    ]
+  },
+  {
+    "year": "文學2022",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "兩張戲票",
+    "questionFull": "兩張戲票",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/CLIT-BS-2022-1.pdf#page=4",
+    "sourceLabel": "考評局教師會議簡報",
+    "sampleLinks": [
+      {
+        "label": "第五級示例 A",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=8"
+      },
+      {
+        "label": "第五級示例 B",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=2"
+      }
+    ]
+  },
+  {
+    "year": "文學2022",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "長街燈下",
+    "questionFull": "長街燈下",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/CLIT-BS-2022-1.pdf#page=4",
+    "sourceLabel": "考評局教師會議簡報",
+    "sampleLinks": [
+      {
+        "label": "第五級示例 A",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=18"
+      },
+      {
+        "label": "第五級示例 B",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=13"
+      }
+    ]
+  },
+  {
+    "year": "文學2023",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "快樂的形狀",
+    "questionFull": "快樂的形狀",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/PowerPoint-CLIT-2310.pdf#page=5",
+    "sourceLabel": "考評局教師會議簡報",
+    "sampleLinks": [
+      {
+        "label": "第五級示例 A",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2023-Sample-CLIT-Level5-9162.pdf#page=2"
+      },
+      {
+        "label": "第五級示例 B",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2023-Sample-CLIT-Level5-9162.pdf#page=7"
+      }
+    ]
+  },
+  {
+    "year": "文學2023",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "那一天，我遇見",
+    "questionFull": "那一天，我遇見",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/PowerPoint-CLIT-2310.pdf#page=5",
+    "sourceLabel": "考評局教師會議簡報",
+    "sampleLinks": [
+      {
+        "label": "第五級示例 A",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2023-Sample-CLIT-Level5-9162.pdf#page=12"
+      },
+      {
+        "label": "第五級示例 B",
+        "url": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2023-Sample-CLIT-Level5-9162.pdf#page=17"
+      }
+    ]
+  },
+  {
+    "year": "文學2024",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "最後一班車",
+    "questionFull": "最後一班車",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/PowerPoint-CLIT-2024-1.pdf#page=5",
+    "sourceLabel": "考評局教師會議簡報"
+  },
+  {
+    "year": "文學2024",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "一場遊戲",
+    "questionFull": "一場遊戲",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/PowerPoint-CLIT-2024-1.pdf#page=5",
+    "sourceLabel": "考評局教師會議簡報"
+  },
+  {
+    "year": "文學2025",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "主角與配角",
+    "questionFull": "主角與配角",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/PowerPoint-CLIT-2025-1.pdf#page=5",
+    "sourceLabel": "考評局教師會議簡報"
+  },
+  {
+    "year": "文學2025",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "難忘的眼神",
+    "questionFull": "難忘的眼神",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/PowerPoint-CLIT-2025-1.pdf#page=5",
+    "sourceLabel": "考評局教師會議簡報"
+  },
+  {
+    "year": "文學2026",
+    "subject": "文學",
+    "questionNumber": "Q1",
+    "title": "來自遠方的聲音",
+    "questionFull": "來自遠方的聲音",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/PowerPoint-CLIT-2026-1.pdf#page=5",
+    "sourceLabel": "考評局教師會議簡報"
+  },
+  {
+    "year": "文學2026",
+    "subject": "文學",
+    "questionNumber": "Q2",
+    "title": "從前的約定",
+    "questionFull": "從前的約定",
+    "questionType": "開放式",
+    "relatedArticleIds": [],
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/PowerPoint-CLIT-2026-1.pdf#page=5",
+    "sourceLabel": "考評局教師會議簡報"
   },
   {
     "year": "2026",
