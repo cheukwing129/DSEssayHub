@@ -50,6 +50,22 @@
     return `<div class="writing-guidance"><p class="writing-guidance-note">以下為教學參考，詳略與組織建議可按立意和文體調整。</p>${content}</div>`;
   };
 
+  const renderWritingIdeas = ideas => {
+    const sections = [
+      ['directions', '立意'],
+      ['materials', '取材'],
+      ['arguments', '論點']
+    ].filter(([key]) => Array.isArray(ideas?.[key]) && ideas[key].length);
+    if (!sections.length) return '';
+    const title = sections.map(([, label]) => label).join('、') + '舉隅';
+    const content = sections.map(([key, label]) =>
+      `<section class="writing-guidance-section"><h3>${label}舉隅</h3><ul>${ideas[key].map(item =>
+        `<li><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.detail)}</p></li>`
+      ).join('')}</ul></section>`
+    ).join('');
+    return `<details class="writing-ideas"><summary>${title}</summary><div class="writing-guidance"><p class="writing-guidance-note">按所選文體與立意取用以下構思示例，並以自己的經驗、觀察或查證所得補充細節。</p>${content}</div></details>`;
+  };
+
   global.DSEHub = global.DSEHub || {};
   global.DSEHub.escapeHtml = escapeHtml;
   global.DSEHub.nameById = nameById;
@@ -57,6 +73,7 @@
   global.DSEHub.itemById = itemById;
   global.DSEHub.formatQuestionSourceYear = formatQuestionSourceYear;
   global.DSEHub.renderWritingGuidance = renderWritingGuidance;
+  global.DSEHub.renderWritingIdeas = renderWritingIdeas;
 
   if (typeof document === 'undefined') return;
 

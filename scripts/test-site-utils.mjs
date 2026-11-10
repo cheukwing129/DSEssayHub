@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import '../site.js';
 
 const { escapeHtml, nameById, questionTextByKey, itemById, formatQuestionSourceYear } = globalThis.DSEHub || {};
-const { renderWritingGuidance } = globalThis.DSEHub;
+const { renderWritingGuidance, renderWritingIdeas } = globalThis.DSEHub;
 
 assert.ok(renderWritingGuidance(null).includes('尚待整理'));
 const guidanceHtml = renderWritingGuidance({
@@ -16,6 +16,24 @@ assert.ok(!guidanceHtml.includes('<img'));
 for (const title of ['題目要求', '審題要點', '常見偏差與題目陷阱', '詳略與組織安排']) {
   assert.ok(guidanceHtml.includes(title));
 }
+
+assert.equal(renderWritingIdeas(undefined), '');
+const ideasHtml = renderWritingIdeas({
+  directions: [{ title: '<img src=x>', detail: '人物如何理解「主角」' }],
+  materials: [{ title: '一個場景', detail: '<script>alert(1)</script>' }]
+});
+assert.match(ideasHtml, /^<details class="writing-ideas">/);
+assert.ok(ideasHtml.includes('立意、取材舉隅'));
+assert.ok(!ideasHtml.includes('論點舉隅'));
+assert.ok(ideasHtml.includes('&lt;img'));
+assert.ok(ideasHtml.includes('&lt;script&gt;'));
+assert.ok(!ideasHtml.includes('<script>'));
+const argumentIdeas = renderWritingIdeas({
+  directions: [{ title: '有條件贊同', detail: '說明成立的條件' }],
+  arguments: [{ title: '機會與投入', detail: '用具體情境推論因果' }]
+});
+assert.ok(argumentIdeas.includes('立意、論點舉隅'));
+assert.ok(!argumentIdeas.includes('取材舉隅'));
 
 assert.equal(typeof escapeHtml, 'function');
 assert.equal(escapeHtml('&<>"\''), '&amp;&lt;&gt;&quot;&#039;');
