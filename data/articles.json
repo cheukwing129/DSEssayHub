@@ -1724,5 +1724,27 @@
     ],
     "summary": "外婆離世後，「我」回故居焚燒遺物，意外拾到一張滿佈劃痕的童年照片。得知外婆生前反覆撫摸照片，「我」才重新聽懂她的家常問候。一次夢見外婆後，「我」把照片還給她，彷彿再聽見她喚自己「心寶」。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2026-Sample-CLIT-Level5-16BK.pdf#page=6"
+  },
+  {
+    "id": 106,
+    "file": "data/articles/article_106.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2025",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "主角與配角"
+      }
+    ],
+    "wordCount": 1627,
+    "themeConceptIds": [
+      "th07",
+      "th13"
+    ],
+    "summary": "父親去看女兒英秀的首場演奏會，從車站的擦肩而過到獨坐觀眾席一角，都以為自己已成了她生活裏的配角。英秀致辭時說出琴弦如何讓大提琴發聲，呼應兒時把父親比作弦的話。父親終於從她的目光明白，自己在女兒心裏一直有位置。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2025-Sample-CLIT-Level5-M307.pdf#page=2"
   }
 ]
