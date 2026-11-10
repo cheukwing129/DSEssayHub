@@ -2059,5 +2059,49 @@
     ],
     "summary": "女兒把兩張學校戲劇表演的門票留給父母，卻因母親拒絕、父親沉默，以為演出當晚會看見兩個空座。父母私下分別請假、換班，換上衣服趕去。布幕拉開，女兒看見他們揮着票根，才知道兩人都來了。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=2"
+  },
+  {
+    "id": 121,
+    "file": "data/articles/article_121.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2022",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "長街燈下"
+      }
+    ],
+    "wordCount": 1558,
+    "themeConceptIds": [
+      "th07",
+      "th12"
+    ],
+    "summary": "母親離世後，女兒在雨夜獨走故鄉的長街，想起兒時跟着母親的黃拖鞋過街，以及長大後看見母親坐在街燈下等她回家。一路亮起的街燈彷彿接力陪她，卻再也照不見母親。她愈跑愈急，最後只能在燈滅後停下。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=18"
+  },
+  {
+    "id": 122,
+    "file": "data/articles/article_122.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2022",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "長街燈下"
+      }
+    ],
+    "wordCount": 1354,
+    "themeConceptIds": [
+      "th07",
+      "th13"
+    ],
+    "summary": "母親昔日常在長街燈下等怕黑的女兒放學，即使女兒長大後嫌她管得太多，仍堅持接她。多年後，母親獨自去醫院看診，女兒站到同一盞燈下，才明白等待時的焦慮與盼望。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=13"
   }
 ]

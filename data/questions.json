@@ -634,7 +634,10 @@
     "title": "長街燈下",
     "questionFull": "長街燈下",
     "questionType": "開放式",
-    "relatedArticleIds": [],
+    "relatedArticleIds": [
+      121,
+      122
+    ],
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/CLIT-BS-2022-1.pdf#page=4",
     "sourceLabel": "考評局教師會議簡報",
     "sampleLinks": [
