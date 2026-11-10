@@ -2103,5 +2103,50 @@
     ],
     "summary": "母親昔日常在長街燈下等怕黑的女兒放學，即使女兒長大後嫌她管得太多，仍堅持接她。多年後，母親獨自去醫院看診，女兒站到同一盞燈下，才明白等待時的焦慮與盼望。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=13"
+  },
+  {
+    "id": 123,
+    "file": "data/articles/article_123.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2021",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "如果只有一個季節"
+      }
+    ],
+    "wordCount": 1371,
+    "themeConceptIds": [
+      "th07",
+      "th13"
+    ],
+    "summary": "「我」想讓世上只剩金黃色的秋天，開初說是貪戀母親秋日做的京醬肉絲。留學多年後重回四合院，同一道菜卻變得鹹苦，母親的頭髮也已花白。「我」才明白，所懷念的是年輕的母親和兩人同坐天井的時光。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2021-Sample-CLIT-Level5.pdf#page=2"
+  },
+  {
+    "id": 124,
+    "file": "data/articles/article_124.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2021",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "如果只有一個季節"
+      }
+    ],
+    "wordCount": 1940,
+    "themeConceptIds": [
+      "th07",
+      "th12",
+      "th13"
+    ],
+    "summary": "孫女每逢春節回鄉，從前由外婆牽着到田間播種，如今外婆衰老，已不認得她。孫女陪外婆重到荒廢的田地，自己鬆土播種，外婆一度想起她的身分。她希望時間停在春天，好有更多日子陪伴外婆。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2021-Sample-CLIT-Level5A.pdf#page=2"
   }
 ]
