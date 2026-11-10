@@ -2,6 +2,20 @@ import assert from 'node:assert/strict';
 import '../site.js';
 
 const { escapeHtml, nameById, questionTextByKey, itemById, formatQuestionSourceYear } = globalThis.DSEHub || {};
+const { renderWritingGuidance } = globalThis.DSEHub;
+
+assert.ok(renderWritingGuidance(null).includes('尚待整理'));
+const guidanceHtml = renderWritingGuidance({
+  requirements: ['<img src=x onerror=alert(1)>'],
+  keyPoints: ['關鍵詞'],
+  pitfalls: ['偏離題意'],
+  planning: ['詳略安排']
+});
+assert.ok(guidanceHtml.includes('&lt;img'));
+assert.ok(!guidanceHtml.includes('<img'));
+for (const title of ['題目要求', '審題要點', '常見偏差與題目陷阱', '詳略與組織安排']) {
+  assert.ok(guidanceHtml.includes(title));
+}
 
 assert.equal(typeof escapeHtml, 'function');
 assert.equal(escapeHtml('&<>"\''), '&amp;&lt;&gt;&quot;&#039;');

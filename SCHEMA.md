@@ -67,7 +67,9 @@
 
 文章層級可另設 `reviewStatus`：`pending-human-review` 表示點評／標籤已整理但尚待人工覆核；只有完成人工覆核後才可改為 `reviewed`，而且必須同時填寫 `reviewedBy` 與 `reviewedAt`（`YYYY-MM-DD`）。這個欄位用來區分「內容已補齊」與「已由人手確認」兩件事，避免把自動整理誤當人工審核。
 
-**`topicAnalysis`**：
+**`topicAnalysis`** 保存每篇範文的題意解讀、取材及立意分析，供文末「這篇範文的寫法分析」及搜尋使用。審題訓練的參考內容由試題的 `writingGuidance` 提供。
+
+欄位如下：
 
 | 欄位 | 型別 | 說明 |
 |---|---|---|
@@ -75,7 +77,7 @@
 | `keywordExplanation` | string | 題目字詞、引文、續寫要求或議題解說 |
 | `imageryDescription` | string | 圖畫／寓意及核心意象描述；`image`／`imagery` 類型會優先顯示此欄 |
 | `directionSuggestion` | string | 取材方向與立意建議，各類型都會使用 |
-| `referenceAnswerPoints` | array of string | 參考立意要點，審題訓練模式「查看參考答案」後第一層顯示的內容 |
+| `referenceAnswerPoints` | array of string | 此篇範文的立意與寫法要點，顯示於文末「這篇範文的寫法分析」 |
 | `openEndedAngles` | array of string | 開放式取材角度，只有話題式文體（`genre: "topic"`）會用到，其他文體是空陣列 |
 
 **新增一篇範文的流程**：用 `/tools/paste-to-json-tool.html` 把 Word 原文貼上切段，複製產生的 `paragraphs` 陣列，貼進新的 `article_NN.json`，手動補上 `comment`／`techniqueTagIds`／`topicAnalysis`；同時記得在 `articles.json` 加一筆對應的索引項目。若匯入後出現空白段，應先核對原稿與切段結果；不要把純格式空行當成正文段落，也不要以推測文字補寫原稿。
@@ -97,6 +99,17 @@
 | `imageNote` | string（可選） | 圖片來源／性質的簡短說明；目前使用「原題附圖」 |
 
 2022–2026 等較新的試題資料主要以 `genre`（`narrative` / `argumentative` / `descriptive` / `topic`）表示文體分類，並可包含 `subject`、`title`、`hasImage`、`imagePath`、`imageAlt`、`imageNote` 等欄位；舊題則主要使用 `questionType`。每道題至少應有 `questionType` 或合法 `genre` 其中一種分類。現階段不應僅為格式一致而批量補寫另一套 metadata，待完成全庫題型語義審核後再決定是否統一 schema。
+
+每道試題另有 `writingGuidance`，由同題範文共用，題庫亦可獨立展開。四個欄位均為非空文字陣列，驗證腳本會檢查完整性。
+
+| 欄位 | 說明 |
+|---|---|
+| `requirements` | 題目要求，包括指定題名、首末句、人物、時空及材料限制 |
+| `keyPoints` | 關鍵詞、概念關係及需要辨析的問題 |
+| `pitfalls` | 常見偏差與容易忽略的題意 |
+| `planning` | 按立意及文體調整的詳略與組織建議 |
+
+內容以題目及已提供材料為依據，屬教學參考。不得把某篇範文的情節或立意指定為所有學生的答案，也不得把建議段序、篇幅比例或取材方向寫成題目硬性要求。學生既有審題作答及展開狀態沿用原有 `articleProgress` 資料。
 
 `articles.json.relatedQuestions` 是關聯的唯一人工維護來源。執行 `npm run sync:data` 會重建 `questions.json.relatedArticleIds`，`npm run check` 會阻止未同步資料進入主分支。
 
