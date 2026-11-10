@@ -1701,5 +1701,28 @@
     ],
     "summary": "祖孫以雙黃月餅為約，答應每個中秋都相聚。「我」身在溫哥華，只能隔着螢幕與奶奶過節，原想回鄉補約，奶奶卻先一步離世。再逢月圓，「我」把半塊月餅留給天上的月，從秋風月色中重新感到奶奶的陪伴。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2026-Sample-CLIT-Level5-16BK.pdf#page=21"
+  },
+  {
+    "id": 105,
+    "file": "data/articles/article_105.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2026",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "來自遠方的聲音"
+      }
+    ],
+    "wordCount": 2148,
+    "themeConceptIds": [
+      "th07",
+      "th12",
+      "th13"
+    ],
+    "summary": "外婆離世後，「我」回故居焚燒遺物，意外拾到一張滿佈劃痕的童年照片。得知外婆生前反覆撫摸照片，「我」才重新聽懂她的家常問候。一次夢見外婆後，「我」把照片還給她，彷彿再聽見她喚自己「心寶」。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2026-Sample-CLIT-Level5-16BK.pdf#page=6"
   }
 ]
