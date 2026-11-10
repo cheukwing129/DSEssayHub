@@ -2015,5 +2015,27 @@
     ],
     "summary": "父親節，一對久別的父女在旺角西裝店外重逢。父親想起自己離家後錯過女兒的成長，女兒則回想父親曾給她的保護與缺席後的怨恨。兩人交替敘述，重回同一場相遇，最後相視微笑，互相點頭。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2023-Sample-CLIT-Level5-9162.pdf#page=17"
+  },
+  {
+    "id": 119,
+    "file": "data/articles/article_119.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2022",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "兩張戲票"
+      }
+    ],
+    "wordCount": 1535,
+    "themeConceptIds": [
+      "th07",
+      "th13"
+    ],
+    "summary": "「我」小時候與父母一起看《蜘蛛俠》。後來戲院裏只剩母親與「我」，「我」還嫌母親問話、接電話擾了興致。長大後，工作電話同樣打斷「我」看戲，才想起母親的無奈。再次獨自入場後，「我」終於握着兩張新戲票，打電話邀請她一起看。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2022-Sample-CLIT-Level5.pdf#page=8"
   }
 ]
