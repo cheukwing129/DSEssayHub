@@ -1882,5 +1882,28 @@
     ],
     "summary": "紅頂小巴停駛前，「我」坐上陳伯開的最後一班車，沿路想起童年遊車河和趕上學的往事。以往盼車開快，今夜卻希望紅燈多留一會。翌日，十一號站牌已拆去，出行改乘地鐵，「我」仍想記住與陳伯和小巴相處的日子。",
     "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2024-Sample-CLIT-Level5-236L.pdf#page=10"
+  },
+  {
+    "id": 113,
+    "file": "data/articles/article_113.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2024",
+        "subject": "文學",
+        "questionNumber": "Q2",
+        "title": "一場遊戲"
+      }
+    ],
+    "wordCount": 1269,
+    "themeConceptIds": [
+      "th01",
+      "th07",
+      "th13"
+    ],
+    "summary": "「我」兒時拔河，忍痛也想取勝。多年後，「我」和父親以圍棋決定大學選科，贏了卻想落淚。工作後一次玩劇本殺，透過蘇軾的角色回看人生起落，「我」才重新理解父親所說的「一場遊戲而已」。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2024-Sample-CLIT-Level5-236L.pdf#page=18"
   }
 ]
