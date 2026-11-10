@@ -625,6 +625,39 @@
 body.focus-reading-mode #trainingCard,body.focus-reading-mode .article-summary,body.focus-reading-mode .article-header .article-tags,body.focus-reading-mode .technique-tags,body.focus-reading-mode .paragraph-actions,body.focus-reading-mode .comment-box,body.focus-reading-mode .paragraph-navigation{display:none!important}
 body.focus-reading-mode .essay{padding-top:24px;padding-bottom:24px}
 @media(max-width:720px){.reading-toolbar{align-items:flex-start;flex-direction:column;gap:6px}.reading-mode-toggle{min-height:44px}.reading-mode-hint{font-size:.76rem}}
+.article-print-copy{display:none}
+@media print{
+  @page{
+    size:A4;
+    margin:20mm 22mm;
+    @top-left{content:""}
+    @top-center{content:""}
+    @top-right{content:""}
+    @bottom-left{content:""}
+    @bottom-center{content:""}
+    @bottom-right{content:""}
+  }
+  body.article-print-ready{background:#fff;color:#000}
+  body.article-print-ready > :not(.article-print-copy){display:none!important}
+  body.article-print-ready > .article-print-copy{
+    display:block;
+    color:#000;
+    font:12pt/1.8 "Noto Serif CJK HK",var(--font-serif,serif);
+    line-break:strict;
+    overflow-wrap:anywhere;
+    white-space:pre-line;
+  }
+  .article-print-copy h1{
+    margin:0 0 1em;
+    color:inherit;
+    font-family:inherit;
+    font-size:17pt;
+    font-weight:700;
+    line-height:1.5;
+    break-after:avoid;
+  }
+  .article-print-copy p{margin:0 0 .7em;white-space:pre-wrap;orphans:2;widows:2}
+}
 </style>
 <style>
 /* 編輯式閱讀版面：保留既有功能，以主文與工具側欄建立清楚層次。 */
@@ -809,6 +842,30 @@ function scrollToRequestedParagraph(){
 
 function initReadingMode(){const button=document.getElementById('readingModeToggle');if(!button)return;button.addEventListener('click',()=>{const enabled=document.body.classList.toggle('focus-reading-mode');button.setAttribute('aria-pressed',String(enabled));button.textContent=enabled?'返回學習工具':'開啟專心閱讀';});}
 
+function addArticlePdfExport(toolbar,title,paragraphs){
+  if(!toolbar||!paragraphs.length)return;
+
+  const copy=document.createElement('article');
+  copy.className='article-print-copy';
+  const heading=document.createElement('h1');
+  heading.textContent=title;
+  copy.append(heading);
+  for(const paragraph of paragraphs){
+    const text=document.createElement('p');
+    text.textContent=paragraph.text;
+    copy.append(text);
+  }
+  document.body.append(copy);
+  document.body.classList.add('article-print-ready');
+
+  const button=document.createElement('button');
+  button.type='button';
+  button.className='reading-mode-toggle';
+  button.textContent='匯出 PDF';
+  button.addEventListener('click',()=>window.print());
+  toolbar.querySelector('.reading-mode-toggle')?.after(button);
+}
+
 function buildParagraphNavigation(paragraphs){
   if(paragraphs.length<8)return '';
   const links=paragraphs.map((_,i)=>`<a href="#paragraph-${i}">第 ${i+1} 段</a>`).join('');
@@ -830,6 +887,7 @@ function applyEditorialLayout(index,first,question,paragraphs){
   const articleTitle=first?.title||question?.title;
   if(heading&&articleTitle)heading.textContent=articleTitle;
   if(heading)document.title=(articleTitle?heading.textContent+"｜":"")+"篇章 "+String(index.id).padStart(2,"0")+"｜DSE 中文科範文自學平台";
+  addArticlePdfExport(toolbar,articleTitle||question?.questionFull||heading?.textContent,paragraphs);
 
   const kicker=document.createElement("p");
   kicker.className="article-kicker";
