@@ -1654,5 +1654,29 @@
     ],
     "summary": "懷孕的主角因孕吐、醫生提醒及丈夫的提議，反覆衡量繼續懷孕的代價。親身感到胎動後，她重新理解自己和孩子的關係，作出了選擇。",
     "sourceUrl": "https://sites.google.com/qmss.edu.hk/chinesearticle/%E6%96%87%E5%AD%B8%E7%A7%91%E4%BD%B3%E4%BD%9C/%E5%80%BC%E5%BE%97%E4%BB%98%E5%87%BA%E7%9A%84%E4%BB%A3%E5%83%B9"
+  },
+  {
+    "id": 103,
+    "file": "data/articles/article_103.json",
+    "collection": "extended",
+    "sourceType": "文學DSE",
+    "genre": "narrative",
+    "relatedQuestions": [
+      {
+        "year": "文學2026",
+        "subject": "文學",
+        "questionNumber": "Q1",
+        "title": "來自遠方的聲音"
+      }
+    ],
+    "wordCount": 1342,
+    "themeConceptIds": [
+      "th01",
+      "th07",
+      "th11",
+      "th13"
+    ],
+    "summary": "父親離世後，立志成為攝影師的主角每次取景，都像聽到父親的叮囑，因追求完美而遲遲按不下快門。主角看見父親留下的照片也有失焦與構圖上的缺憾，卻保存了童年的情感，終於辨明那陣聲音源於自己的執着，重新舉起相機。",
+    "sourceUrl": "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/clit/2026-Sample-CLIT-Level5-16BK.pdf#page=2"
   }
 ]
