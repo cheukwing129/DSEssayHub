@@ -138,6 +138,23 @@ for (const question of questions) {
       fail(`試題 ${key} 的 writingGuidance.${field} 必須是非空文字陣列。`);
     }
   }
+  const ideas = question.writingIdeas;
+  if (!Array.isArray(ideas?.directions) || !ideas.directions.length) {
+    fail(`試題 ${key} 缺少立意舉隅。`);
+  }
+  if (!ideas?.materials?.length && !ideas?.arguments?.length) {
+    fail(`試題 ${key} 須提供取材或論點舉隅。`);
+  }
+  for (const field of ['directions', 'materials', 'arguments']) {
+    const examples = ideas?.[field];
+    if (examples === undefined) continue;
+    if (!Array.isArray(examples) || !examples.length || examples.some(item =>
+      typeof item?.title !== 'string' || !item.title.trim() ||
+      typeof item?.detail !== 'string' || !item.detail.trim()
+    )) {
+      fail(`試題 ${key} 的 writingIdeas.${field} 必須包含標題和解說。`);
+    }
+  }
   if (!Array.isArray(question.relatedArticleIds)) {
     fail(`試題 ${key} 的 relatedArticleIds 必須是陣列。`);
   } else if (new Set(question.relatedArticleIds).size !== question.relatedArticleIds.length) {

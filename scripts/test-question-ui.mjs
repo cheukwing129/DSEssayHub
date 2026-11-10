@@ -63,9 +63,12 @@ function renderTraining(articleId) {
   assert.ok(content.innerHTML.includes('這篇範文的寫法分析'));
   assert.ok(reference.includes(question.writingGuidance.planning[0]));
   assert.ok(!reference.includes(context.body.topicAnalysis.referenceAnswerPoints[0]), '範文情節分析不可當作審題參考');
-  return reference;
+  const ideas = content.innerHTML.match(/<details class="writing-ideas">[\s\S]*?<\/details>/)?.[0];
+  assert.equal(ideas, globalThis.DSEHub.renderWritingIdeas(question.writingIdeas), '構思舉隅須預設收合並使用試題層級資料');
+  assert.ok(!reference.includes(question.writingIdeas.directions[0].detail), '構思舉隅與審題參考須分開展開');
+  return { reference, ideas };
 }
-assert.equal(renderTraining(106), renderTraining(107), '同題範文必須共用試題層級的審題參考');
+assert.deepEqual(renderTraining(106), renderTraining(107), '同題範文必須共用試題層級的審題參考及構思舉隅');
 
 // Questions without any essays still expose the same topic guidance through the question bank.
 const cardSource = questionsHtml.slice(questionsHtml.indexOf('function buildCard(q)'), questionsHtml.indexOf('function populateQuickYears()'));
@@ -78,6 +81,13 @@ const cardContext = {
 const questionCard = vm.runInNewContext(`${cardSource}\nbuildCard(q);`, cardContext);
 assert.ok(questionCard.includes(noEssayQuestion.writingGuidance.requirements[0]));
 assert.ok(questionCard.includes('暫未有對應範文'));
+assert.ok(questionCard.includes(globalThis.DSEHub.renderWritingIdeas(noEssayQuestion.writingIdeas)), '未有範文的題目亦須提供預設收合的構思舉隅');
+
+const openQuestion = questions.find(item => item.year === '2021' && item.questionNumber === 'Q2');
+const openIdeas = globalThis.DSEHub.renderWritingIdeas(openQuestion.writingIdeas);
+for (const heading of ['立意舉隅', '取材舉隅', '論點舉隅']) {
+  assert.ok(openIdeas.includes(`<h3>${heading}</h3>`), '開放題可同時提供取材與論點');
+}
 
 for (const item of questions.filter(item => item.subject === '文學')) {
   assert.ok(item.writingGuidance.requirements.join('').includes(item.questionFull), `${item.year} ${item.questionNumber} 的審題內容必須對應題名`);

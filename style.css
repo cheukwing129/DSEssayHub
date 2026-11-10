@@ -809,6 +809,75 @@ button {
   margin-top: 24px;
 }
 
+.writing-ideas {
+  margin: 0 0 20px;
+  border: 1px solid var(--color-border, #ddd6c4);
+  border-radius: var(--radius-md, 10px);
+  background: var(--color-surface, #fff);
+}
+
+.writing-ideas > summary {
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  padding: 14px 20px;
+  color: var(--color-primary, #1f3a5f);
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.writing-ideas > summary::-webkit-details-marker {
+  display: none;
+}
+
+.writing-ideas > summary::after {
+  content: '＋';
+  margin-left: auto;
+  padding-left: 12px;
+}
+
+.writing-ideas[open] > summary::after {
+  content: '−';
+}
+
+.writing-ideas > .writing-guidance {
+  padding: 0 20px 20px;
+}
+
+.writing-ideas .writing-guidance-section li + li {
+  margin-top: 14px;
+}
+
+.writing-ideas .writing-guidance-section strong {
+  color: var(--color-ink, #23322b);
+}
+
+.writing-ideas .writing-guidance-section p {
+  margin: 4px 0 0;
+}
+
+.question-card-main > .writing-ideas {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--color-border-soft, #e7e2d3);
+  border-radius: 0;
+  background: transparent;
+}
+
+.question-card-main > .writing-ideas > summary {
+  min-height: 44px;
+  padding: 10px 0;
+}
+
+.question-card-main > .writing-ideas > .writing-guidance {
+  padding: 8px 0 12px;
+}
+
+body.focus-reading-mode .writing-ideas {
+  display: none;
+}
+
 .error-box {
   margin-top: 16px;
   padding: 14px 16px;
