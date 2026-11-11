@@ -627,11 +627,15 @@ body.focus-reading-mode .essay{padding-top:24px;padding-bottom:24px}
 @media(max-width:720px){.reading-toolbar{align-items:flex-start;flex-direction:column;gap:6px}.reading-mode-toggle{min-height:44px}.reading-mode-hint{font-size:.76rem}}
 .article-print-copy{display:none}
 @media print{
-  @page{size:A4;margin:20mm 22mm}
+  /* Keep the page margin empty so the browser cannot insert its title or URL. */
+  @page{size:A4;margin:0}
   body.article-print-ready{background:#fff;color:#000}
   body.article-print-ready > :not(.article-print-copy){display:none!important}
   body.article-print-ready > .article-print-copy{
     display:block;
+    padding:20mm 22mm;
+    -webkit-box-decoration-break:clone;
+    box-decoration-break:clone;
     color:#000;
     font:12pt/1.8 "Noto Serif CJK HK",var(--font-serif,serif);
     line-break:strict;
@@ -853,7 +857,7 @@ function addArticlePdfExport(toolbar,title,paragraphs){
   button.type='button';
   button.className='reading-mode-toggle';
   button.textContent='匯出 PDF';
-  button.title='在列印視窗選擇「另存為 PDF」，並關閉頁首和頁尾。';
+  button.title='在列印視窗選擇「另存為 PDF」。';
   button.addEventListener('click',()=>window.print());
   toolbar.querySelector('.reading-mode-toggle')?.after(button);
 }
